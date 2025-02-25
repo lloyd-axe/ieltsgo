@@ -1,2 +1,5 @@
 [build]
-builder = "docker-compose"
+builder = "docker"
+
+[deploy]
+start_cmd = "python manage.py runserver 0.0.0.0:8000"
