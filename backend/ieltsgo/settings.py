@@ -56,6 +56,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # ✅ Correct way
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Local React frontend
     "http://127.0.0.1:3000",  # Your production frontend
+    os.getenv('FRONTEND_URL', ''),  # Railway specific
 ]
 
 
@@ -66,13 +67,14 @@ REST_FRAMEWORK = {
 ROOT_URLCONF = 'ieltsgo.urls'
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
+
+STATICFILES_DIRS = [] 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'static')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
