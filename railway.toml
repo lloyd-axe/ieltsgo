@@ -1,2 +1,2 @@
 [deploy]
-builder = "docker-compose"
+builder = "docker-compose.yml"
