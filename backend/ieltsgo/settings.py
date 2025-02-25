@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+print('base->', BASE_DIR)
 
 AI_API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -56,7 +57,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # ✅ Correct way
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Local React frontend
     "http://127.0.0.1:3000",  # Your production frontend
-    os.getenv('FRONTEND_URL', ''),  # Railway specific
+    #os.getenv('FRONTEND_URL', ''),  # Railway specific
 ]
 
 
@@ -66,10 +67,14 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'ieltsgo.urls'
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'backend', 'static'),
+    os.path.join(BASE_DIR, 'frontend', 'dist', 'assets')
+]
+
 
 TEMPLATES = [
     {
