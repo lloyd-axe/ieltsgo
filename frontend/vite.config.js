@@ -8,6 +8,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
+    base: '/static/',
     port: 5173, // Optional: for local development
   },
 });
