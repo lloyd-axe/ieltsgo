@@ -1,2 +1,2 @@
 [deploy]
-dockerfile = "docker-compose"
+builder = "docker-compose"
