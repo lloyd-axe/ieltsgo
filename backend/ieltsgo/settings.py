@@ -69,7 +69,7 @@ ROOT_URLCONF = 'ieltsgo.urls'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
 
-STATICFILES_DIRS = [] 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 TEMPLATES = [
     {
