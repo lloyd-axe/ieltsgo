@@ -1,2 +1,2 @@
 [deploy]
-dockerfile = "docker-compose.yml"
+dockerfile = "docker-compose"
