@@ -9,7 +9,7 @@ import os
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("ieltsgo/", include("ielts.urls")),
-    re_path(r'^.*$', serve, {'document_root': os.path.join(settings.BASE_DIR, 'frontend', 'dist'), 'path': 'index.html'}),
+    re_path(r'^.*$', serve, {'document_root': os.path.join(settings.BASE_DIR, 'static'), 'path': 'index.html'}),
 ]
 
 if settings.DEBUG:
