@@ -6,9 +6,10 @@ export default defineConfig({
   build: {
     outDir: 'dist', // Matches Dockerfile COPY command
     emptyOutDir: true,
-    base: '/static/'
+    
   },
   server: {
     port: 5173, // Optional: for local development
+    base: '/static/'
   },
 });
