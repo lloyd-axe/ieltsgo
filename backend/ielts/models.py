@@ -92,15 +92,6 @@ class BasicTestModel(models.Model):
         abstract = True
 
 
-class TestInformation(BasicTestModel):
-    all_test_types = []
-    for k,v in TEST_TYPES.items():
-        all_test_types += v
-
-    test_types = models.CharField(max_length=50, choices=all_test_types)
-    information = models.TextField()
-
-
 class WritingTest(BasicTestModel):
     allowed_skills = ["writing"]
     test_type = models.CharField(max_length=50, choices=TEST_TYPES["writing"], null=False, blank=False)
