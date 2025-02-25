@@ -1,40 +1,27 @@
-# ========================
-# 1. Build React Frontend
-# ========================
+# Step 1: Build Frontend
 FROM node:20 AS frontend-build
 
-WORKDIR /app
+WORKDIR /frontend
 
-# Install dependencies
 COPY frontend/package*.json ./
 RUN npm install
 
-# Copy all frontend files and build with Vite
-COPY frontend .
+COPY frontend ./
 RUN npm run build
 
-# ========================
-# 2. Build Django Backend
-# ========================
-FROM python:3.11 AS backend-build
+# Step 2: Backend with Django
+FROM python:3.11 AS backend
 
 WORKDIR /app
 
-# Install Python dependencies
 COPY backend/requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copy backend files
-COPY backend .
+COPY backend ./
+COPY --from=frontend-build /frontend/dist /app/static
 
-# Copy frontend build to Django static files
-COPY --from=frontend-build /app/dist ./static
-
-# Collect static files for Django
 RUN python manage.py collectstatic --noinput
 
-# Expose port
 EXPOSE 8000
 
-# Run Django server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

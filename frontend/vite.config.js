@@ -4,8 +4,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist', // Should be 'dist' to match the Dockerfile
+    outDir: 'dist', // Matches Dockerfile COPY command
     emptyOutDir: true,
   },
-  base: '/static/', // Important for Django's static file serving
+  server: {
+    port: 5173, // Optional: for local development
+  },
 });
