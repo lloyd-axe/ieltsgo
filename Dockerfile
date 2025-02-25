@@ -25,6 +25,7 @@ COPY backend ./
 
 # Step 3: Copy the built frontend files (dist) into the backend static directory
 COPY --from=frontend-build /frontend/dist /app/static
+COPY --from=frontend-build /frontend/dist/index.html /app/templates/index.html
 
 # Collect static files to ensure proper Django static file management
 RUN python manage.py collectstatic --noinput

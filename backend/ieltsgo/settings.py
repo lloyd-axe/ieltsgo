@@ -72,7 +72,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'backend', 'static'),
-    os.path.join(BASE_DIR, 'frontend', 'dist', 'assets')
+    os.path.join(BASE_DIR, 'frontend', 'dist')
 ]
 
 
