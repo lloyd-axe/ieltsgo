@@ -62,7 +62,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-   os.getenv('FRONTEND_URL', '')
+   'https://ieltsgo-production.up.railway.app'
 ]
 
 CSRF_COOKIE_SECURE = True
