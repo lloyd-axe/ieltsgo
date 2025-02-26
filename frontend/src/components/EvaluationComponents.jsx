@@ -16,7 +16,7 @@ const WritingEvaluation = ({answer, question, testType}) => {
     useEffect(() => {
         const sendTextToBackend = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/ieltsgo/api/validate_writing/", {
+                const response = await fetch("/ieltsgo/api/validate_writing/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -123,7 +123,7 @@ const sendAnswersToBackend = async (
     ) => {
     try {
         console.log('asn', answers, 'cans', correct_answers);
-        const response = await fetch("http://127.0.0.1:8000/ieltsgo/api/validate_answers/", {
+        const response = await fetch("/ieltsgo/api/validate_answers/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

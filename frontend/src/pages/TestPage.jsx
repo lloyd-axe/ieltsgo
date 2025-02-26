@@ -24,7 +24,7 @@ function TestPage() {
     setShowAudioModal(true);
     const loadTestData = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/ieltsgo/api/test/${skill}/${testType}/${itemId}/`);
+        const response = await axios.get(`/ieltsgo/api/test/${skill}/${testType}/${itemId}/`);
         console.log('data', response.data)
         setTestData(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ function TestPage() {
 
     const fetchTestTypeNames = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/ieltsgo/api/test_type/names`);
+        const response = await axios.get(`/ieltsgo/api/test_type/names`);
         setDisplayNames(response.data.display_names);
       } catch (error) {
         console.error("Error fetching test types:", error);

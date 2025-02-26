@@ -13,7 +13,7 @@ function TestIntroPage() {
     useEffect(() => {
         const fetchTestInfo = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/ieltsgo/api/test_info/${testType}/`);
+                const response = await axios.get(`/ieltsgo/api/test_info/${testType}/`);
                 setTestInfo(response.data.info);
             } catch (error) {
                 console.error("Error fetching test info:", error);
@@ -22,7 +22,7 @@ function TestIntroPage() {
 
         const fetchTestTypeNames = async () => {
             try {
-              const response = await axios.get(`http://127.0.0.1:8000/ieltsgo/api/test_type/names`);
+              const response = await axios.get(`/ieltsgo/api/test_type/names`);
               const display_names = response.data.display_names;
               setDisplayNames(display_names);
             } catch (error) {
