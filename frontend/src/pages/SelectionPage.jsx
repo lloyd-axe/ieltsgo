@@ -62,26 +62,20 @@ function SelectionPage() {
   const [selectedTestType, setSelectedTestType] = useState(testType);
 
   const navigate = useNavigate();
-  console.log(`API URL: ${process.env.REACT_APP_API_URL}`); 
   
 
   useEffect(() => {
     const fetchTests = async () => {
       try {
-          const skillPath = skill ? `/${skill}` : "";
-          const testTypePath = testType ? `/${testType}` : "";
-          
-          const response = await axios.get(
-              `${process.env.REACT_APP_API_URL}/ieltsgo/api/selection${skillPath}${testTypePath}`
-          );
-          
-          setTests(response.data);
-          setLoading(false);
+        const response = await axios.get(`/ieltsgo/api/selection/${skill || ""}${ testType ? "/" : "" }${testType || ""}`);
+        setTests(response.data);
+        setLoading(false);
       } catch (error) {
-          console.error("Failed to fetch tests", error);
-          setLoading(false);
+        console.error("Error fetching tests:", error);
+        setTests([]);
+        setLoading(false);
       }
-  };
+    };
 
     const fetchTestTypes = async () => {
       try {
@@ -97,7 +91,7 @@ function SelectionPage() {
 
     const fetchTestTypeNames = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/ieltsgo/api/test_type/names`);
+        const response = await axios.get(`/ieltsgo/api/test_type/names`);
         setDisplayNames(response.data.display_names);
       } catch (error) {
         console.error("Error fetching test types:", error);
