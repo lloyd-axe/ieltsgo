@@ -67,15 +67,20 @@ function SelectionPage() {
   useEffect(() => {
     const fetchTests = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/ieltsgo/api/selection/${skill || ""}${ testType ? "/" : "" }${testType || ""}`);
-        setTests(response.data);
-        setLoading(false);
+          const skillPath = skill ? `/${skill}` : "";
+          const testTypePath = testType ? `/${testType}` : "";
+          
+          const response = await axios.get(
+              `${process.env.REACT_APP_API_URL}/ieltsgo/api/selection${skillPath}${testTypePath}`
+          );
+          
+          setTests(response.data);
+          setLoading(false);
       } catch (error) {
-        console.error("Error fetching tests:", error);
-        setTests([]);
-        setLoading(false);
+          console.error("Failed to fetch tests", error);
+          setLoading(false);
       }
-    };
+  };
 
     const fetchTestTypes = async () => {
       try {
