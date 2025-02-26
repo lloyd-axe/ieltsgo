@@ -18,17 +18,37 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'django.security.csrf': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    os.getenv('RAILWAY_URL', ''),  # Railway specific
+    os.getenv('RAILWAY_URL', 'ieltsgo-production.up.railway.app'),  # Railway specific
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +58,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'ielts',
-    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
@@ -55,18 +74,12 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True  # ✅ Correct way
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Local React frontend
-    "http://127.0.0.1:3000",  # Your production frontend
-    #os.getenv('FRONTEND_URL', ''),  # Railway specific
-]
-
 CSRF_TRUSTED_ORIGINS = [
    'https://ieltsgo-production.up.railway.app'
 ]
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 
 
 REST_FRAMEWORK = {
