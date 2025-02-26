@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom"; 
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import ActivityPageTemplate from "../components/ActivityPage";
 import { getWritingComponents, getSelectionComponents, getFillBlanksComponents, 
@@ -22,6 +23,16 @@ function TestPage() {
   // LOAD TEST DATA
   useEffect(() => {
     setShowAudioModal(true);
+    const fetchCsrfToken = async () => {
+      try {
+          const response = await fetch("/api/get-csrf-token/");
+          const data = await response.json();
+          Cookies.set("csrftoken", data.csrfToken);
+          console.log("CSRF Token set:", data.csrfToken);
+      } catch (error) {
+          console.error("Failed to fetch CSRF token:", error);
+      }
+  };
     const loadTestData = async () => {
       try {
         const response = await axios.get(`/ieltsgo/api/test/${skill}/${testType}/${itemId}/`);
@@ -40,7 +51,7 @@ function TestPage() {
         console.error("Error fetching test types:", error);
       }
     };
-
+    fetchCsrfToken();
     loadTestData();
     fetchTestTypeNames();
   }, [skill, testType, itemId]);

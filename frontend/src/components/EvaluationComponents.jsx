@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { LoadingSkeleton, formatTime } from "../components/Utilities";
 import ActivityPageTemplate from "../components/ActivityPage";
+import Cookies from "js-cookie";
 
 import {SingleChoice, MultipleChoice, FillBlanksComponent, 
     FillBlankTableComponent, MapTableComponent, DragDropWordsComponent} from "./AnswerComponents";
@@ -127,6 +128,7 @@ const sendAnswersToBackend = async (
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get('csrftoken'),
             },
             body: JSON.stringify({
                 test_type: testType,
