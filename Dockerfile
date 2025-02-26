@@ -26,9 +26,9 @@ COPY --from=frontend-build /app/dist/assets /app/static/
 COPY --from=frontend-build /app/dist/index.html /app/templates/index.html
 
 # Collect static files to ensure proper Django static file management
-RUN python manage.py collectstatic --noinput
 RUN python manage.py makemigrations  # Make migrations for the app
 RUN python manage.py migrate         # Apply migrations to the database
+RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
