@@ -1,4 +1,5 @@
 import ActivityPageTemplate from "../components/ActivityPage";
+import { LoadingSkeleton } from "../components/Utilities";
 
 function LoadingPage() {
     const headerNavFields = {
@@ -12,7 +13,7 @@ function LoadingPage() {
                 contentFields={{
                 left_content: ( 
                     <div>
-                    LOADING ...
+                    <LoadingSkeleton width="100%" height="70%" />
                     </div>
                 )}
                 }
