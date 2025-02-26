@@ -160,6 +160,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+REACT_APP_API_URL =  os.getenv('REACT_APP_API_URL', 'https://ieltsgo-production.up.railway.app')
 
 
 # Default primary key field type

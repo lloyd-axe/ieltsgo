@@ -4,6 +4,7 @@ import google.generativeai as genai
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.conf import settings
+from django.http import JsonResponse
 from .models import AIConfigs
 from .serializers import AIConfigsSerializer
 from .test_manager import (get_test, get_test_info, get_test_type_display_names, get_test_types, get_all_tests)
@@ -12,6 +13,10 @@ from .test_validator import (validate_writing_answer, validate_answers, validate
 
 
 genai.configure(api_key=settings.AI_API_KEY)
+
+def get_config(request):
+    return JsonResponse({'REACT_APP_API_URL': settings.REACT_APP_API_URL})
+
 
 def fetch_model_configs():
     model_configs = AIConfigs.objects.filter(is_active=True).order_by("id").first()

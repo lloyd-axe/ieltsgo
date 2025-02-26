@@ -62,6 +62,7 @@ function SelectionPage() {
   const [selectedTestType, setSelectedTestType] = useState(testType);
 
   const navigate = useNavigate();
+  console.log(`API URL: ${process.env.REACT_APP_API_URL}`); 
   
 
   useEffect(() => {
@@ -84,7 +85,7 @@ function SelectionPage() {
 
     const fetchTestTypes = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/ieltsgo/api/test_types/${skill || ""}`);
+        const response = await axios.get(`/ieltsgo/api/test_types/${skill || ""}`);
         const ttypes = response.data.test_types;
         ttypes.unshift("all");
         setTestTypes(ttypes);
