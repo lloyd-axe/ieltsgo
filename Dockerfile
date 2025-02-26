@@ -22,7 +22,7 @@ RUN pip install -r requirements.txt
 # Copy all backend files
 COPY backend ./
 # Step 3: Copy the built frontend files (build) into the backend static directory
-COPY --from=frontend-build /app/dist/assets /app/static/
+COPY --from=frontend-build /app/dist/assets /app/static/assets
 COPY --from=frontend-build /app/dist/index.html /app/templates/index.html
 
 # Collect static files to ensure proper Django static file management
