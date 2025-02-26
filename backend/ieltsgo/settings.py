@@ -122,10 +122,9 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'), 
         'PORT': os.getenv('DB_PORT'),
-        'HOST': os.getenv('DB_HOST', 'postgres.railway.internal'),
+        'HOST': os.getenv('DB_HOST'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
