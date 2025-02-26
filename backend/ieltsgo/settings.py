@@ -75,7 +75,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True  # ✅ Correct way
 
 CSRF_TRUSTED_ORIGINS = [
-   'https://ieltsgo-production.up.railway.app'
+    'https://ieltsgo-production.up.railway.app',
 ]
 
 CSRF_COOKIE_SECURE = False
@@ -114,14 +114,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ieltsgo.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'), 
+        'PORT': os.getenv('DB_PORT'),
+        'HOST': os.getenv('DB_HOST', 'postgres.railway.internal'),
     }
 }
 
