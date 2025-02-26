@@ -10,6 +10,7 @@ from .test_manager import (get_test, get_test_info, get_test_type_display_names,
 from .test_validator import (validate_writing_answer, validate_answers, validate_matching_answer,
                              validate_single_choice_answer, validate_multi_choice_answer)
 
+
 genai.configure(api_key=settings.AI_API_KEY)
 
 def fetch_model_configs():
