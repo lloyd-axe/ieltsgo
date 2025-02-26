@@ -61,6 +61,10 @@ CORS_ALLOWED_ORIGINS = [
     #os.getenv('FRONTEND_URL', ''),  # Railway specific
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+   os.getenv('FRONTEND_URL', '')
+]
+
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
