@@ -6,7 +6,6 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print('base->', BASE_DIR)
 
 AI_API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -67,11 +66,11 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'ieltsgo.urls'
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'backend', 'static'),
+    os.path.join(BASE_DIR, 'frontend', 'dist'),
 ]
 
 
