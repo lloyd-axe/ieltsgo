@@ -41,6 +41,8 @@ LOGGING = {
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    'www.ieltsgo.net', 
+    'ieltsgo.net',
     os.getenv('RAILWAY_URL', 'ieltsgo-production.up.railway.app'),  # Railway specific
 ]
 
@@ -75,10 +77,14 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://ieltsgo-production.up.railway.app",
+    'https://www.ieltsgo.net', 
+    'https://ieltsgo.net'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://ieltsgo-production.up.railway.app',
+    'https://www.ieltsgo.net', 
+    'https://ieltsgo.net'
 ]
 
 CSRF_COOKIE_SECURE = False
@@ -159,9 +165,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-REACT_APP_API_URL =  os.getenv('REACT_APP_API_URL', 'https://ieltsgo-production.up.railway.app')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
