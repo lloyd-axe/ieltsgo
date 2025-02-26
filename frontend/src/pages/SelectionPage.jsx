@@ -67,7 +67,7 @@ function SelectionPage() {
   useEffect(() => {
     const fetchTests = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/ieltsgo/api/selection/${skill || ""}${ testType ? "/" : "" }${testType || ""}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/ieltsgo/api/selection/${skill || ""}${ testType ? "/" : "" }${testType || ""}`);
         setTests(response.data);
         setLoading(false);
       } catch (error) {
@@ -79,7 +79,7 @@ function SelectionPage() {
 
     const fetchTestTypes = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/ieltsgo/api/test_types/${skill || ""}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/ieltsgo/api/test_types/${skill || ""}`);
         const ttypes = response.data.test_types;
         ttypes.unshift("all");
         setTestTypes(ttypes);
@@ -91,7 +91,7 @@ function SelectionPage() {
 
     const fetchTestTypeNames = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/ieltsgo/api/test_type/names`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/ieltsgo/api/test_type/names`);
         setDisplayNames(response.data.display_names);
       } catch (error) {
         console.error("Error fetching test types:", error);
