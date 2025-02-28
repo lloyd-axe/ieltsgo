@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"; 
 import { useState, useEffect } from "react";
-import { LoadingSkeleton, formatTime } from "../components/Utilities";
+import { LoadingSkeleton, formatTime, TypingEffect } from "../components/Utilities";
+import { sendTextToBackend, sendAnswersToBackend } from "../services/services";
+import { renderIcon } from "../services/icons";
 import ActivityPageTemplate from "../components/ActivityPage";
-import Cookies from "js-cookie";
-
+import LoadingPage from "../pages/LoadingPage";
+import { DiagramAndText, Paragraph} from "./QuestionContrainers";
 import {SingleChoice, MultipleChoice, FillBlanksComponent, 
     FillBlankTableComponent, MapTableComponent, DragDropWordsComponent} from "./AnswerComponents";
 
@@ -15,39 +17,20 @@ const WritingEvaluation = ({answer, question, testType}) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const sendTextToBackend = async () => {
-            try {
-                const response = await fetch("/ieltsgo/api/validate_writing/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ user_response: answer, question: question , test_type: testType}),
-                });
-
-                const data = await response.json();
-                if (response.ok) {
-                    setBandScore(data.band_score);
-                    setEvaluation(data.evaluation);
-                    setImprovedVersion(data.improve_version);
-                } else {
-                    console.error("Response Error");
-                }
-            } catch (error) {
+        sendTextToBackend(answer, question, testType)
+            .then(({ data }) => {
+                setBandScore(data.band_score);
+                setEvaluation(data.evaluation);
+                setImprovedVersion(data.improve_version);
+            })
+            .catch((error) => {
                 console.error("Error sending text:", error);
                 setBandScore("/");
-                setEvaluation("Error: AI Resources might have been exhausted. Please come back tomorrow.");
-                setImprovedVersion("Error: AI Resource has been exhaustedError: AI Resources might have been exhausted. Please come back tomorrow.");
-            } finally {
-                setLoading(false);
-            }
-        };
-        sendTextToBackend();
-    }, []);
-
-    const headerNavFields = {
-        show_timer: false
-    }
+                setEvaluation("Error: AI resources might be exhausted. Please try again tomorrow.");
+                setImprovedVersion("Error: AI resources might be exhausted. Please try again tomorrow.");
+            })
+            .finally(() => setLoading(false));
+    }, [answer, question, testType]);
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(improvedVersion);
@@ -73,10 +56,10 @@ const WritingEvaluation = ({answer, question, testType}) => {
             <div className="eval-container flex-row">
                 <div className="band-score-container flex-col border-style-1 color-scheme-4">
                     <p className="eval-label" style={{ fontSize: "15px", marginTop: 0 }}>BAND SCORE:</p>
-                    {loading ? <LoadingSkeleton width="100%" height="90px" /> : <p className="band-score">{bandScore}</p>}
+                    {loading ? <LoadingSkeleton /> : <p className="band-score">{bandScore}</p>}
                 </div>
                 <div className="eval-text text-align-left">
-                    {loading ? <LoadingSkeleton width="300px" height="100px" /> : evaluation}
+                    {loading ? <LoadingSkeleton /> : evaluation}
                 </div>
             </div>
             <hr/>
@@ -84,9 +67,7 @@ const WritingEvaluation = ({answer, question, testType}) => {
                 <button 
                     className="copy-btn"
                     onClick={copyToClipboard}>
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path fillRule="evenodd" d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-6 8a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z" clipRule="evenodd"/>
-                    </svg>
+                    {renderIcon({iconType: "copy"})}
                 </button>
                 <p className="eval-label text-align-left">Improved Version:</p>
                 <div className="text-align-left">
@@ -98,7 +79,9 @@ const WritingEvaluation = ({answer, question, testType}) => {
 
     return (
         <ActivityPageTemplate
-                headerNavFields={headerNavFields}
+                headerNavFields={{
+                    show_timer: false
+                }}
                 contentFields={{left_content: leftContent, right_content: rightContent}}
                 isDoublePanel={1}
                 footerNavFields={
@@ -113,50 +96,28 @@ const WritingEvaluation = ({answer, question, testType}) => {
     );
 };
 
-const sendAnswersToBackend = async (
-    testType, 
-    answers, 
-    correct_answers,
-    setScore, 
-    setEvaluation, 
-    setLoading,
-    n_choices = null 
-    ) => {
-    try {
-        console.log('asn', answers, 'cans', correct_answers);
-        const response = await fetch("/ieltsgo/api/validate_answers/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": Cookies.get('csrftoken'),
-            },
-            body: JSON.stringify({
-                test_type: testType,
-                answers: answers,
-                correct_answers: correct_answers,
-                ...(n_choices !== null && { n_choices })
-            }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-            setScore(data.score);
-            setEvaluation(data.evaluation);
-        } else {
-            console.error("Response Error");
-        }
-    } catch (error) {
-        console.error("Error sending text:", error);
-    } finally {
-        setLoading(false);
-    }
-};
-
-const ScoreDisplay = ({ score, testData, externalTime}) => {
+const ScoreDisplay = ({ score, testData, externalTime, totalTime}) => {
     const total_score = testData.answers.flat().length;
     const percentage = Math.round((score / total_score) * 100);
-    const score_comment = percentage >= 50 ? 
-    "Great Score." 
-    : "You might want to try again.";
+    const score_level = percentage >= 100 ? "perfect" 
+    : (percentage >= 50 ? "great" 
+        : (percentage >= 10 ? "poor": "nope"))
+
+    const isOvertime = totalTime < externalTime;
+
+    const scoreComment = {
+        perfect: "Perfect! Keep it up!",
+        great: "Good job! You made a few mistakes, but keep up the good work.",
+        poor: "Oh no... Your score is below 50%. Don't worry—keep practicing, and you'll improve!",
+        nope: "Uh-oh... It looks like you need to study a bit more..."
+    }
+
+    const timeComment = {
+        perfect: isOvertime && "However, you went over the recommended time.",
+        great: isOvertime && "However, you went over the recommended time.",
+        poor: isOvertime && "Additionally, you went over the recommended time." ,
+        nope: isOvertime && "Additionally, you went over the recommended time."
+    }
 
     const navigate = useNavigate();
     return (
@@ -175,7 +136,7 @@ const ScoreDisplay = ({ score, testData, externalTime}) => {
                         </div>
                         <div className="score-spacer"></div>
                         <span className="score-comment">
-                            {score_comment}
+                            {scoreComment[score_level]} {timeComment[score_level]}
                         </span>
                     </div>
                 </div>
@@ -190,111 +151,141 @@ const ScoreDisplay = ({ score, testData, externalTime}) => {
             </div>
         </div>
     );
-  };
+};
 
-const SingleChoiceEvaluation = ({answer, testData, externalTime}) => {
+const EvaluationComponent = ({
+    testData,
+    answer,
+    externalTime,
+    countDownMins,
+    Component1,
+    Component2,
+    componentKey
+  }) => {
     const [score, setScore] = useState(null);
     const [evaluation, setEvaluation] = useState(null);
+    const [evaluation_class, setEvaluationClass] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
-
+  
     useEffect(() => {
-        sendAnswersToBackend(testData.test_type, answer, testData.answers, setScore, setEvaluation, setLoading, testData.choices[0].length);
-    }, [testData]);
-
-    const headerNavFields = {
-        show_timer: false
-    }
-
-    if (loading) {
-        return <p>Loading...</p>; // Display a loading state
-    }
-
-    const leftContent = loading ? (
-        <LoadingSkeleton width="100%" height="90px" />
-    ) : (
-        <SingleChoice
-            key="singleChoice"
-            questions={testData.questions}
-            choices_list={testData.choices}
-            evaluation={evaluation}
-        />
-    );
-    
-
-    const rightContent = (
-        <ScoreDisplay score={score} testData={testData} externalTime={externalTime}/>
-    );
-
-    return (
-        <ActivityPageTemplate
-                headerNavFields={headerNavFields}
-                contentFields={{left_content: leftContent, right_content: rightContent}}
-                isDoublePanel={1}
-                footerNavFields={
-                    {
-                        back: () => navigate(`/test/selection/all`),
-                        show_submit: false,
-                        show_arrows: false,
-                        show_back: true
-                    }
-                }
+        const fetchEvaluation = async () => {
+            setLoading(true);
+            const data = await sendAnswersToBackend(
+                testData, 
+                answer);
+            if (data) {
+                setScore(data.score);
+                setEvaluation(data.evaluation);
+                setEvaluationClass(data.evaluation_class);
+            } else {
+                setScore("x");
+                setEvaluation("An error occurred while validating answers.");
+                setEvaluationClass("An error occurred while validating answers.");
+            }
+            setLoading(false);
+        };
+        fetchEvaluation();
+    }, [testData, answer]);
+  
+    if (loading) return <div><LoadingPage text={"Checking your answers..."}/></div>;
+  
+    const leftContent = (
+        <div>
+            <Component1
+                key={componentKey}
+                answer={answer}
+                questions={testData.questions}
+                choices_list={testData.choices}
+                topic={testData.topic}
+                topics={testData.topics}
+                table_data={testData.table_data}
+                evaluation={evaluation}
+                evaluation_class={evaluation_class}
+                correct_answer={testData.answers}
             />
+            <hr/>
+            <Component2
+                text={testData.text}
+            />
+        </div>
+        
+    ); 
+  
+    const rightContent = (
+        <ScoreDisplay score={score} testData={testData} externalTime={externalTime} totalTime={countDownMins*60}/>
+    );
+  
+    return (
+      <ActivityPageTemplate
+        headerNavFields={{ show_timer: false }}
+        contentFields={{ left_content: leftContent, right_content: rightContent }}
+        isDoublePanel={1}
+        footerNavFields={{
+          back: () => navigate(`/test/selection/all`),
+          show_submit: false,
+          show_arrows: false,
+          show_back: true,
+        }}
+      />
     );
 };
 
-const MultiChoiceEvaluation = ({answer, testData, externalTime}) => {
-    const [score, setScore] = useState(null);
-    const [evaluation, setEvaluation] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+const SingleChoiceEvaluation = (props) => (
+    <EvaluationComponent
+      {...props}
+      Component1={SingleChoice}
+      Component2={Paragraph}
+      componentKey="singleChoice"
+    />
+);
 
-    useEffect(() => {
-        sendAnswersToBackend(testData.test_type, answer, testData.answers, setScore, setEvaluation, setLoading, testData.choices[0].length);
-    }, [testData]);
+const MultiChoiceEvaluation = (props) => (
+    <EvaluationComponent
+        {...props}
+        Component1={MultipleChoice}
+        Component2={Paragraph}
+        componentKey="multiChoice"
+    />
+);
 
-    const headerNavFields = {
-        show_timer: false
-    }
+const MapEvaluation = (props) => (
+    <EvaluationComponent
+        {...props}
+        Component1={MapTableComponent}
+        Component2={DiagramAndText}
+        componentKey="mapTable"
+    />
+);
 
-    if (loading) {
-        return <p>Loading...</p>; // Display a loading state
-    }
+const FillTableEvaluation = (props) => (
+    <EvaluationComponent
+        {...props}
+        Component1={FillBlankTableComponent}
+        Component2={Paragraph}
+        componentKey="fillTable"
+    />
+);
 
-    const leftContent = loading ? (
-        <LoadingSkeleton width="100%" height="90px" />
-    ) : (
-        <MultipleChoice
-            key="multiChoice"
-            questions={testData.questions}
-            choices_list={testData.choices}
-            evaluation={evaluation}
-        />
-    );
-    
+const DragDropEvaluation = (props) => (
+    <EvaluationComponent
+        {...props}
+        Component1={DragDropWordsComponent}
+        Component2={Paragraph}
+        componentKey="dragDrio"
+    />
+);
 
-    const rightContent = (
-        <ScoreDisplay score={score} testData={testData} externalTime={externalTime}/>
-    );
+const FillBlanksEvaluation = (props) => (
+    <EvaluationComponent
+        {...props}
+        Component1={FillBlanksComponent}
+        Component2={Paragraph}
+        componentKey="fillBlanks"
+    />
+);
 
-    return (
-        <ActivityPageTemplate
-                headerNavFields={headerNavFields}
-                contentFields={{left_content: leftContent, right_content: rightContent}}
-                isDoublePanel={1}
-                footerNavFields={
-                    {
-                        back: () => navigate(`/test/selection/all`),
-                        show_submit: false,
-                        show_arrows: false,
-                        show_back: true
-                    }
-                }
-            />
-    );
-};
-
-const FillBlanksEvaluation = ({answer, testData, externalTime}) => {
+const FillBlanksEvaluation1 = ({answer, testData, externalTime}) => {
     const [score, setScore] = useState(null);
     const [evaluation, setEvaluation] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -320,156 +311,6 @@ const FillBlanksEvaluation = ({answer, testData, externalTime}) => {
             answer={answer}
             questions={testData.questions}
             topics={testData.topics}
-            evaluation={evaluation}
-            correct_answer={testData.answers}
-        />
-    );
-    
-
-    const rightContent = (
-        <ScoreDisplay score={score} testData={testData} externalTime={externalTime}/>
-    );
-
-    return (
-        <ActivityPageTemplate
-                headerNavFields={headerNavFields}
-                contentFields={{left_content: leftContent, right_content: rightContent}}
-                isDoublePanel={1}
-                footerNavFields={
-                    {
-                        back: () => navigate(`/test/selection/all`),
-                        show_submit: false,
-                        show_arrows: false,
-                        show_back: true
-                    }
-                }
-            />
-    );
-};
-
-const FillTableEvaluation = ({answer, testData, externalTime}) => {
-    const [score, setScore] = useState(null);
-    const [evaluation, setEvaluation] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        sendAnswersToBackend(testData.test_type, answer, testData.answers, setScore, setEvaluation, setLoading);
-    }, [testData]);
-
-    const headerNavFields = {
-        show_timer: false
-    }
-
-    if (loading) {
-        return <p>Loading...</p>; // Display a loading state
-    }
-
-    const leftContent = loading ? (
-        <LoadingSkeleton width="100%" height="90px" />
-    ) : (
-        <FillBlankTableComponent
-            key="fillTable"
-            answer={answer}
-            table_data={testData.table_data}
-            topic={testData.topic}
-            evaluation={evaluation}
-            correct_answer={testData.answers}
-        />
-    );
-    
-
-    const rightContent = (
-        <ScoreDisplay score={score} testData={testData} externalTime={externalTime}/>
-    );
-
-    return (
-        <ActivityPageTemplate
-                headerNavFields={headerNavFields}
-                contentFields={{left_content: leftContent, right_content: rightContent}}
-                isDoublePanel={1}
-            />
-    );
-};
-
-const MapEvaluation = ({answer, testData, externalTime}) => {
-    const [score, setScore] = useState(null);
-    const [evaluation, setEvaluation] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        sendAnswersToBackend(testData.test_type, answer, testData.answers, setScore, setEvaluation, setLoading, testData.num_questions);
-    }, [testData]);
-
-    const headerNavFields = {
-        show_timer: false
-    }
-
-    if (loading) {
-        return <p>Loading...</p>; // Display a loading state
-    }
-
-    const leftContent = loading ? (
-        <LoadingSkeleton width="100%" height="90px" />
-    ) : (
-        <MapTableComponent
-            key="mapTable"
-            answer={answer}
-            rows={testData.rows}
-            num_questions={testData.num_questions}
-            topic={testData.topic}
-            evaluation={evaluation}
-        />
-    );
-    
-
-    const rightContent = (
-        <ScoreDisplay score={score} testData={testData} externalTime={externalTime}/>
-    );
-
-    return (
-        <ActivityPageTemplate
-                headerNavFields={headerNavFields}
-                contentFields={{left_content: leftContent, right_content: rightContent}}
-                isDoublePanel={1}
-                footerNavFields={
-                    {
-                        back: () => navigate(`/test/selection/all`),
-                        show_submit: false,
-                        show_arrows: false,
-                        show_back: true
-                    }
-                }
-            />
-    );
-};
-
-const DragDropEvaluation = ({answer, testData, externalTime}) => {
-    const [score, setScore] = useState(null);
-    const [evaluation, setEvaluation] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        sendAnswersToBackend(testData.test_type, answer, testData.answers, setScore, setEvaluation, setLoading, testData.num_questions);
-    }, [testData]);
-
-    const headerNavFields = {
-        show_timer: false
-    }
-
-    if (loading) {
-        return <p>Loading...</p>; // Display a loading state
-    }
-
-    const leftContent = loading ? (
-        <LoadingSkeleton width="100%" height="90px" />
-    ) : (
-        <DragDropWordsComponent
-            key="dragDrop"
-            answer={answer}
-            word_box={testData.word_box}
-            questions={testData.questions}
             evaluation={evaluation}
             correct_answer={testData.answers}
         />

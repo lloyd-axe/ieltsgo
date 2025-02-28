@@ -64,6 +64,17 @@ p {
     width: 100%;
 }
 
+.no-data-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-size: 50px;
+    font-weight: 600;
+}
+
 /* FLEX */
 .flex-col{
     display: flex !important;
@@ -128,6 +139,18 @@ p {
     overflow-y: auto !important;
     scrollbar-width: thin;
     scrollbar-color: #1F1F1F transparent;
+}
+
+.scroll-color2{
+    scrollbar-color: #bcd860 transparent !important;
+}
+
+.scroll-color2::-webkit-scrollbar-thumb {
+    background: #bcd860 !important;
+}
+
+.scroll-color2::-webkit-scrollbar-thumb:hover {
+    background: #bcd860 !important;
 }
 
 .custom-scroll::-webkit-scrollbar {

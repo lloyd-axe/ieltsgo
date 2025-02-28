@@ -39,6 +39,7 @@ class AIConfigs(models.Model):
         "top_p": 1,
         "top_k": 1,
         "max_output_tokens": 2048,
+        "response_mime_type":"text/plain"
     })
     safety_settings = models.JSONField(null=True, blank=True, default=[
         {

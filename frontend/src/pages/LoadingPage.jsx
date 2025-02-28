@@ -1,7 +1,7 @@
 import ActivityPageTemplate from "../components/ActivityPage";
 import { LoadingSkeleton } from "../components/Utilities";
 
-function LoadingPage() {
+function LoadingPage({text}) {
     const headerNavFields = {
         show_timer: false
       }
@@ -12,9 +12,7 @@ function LoadingPage() {
                 headerNavFields={headerNavFields}
                 contentFields={{
                 left_content: ( 
-                    <div>
-                    <LoadingSkeleton width="100%" height="70%" />
-                    </div>
+                    <LoadingSkeleton text={text}/>
                 )}
                 }
                 isDoublePanel={0}

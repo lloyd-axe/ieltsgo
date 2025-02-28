@@ -4,19 +4,16 @@ import google.generativeai as genai
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.conf import settings
-from django.http import JsonResponse
 from .models import AIConfigs
 from .serializers import AIConfigsSerializer
 from .test_manager import (get_test, get_test_info, get_test_type_display_names, get_test_types, get_all_tests)
-from .test_validator import (validate_writing_answer, validate_answers, validate_matching_answer,
-                             validate_single_choice_answer, validate_multi_choice_answer)
+from .test_validator import (
+    validate_writing_answer, validate_answers, validate_table_answer,
+    validate_single_choice_answer, validate_multi_choice_answer,
+    handle_unanswered_question, validate_map_answer, validate_wordbox_answer)
 
 
 genai.configure(api_key=settings.AI_API_KEY)
-
-def get_config(request):
-    return JsonResponse({'REACT_APP_API_URL': settings.REACT_APP_API_URL})
-
 
 def fetch_model_configs():
     model_configs = AIConfigs.objects.filter(is_active=True).order_by("id").first()
@@ -44,33 +41,30 @@ def post_validate_writing_answer(request):
 
 @api_view(['POST'])
 def post_validate_answers(request):
-    test_type = request.data.get('test_type', '')
-    user_answers = request.data.get('answers', {})
-    correct_answers = request.data.get('correct_answers', '')
-    n_choices = request.data.get('n_choices', 0)
+    test_data = request.data.get('test_data', {})
+    user_answers = request.data.get('user_answers', {})
+    correct_answers = test_data.get('answers', [])
+    test_type = test_data.get('test_type', '')
+    context = test_data.get('text', '')
+    questions = test_data.get('questions', [])
+    choices = test_data.get('choices', [])
+    table_data = test_data.get('table_data', [])
+    topic = test_data.get('topic', '')
+    topics = test_data.get('topics', '')
 
-    if user_answers:
-        # Handle unanswered questions
-        if isinstance(list(user_answers.values())[0], dict):
-            for n, correct in enumerate(correct_answers):
-                user_answers[str(n)] = {
-                    str(m): user_answers.get(str(n), {}).get(str(m), None)
-                    for m in range(len(correct))
-                }
-                user_answers[str(n)] = list(user_answers[str(n)].values())
-        else:
-            user_answers = {str(n): user_answers.get(str(n), None) for n in range(len(correct_answers))}
-            
+    if user_answers: # Handle unanswered questions
+        user_answers = handle_unanswered_question(user_answers, correct_answers)
+    
+    print('user: ', user_answers, 'gt: ', correct_answers)
 
-        user_answers = {k: user_answers[k] for k in sorted(user_answers)}
-    print(user_answers, correct_answers)
-    if test_type == 'single_selection' or test_type == 'map':
-        return validate_single_choice_answer(n_choices, user_answers, correct_answers)
-    elif test_type == 'double_selection':
-        return validate_multi_choice_answer(n_choices, user_answers, correct_answers)
-    elif test_type == 'fill_table' or test_type == 'word_box':
-        return validate_matching_answer(user_answers, correct_answers)
-    return validate_answers(n_choices, user_answers, correct_answers)
+    validation_methods = {
+        'single_selection': lambda: validate_single_choice_answer(choices, user_answers, correct_answers, questions, context),
+        'double_selection': lambda: validate_multi_choice_answer(choices, user_answers, correct_answers, questions, context),
+        'fill_table': lambda: validate_table_answer(user_answers, correct_answers, table_data, context, topic),
+        'word_box': lambda: validate_wordbox_answer(user_answers, correct_answers, questions, context),
+        'map': lambda: validate_map_answer(user_answers, correct_answers),
+    }
+    return validation_methods.get(test_type, lambda: validate_answers(user_answers, correct_answers, questions, context, topics))()
 
 
 @api_view(["GET"])

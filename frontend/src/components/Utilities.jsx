@@ -1,5 +1,24 @@
-const LoadingSkeleton = ({ width, height }) => {
-    return <div className="loading-skeleton" style={{ width, height }}></div>;
+import React, { useState, useEffect } from "react";
+
+const LoadingSkeleton = ({ text="", color = "#bcd860"}) => {
+    return (
+        <div className="loading-skeleton">
+            <div className="loading-icon-container">
+                <div className="loading-text">{text}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+                    <circle fill={color} stroke={color} strokeWidth="15" r="15" cx="40" cy="100">
+                        <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                    </circle>
+                    <circle fill={color} stroke={color} strokeWidth="15" r="15" cx="100" cy="100">
+                        <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                    </circle>
+                    <circle fill={color} stroke={color} strokeWidth="15" r="15" cx="160" cy="100">
+                        <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                    </circle>
+                </svg>
+            </div>
+        </div>
+    )
 };
 
 const ConfirmSubmitModal = ({ handleConfirm, handleCancel, title, description, confirm_text, cancel_text}) => {
@@ -19,22 +38,27 @@ const ConfirmSubmitModal = ({ handleConfirm, handleCancel, title, description, c
     )
 };
 
-const testInformation =
-{
-    writing: {
-        task_1: `In IELTS Writing Task 1, you need to analyze and summarize visual data in a minimum of 150 words.
-         The information is usually displayed as a graph, chart, or diagram.
-          Your goal is to highlight key details, describe patterns, and make relevant comparisons within 20 minutes.`,
-        task_2: `In IELTS Writing Task 2, you will be given a topic presenting a perspective, debate, 
-         issue, and you must craft a well-structured essay in response. Your writing should maintain a formal tone, exceed 250 words, 
-         and be completed within 40 minutes.`
-    },
-    reading: {
-        single_selection: ``,
-        double_selection: ``,
-        fill_in_the_blanks: ``,
-    }
-}
+const TypingEffect = ({ text, speed = 10 }) => {
+    const [displayedText, setDisplayedText] = useState("");
+
+    useEffect(() => {
+        setDisplayedText(text.charAt(0)); // Start with an empty string
+        let index = 0; // Start from the first character
+
+        const intervalId = setInterval(() => {
+            setDisplayedText((prev) => prev + text.charAt(index));
+            index++;
+
+            if (index >= text.length) {
+                clearInterval(intervalId);
+            }
+        }, speed);
+
+        return () => clearInterval(intervalId); // Cleanup interval on unmount
+    }, [text, speed]);
+
+    return <span>{displayedText}</span>;
+};
 
 function formatString(input) {
     return input
@@ -54,4 +78,4 @@ const formatTime = (seconds) => {
 };
 
 
-export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, testInformation};
+export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, TypingEffect};

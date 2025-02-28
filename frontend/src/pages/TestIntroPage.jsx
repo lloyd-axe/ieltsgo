@@ -1,47 +1,46 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { fetchTestInfo, fetchTestTypeNames} from "../services/services";
+import { LoadingSkeleton } from "../components/Utilities";
 
 import ActivityPageTemplate from "../components/ActivityPage";
 
 function TestIntroPage() {
     const { skill, isDoublePanel, testType, itemId} = useParams();
     const [test_info, setTestInfo] = useState();
+    const [loading, setLoading] = useState(true);
     const [displayNames, setDisplayNames] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchTestInfo = async () => {
+        const fetchData = async () => {
+            setLoading(true);
             try {
-                const response = await axios.get(`/ieltsgo/api/test_info/${testType}/`);
-                setTestInfo(response.data.info);
+                const [testInfoResponse, displayNamesResponse] = await Promise.all([
+                    fetchTestInfo(testType),
+                    fetchTestTypeNames()
+                ]);
+                
+                setTestInfo(testInfoResponse.data.info);
+                setDisplayNames(displayNamesResponse.data.display_names);;
             } catch (error) {
-                console.error("Error fetching test info:", error);
+                console.error("Error fetching data:", error);
+                setTestInfo("No test information given...");
+                setDisplayNames({});
+            } finally {
+                setLoading(false);
             }
-        };
-
-        const fetchTestTypeNames = async () => {
-            try {
-              const response = await axios.get(`/ieltsgo/api/test_type/names`);
-              const display_names = response.data.display_names;
-              setDisplayNames(display_names);
-            } catch (error) {
-              console.error("Error fetching test types:", error);
-            }
-          };
-
-    fetchTestInfo();
-    fetchTestTypeNames();
+        }
+        
+        fetchData();
     }, [testType]);
-
-    const headerNavFields = {
-        show_timer: false
-    }
 
     return (
         <div>
             <ActivityPageTemplate
-                headerNavFields={headerNavFields}
+                headerNavFields={{
+                    show_timer: false
+                }}
                 contentFields={{
                 left_content: ( 
                     <div className='full-container flex-row flex-center'>
@@ -52,7 +51,7 @@ function TestIntroPage() {
                             <hr/>
                         </div>
                         <div className="test-details text-align-left custom-scroll">
-                            {test_info}
+                            {(loading ? <LoadingSkeleton /> : test_info)}
                         </div>
                         <hr/>
                         <div className="intro-actions">

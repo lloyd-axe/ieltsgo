@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TypingEffect } from "../components/Utilities";
 
 const WritingBox = ({ minWordCount, text, setAnswer }) => {
     const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
@@ -19,7 +20,7 @@ const WritingBox = ({ minWordCount, text, setAnswer }) => {
     );
 };
 
-const SingleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluation = {}}) => {
+const SingleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluation = {}, evaluation_class = {}}) => {
     const [selectedChoices, setSelectedChoices] = useState({});
     const isEvaluationEmpty = Object.keys(evaluation).length === 0;
 
@@ -36,8 +37,13 @@ const SingleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluatio
             <div className="q-body">
                 {questions.map((question, q_idx) => (
                     <div className="q-block" key={q_idx}>
-                        <div className="q-line flex-row">
-                            <b>{q_idx + 1}</b>. {question}
+                        <div className="q-line flex-col">
+                            {!isEvaluationEmpty && 
+                                <div className="evaluation-text color-scheme-4">
+                                    <TypingEffect text={evaluation[q_idx]}/>
+                                </div>
+                            }
+                            <div className="flex-row"><b>{q_idx + 1}</b>. {question}</div>
                         </div>
                         <div className="flex-col">
                             {choices_list[q_idx]?.map((choice, c_idx) => (
@@ -51,7 +57,7 @@ const SingleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluatio
                                         value={choice}
                                         checked={
                                             !Boolean(isEvaluationEmpty)
-                                                ? evaluation[q_idx]?.[c_idx] === 'correct' || evaluation[q_idx]?.[c_idx] === 'wrong'
+                                                ? evaluation_class[q_idx]?.[c_idx] === 'correct' || evaluation_class[q_idx]?.[c_idx] === 'wrong'
                                                 : selectedChoices[q_idx] === c_idx
                                         }
                                         onChange={() => handleChange(q_idx, c_idx)}
@@ -59,7 +65,7 @@ const SingleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluatio
                                     />
                                     
                                     {choice}
-                                    <span class={`radio-checkmark ${evaluation[q_idx]?.[c_idx] || ''}`}></span>
+                                    <span className={`radio-checkmark ${evaluation_class[q_idx]?.[c_idx] || ''}`}></span>
                                 </label>
                             ))}
                         </div>
@@ -70,9 +76,9 @@ const SingleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluatio
     );
 };
 
-const MultipleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluation = {}}) => {
+const MultipleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluation = {}, evaluation_class = {}}) => {
     const [selectedChoices, setSelectedChoices] = useState({});
-    const isEvaluationEmpty = Object.keys(evaluation).length === 0;
+    const isEvaluationEmpty = Object.keys(evaluation_class).length === 0;
 
     const handleCheckboxChange = (q_idx, c_idx) => {
         setSelectedChoices((prevChoices) => {
@@ -104,8 +110,13 @@ const MultipleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluat
 
                     return (
                         <div className="q-block" key={q_idx}>
-                            <div className="q-line flex-row">
-                                <b>{q_idx + 1}</b>. {question}
+                            <div className="q-line flex-col">
+                                {!isEvaluationEmpty && 
+                                    <div className="evaluation-text color-scheme-4">
+                                        <TypingEffect text={evaluation[q_idx]}/>
+                                    </div>
+                                }
+                                <div className="flex-row"><b>{q_idx + 1}</b>. {question}</div>
                             </div>
                             <div className="flex-col">
                                 {choices_list[q_idx]?.map((choice, c_idx) => (
@@ -118,7 +129,7 @@ const MultipleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluat
                                             value={choice}
                                             checked={
                                                 !Boolean(isEvaluationEmpty)
-                                                    ? evaluation[q_idx]?.[c_idx] === 'correct' || evaluation[q_idx]?.[c_idx] === 'wrong'
+                                                    ? evaluation_class[q_idx]?.[c_idx] === 'correct' || evaluation_class[q_idx]?.[c_idx] === 'wrong'
                                                     : selectedChoices[q_idx]?.includes(c_idx) || false
                                             }
                                             onChange={() => handleCheckboxChange(q_idx, c_idx)}
@@ -127,7 +138,7 @@ const MultipleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluat
                                                 ? !isEvaluationEmpty 
                                                 : maxSelectionsReached && !selectedChoices[q_idx]?.includes(c_idx)}
                                         />
-                                        <span class={`checkmark ${evaluation[q_idx]?.[c_idx] || ''}`}></span>
+                                        <span className={`checkmark ${evaluation_class[q_idx]?.[c_idx] || ''}`}></span>
                                         {choice}
                                     </label>
                                 ))}
@@ -140,9 +151,9 @@ const MultipleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluat
     );
 };
 
-const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}, evaluation = {}, answer = {}, correct_answer = {}}) => {
+const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}, evaluation = {}, answer = {}, correct_answer = {}, evaluation_class = {}}) => {
     const [answers, setAnswers] = useState({});
-    const isEvaluationEmpty = Object.keys(evaluation).length === 0;
+    const isEvaluationEmpty = Object.keys(evaluation_class).length === 0;
     let box_idx = 0;
 
     const handleChange = (t_idx, c_idx, value) => {
@@ -173,7 +184,7 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
                                 value={
                                     !Boolean(isEvaluationEmpty) 
                                     ? (
-                                        evaluation[t_idx]?.[c_idx] !== "correct"
+                                        evaluation_class[t_idx]?.[c_idx] !== "correct"
                                         ? (
                                             answer[t_idx]?.[c_idx]
                                             ? `${answer[t_idx]?.[c_idx]} ( ${correct_answer[t_idx]?.[c_idx]} )`
@@ -186,7 +197,7 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
                                 onChange={(e) =>
                                     handleChange(t_idx, c_idx, e.target.value)
                                 }
-                                className={`custom-textbox-input ${evaluation[t_idx]?.[c_idx] || ''}`}
+                                className={`custom-textbox-input ${evaluation_class[t_idx]?.[c_idx] || ''}`}
                                 placeholder={box_idx}
                                 disabled={!isEvaluationEmpty}
                             />
@@ -197,7 +208,7 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
             </span>
         );
     };
-
+    console.log(evaluation);
     return (
         <div className="answer-container">
             <div className="q-description">{isEvaluationEmpty ? `Questions 1-${questions.flat().length}` : "SOLUTION:"}</div>
@@ -219,6 +230,13 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
                                 return (
                                     <li key={c_idx} className="q-line custom-textbox">
                                         {renderQuestionWithInputs(question, t_idx, c_idx, box_idx)}
+                                        <div className="q-line flex-col">
+                                        {!isEvaluationEmpty && 
+                                            <div className="evaluation-text color-scheme-4">
+                                                <TypingEffect text={evaluation[t_idx][c_idx]}/>
+                                            </div>
+                                        }
+                                    </div>
                                     </li>
                                 );
                             })}
@@ -230,9 +248,9 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
     );
 };
 
-const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, evaluation = {}, answer = {}, correct_answer = {}}) => {
+const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, evaluation = {}, answer = {}, correct_answer = {}, evaluation_class = {}}) => {
     const [answers, setAnswers] = useState({});
-    const isEvaluationEmpty = Object.keys(evaluation).length === 0;
+    const isEvaluationEmpty = Object.keys(evaluation_class).length === 0;
 
     const handleChange = (t_idx, value) => {
         const updatedAnswers = { ...answers, [t_idx]: value };
@@ -255,7 +273,7 @@ const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, eval
                                 value={
                                     !Boolean(isEvaluationEmpty) 
                                     ? (
-                                        evaluation[t_idx] !== "correct"
+                                        evaluation_class[t_idx] !== "correct"
                                         ? (
                                             answer[t_idx]
                                             ? `${answer[t_idx]} ( ${correct_answer[t_idx]} )`
@@ -268,7 +286,7 @@ const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, eval
                                 onChange={(e) =>
                                     handleChange(t_idx, e.target.value)
                                 }
-                                className={`custom-textbox-input ${evaluation[t_idx] || ''}`}
+                                className={`custom-textbox-input ${evaluation_class[t_idx] || ''}`}
                                 placeholder={match[1]}
                                 disabled={!isEvaluationEmpty}
                             />
@@ -285,8 +303,15 @@ const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, eval
             <div className="q-description">{isEvaluationEmpty ? `Questions 1-${table_data.slice(1, ).length}` : "SOLUTION:"}</div>
             <div>Complete the table. Write <b>ONE WORD</b> only in each text box.</div>
             <div className="q-body">
-                <div className="q-line flex-row">
-                    <b>{topic}</b>
+                <div className="q-line flex-col">
+                    {!isEvaluationEmpty && 
+                        evaluation.map((eval_comment, e_idx) => (
+                            <div key={e_idx} className="evaluation-text color-scheme-4">
+                                {e_idx+1}. <TypingEffect text={eval_comment} />
+                            </div>
+                        ))
+                    }
+                    <div className="flex-row"><b>{topic}</b></div>
                 </div>
                 <table className="custom-table">
                     <thead>
@@ -300,7 +325,9 @@ const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, eval
                         {table_data.slice(1, ).map((row, r_idx) => (
                             <tr key={r_idx}>
                                 {row.map((r_data, d_idx) => (
-                                    <td key={d_idx}>{renderQuestionWithInputs(r_data, r_idx, d_idx)}</td>
+                                    <td key={d_idx}>
+                                        {renderQuestionWithInputs(r_data, r_idx, d_idx)}
+                                    </td>
                                 ))}
                             </tr>
                         ))}
@@ -370,10 +397,10 @@ const MapTableComponent = ({ topic, num_questions, rows, setAnswer = () => {}, e
     );
 };
 
-const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, evaluation = {}, answer = {}, correct_answer = {}}) => {
+const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, evaluation = {}, answer = {}, correct_answer = {}, evaluation_class = {}}) => {
     const [inputValues, setInputValues] = useState({});
     const [draggingOver, setDraggingOver] = useState(false);
-    const isEvaluationEmpty = Object.keys(evaluation).length === 0;
+    const isEvaluationEmpty = Object.keys(evaluation_class).length === 0;
 
     const renderQuestionWithInputs = (question, q_idx) => {
         const parts = question.split(/(\|\d+\|)/);
@@ -390,7 +417,7 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
                                 value={
                                     !Boolean(isEvaluationEmpty) 
                                     ? (
-                                        evaluation[q_idx] !== "correct"
+                                        evaluation_class[q_idx] !== "correct"
                                         ? (
                                             answer[q_idx]
                                             ? `${answer[q_idx]} ( ${correct_answer[q_idx]} )`
@@ -401,7 +428,7 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
                                     : (inputValues[q_idx] ?? "")
                                 }
                                 readOnly
-                                className={`custom-textbox-input ${draggingOver ? 'dragging' : ''} ${evaluation[q_idx] || ''}`}
+                                className={`custom-textbox-input ${draggingOver ? 'dragging' : ''} ${evaluation_class[q_idx] || ''}`}
                                 placeholder={`${q_idx +1}`}
                                 onDragOver={() => setDraggingOver(true)}
                                 onDragLeave={() => setDraggingOver(false)}
@@ -464,8 +491,15 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
                                 <li className="q-line">
                                     <div key={q_idx}
                                         onDrop={(e) => hasPlaceholder ? handleDrop(e, q_idx) : undefined}
-                                        onDragOver={handleDragOver}> 
+                                        onDragOver={handleDragOver}>
                                         {renderQuestionWithInputs(question, q_idx)}
+                                        <div className="q-line flex-col">
+                                            {!isEvaluationEmpty && 
+                                                <div className="evaluation-text color-scheme-4">
+                                                    <TypingEffect text={evaluation[q_idx]}/>
+                                                </div>
+                                            }
+                                        </div> 
                                     </div>
                                 </li>
                             );
