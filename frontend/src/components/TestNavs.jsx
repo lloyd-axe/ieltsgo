@@ -72,7 +72,7 @@ const TestHeaderNav = ({ logo, test_skill, test_type, showTimer = true, countDow
 const TestFooterNav = ({onSubmit, onBack, showArrows = true, showSubmit = true, showBack = true}) => {
   return (
     <div className="footer-nav flex-row color-scheme-3">
-      <div clasName="footer-left">
+      <div className="footer-left">
         {showBack && (
           <div className="footer-button" onClick={onBack}>
             <svg className="footer-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ const TestFooterNav = ({onSubmit, onBack, showArrows = true, showSubmit = true, 
           </div>
         )}
       </div>
-      <div clasName="footer-right">
+      <div className="footer-right">
         {showArrows && (
           <div className="footer-button ftr-inactive">
             <svg className="footer-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
