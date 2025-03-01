@@ -420,3 +420,8 @@ table, th, td {
     font-size: 13px;
     color: white;
 }
+
+/* MOBILE */
+@media only screen and (max-width: 1020px) {
+    
+}

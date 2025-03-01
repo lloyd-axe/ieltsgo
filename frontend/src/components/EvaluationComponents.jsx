@@ -141,7 +141,7 @@ const ScoreDisplay = ({ score, testData, externalTime, totalTime}) => {
                     </div>
                 </div>
                 <div className="score-card-footer flex-row">
-                    <div className="flex-row flex-center clickable" onClick={() => navigate("/")}>
+                    <div className="flex-row flex-center clickable" onClick={() => navigate("/test/selection/all")}>
                         <b>Continue</b>
                         <svg className="score-footer-icon color-scheme-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>

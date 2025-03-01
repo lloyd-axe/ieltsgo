@@ -1,12 +1,28 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom"; 
 import { renderIcon } from "../services/icons";
+import { HamburgerNav } from "../components/Utilities";
 
 import header_logo from '../assets/header-logo.png';
 
 function ContactPage() {
     const title =  "IELTS GO!";
     const navigate = useNavigate(); 
+    const selections = [
+        {
+            text: "HOME",
+            navigate: "/"
+        },
+        {
+            text: "ALL EXAMS",
+            navigate: "/test/selection/all"
+        },
+        {
+            text: "ABOUT US",
+            navigate: "/about"
+        }
+    ];
+
 
     useEffect(() => {
         document.title = title;
@@ -18,20 +34,7 @@ function ContactPage() {
                 <div>
                      <img className="home-header-logo clickable" src={header_logo} onClick={() => navigate('/')} alt="IELTS Ready Logo" />
                 </div>
-                <div className="header-selections">
-                    <div className="header-selection-item clickable" 
-                    onClick={() => navigate('/')}>
-                        HOME
-                    </div>
-                    <div className="header-selection-item clickable" 
-                    onClick={() => navigate('/test/selection/all')}>
-                        ALL EXAMS
-                    </div>
-                    <div className="header-selection-item clickable" 
-                    onClick={() => navigate('/')}>
-                        ABOUT US
-                    </div>
-                </div>
+                <HamburgerNav selections={selections}/>
             </div>
             <div className="about-content flex-col flex-center">
                 <p class="header-text">CONTACT US</p>

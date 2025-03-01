@@ -1,13 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom"; 
 import { renderIcon } from "../services/icons";
-
+import { Menu, X } from "lucide-react";
 import logo_image from '../assets/logo.png';
 import header_logo from '../assets/header-logo.png';
+import { HamburgerNav } from "../components/Utilities";
 
 function Home() {
     const title =  "IELTS GO!";
+    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate(); 
+    const selections = [
+        {
+            text: "ALL EXAMS",
+            navigate: "/test/selection/all"
+        },
+        {
+            text: "CONTACT",
+            navigate: "/contact"
+        },
+        {
+            text: "ABOUT US",
+            navigate: "/about"
+        }
+    ];
 
     useEffect(() => {
         document.title = title;
@@ -19,17 +35,15 @@ function Home() {
                 <div>
                      <img className="home-header-logo clickable" src={header_logo} onClick={() => navigate('/')} alt="IELTS Ready Logo" />
                 </div>
-                <div className="header-selections">
-                    <div className="header-selection-item clickable" 
-                    onClick={() => navigate('/test/selection/all')}>
+                <HamburgerNav selections={selections}/>
+                <div className="header-selections desktop">
+                    <div className="header-selection-item clickable" onClick={() => navigate('/test/selection/all')}>
                         ALL EXAMS
                     </div>
-                    <div className="header-selection-item clickable" 
-                    onClick={() => navigate('/contact')}>
+                    <div className="header-selection-item clickable" onClick={() => navigate('/contact')}>
                         CONTACT
                     </div>
-                    <div className="header-selection-item clickable" 
-                    onClick={() => navigate('/about')}>
+                    <div className="header-selection-item clickable" onClick={() => navigate('/about')}>
                         ABOUT US
                     </div>
                 </div>

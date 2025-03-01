@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; 
+import { Menu, X } from "lucide-react";
 
 const LoadingSkeleton = ({ text="", color = "#bcd860"}) => {
     return (
@@ -19,6 +21,53 @@ const LoadingSkeleton = ({ text="", color = "#bcd860"}) => {
             </div>
         </div>
     )
+};
+
+const HamburgerNav = ({ selections }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+    return (
+        <div className="hamburger-nav">
+            {/* Mobile Menu */}
+            <div className="hamburger-container mobile flex-col">
+                <button className="hamburger mobile" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X className="hamburger-icon" size={28} /> : <Menu size={28} />}
+                </button>
+
+                {/* Mobile Collapsible Menu */}
+                {isOpen && (
+                    <div className="header-selections flex-col mobile-selections">
+                        {selections.map((item, index) => (
+                            <div 
+                                key={index} 
+                                className="header-selection-item clickable"
+                                onClick={() => {
+                                    navigate(item.navigate);
+                                    setIsOpen(false);
+                                }}
+                            >
+                                {item.text}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* Desktop Menu */}
+            <div className="header-selections desktop">
+                {selections.map((item, index) => (
+                    <div 
+                        key={index} 
+                        className="header-selection-item clickable"
+                        onClick={() => navigate(item.navigate)}
+                    >
+                        {item.text}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 };
 
 const ConfirmSubmitModal = ({ handleConfirm, handleCancel, title, description, confirm_text, cancel_text}) => {
@@ -78,4 +127,4 @@ const formatTime = (seconds) => {
 };
 
 
-export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, TypingEffect};
+export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, TypingEffect, HamburgerNav};
