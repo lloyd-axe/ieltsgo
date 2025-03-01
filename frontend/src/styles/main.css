@@ -1,14 +1,19 @@
-html{
-    width: 100vw;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: Arial, sans-serif;
+html, body {
     margin: 0;
     padding: 0;
-    background-image: white;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: white;
     color: #1f1f1f;
+}
+
+#root{
+    height: 100%;
+    width: 100%;
+}
+
+.main-page-container{
+    height: 100%;
 }
 
 .bg-red{
@@ -65,7 +70,7 @@ p {
 .app-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 

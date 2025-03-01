@@ -75,7 +75,7 @@ function TestPage() {
 
   if (!testData) {
     return (
-    <div>
+    <div className="main-page-container">
       <ActivityPageTemplate
         headerNavFields={{
           skill: skill.toUpperCase(),
@@ -232,7 +232,7 @@ const audioFields = {
 };
 
   return (
-    <div>
+    <div className="main-page-container">
       <ActivityPageTemplate
         headerNavFields={headerNavFields}
         footerNavFields={footerNavFields}

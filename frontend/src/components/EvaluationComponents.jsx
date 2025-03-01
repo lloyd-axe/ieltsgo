@@ -191,7 +191,7 @@ const EvaluationComponent = ({
     if (loading) return <div><LoadingPage text={"Checking your answers..."}/></div>;
   
     const leftContent = (
-        <div>
+        <div className="eval-main-container">
             <Component1
                 key={componentKey}
                 answer={answer}
@@ -219,7 +219,8 @@ const EvaluationComponent = ({
     );
   
     return (
-      <ActivityPageTemplate
+        <div className="main-page-container">
+<ActivityPageTemplate
         headerNavFields={{ show_timer: false, show_menu: true}}
         contentFields={{ left_content: leftContent, right_content: rightContent }}
         isDoublePanel={1}
@@ -230,6 +231,8 @@ const EvaluationComponent = ({
           show_back: true,
         }}
       />
+        </div>
+      
     );
 };
 

@@ -9,8 +9,7 @@ import LoadingPage from "../pages/LoadingPage"
 
 const TestSelectionCard = ({skill, testType, subject, id, displayNames, navigate}) => {
   return (
-    <div className="selection-card clickable border-style-1" 
-    onClick={()=> navigate(`/test/intro/${skill}/${skill === 'listening'? 0: 1}/${testType}/${id}`)}>
+    <div className="selection-card clickable border-style-1">
       <div className="card-head flex-row">
         {renderIcon({iconType1:skill, className:"card-icon"})}
         <div className="card-skill">{skill.toUpperCase()}</div>
@@ -21,7 +20,7 @@ const TestSelectionCard = ({skill, testType, subject, id, displayNames, navigate
       </div>
       <div className="card-spacer"></div>
       <div>
-        <button className="card-button">
+        <button className="card-button" onClick={()=> navigate(`/test/intro/${skill}/${skill === 'listening'? 0: 1}/${testType}/${id}`)}>
           OPEN
         </button>
       </div>
@@ -107,7 +106,7 @@ function SelectionPage() {
   };
 
   return (
-    <div>
+    <div className="main-page-container">
       <ActivityPageTemplate
         headerNavFields={{
           show_timer: false,

@@ -36,7 +36,7 @@ function TestIntroPage() {
     }, [testType]);
 
     return (
-        <div>
+        <div className="main-page-container">
             <ActivityPageTemplate
                 headerNavFields={{
                     show_timer: false,

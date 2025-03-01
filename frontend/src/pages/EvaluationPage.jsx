@@ -32,7 +32,7 @@ function EvaluationPage() {
     ? componentMap.writing
     : componentMap[testData.test_type] || <p>ERROR.</p>;
 
-  return <div>{evaluationComponent}</div>;
+  return <>{evaluationComponent}</>;
     
 }
 
