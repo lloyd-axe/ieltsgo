@@ -19,6 +19,7 @@ const ActivityPageTemplate = ({ headerNavFields, footerNavFields, contentFields,
                 countDown={headerNavFields.is_countdown} 
                 countDownMins={headerNavFields.count_mins}
                 setExternalTime={headerNavFields.setExternalTime}
+                showMenu={headerNavFields.show_menu}
             />
 
             {show_modal && (

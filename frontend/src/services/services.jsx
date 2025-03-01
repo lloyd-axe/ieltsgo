@@ -3,11 +3,10 @@ import Cookies from "js-cookie";
 
 const BASE_API_URL = "/ieltsgo/api";
 
-const fetchTests = (skill = "", testType = "", page = 1) => 
+const fetchTests = (skill = "", testType = "", page = 1, page_items = 12) => 
     axios.get(`${BASE_API_URL}/selection/`, {
-        params: { skill:skill, test_type: testType, page:page }
+        params: { skill:skill, test_type: testType, page:page, page_items:page_items }
     });
-
 
 const fetchTestTypes = (skill = "") => 
     axios.get(`${BASE_API_URL}/test_types/${skill}`);

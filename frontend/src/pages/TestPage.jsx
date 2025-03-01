@@ -202,7 +202,7 @@ const headerNavFields = {
   show_timer: skill !== "listening",
   is_countdown: isCountDown,
   count_mins: countDownMins,
-  setExternalTime,
+  setExternalTime: setExternalTime,
 };
 
 const footerNavFields = {

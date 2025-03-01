@@ -86,7 +86,6 @@ function SelectionPage() {
   };
 
   const handleItemClick = (skill, test_type) => {
-    console.log(skill, test_type);
     setSelectedSkill(skill);
     setSelectedTestType(test_type);
     navigate(`/test/selection/${skill}${
@@ -111,7 +110,8 @@ function SelectionPage() {
     <div>
       <ActivityPageTemplate
         headerNavFields={{
-          show_timer: false
+          show_timer: false,
+          show_menu: true
         }}
         contentFields={{
           header: (
@@ -119,7 +119,7 @@ function SelectionPage() {
               <div className="selection-header flex-row">
                 <div className="dropdown-container flex-row">
                   <div className="dropdown">
-                      <button className="dropdown-btn" onBlur={() => toggleDropdown("skill")} onClick={() => toggleDropdown("skill")}>
+                      <button className="dropdown-btn" onClick={() => toggleDropdown("skill")}>
                         <span>{selectedSkill ? selectedSkill.charAt(0).toUpperCase() + selectedSkill.slice(1) : "All"}</span>
                         <span className={`arrow ${isOpenSkill ? 'open' : ''}`}></span>
                       </button>
@@ -131,7 +131,7 @@ function SelectionPage() {
                       </ul>
                   </div>
                   <div className="dropdown">
-                      <button className="dropdown-btn" onBlur={() => toggleDropdown("test_type")} onClick={() => toggleDropdown("test_type")}>
+                      <button className="dropdown-btn" onClick={() => toggleDropdown("test_type")}>
                           <span>{displayNames?.[selectedTestType] ?? "All"}</span>
                           <span className={`arrow ${isOpenTestType ? 'open' : ''}`}></span>
                       </button>

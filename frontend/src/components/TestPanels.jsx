@@ -16,22 +16,41 @@ const SinglePanel = ({ header, panelContent}) => {
 };
 
 const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
-    const [leftWidth, setLeftWidth] = useState(50);
+    const [resizableFactor, setResizableFactor] = useState(50);
     const isResizing = useRef(false);
   
-    const handleMouseDown = () => {
+    const handleMouseDown = (mode = "desktop") => {
       isResizing.current = true;
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
+
+      if (mode === "desktop") {
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
+      } else {
+        // ✅ Mobile touch support
+        document.addEventListener("touchmove", handleMouseMoveMobile);
+        document.addEventListener("touchend", handleMouseUpMobile);
+      }
       document.body.style.userSelect = "none";
     };
   
     const handleMouseMove = (e) => {
+      console.log('x')
       if (!isResizing.current) return;
       const newWidth = (e.clientX / window.innerWidth) * 100;
       if (newWidth > 10 && newWidth < 90) {
-        setLeftWidth(newWidth);
+        setResizableFactor(newWidth);
       }
+    };
+
+    const handleMouseMoveMobile = (e) => {
+      console.log('x2')
+      if (!isResizing.current) return;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY; 
+
+  const newHeight = (clientY / window.innerHeight) * 100;
+  if (newHeight > 10 && newHeight < 90) {
+    setResizableFactor(newHeight);
+  }
     };
   
     const handleMouseUp = () => {
@@ -41,22 +60,41 @@ const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
       document.body.style.userSelect = "auto";
     };
 
+    const handleMouseUpMobile = () => {
+      isResizing.current = false;
+      document.removeEventListener("touchmove", handleMouseMoveMobile);
+      document.removeEventListener("touchend", handleMouseUpMobile);
+      document.body.style.userSelect = "auto";
+    };
+
   return (
     <div class='content'>
         <div className="content-instructions">
             {header}
         </div>
-        <div className="content-main">
-            <div className="panel left-panel custom-scroll" style={{ width: `${leftWidth}%` }}>
+        <div className="content-main desktop">
+            <div className="panel left-panel custom-scroll" style={{ width: `${resizableFactor}%` }}>
             {leftPanelContent}
             </div>
-
-            {/* Resizer with Modern Button */}
-            <div className="resizer" onMouseDown={handleMouseDown}>
+            <div className="resizer" onMouseDown={() => handleMouseDown("desktop")}>
             <button className="resize-button">⇔</button>
             </div>
 
-            <div className="panel right-panel custom-scroll" style={{ width: `${100 - leftWidth}%` }}>
+            <div className="panel right-panel custom-scroll" style={{ width: `${100 - resizableFactor}%` }}>
+              {rightPanelContent}
+            </div>
+        </div>
+
+        {/* MOBILE */}
+        <div className="content-main mobile">
+            <div className="panel left-panel custom-scroll" style={{ height: `${resizableFactor}%` }}>
+            {leftPanelContent}
+            </div>
+            <div className="resizer" onTouchStart={() => handleMouseDown("mobile")}>
+            <button className="resize-button">⇔</button>
+            </div>
+
+            <div className="panel right-panel custom-scroll" style={{ height: `${100 - resizableFactor}%` }}>
               {rightPanelContent}
             </div>
         </div>

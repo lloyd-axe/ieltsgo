@@ -21,7 +21,7 @@ def get_test(skill, test_type, item_id):
     return Response(serializer.data)
 
 
-def get_all_tests(page, skill=None, test_type=None):
+def get_all_tests(page, skill=None, test_type=None, page_items=12):
     try:
         page = int(page)
         if page < 1:
@@ -65,7 +65,7 @@ def get_all_tests(page, skill=None, test_type=None):
                 serializer = test_serializer(test, many=True)
                 data += serializer.data
 
-    paginator = Paginator(data, 12)
+    paginator = Paginator(data, page_items)
     paginated_data = paginator.get_page(page)
 
     return Response({

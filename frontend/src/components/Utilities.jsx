@@ -23,7 +23,7 @@ const LoadingSkeleton = ({ text="", color = "#bcd860"}) => {
     )
 };
 
-const HamburgerNav = ({ selections }) => {
+const HamburgerNav = ({ selections, classType = "mobile-home" }) => {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -37,11 +37,11 @@ const HamburgerNav = ({ selections }) => {
 
                 {/* Mobile Collapsible Menu */}
                 {isOpen && (
-                    <div className="header-selections flex-col mobile-selections">
+                    <div className={`header-selections flex-col ${classType}`}>
                         {selections.map((item, index) => (
                             <div 
                                 key={index} 
-                                className="header-selection-item clickable"
+                                className="header-selection-item"
                                 onClick={() => {
                                     navigate(item.navigate);
                                     setIsOpen(false);

@@ -39,7 +39,8 @@ function TestIntroPage() {
         <div>
             <ActivityPageTemplate
                 headerNavFields={{
-                    show_timer: false
+                    show_timer: false,
+                    show_menu: true
                 }}
                 contentFields={{
                 left_content: ( 

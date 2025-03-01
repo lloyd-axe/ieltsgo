@@ -1,12 +1,27 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
-import { formatTime } from "../components/Utilities";
+import { formatTime, HamburgerNav } from "../components/Utilities";
 import logo_image from '../assets/header-logo.png';
 
-const TestHeaderNav = ({ logo, test_skill, test_type, showTimer = true, countDown = false, countDownMins = 0, setExternalTime = ()=>{} }) => {
+const TestHeaderNav = ({ logo, test_skill, test_type, showTimer = true, countDown = false, countDownMins = 0, setExternalTime = ()=>{}, showMenu = false }) => {
   const countDownTime = countDownMins * 60;
   const navigate = useNavigate();
   const [time, setTime] = useState(countDown ? countDownTime : 0);
+
+  const selections = [
+    {
+        text: "HOME",
+        navigate: "/"
+    },
+    {
+        text: "CONTACT",
+        navigate: "/contact"
+    },
+    {
+        text: "ABOUT US",
+        navigate: "/about"
+    }
+];
 
   useEffect(() => {
     if (!showTimer) {
@@ -31,11 +46,21 @@ const TestHeaderNav = ({ logo, test_skill, test_type, showTimer = true, countDow
       <div className="activity-nav-container flex-row">
         <div>{logo !== undefined ? logo : <img className="header-logo" onClick={() => navigate('/')} src={logo_image} alt="IELTS Ready Logo" />}
         </div>
-        <div className="test-info">
+        {test_skill && (
+          <div className="test-info desktop">
           <b>{test_skill}</b>
           <p>{test_type}</p>
         </div>
+        )}
+        {test_skill && (
+          <div className="test-info mobile">
+          <p><b>{test_skill}</b> - {test_type}</p>
+        </div>
+        )}
       </div>
+      {showMenu && (
+          <HamburgerNav selections={selections} classType={"mobile-test"}/>
+        )}
       <div className="timer" style={{display: `${showTimer ? "flex" : "none"}`}}>
         TIMER:&nbsp;&nbsp;<b style={{ color: time < 0 || time > countDownTime ? "red" : "inherit" }}>{formatTime(time)}</b>
       </div>

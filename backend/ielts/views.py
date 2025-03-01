@@ -56,7 +56,8 @@ def fetch_all_tests(request):
     skill = request.GET.get("skill", None)
     test_type = request.GET.get("test_type", None)
     page = request.GET.get("page", 1)  # Default to page 1
-    return get_all_tests(page, skill, test_type)
+    page_items = request.GET.get("page_items", 12)  # Default to page 1
+    return get_all_tests(page, skill, test_type, page_items)
 
 
 @api_view(["GET"])

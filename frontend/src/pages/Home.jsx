@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom"; 
 import { renderIcon } from "../services/icons";
-import { Menu, X } from "lucide-react";
 import logo_image from '../assets/logo.png';
 import header_logo from '../assets/header-logo.png';
 import { HamburgerNav } from "../components/Utilities";
 
 function Home() {
     const title =  "IELTS GO!";
-    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate(); 
     const selections = [
         {
@@ -36,17 +34,6 @@ function Home() {
                      <img className="home-header-logo clickable" src={header_logo} onClick={() => navigate('/')} alt="IELTS Ready Logo" />
                 </div>
                 <HamburgerNav selections={selections}/>
-                <div className="header-selections desktop">
-                    <div className="header-selection-item clickable" onClick={() => navigate('/test/selection/all')}>
-                        ALL EXAMS
-                    </div>
-                    <div className="header-selection-item clickable" onClick={() => navigate('/contact')}>
-                        CONTACT
-                    </div>
-                    <div className="header-selection-item clickable" onClick={() => navigate('/about')}>
-                        ABOUT US
-                    </div>
-                </div>
             </div>
             <div className="home-logo clickable">
                 <img src={logo_image} alt="Logo" onClick={() => navigate('/test/selection/all')}/>

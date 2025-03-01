@@ -220,7 +220,7 @@ const EvaluationComponent = ({
   
     return (
       <ActivityPageTemplate
-        headerNavFields={{ show_timer: false }}
+        headerNavFields={{ show_timer: false, show_menu: true}}
         contentFields={{ left_content: leftContent, right_content: rightContent }}
         isDoublePanel={1}
         footerNavFields={{
