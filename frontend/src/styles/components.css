@@ -160,6 +160,7 @@
     max-width: 100%;
     justify-content: space-between;
     box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
 }
 
 .footer-left, .footer-right{
@@ -1204,17 +1205,22 @@
     }
 
     .content-instructions{
-        font-size: 15px;
+        font-size: 12px;
+        margin: 10px;
     }
 
     .question-text{
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .activity-nav-container{
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
+    }
+
+    .answer-container{
+        font-size: 12px;
     }
 
     .test-info {
@@ -1308,8 +1314,8 @@
         height: 35px;
         width: 35px;
     }
-    
+
     .q-description{
-        font-size: 22px;
+        font-size: 20px;
     }
 }
