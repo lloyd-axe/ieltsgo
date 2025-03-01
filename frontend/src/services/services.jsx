@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const BASE_API_URL = "http://127.0.0.1:8000/ieltsgo/api";
+const BASE_API_URL = "/ieltsgo/api";
 
 const fetchTests = (skill = "", testType = "", page = 1) => 
     axios.get(`${BASE_API_URL}/selection/`, {
