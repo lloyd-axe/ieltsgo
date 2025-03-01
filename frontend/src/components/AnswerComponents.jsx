@@ -41,6 +41,7 @@ const SingleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluatio
                             {!isEvaluationEmpty && 
                                 <div className="evaluation-text color-scheme-4">
                                     <TypingEffect text={evaluation[q_idx]}/>
+                                    <p className="ai-disclaimer">AI responses may contain mistakes. Please verify all important information.</p>
                                 </div>
                             }
                             <div className="flex-row"><b>{q_idx + 1}</b>. {question}</div>
@@ -114,6 +115,7 @@ const MultipleChoice = ({ questions, choices_list, setAnswer = () => {}, evaluat
                                 {!isEvaluationEmpty && 
                                     <div className="evaluation-text color-scheme-4">
                                         <TypingEffect text={evaluation[q_idx]}/>
+                                        <p className="ai-disclaimer">AI responses may contain mistakes. Please verify all important information.</p>
                                     </div>
                                 }
                                 <div className="flex-row"><b>{q_idx + 1}</b>. {question}</div>
@@ -234,6 +236,7 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
                                         {!isEvaluationEmpty && 
                                             <div className="evaluation-text color-scheme-4">
                                                 <TypingEffect text={evaluation[t_idx][c_idx]}/>
+                                                <p className="ai-disclaimer">AI responses may contain mistakes. Please verify all important information.</p>
                                             </div>
                                         }
                                     </div>
@@ -304,13 +307,6 @@ const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, eval
             <div>Complete the table. Write <b>ONE WORD</b> only in each text box.</div>
             <div className="q-body">
                 <div className="q-line flex-col">
-                    {!isEvaluationEmpty && 
-                        evaluation.map((eval_comment, e_idx) => (
-                            <div key={e_idx} className="evaluation-text color-scheme-4">
-                                {e_idx+1}. <TypingEffect text={eval_comment} />
-                            </div>
-                        ))
-                    }
                     <div className="flex-row"><b>{topic}</b></div>
                 </div>
                 <table className="custom-table">
@@ -333,14 +329,22 @@ const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, eval
                         ))}
                     </tbody>
                 </table>
+                {!isEvaluationEmpty && 
+                    evaluation.map((eval_comment, e_idx) => (
+                        <div key={e_idx} className="evaluation-text color-scheme-4">
+                            {e_idx+1}. <TypingEffect text={eval_comment} />
+                        </div>
+                    ))
+                }
+                <p className="ai-disclaimer" style={{color: "grey", marginBottom: "10px"}}>AI responses may contain mistakes. Please verify all important information.</p>
             </div>
         </div>
     );
 };
 
-const MapTableComponent = ({ topic, num_questions, rows, setAnswer = () => {}, evaluation = {}, answer = {}}) => {
+const MapTableComponent = ({ topic, num_questions, rows, setAnswer = () => {}, evaluation = {}, evaluation_class = {}}) => {
     const [selectedChoices, setSelectedChoices] = useState({});
-    const isEvaluationEmpty = Object.keys(evaluation).length === 0;
+    const isEvaluationEmpty = Object.keys(evaluation_class).length === 0;
 
     const handleChange = (q_idx, choice) => {
         const updatedChoices = { ...selectedChoices, [q_idx]: choice };
@@ -377,14 +381,14 @@ const MapTableComponent = ({ topic, num_questions, rows, setAnswer = () => {}, e
                                                 name={`single-choice-${r_idx}`}
                                                 checked={
                                                     !Boolean(isEvaluationEmpty)
-                                                        ? evaluation[r_idx]?.[c_idx] === 'correct' || evaluation[r_idx]?.[c_idx] === 'wrong'
+                                                        ? evaluation_class[r_idx]?.[c_idx] === 'correct' || evaluation_class[r_idx]?.[c_idx] === 'wrong'
                                                         : selectedChoices[r_idx] === c_idx
                                                 }
                                                 onChange={() => handleChange(r_idx, c_idx)}
-                                                className={`${evaluation[r_idx]?.[c_idx] || ''}`}
+                                                className={`${evaluation_class[r_idx]?.[c_idx] || ''}`}
                                                 disabled={!isEvaluationEmpty}
                                             />
-                                            <span class={`radio-checkmark ${evaluation[r_idx]?.[c_idx] || ''}`}></span>
+                                            <span class={`radio-checkmark ${evaluation_class[r_idx]?.[c_idx] || ''}`}></span>
                                         </label>
                                     </td>
                                 ))}
@@ -392,6 +396,14 @@ const MapTableComponent = ({ topic, num_questions, rows, setAnswer = () => {}, e
                         ))}
                     </tbody>
                 </table>
+                {!isEvaluationEmpty && 
+                    evaluation.map((eval_comment, e_idx) => (
+                        <div key={e_idx} className="evaluation-text color-scheme-4">
+                            {e_idx+1}. <TypingEffect text={eval_comment} />
+                        </div>
+                    ))
+                }
+                <p className="ai-disclaimer" style={{color: "grey", marginBottom: "10px"}}>AI responses may contain mistakes. Please verify all important information.</p>
             </div>
         </div>
     );
@@ -497,6 +509,7 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
                                             {!isEvaluationEmpty && 
                                                 <div className="evaluation-text color-scheme-4">
                                                     <TypingEffect text={evaluation[q_idx]}/>
+                                                    <p className="ai-disclaimer">AI responses may contain mistakes. Please verify all important information.</p>
                                                 </div>
                                             }
                                         </div> 

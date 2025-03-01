@@ -71,7 +71,7 @@ const WritingEvaluation = ({answer, question, testType}) => {
                 </button>
                 <p className="eval-label text-align-left">Improved Version:</p>
                 <div className="text-align-left">
-                    {loading ? <LoadingSkeleton width="100%" height="80px" /> : improvedVersion}
+                    {loading ? <LoadingSkeleton /> : improvedVersion}
                 </div>
             </div>
         </div>
@@ -203,6 +203,8 @@ const EvaluationComponent = ({
                 evaluation={evaluation}
                 evaluation_class={evaluation_class}
                 correct_answer={testData.answers}
+                rows={testData.rows}
+                num_questions={testData.num_questions}
             />
             <hr/>
             <Component2
@@ -249,15 +251,6 @@ const MultiChoiceEvaluation = (props) => (
     />
 );
 
-const MapEvaluation = (props) => (
-    <EvaluationComponent
-        {...props}
-        Component1={MapTableComponent}
-        Component2={DiagramAndText}
-        componentKey="mapTable"
-    />
-);
-
 const FillTableEvaluation = (props) => (
     <EvaluationComponent
         {...props}
@@ -285,58 +278,14 @@ const FillBlanksEvaluation = (props) => (
     />
 );
 
-const FillBlanksEvaluation1 = ({answer, testData, externalTime}) => {
-    const [score, setScore] = useState(null);
-    const [evaluation, setEvaluation] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        sendAnswersToBackend(testData.test_type, answer, testData.answers, setScore, setEvaluation, setLoading, testData.questions[0].length);
-    }, [testData]);
-
-    const headerNavFields = {
-        show_timer: false
-    }
-
-    if (loading) {
-        return <p>Loading...</p>; // Display a loading state
-    }
-
-    const leftContent = loading ? (
-        <LoadingSkeleton width="100%" height="90px" />
-    ) : (
-        <FillBlanksComponent
-            key="fillBlanks"
-            answer={answer}
-            questions={testData.questions}
-            topics={testData.topics}
-            evaluation={evaluation}
-            correct_answer={testData.answers}
-        />
-    );
-    
-
-    const rightContent = (
-        <ScoreDisplay score={score} testData={testData} externalTime={externalTime}/>
-    );
-
-    return (
-        <ActivityPageTemplate
-                headerNavFields={headerNavFields}
-                contentFields={{left_content: leftContent, right_content: rightContent}}
-                isDoublePanel={1}
-                footerNavFields={
-                    {
-                        back: () => navigate(`/test/selection/all`),
-                        show_submit: false,
-                        show_arrows: false,
-                        show_back: true
-                    }
-                }
-            />
-    );
-};
+const MapEvaluation = (props) => (
+    <EvaluationComponent
+        {...props}
+        Component1={MapTableComponent}
+        Component2={DiagramAndText}
+        componentKey="mapTable"
+    />
+);
 
 export {WritingEvaluation, SingleChoiceEvaluation, MultiChoiceEvaluation, 
     FillBlanksEvaluation, FillTableEvaluation, MapEvaluation, DragDropEvaluation};

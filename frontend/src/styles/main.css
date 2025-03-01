@@ -44,6 +44,11 @@ p {
     margin: 0;
 }
 
+.header-text{
+    font-size: 50px;
+    font-weight: 900;
+}
+
 .text-align-center{
     text-align: center !important;
 }
@@ -407,5 +412,11 @@ table, th, td {
 
 .low-score{
     background-image: radial-gradient(rgb(222, 126, 126) 30%, rgb(232, 115, 115));
+    color: white;
+}
+
+.ai-disclaimer{
+    margin-top: 10px;
+    font-size: 13px;
     color: white;
 }

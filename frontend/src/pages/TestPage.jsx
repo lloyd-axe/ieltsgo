@@ -190,8 +190,8 @@ const handleSubmitAnswer = () => setShowModal(true);
 const handleConfirmSubmit = () => {
   setShowModal(false);
   const state = skill === "writing"
-    ? { answer, question: testData.question, external_time: externalTime }
-    : { answer, testData, external_time: externalTime, countDownMins: countDownMins };
+    ? { answer:answer, testData: testData, external_time: externalTime }
+    : { answer:answer, testData: testData, external_time: externalTime, countDownMins: countDownMins };
 
   navigate(`/evaluation/${skill}`, { state });
 };

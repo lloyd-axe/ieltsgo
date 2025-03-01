@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from google import genai
 from google.genai import types
+import google.generativeai as genai
 from rest_framework.response import Response
 from django.conf import settings
 from .models import AIConfigs
 from .serializers import AIConfigsSerializer
 
-ai_client = genai.Client(api_key=settings.AI_API_KEY)
+genai.configure(api_key=settings.AI_API_KEY)
+MODEL_TO_USE = "gemini-1.5"
 
 def fetch_model_configs():
     model_configs = AIConfigs.objects.filter(is_active=True).order_by("id").first()
@@ -39,7 +41,15 @@ def handle_unanswered_question(user_answers, correct_answers):
     return {k: user_answers[k] for k in sorted(user_answers)}
 
 
-def validate_writing_answer(model, user_response, question, task_prompt):
+def validate_writing_answer(test_type, user_response, question):
+    model_configs = fetch_model_configs()
+    task_prompt = model_configs[f'task{test_type.split("_")[1]}_prompt']
+    model = genai.GenerativeModel(
+        model_name=model_configs['model_name'],
+        safety_settings=model_configs['safety_settings'],
+        generation_config=model_configs['generation_config'],
+        system_instruction=model_configs['system_prompt']
+    )
     input_prompt = task_prompt + f"""
     Here is the task prompt: [{question}]
 
@@ -65,10 +75,28 @@ def validate_writing_answer(model, user_response, question, task_prompt):
     return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improve_version})
 
 
-def ai_evaluation(context, question, gt_answer):
-    model_configs = fetch_model_configs()
-    print(f"Using {model_configs['model_name']} model.")
-    
+def gemini_1_5_eval(model_configs, context, question, gt_answer):
+    model = genai.GenerativeModel(
+        model_name=model_configs['model_name'],
+        safety_settings=model_configs['safety_settings'],
+        generation_config=model_configs['generation_config'],
+        system_instruction=model_configs['system_prompt']
+    )
+    input_prompt = f"""
+                    Explain why the answer is "{gt_answer}" in this question "{question}".
+                    Point out which paragraph I can find the answer in the question.
+
+                    Here's the context:
+                    {context}
+
+                    Give a short explanation. Do not exceed to 50 words.
+                    """
+    response = model.generate_content(input_prompt)
+    return response.text
+
+
+def gemini_2_eval(model_configs, context, question, gt_answer):
+    ai_client = genai.Client(api_key=settings.AI_API_KEY)
     contents = [
         types.Content(
             role='user',
@@ -106,6 +134,17 @@ def ai_evaluation(context, question, gt_answer):
     return ' '.join(model_response) 
 
 
+def ai_evaluation(context, question, gt_answer, model="gemini-2"):
+    return f"{question} -- {gt_answer}"
+    model_configs = fetch_model_configs()
+    print(f"Using {model_configs['model_name']} model.")
+
+    if model == "gemimi-2":
+        return gemini_2_eval(model_configs, context, question, gt_answer)
+    else:
+        return gemini_1_5_eval(model_configs, context, question, gt_answer)
+    
+    
 def validate_single_choice_answer(choices, user_answers, correct_answers,
                                    questions, context):
     score = 0
@@ -116,7 +155,7 @@ def validate_single_choice_answer(choices, user_answers, correct_answers,
         evaluation_class.append([])
         for m in range(n_choices):
             evaluation_class[n].append('sol' if ans == m else '')
-        evaluation.append(ai_evaluation(context, questions[n], choices[n][ans]))
+        evaluation.append(ai_evaluation(context, questions[n], choices[n][ans], MODEL_TO_USE))
 
     if user_answers:
         user_answers_list = list(user_answers.values())
@@ -131,30 +170,28 @@ def validate_single_choice_answer(choices, user_answers, correct_answers,
             
     return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
 
-def validate_map_answer(choices, user_answers, correct_answers,
-                                   questions, context):
+
+def validate_map_answer(user_answers, correct_answers, rows, n_questions, context):
     score = 0
-    n_choices = len(choices)
     evaluation, evaluation_class = [], []
 
     for n, ans in enumerate(correct_answers):
         evaluation_class.append([])
-        for m in range(n_choices):
+        for m in range(n_questions):
             evaluation_class[n].append('sol' if ans == m else '')
-        evaluation.append(ai_evaluation(context, questions[n], choices[n][ans]))
+        answer = f'Is in {chr(correct_answers[n] + ord("A"))}'
+        evaluation.append(ai_evaluation(context, rows[n], answer, MODEL_TO_USE))
 
-    if not user_answers:
-        return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
-    
-    user_answers_list = list(user_answers.values())
+    if user_answers:
+        user_answers_list = list(user_answers.values())
 
-    for n, ans in enumerate(correct_answers):
-        if user_answers_list[n] == ans:
-                score += 1
-                evaluation_class[n][ans] = 'correct'
-        else:
-            if user_answers_list[n] is not None:
-                evaluation_class[n][user_answers_list[n]] = 'wrong'
+        for n, ans in enumerate(correct_answers):
+            if user_answers_list[n] == ans:
+                    score += 1
+                    evaluation_class[n][ans] = 'correct'
+            else:
+                if user_answers_list[n] is not None:
+                    evaluation_class[n][user_answers_list[n]] = 'wrong'
             
     return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
 
@@ -164,11 +201,11 @@ def validate_wordbox_answer(user_answers, correct_answers,
     score = 0
     evaluation, evaluation_class = [], []
     for n in range(len(correct_answers)):
-        evaluation_class.append('')
+        evaluation_class.append('wrong')
 
     for n, question in enumerate(questions):
         blank_question = question.split('|')[0] + "___" + question.split('|')[2]
-        evaluation.append(ai_evaluation(context, blank_question, correct_answers[n]))
+        evaluation.append(ai_evaluation(context, blank_question, correct_answers[n], MODEL_TO_USE))
 
     if user_answers:
         user_answers_list = list(user_answers.values())
@@ -188,19 +225,15 @@ def validate_table_answer(user_answers, correct_answers,
     score = 0
     evaluation, evaluation_class = [], []
     for n in range(len(correct_answers)):
-        evaluation_class.append('')
+        evaluation_class.append('wrong')
 
-    #find right columns
-    col_num = 0
     for n, row in enumerate(table_data[1:]):
         for m, col in enumerate(row):
             if "|" in col:
-                col_num = m
-        row_txt = row[0].split('|')[0] + "___" + row[0].split('|')[2]
-        question = f"""
-        In table={topic}, column={table_data[0][col_num]}, row={row_txt}
-        """
-        evaluation.append(ai_evaluation(context, question, correct_answers[n]))
+                question = f"""
+                In table={topic}, column={table_data[0][m]}, row={row[0]}
+                """
+                evaluation.append(ai_evaluation(context, question, correct_answers[n], MODEL_TO_USE))
 
     if user_answers:
         user_answers_list = list(user_answers.values())
@@ -228,7 +261,8 @@ def validate_multi_choice_answer(choices, user_answers, correct_answers,
         evaluation.append(ai_evaluation(
             context, 
             questions[n], 
-            [choices[n][i] for i in ans]))    
+            [choices[n][i] for i in ans]),
+            MODEL_TO_USE)    
         
     if user_answers:
         user_answers_list = list(user_answers.values())
@@ -259,7 +293,7 @@ def validate_answers(user_answers, correct_answers, questions, context, topics):
             evaluation_class[n].append('wrong')
             blank_question = questions[n][m].split('|')[0] + "___" + questions[n][m].split('|')[2]
             q = f'{topics[n]}: {blank_question}'
-            evaluation[n].append(ai_evaluation(context, q, correct_answers[n][m]))
+            evaluation[n].append(ai_evaluation(context, q, correct_answers[n][m], MODEL_TO_USE))
 
     if user_answers:
         user_answers_list = list(user_answers.values())

@@ -1,8 +1,11 @@
+import logging
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .constants import TEST_CONFIG, MODEL_SERIALIZER
 from .models import TestInformation, TEST_TYPES
+from django.core.paginator import Paginator
 
+logger = logging.getLogger(__name__)
 
 def get_test(skill, test_type, item_id):
     if skill not in TEST_CONFIG.keys():
@@ -18,48 +21,59 @@ def get_test(skill, test_type, item_id):
     return Response(serializer.data)
 
 
-def get_all_tests(skill=None, test_type=None):
+def get_all_tests(page, skill=None, test_type=None):
+    try:
+        page = int(page)
+        if page < 1:
+            raise ValueError("Invalid page number")
+    except ValueError:
+        return Response({"error": "Invalid page number."}, status=400)
+
     data = []
-    if skill != "all":
+    if skill and skill != "all":
         skill_config = TEST_CONFIG.get(skill)
-        if skill_config:
-            if test_type:
-                print("Filter by test type.")
-                test_model, test_serializer = skill_config.get(test_type)
-                test = test_model.objects.filter(test_type=test_type).order_by("id")
-                serializer = test_serializer(test, many=True)
-                data = serializer.data
-            else:
-                cur_test_model = None
-                print("Filter by skill.")
-                for ttype, (test_model, test_serializer) in skill_config.items():
-                    if test_model != cur_test_model:
-                        cur_test_model = test_model
-                        test = cur_test_model.objects.filter(skill=skill).order_by("id")
-                        serializer = test_serializer(test, many=True)
-                        data += serializer.data
-            return Response(data) 
+        if not skill_config:
+            return Response({"error": f"Invalid skill: {skill}"}, status=400)
+
+        if test_type:
+            test_model, test_serializer = skill_config.get(test_type, (None, None))
+            if not test_model:
+                return Response({"error": f"Invalid test type: {test_type}"}, status=400)
+            test = test_model.objects.filter(test_type=test_type, skill=skill).order_by("id")
+            serializer = test_serializer(test, many=True)
+            data = serializer.data
         else:
-            return Response({"error": "Invalid skill type."}, status=400)
+            cur_test_model = None
+            for ttype, (test_model, test_serializer) in skill_config.items():
+                if test_model != cur_test_model:
+                    cur_test_model = test_model
+                    test = cur_test_model.objects.filter(skill=skill).order_by("id")
+                    serializer = test_serializer(test, many=True)
+                    data += serializer.data
     else:
         if test_type:
-            print("Filter by test type.")
-            test_type_config = {}
-            for ttype in TEST_CONFIG.values():
-                for k, v in ttype.items():
-                    test_type_config[k] = v
-            print(test_type_config.get(test_type))
-            test_model, test_serializer = test_type_config.get(test_type)
+            test_type_config = {k: v for ttype in TEST_CONFIG.values() for k, v in ttype.items()}
+            test_model, test_serializer = test_type_config.get(test_type, (None, None))
+            if not test_model:
+                return Response({"error": f"Invalid test type: {test_type}"}, status=400)
             test = test_model.objects.filter(test_type=test_type).order_by("id")
             serializer = test_serializer(test, many=True)
             data = serializer.data
         else:
-            print("Fetching all tests.")
-            for _, (test_model, test_serializer) in MODEL_SERIALIZER.items():
+            for test_model, test_serializer in MODEL_SERIALIZER.values():
                 test = test_model.objects.order_by("id")
                 serializer = test_serializer(test, many=True)
                 data += serializer.data
-        return Response(data) 
+
+    paginator = Paginator(data, 12)
+    paginated_data = paginator.get_page(page)
+
+    return Response({
+        "data": paginated_data.object_list,
+        "total_pages": paginator.num_pages,
+        "current_page": page
+    })
+
 
 
 def get_test_types(skill=None):

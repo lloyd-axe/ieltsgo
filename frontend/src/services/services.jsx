@@ -1,10 +1,13 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const BASE_API_URL = "/ieltsgo/api";
+const BASE_API_URL = "http://127.0.0.1:8000/ieltsgo/api";
 
-const fetchTests = (skill = "", testType = "") => 
-    axios.get(`${BASE_API_URL}/selection/${skill}${testType ? "/" : ""}${testType}`);
+const fetchTests = (skill = "", testType = "", page = 1) => 
+    axios.get(`${BASE_API_URL}/selection/`, {
+        params: { skill:skill, test_type: testType, page:page }
+    });
+
 
 const fetchTestTypes = (skill = "") => 
     axios.get(`${BASE_API_URL}/test_types/${skill}`);
@@ -27,7 +30,7 @@ const fetchCsrfToken = () =>
 const sendTextToBackend = (answer, question, testType) =>
     axios.post(`${BASE_API_URL}/validate_writing/`, {
         user_response: answer,
-        question,
+        question: question,
         test_type: testType,
     });
 

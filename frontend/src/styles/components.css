@@ -36,6 +36,26 @@
     font-size: 16px;
 }
 
+.contact-btn{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    color: #1f1f1f;
+    border: 1px solid #f7f7f7;
+    border-radius: 35px;
+    padding: 12px 24px;
+    margin: 20px;
+    font-size: 16px;
+}
+
+.contact-icon{
+    height: 150px;
+    width: 150px;
+    fill: #1F1F1F;
+}
+
 .home-btn:hover {
     background-color: rgb(251, 251, 251);
 }
@@ -62,6 +82,28 @@
     bottom: 10px;
     right: 10px;
     font-weight: bold;
+}
+
+.home-header {
+    position: absolute;
+    top: 25px;
+    font-weight: 900;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-header-logo{
+    height: 25px;
+}
+
+.header-selections{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-selections div{
+    margin: 0px 15px;
 }
 
 /* HEADER NAV */
@@ -328,10 +370,55 @@
 
 .selection-grid-container{
     display: flex;
+    flex-direction: column;
     height: 90%;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 3px;
+}
+
+.pagination-controls{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    width: 70%;
+}
+
+.pager-icon{
+    width: 25px;
+}
+
+.pager-btn{
+    display: flex;
+    margin: 0px 10px;
+    background: linear-gradient(90deg, #bcd860, #b5cd5e, #bcd860);
+    color: white;
+    border: none;
+    padding: 1px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pager-btn:hover {
+    background: linear-gradient(90deg, #a6bd57, #a6bd57, #bcd860);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pager-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pager-btn:disabled {
+    background: #ebe9e9;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 
 .selection-grid {

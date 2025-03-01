@@ -8,13 +8,14 @@ function EvaluationPage() {
     const { skill } = useParams();
     const location = useLocation();
     const answer = location.state?.answer || "";
-    const question = location.state?.question || "No prompt available.";
     const testData = location.state?.testData || [];
     const externalTime = location.state?.external_time || 0;
     const countDownMins = location.state?.countDownMins || 0;
 
+    console.log(testData);
+
     const componentMap = {
-        writing: <WritingEvaluation answer={answer} question={question} testType={testData.test_type} />,
+        writing: <WritingEvaluation answer={answer} question={testData.question} testType={testData.test_type} />,
         single_selection: <SingleChoiceEvaluation answer={answer} testData={testData} externalTime={externalTime} countDownMins={countDownMins}/>,
         double_selection: <MultiChoiceEvaluation answer={answer} testData={testData} externalTime={externalTime} countDownMins={countDownMins}/>,
         fill_sentence_1: <FillBlanksEvaluation answer={answer} testData={testData} externalTime={externalTime} countDownMins={countDownMins}/>,

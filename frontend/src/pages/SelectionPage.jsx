@@ -12,7 +12,7 @@ const TestSelectionCard = ({skill, testType, subject, id, displayNames, navigate
     <div className="selection-card clickable border-style-1" 
     onClick={()=> navigate(`/test/intro/${skill}/${skill === 'listening'? 0: 1}/${testType}/${id}`)}>
       <div className="card-head flex-row">
-        {renderIcon({iconType:skill, className:"card-icon"})}
+        {renderIcon({iconType1:skill, className:"card-icon"})}
         <div className="card-skill">{skill.toUpperCase()}</div>
       </div>
       <div className="card-type">
@@ -40,6 +40,9 @@ function SelectionPage() {
   const [selectedSkill, setSelectedSkill] = useState(skill);
   const [selectedTestType, setSelectedTestType] = useState(testType);
 
+  const [totalPages, setTotalPages] = useState(1);  // Track total pages
+  const [currentPage, setCurrentPage] = useState(1);  // ✅ Track current page
+
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -48,14 +51,14 @@ function SelectionPage() {
         //await new Promise((resolve) => setTimeout(resolve, 5000));
         try {
             const [testsResponse, testTypesResponse, displayNamesResponse] = await Promise.all([
-                fetchTests(skill, testType),
+                fetchTests(skill, testType, currentPage),
                 fetchTestTypes(skill),
                 fetchTestTypeNames()
             ]);
             
-            setTests(testsResponse.data);
-            const ttypes = ["all", ...testTypesResponse.data.test_types];
-            setTestTypes(ttypes);
+            setTests(testsResponse.data.data);
+            setTotalPages(testsResponse.data.total_pages);
+            setTestTypes(["all", ...testTypesResponse.data.test_types]);
             setDisplayNames(displayNamesResponse.data.display_names);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -68,7 +71,7 @@ function SelectionPage() {
     };
 
     fetchData();
-  }, [skill, testType]);
+  }, [skill, testType, currentPage]);
 
   if (loading) return <div><LoadingPage /></div>;
 
@@ -90,6 +93,18 @@ function SelectionPage() {
       test_type 
       ? test_type !== "all" ? `/${test_type}` : ''
       : ''}`);
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
   };
 
   return (
@@ -134,16 +149,21 @@ function SelectionPage() {
           left_content: ( 
             <div className="selection-grid-container">
               <div className="selection-grid custom-scroll">
-                {tests.map((test, _) => (
-                  <TestSelectionCard 
-                  key={test.id+ "-" + test.subject} 
-                  skill={test.skill} 
-                  testType={test.test_type} 
-                  subject={test.subject} 
-                  id={test.id} 
-                  displayNames={displayNames}
-                  navigate={navigate}/>
-                ))}
+                  {tests.map((test, _) => (
+                    <TestSelectionCard 
+                    key={test.id+ "-" + test.subject} 
+                    skill={test.skill} 
+                    testType={test.test_type} 
+                    subject={test.subject} 
+                    id={test.id} 
+                    displayNames={displayNames}
+                    navigate={navigate}/>
+                  ))}
+              </div>
+              <div className="pagination-controls">
+                <button className="pager-btn" onClick={prevPage} disabled={currentPage === 1}>{renderIcon({iconType1:"prev_btn", className:"pager-icon"})}</button>
+                <span>Page <b>{currentPage}</b> of <b>{totalPages}</b></span>
+                <button className="pager-btn" onClick={nextPage} disabled={currentPage === totalPages}>{renderIcon({iconType1:"next_btn", className:"pager-icon"})}</button>
               </div>
             </div>
           )

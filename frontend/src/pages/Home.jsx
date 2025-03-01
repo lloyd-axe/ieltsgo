@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { renderIcon } from "../services/icons";
 
 import logo_image from '../assets/logo.png';
+import header_logo from '../assets/header-logo.png';
 
 function Home() {
     const title =  "IELTS GO!";
@@ -14,26 +15,45 @@ function Home() {
 
     return (
         <div className="home">
+            <div className="home-header">
+                <div>
+                     <img className="home-header-logo clickable" src={header_logo} onClick={() => navigate('/')} alt="IELTS Ready Logo" />
+                </div>
+                <div className="header-selections">
+                    <div className="header-selection-item clickable" 
+                    onClick={() => navigate('/test/selection/all')}>
+                        ALL EXAMS
+                    </div>
+                    <div className="header-selection-item clickable" 
+                    onClick={() => navigate('/contact')}>
+                        CONTACT
+                    </div>
+                    <div className="header-selection-item clickable" 
+                    onClick={() => navigate('/about')}>
+                        ABOUT US
+                    </div>
+                </div>
+            </div>
             <div className="home-logo clickable">
                 <img src={logo_image} alt="Logo" onClick={() => navigate('/test/selection/all')}/>
             </div>
             <div className="intro">Prepare for <b>IELTS</b> exams for <b>FREE</b></div>
             <div className="home-buttons">
                 <div className="button-1 home-btn border-style-1" onClick={() => navigate('/test/selection/listening')}>
-                    {renderIcon({iconType:"listening", className:"skill-icon"})}
+                    {renderIcon({iconType1:"listening", className:"skill-icon"})}
                     <p>LISTENING</p>
                 </div>
                 <div className="button-1 home-btn border-style-1" onClick={() => navigate('/test/selection/reading')}>
-                    {renderIcon({iconType:"reading", className:"skill-icon"})}
+                    {renderIcon({iconType1:"reading", className:"skill-icon"})}
                     <p>READING</p>
                 </div>
                 <div className="button-1 home-btn border-style-1" onClick={() => navigate('/test/selection/writing')}>
-                    {renderIcon({iconType:"writing", className:"skill-icon"})}
+                    {renderIcon({iconType1:"writing", className:"skill-icon"})}
                     <p>WRITING</p>
                 </div>
                 <div className="button-1 home-btn border-style-1">
                     <div className="speak-btn">
-                        {renderIcon({iconType:"speaking", className:"skill-icon"})}
+                        {renderIcon({iconType1:"speaking", iconType2:"speaking", className:"skill-icon"})}
                         <p>SPEAKING</p>
                     </div>
                     <b id="coming-soon">COMING SOON</b>
