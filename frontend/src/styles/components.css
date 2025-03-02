@@ -1180,7 +1180,7 @@
     }
 
     .intro-title{
-        font-size: 40px;
+        font-size: 30px;
     }
     
     .intro-test-type{
@@ -1188,7 +1188,7 @@
     }
     
     .test-details{
-        font-size: 18px;
+        font-size: 14px;
         margin: 15px 0px;
     }
     
@@ -1311,13 +1311,15 @@
     }
     
     .score-comment{
-        font-size: 12px;
+        font-size: 10px;
     }
     
     .score-card-footer{
         justify-content: flex-end;
-        padding-right: 30px;
-        padding-bottom: 20px;
+        align-items: center;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        margin-top: 10px;
         font-size: 12px;
     }
     
@@ -1337,5 +1339,21 @@
 
     .ai-disclaimer{
         font-size: 10px;
+    }
+
+    .custom-check {
+        font-size: 13px;
+        padding-left: 25px;
+    }
+
+    .checkmark {
+        height: 14px;
+        width: 14px;
+    }
+
+    .custom-textbox-input{
+        font-size: 13px;
+        height: 20px;
+        max-width: 100px;
     }
 }

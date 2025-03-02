@@ -8,7 +8,7 @@ from .models import AIConfigs
 from .serializers import AIConfigsSerializer
 
 genai.configure(api_key=settings.AI_API_KEY)
-MODEL_TO_USE = "gemini-1.5"
+MODEL_TO_USE = "gemini-2"
 
 def fetch_model_configs():
     model_configs = AIConfigs.objects.filter(is_active=True).order_by("id").first()
@@ -135,7 +135,7 @@ def gemini_2_eval(model_configs, context, question, gt_answer):
 
 
 def ai_evaluation(context, question, gt_answer, model="gemini-2"):
-    return f"{question} -- {gt_answer}"
+    # return f"{question} -- {gt_answer}"
     model_configs = fetch_model_configs()
     print(f"Using {model_configs['model_name']} model.")
 
@@ -261,8 +261,8 @@ def validate_multi_choice_answer(choices, user_answers, correct_answers,
         evaluation.append(ai_evaluation(
             context, 
             questions[n], 
-            [choices[n][i] for i in ans]),
-            MODEL_TO_USE)    
+            [choices[n][i] for i in ans],
+            MODEL_TO_USE))    
         
     if user_answers:
         user_answers_list = list(user_answers.values())

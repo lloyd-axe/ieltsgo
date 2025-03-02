@@ -207,9 +207,11 @@ const EvaluationComponent = ({
                 num_questions={testData.num_questions}
             />
             <hr/>
-            <Component2
+            {testData.skill !== "listening" && (
+                <Component2
                 text={testData.text}
             />
+            )}
         </div>
         
     ); 
