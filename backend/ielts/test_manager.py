@@ -75,7 +75,6 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
     })
 
 
-
 def get_test_types(skill=None):
     if skill:
         skill_config = TEST_CONFIG.get(skill)

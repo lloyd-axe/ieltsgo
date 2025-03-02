@@ -38,7 +38,7 @@ function Home() {
             <div className="home-logo clickable">
                 <img src={logo_image} alt="Logo" onClick={() => navigate('/test/selection/all')}/>
             </div>
-            <div className="intro">Prepare for <b>IELTS</b> exams for <b>FREE</b></div>
+            <div className="intro">Get ready for your <b>IELTS</b> exams — for <b>FREE!</b></div>
             <div className="home-buttons">
                 <div className="button-1 home-btn border-style-1" onClick={() => navigate('/test/selection/listening')}>
                     {renderIcon({iconType1:"listening", className:"skill-icon"})}

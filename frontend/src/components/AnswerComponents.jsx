@@ -235,7 +235,7 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
                                         <div className="q-line flex-col">
                                         {!isEvaluationEmpty && 
                                             <div className="evaluation-text color-scheme-4">
-                                                <TypingEffect text={evaluation[t_idx][c_idx]}/>
+                                                <TypingEffect text={evaluation[t_idx]}/>
                                                 <p className="ai-disclaimer">AI responses may contain mistakes. Please verify all important information.</p>
                                             </div>
                                         }
@@ -336,7 +336,9 @@ const FillBlankTableComponent = ({ topic, table_data, setAnswer = () => {}, eval
                         </div>
                     ))
                 }
-                <p className="ai-disclaimer" style={{color: "grey", marginBottom: "10px"}}>AI responses may contain mistakes. Please verify all important information.</p>
+                {!isEvaluationEmpty && (
+                    <p className="ai-disclaimer" style={{color: "grey", marginBottom: "10px"}}>AI responses may contain mistakes. Please verify all important information.</p>
+                )}
             </div>
         </div>
     );
@@ -403,7 +405,9 @@ const MapTableComponent = ({ topic, num_questions, rows, setAnswer = () => {}, e
                         </div>
                     ))
                 }
-                <p className="ai-disclaimer" style={{color: "grey", marginBottom: "10px"}}>AI responses may contain mistakes. Please verify all important information.</p>
+                {!isEvaluationEmpty && (
+                    <p className="ai-disclaimer" style={{color: "grey", marginBottom: "10px"}}>AI responses may contain mistakes. Please verify all important information.</p>
+                )}
             </div>
         </div>
     );
@@ -413,6 +417,7 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
     const [inputValues, setInputValues] = useState({});
     const [draggingOver, setDraggingOver] = useState(false);
     const isEvaluationEmpty = Object.keys(evaluation_class).length === 0;
+    const [currentDraggedWord, setCurrentDraggedWord] = useState(null);
 
     const renderQuestionWithInputs = (question, q_idx) => {
         const parts = question.split(/(\|\d+\|)/);
@@ -454,6 +459,18 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
         );
     };
 
+    const handleTouchStart = (word) => {
+        setCurrentDraggedWord(word);
+    };
+    
+    const handleTouchEnd = (boxId) => {
+        if (currentDraggedWord) {
+            setInputValues((prev) => ({ ...prev, [boxId]: currentDraggedWord }));
+            setAnswer((prev) => ({ ...prev, [boxId]: currentDraggedWord }));
+        }
+        setCurrentDraggedWord(null);
+    };
+
     const handleDragStart = (e, word) => {
         e.dataTransfer.setData('text/plain', word);
     };
@@ -472,7 +489,7 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
     return (
         <div className="answer-container">
             <div className="q-description">{isEvaluationEmpty ? `Questions 1-${questions.length}` : "SOLUTION:"}</div>
-            <div>Choose the correct word from the word-box and drag it to the text boxes below.</div>
+            <div>Select the appropriate word from the word box and place it in the correct space below.</div>
             <div className="q-body">
                 {isEvaluationEmpty && (
                     <div className="q-block">
@@ -482,6 +499,7 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
                                     key={index}
                                     draggable
                                     onDragStart={(e) => handleDragStart(e, word)}
+                                    onTouchStart={() => handleTouchStart(word)}
                                     className={`word-box-word clickable color-scheme-4 ${
                                         Object.values(inputValues).includes(word)
                                             ? 'invisible'
@@ -500,10 +518,11 @@ const DragDropWordsComponent = ({ word_box, questions, setAnswer = () => {}, eva
                         {questions.map((question, q_idx) => {
                             const hasPlaceholder = /\|\d+\|/.test(question);
                             return (
-                                <li className="q-line">
-                                    <div key={q_idx}
-                                        onDrop={(e) => hasPlaceholder ? handleDrop(e, q_idx) : undefined}
-                                        onDragOver={handleDragOver}>
+                                <li key={q_idx} className="q-line">
+                                    <div onDrop={(e) => hasPlaceholder ? handleDrop(e, q_idx) : undefined}
+                                        onDragOver={handleDragOver}
+                                        onTouchEnd={() => hasPlaceholder ? handleTouchEnd(q_idx) : undefined}
+                                        >
                                         {renderQuestionWithInputs(question, q_idx)}
                                         <div className="q-line flex-col">
                                             {!isEvaluationEmpty && 
