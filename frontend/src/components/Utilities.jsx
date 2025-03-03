@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 import { Menu, X } from "lucide-react";
 
-const LoadingSkeleton = ({ text="", color = "#bcd860"}) => {
+const LoadingSkeleton = ({ text="", color = "#bcd860", customClass=""}) => {
     return (
         <div className="loading-skeleton">
             <div className="loading-icon-container">
                 <div className="loading-text">{text}</div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+                <svg className={customClass} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
                     <circle fill={color} stroke={color} strokeWidth="15" r="15" cx="40" cy="100">
                         <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
                     </circle>

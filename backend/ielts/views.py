@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from .test_manager import (get_test, get_test_info, get_test_type_display_names, get_test_types, get_all_tests)
 from .test_validator import (
-    validate_writing_answer, validate_answers, validate_table_answer,
+    validate_writing_answer_1, validate_writing_answer_2, validate_answers, validate_table_answer,
     validate_single_choice_answer, validate_multi_choice_answer,
     handle_unanswered_question, validate_map_answer, validate_wordbox_answer)
 
@@ -12,8 +12,7 @@ def post_validate_writing_answer(request):
     user_response = request.data.get('user_response', '')
     question = request.data.get('question', '')
     test_type = request.data.get('test_type', '')
-    print('tesdt', test_type)
-    return validate_writing_answer(test_type, user_response, question)
+    return validate_writing_answer_1(test_type, user_response, question)
 
 
 @api_view(['POST'])

@@ -426,6 +426,11 @@ table, th, td {
     color: white;
 }
 
+.ai-disclaimer-writing{
+    font-size: 13px;
+    font-style: italic;
+}
+
 /* MOBILE */
 @media only screen and (max-width: 1020px) {
     

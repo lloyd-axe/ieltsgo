@@ -210,7 +210,6 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
             </span>
         );
     };
-    console.log(evaluation);
     return (
         <div className="answer-container">
             <div className="q-description">{isEvaluationEmpty ? `Questions 1-${questions.flat().length}` : "SOLUTION:"}</div>
@@ -235,7 +234,7 @@ const FillBlanksComponent = ({ topics, questions, testType, setAnswer = () => {}
                                         <div className="q-line flex-col">
                                         {!isEvaluationEmpty && 
                                             <div className="evaluation-text color-scheme-4">
-                                                <TypingEffect text={evaluation[t_idx]}/>
+                                                <TypingEffect text={evaluation[c_idx]}/>
                                                 <p className="ai-disclaimer">AI responses may contain mistakes. Please verify all important information.</p>
                                             </div>
                                         }

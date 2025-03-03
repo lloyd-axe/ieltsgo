@@ -2,17 +2,18 @@ import re
 from django.shortcuts import render
 from google import genai
 from google.genai import types
-import google.generativeai as genai
+import google.generativeai as genai1
 from rest_framework.response import Response
 from django.conf import settings
 from .models import AIConfigs
 from .serializers import AIConfigsSerializer
 
-genai.configure(api_key=settings.AI_API_KEY)
-MODEL_TO_USE = "gemini-2"
+genai1.configure(api_key=settings.AI_API_KEY)
+MODEL_TO_USE = "gemini-1"
 
 def remove_numbered_pipes(text):
     return re.sub(r"\|\d+\|", "", text)
+
 
 def fetch_model_configs():
     model_configs = AIConfigs.objects.filter(is_active=True).order_by("id").first()
@@ -45,47 +46,139 @@ def handle_unanswered_question(user_answers, correct_answers):
     return {k: user_answers[k] for k in sorted(user_answers)}
 
 
-def validate_writing_answer(test_type, user_response, question):
+def validate_writing_answer_1(test_type, user_response, question):
     model_configs = fetch_model_configs()
     task_prompt = model_configs[f'task{test_type.split("_")[1]}_prompt']
-    model = genai.GenerativeModel(
+
+    model = genai1.GenerativeModel(
         model_name=model_configs['model_name'],
         safety_settings=model_configs['safety_settings'],
         generation_config=model_configs['generation_config'],
         system_instruction=model_configs['system_prompt']
     )
-    input_prompt = task_prompt + f"""
-    Here is the task prompt: [{question}]
+    prompt_instructions = """
+    Do not use any text formatting such as bold, italics, bullet points, or numbered lists. 
+    Present all feedback as plain text in full sentences. Just add a "<br/><br/>" between paragraphs to represent a newline.
+    Strictly use the following format when responding:
+    My band score. No words, just a number | Evaluation of my answer | Revised version of my response
 
-    Here is the my answer, count the number of words I used.: [{user_response}]
+    Make sure each explanation is just separated by the "|" character,
+    because I am gonna do python: .split('|') in your response to make a list.
+    Do not include the "{" and "}" characters when responding.
     """
 
-    response = model.generate_content(input_prompt)
-    response_split = response.text.split("|")
-    attempts = 0
-    while len(response_split) != 3:
-        print('attempting again...')
-        response = model.generate_content(input_prompt + "\nMake sure to FOLLOW THE FORMAT.")
-        response_split = response.text.split("|")
-        attempts+=1
-        if attempts >= 2:
-            print("Too many attempts")
-            return Response({"band_score": 0, "evaluation": "Error", "improve_version": "test error"})
+    full_prompt = task_prompt + f"""
+    Here is the task's prompt:
+    {question}
 
-    band_score = response_split[0].strip()
-    evaluation = response_split[1].strip()
-    improve_version = response_split[2].strip()
+    ---
 
-    return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improve_version})
+    Here is the my answer:
+    {user_response}
+
+    ---
+    """ + prompt_instructions
+
+    try:
+        response = model.generate_content(full_prompt)
+        split_response = response.text.split('|')
+        print(split_response)
+        if len(split_response) != 3:
+            raise Exception
+        
+        band_score = split_response[0].strip()
+        evaluation = split_response[1].strip()
+        improved_version = split_response[2].strip()
+        return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improved_version})
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        error_response = "Ooops.. looks like the AI evaluator is not available at the moment. You may try again by refreshing the page."
+        return Response({"band_score": 0, 
+                         "evaluation": error_response, 
+                         "improve_version": error_response})
 
 
-def gemini_1_5_eval(model_configs, context, prompt_input):
-    model = genai.GenerativeModel(
+def validate_writing_answer_2(test_type, user_response, question):
+    ai_client = genai.Client(api_key=settings.AI_API_KEY)
+    model_configs = fetch_model_configs()
+    task_prompt = model_configs[f'task{test_type.split("_")[1]}_prompt']
+
+    prompt_instructions = """
+    Do not use any text formatting such as bold, italics, bullet points, or numbered lists. 
+    Present all feedback as plain text in full sentences. Just add a "<br/><br/>" between paragraphs to represent a newline.
+    Strictly use the following format when responding:
+    { My band score. Only a number }|{ Evaluation of my answer }|{ your revised version of my response }
+
+    Make sure the band score, evaluation of my answer, and your revised version is separated by the "|" character,
+    because I am gonna do python: .split('|') in your response to make a list.
+    Do not include the "{" and "}" characters when responding.
+    """
+
+    contents = [
+        types.Content(
+            role='user',
+            parts=[
+                types.Part.from_text(
+                    text=
+                    task_prompt + f"""
+                    Here is the task's prompt:
+                    {question}
+
+                    ---
+
+                    Here is the my answer:
+                    {user_response}
+
+                    ---
+                    """ + prompt_instructions
+                ),
+            ],
+        ),
+    ]
+
+    generate_content_config = types.GenerateContentConfig(
+        temperature=model_configs['generation_config'].get('temperature', ''),
+        top_p=model_configs['generation_config'].get('top_p', ''),
+        top_k=model_configs['generation_config'].get('top_k', ''),
+        max_output_tokens=model_configs['generation_config'].get('max_output_tokens', ''),
+        response_mime_type=model_configs['generation_config'].get('response_mime_type', 'text/plain'),
+    )
+
+    try:
+        model_response = []
+        for chunk in ai_client.models.generate_content_stream(
+            model=model_configs['model_name'],
+            contents=contents,
+            config=generate_content_config):
+            model_response.append(chunk.text)
+        full_response = ' '.join(model_response)
+        split_response = full_response.split('|')
+        print(split_response)
+        if len(split_response) != 3:
+            raise Exception
+        
+        band_score = split_response[0].strip().replace(" ", "")
+        evaluation = split_response[1].strip()
+        improved_version = split_response[2].strip()
+        return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improved_version})
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        error_response = "Ooops.. looks like the AI evaluator is not available at the moment. You may try again by refreshing the page."
+        return Response({"band_score": 0, 
+                         "evaluation": error_response, 
+                         "improve_version": error_response})
+    
+
+def gemini_1_5_eval(model_configs, context, prompt_input, eval_len):
+    model = genai1.GenerativeModel(
         model_name=model_configs['model_name'],
         safety_settings=model_configs['safety_settings'],
         generation_config=model_configs['generation_config'],
         system_instruction=model_configs['system_prompt']
     )
+
+    split_response = ["Ooops.. looks like the AI evaluator is not available at the moment." for _ in range(eval_len)]
+
     prompt_goal = f"""
     Explain the following questions and answers below.
     Specify the paragraph where the answer to each question can be found.
@@ -115,11 +208,16 @@ def gemini_1_5_eval(model_configs, context, prompt_input):
 
     full_prompt = prompt_goal + prompt_instructions + prompt_context
     print(full_prompt)
-    response = model.generate_content(full_prompt)
-    split_response = response.text.split('|')
-    print(split_response)
-    print('response -- ', len(split_response))
-    return split_response
+    try:
+        response = model.generate_content(full_prompt)
+        split_response = response.text.split('|')
+        print(split_response)
+        if len(split_response) != eval_len:
+            raise Exception
+        return split_response
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return split_response
 
 
 def gemini_2_eval(model_configs, context, question, gt_answer):
@@ -170,10 +268,10 @@ def ai_evaluation(context, questions, answers, model="gemini-2"):
     for idx, question in enumerate(questions):
         prompt_input += f"Question {idx+1}: {question} -- Answer {idx+1}: {answers[idx]}\n"
 
-    if model == "gemimi-2":
+    if model == "gemini-2":
         return gemini_2_eval(model_configs, context, prompt_input)
     else:
-        return gemini_1_5_eval(model_configs, context, prompt_input)
+        return gemini_1_5_eval(model_configs, context, prompt_input, len(questions))
     
     
 def validate_single_choice_answer(choices, user_answers, correct_answers,

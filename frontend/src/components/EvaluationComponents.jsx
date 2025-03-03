@@ -33,33 +33,45 @@ const WritingEvaluation = ({answer, question, testType}) => {
     }, [answer, question, testType]);
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(improvedVersion);
-        console.log('Improved version text copied.');
+        const textArea = document.createElement("textarea");
+        textArea.value = improvedVersion;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy"); // Legacy method
+        document.body.removeChild(textArea);
+        console.log("Text copied using fallback method.");
     };
     
     const leftContent = (
-        <div className="">
+        <div className="writing-eval">
             <p className="eval-label">TASK PROMPT:</p>
-            <p className="">{question}</p>
+            <p className="writing-text">{question}</p>
             <hr className="" />
             
             <p className="eval-label">YOUR ANSWER:</p>
-            <p className="">{answer}</p>
+            <p className="writing-text">{answer}</p>
             <hr className="" />
         </div>
     );
 
     const rightContent = (
         <div className="answer-container">
-            <p className="eval-label">EVALUATION</p>
+            <p className="ai-disclaimer-writing">
+                AI responses may contain mistakes. Please verify all important information. 
+                If you don't like the AI's response, you may refresh the page to generate a new response.</p>
+            <p className="eval-label">EVALUATION:</p>
             <hr/>
             <div className="eval-container flex-row">
                 <div className="band-score-container flex-col border-style-1 color-scheme-4">
                     <p className="eval-label" style={{ fontSize: "15px", marginTop: 0 }}>BAND SCORE:</p>
-                    {loading ? <LoadingSkeleton /> : <p className="band-score">{bandScore}</p>}
+                    {loading ? <LoadingSkeleton color="white" /> : <p className="band-score">{bandScore}</p>}
                 </div>
                 <div className="eval-text text-align-left">
-                    {loading ? <LoadingSkeleton /> : evaluation}
+                {loading ? (
+                        <LoadingSkeleton text="Generating response. Please wait..." />
+                    ) : (
+                        <div dangerouslySetInnerHTML={{ __html: evaluation }} />
+                    )}
                 </div>
             </div>
             <hr/>
@@ -67,11 +79,15 @@ const WritingEvaluation = ({answer, question, testType}) => {
                 <button 
                     className="copy-btn"
                     onClick={copyToClipboard}>
-                    {renderIcon({iconType: "copy"})}
+                    {renderIcon({iconType1: "copy"})}
                 </button>
                 <p className="eval-label text-align-left">Improved Version:</p>
                 <div className="text-align-left">
-                    {loading ? <LoadingSkeleton /> : improvedVersion}
+                {loading ? (
+                        <LoadingSkeleton text="Generating response. Please wait..."/>
+                    ) : (
+                        <div dangerouslySetInnerHTML={{ __html: improvedVersion }} />
+                    )}
                 </div>
             </div>
         </div>
