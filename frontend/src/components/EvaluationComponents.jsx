@@ -17,19 +17,24 @@ const WritingEvaluation = ({answer, question, testType}) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        sendTextToBackend(answer, question, testType)
-            .then(({ data }) => {
+        const validateText = async () => {
+            setLoading(true);
+            const data = await sendTextToBackend(
+                answer, 
+                question,
+                testType);
+            if (data) {
                 setBandScore(data.band_score);
                 setEvaluation(data.evaluation);
                 setImprovedVersion(data.improve_version);
-            })
-            .catch((error) => {
-                console.error("Error sending text:", error);
+            } else {
                 setBandScore("/");
                 setEvaluation("Error: AI resources might be exhausted. Please try again tomorrow.");
                 setImprovedVersion("Error: AI resources might be exhausted. Please try again tomorrow.");
-            })
-            .finally(() => setLoading(false));
+            }
+            setLoading(false);
+        };
+        validateText();
     }, [answer, question, testType]);
 
     const copyToClipboard = () => {
