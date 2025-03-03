@@ -50,11 +50,11 @@ const WritingEvaluation = ({answer, question, testType}) => {
     const leftContent = (
         <div className="writing-eval">
             <p className="eval-label">TASK PROMPT:</p>
-            <p className="writing-text">{question}</p>
+            <p className="writing-text" style={{ whiteSpace: "pre-wrap" }}>{question}</p>
             <hr className="" />
             
             <p className="eval-label">YOUR ANSWER:</p>
-            <p className="writing-text">{answer}</p>
+            <p className="writing-text" style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: answer }}></p>
             <hr className="" />
         </div>
     );
@@ -75,7 +75,7 @@ const WritingEvaluation = ({answer, question, testType}) => {
                 {loading ? (
                         <LoadingSkeleton text="Generating response. Please wait..." />
                     ) : (
-                        <div dangerouslySetInnerHTML={{ __html: evaluation }} />
+                        <div style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: evaluation }} />
                     )}
                 </div>
             </div>
@@ -91,7 +91,7 @@ const WritingEvaluation = ({answer, question, testType}) => {
                 {loading ? (
                         <LoadingSkeleton text="Generating response. Please wait..."/>
                     ) : (
-                        <div dangerouslySetInnerHTML={{ __html: improvedVersion }} />
+                        <div style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: improvedVersion }} />
                     )}
                 </div>
             </div>
