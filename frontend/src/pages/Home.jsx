@@ -6,7 +6,6 @@ import header_logo from '../assets/header-logo.png';
 import { HamburgerNav } from "../components/Utilities";
 
 function Home() {
-    const title =  "IELTS GO!";
     const navigate = useNavigate(); 
     const selections = [
         {
@@ -22,10 +21,6 @@ function Home() {
             navigate: "/about"
         }
     ];
-
-    useEffect(() => {
-        document.title = title;
-    }, []);
 
     return (
         <div className="home">
