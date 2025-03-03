@@ -26,12 +26,26 @@ const fetchCsrfToken = () =>
       .then(({ data }) => Cookies.set("csrftoken", data.csrfToken))
       .catch(() => {});
 
-const sendTextToBackend = (answer, question, testType) =>
-    axios.post(`${BASE_API_URL}/validate_writing/`, {
-        user_response: answer,
-        question: question,
-        test_type: testType,
-    });
+const sendTextToBackend = async (answer, question, testType) => {
+    try {
+        const response = await axios.post(`${BASE_API_URL}/validate_writing/`, {
+            user_response: answer,
+            question: question,
+            test_type: testType,
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": Cookies.get("csrftoken"),
+            },
+        });
+
+        return response.data;
+
+    } catch (error) {
+        console.error("Error sending answers:");
+        return null;
+    }
+};
 
 const sendAnswersToBackend = async (test_data, user_answers) => {
     try {

@@ -12,19 +12,19 @@ TEST_TYPES = {
         ("double_selection", "Double Selection"),
     ],
     "fill_blanks": [
-        ("fill_sentence_1", "Fill in the Blanks - One word only"),
-        ("fill_sentence_2", "Fill in the Blanks - No more than two words"),
+        ("fill_sentence_1", "Fill the Blanks"),
+        ("fill_sentence_2", "Fill the Blanks (two words)"),
         ("fill_list", "Fill the List"),
     ],
     "fill_table": [
-        ("fill_table", "Fill in the Table")
+        ("fill_table", "Fill the Table")
     ],
     "map": [
-        ("map", "Label the Map")
+        ("map", "Map")
     ],
     "word_box": [
-        ("word_box", "Choose from the Word Box"),
-        ("flow_chart", "Complete the Flow Chart")
+        ("word_box", "Word Box"),
+        ("flow_chart", "Flow Chart")
     ]
 }
 

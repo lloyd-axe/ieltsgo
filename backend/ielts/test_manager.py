@@ -39,7 +39,7 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
             test_model, test_serializer = skill_config.get(test_type, (None, None))
             if not test_model:
                 return Response({"error": f"Invalid test type: {test_type}"}, status=400)
-            test = test_model.objects.filter(test_type=test_type, skill=skill).order_by("id")
+            test = test_model.objects.filter(test_type=test_type, skill=skill).order_by("-id")
             serializer = test_serializer(test, many=True)
             data = serializer.data
         else:
@@ -47,7 +47,7 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
             for ttype, (test_model, test_serializer) in skill_config.items():
                 if test_model != cur_test_model:
                     cur_test_model = test_model
-                    test = cur_test_model.objects.filter(skill=skill).order_by("id")
+                    test = cur_test_model.objects.filter(skill=skill).order_by("-id")
                     serializer = test_serializer(test, many=True)
                     data += serializer.data
     else:
@@ -56,12 +56,12 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
             test_model, test_serializer = test_type_config.get(test_type, (None, None))
             if not test_model:
                 return Response({"error": f"Invalid test type: {test_type}"}, status=400)
-            test = test_model.objects.filter(test_type=test_type).order_by("id")
+            test = test_model.objects.filter(test_type=test_type).order_by("-id")
             serializer = test_serializer(test, many=True)
             data = serializer.data
         else:
             for test_model, test_serializer in MODEL_SERIALIZER.values():
-                test = test_model.objects.order_by("id")
+                test = test_model.objects.order_by("-id")
                 serializer = test_serializer(test, many=True)
                 data += serializer.data
 
