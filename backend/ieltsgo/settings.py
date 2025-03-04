@@ -89,6 +89,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
 ]
 
+CSRF_COOKIE_NAME = "csrftoken"
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
@@ -188,4 +189,3 @@ CACHES = {
         'TIMEOUT': 60 * 60,  # 1 hour
     }
 }
-
