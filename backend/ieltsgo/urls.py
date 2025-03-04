@@ -8,7 +8,7 @@ from django.urls import re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("ieltsgo/", include("ielts.urls")),
-    path("", TemplateView.as_view(template_name='index.html')),
+    re_path(r"^(?!ieltsgo/).*", TemplateView.as_view(template_name="index.html")),
 ]
 
 if settings.DEBUG:
