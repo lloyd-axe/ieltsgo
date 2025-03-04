@@ -8,8 +8,11 @@ from .test_validator import (
 from django.http import HttpResponse
 from django.urls import reverse
 import xml.etree.ElementTree as ET
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
 
-
+def get_csrf_token(request):
+    return JsonResponse({"csrfToken": get_token(request)})
 
 @api_view(['POST'])
 def post_validate_writing_answer(request):

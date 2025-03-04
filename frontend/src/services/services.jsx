@@ -20,14 +20,20 @@ const fetchTestInfo = (testType) =>
 const fetchTestData = (skill, testType, itemId) => 
     axios.get(`${BASE_API_URL}/test/${skill}/${testType}/${itemId}`);
 
-const fetchCsrfToken = () =>
-    axios
-      .get("/api/get-csrf-token/")
-      .then(({ data }) => Cookies.set("csrftoken", data.csrfToken))
-      .catch(() => {});
+const fetchCsrfToken = async () => {
+    try {
+        const { data } = await axios.get("/ieltsgo/api/get-csrf-token/");
+        Cookies.set("csrftoken", data.csrfToken, { sameSite: "strict" });
+        console.log("CSRF Token fetched:", data.csrfToken);
+    } catch (error) {
+        console.error("Failed to fetch CSRF Token:", error);
+    }
+};
+
 
 const sendTextToBackend = async (answer, question, testType) => {
     try {
+        await fetchCsrfToken();
         const response = await axios.post(`${BASE_API_URL}/validate_writing/`, {
             user_response: answer,
             question: question,
