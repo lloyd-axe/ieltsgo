@@ -19,6 +19,7 @@ const WritingEvaluation = ({answer, question, testType}) => {
     useEffect(() => {
         const validateText = async () => {
             setLoading(true);
+            console.log("sending writing to backend...")
             const data = await sendTextToBackend(
                 answer, 
                 question,
