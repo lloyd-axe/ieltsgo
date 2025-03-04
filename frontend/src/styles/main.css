@@ -364,6 +364,10 @@ p {
     border-color: rgb(163, 26, 26) !important;
 }
 
+.custom-radio .radio-checkmark.wrong:after{
+    background: rgb(163, 26, 26) !important;
+}
+
 .custom-check input:checked ~ .correct {
     background: #bcd860 !important;
     border-color: #bcd860 !important;

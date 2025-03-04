@@ -75,6 +75,9 @@ class TestInformation(models.Model):
     test_types = models.CharField(max_length=50, choices=all_test_types)
     information = models.TextField()
 
+    def __str__(self):
+        return f"{self.test_types()} - info"
+
 
 class BasicTestModel(models.Model):
     SKILL_TYPES = [
