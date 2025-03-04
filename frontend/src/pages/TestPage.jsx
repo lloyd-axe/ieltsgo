@@ -27,7 +27,7 @@ function TestPage() {
 
     const fetchData = async () => {
       setLoading(true);
-      fetchCsrfToken();
+      await fetchCsrfToken();
       try {
           const [testDataResponse, displayNamesResponse] = await Promise.all([
             fetchTestData(skill, testType, itemId),
