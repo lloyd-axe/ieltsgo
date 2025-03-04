@@ -23,6 +23,25 @@ const LoadingSkeleton = ({ text="", color = "#bcd860", customClass=""}) => {
     )
 };
 
+const AdSense = () => {
+    useEffect(() => {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error("AdSense error:", e);
+      }
+    }, []);
+  
+    return (
+      <ins className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client="YOUR_AD_CLIENT_ID"
+          data-ad-slot="YOUR_AD_SLOT_ID"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+    );
+  };
+
 const HamburgerNav = ({ selections, classType = "mobile-home" }) => {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
@@ -127,4 +146,4 @@ const formatTime = (seconds) => {
 };
 
 
-export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, TypingEffect, HamburgerNav};
+export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, TypingEffect, HamburgerNav, AdSense};

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchTests, fetchTestTypes, fetchTestTypeNames } from "../services/services";
 import { renderIcon } from "../services/icons";
@@ -39,22 +39,24 @@ function SelectionPage() {
   const [selectedSkill, setSelectedSkill] = useState(skill);
   const [selectedTestType, setSelectedTestType] = useState(testType);
 
-  const [totalPages, setTotalPages] = useState(1);  // Track total pages
-  const [currentPage, setCurrentPage] = useState(1);  // ✅ Track current page
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const dropdownRef = useRef(null);
+
 
   const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
         setLoading(true);
-        //await new Promise((resolve) => setTimeout(resolve, 5000));
         try {
             const [testsResponse, testTypesResponse, displayNamesResponse] = await Promise.all([
                 fetchTests(skill, testType, currentPage),
                 fetchTestTypes(skill),
                 fetchTestTypeNames()
             ]);
-            
+
             setTests(testsResponse.data.data);
             setTotalPages(testsResponse.data.total_pages);
             setTestTypes(["all", ...testTypesResponse.data.test_types]);
@@ -70,7 +72,22 @@ function SelectionPage() {
     };
 
     fetchData();
-  }, [skill, testType, currentPage]);
+}, [skill, testType, currentPage]);
+
+useEffect(() => {
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsOpenSkill(false);
+            setIsOpenTestType(false);
+        }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+}, []);
+
 
   if (loading) return <div><LoadingPage /></div>;
 
@@ -87,6 +104,8 @@ function SelectionPage() {
   const handleItemClick = (skill, test_type) => {
     setSelectedSkill(skill);
     setSelectedTestType(test_type);
+    setIsOpenSkill(false);
+    setIsOpenTestType(false);
     navigate(`/test/selection/${skill}${
       test_type 
       ? test_type !== "all" ? `/${test_type}` : ''
@@ -116,7 +135,7 @@ function SelectionPage() {
           header: (
             <div className="selection-header-container">
               <div className="selection-header flex-row">
-                <div className="dropdown-container flex-row">
+                <div className="dropdown-container flex-row" ref={dropdownRef}>
                   <div className="dropdown">
                       <button className="dropdown-btn" onClick={() => toggleDropdown("skill")}>
                         <span>{selectedSkill ? selectedSkill.charAt(0).toUpperCase() + selectedSkill.slice(1) : "All"}</span>

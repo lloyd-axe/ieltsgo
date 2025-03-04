@@ -12,8 +12,6 @@ function EvaluationPage() {
     const externalTime = location.state?.external_time || 0;
     const countDownMins = location.state?.countDownMins || 0;
 
-    console.log(testData);
-
     const componentMap = {
         writing: <WritingEvaluation answer={answer} question={testData.question} testType={testData.test_type} />,
         single_selection: <SingleChoiceEvaluation answer={answer} testData={testData} externalTime={externalTime} countDownMins={countDownMins}/>,

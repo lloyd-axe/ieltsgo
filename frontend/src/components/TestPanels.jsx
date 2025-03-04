@@ -34,7 +34,6 @@ const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
     };
   
     const handleMouseMove = (e) => {
-      console.log('x')
       if (!isResizing.current) return;
       const newWidth = (e.clientX / window.innerWidth) * 100;
       if (newWidth > 10 && newWidth < 90) {
@@ -43,7 +42,6 @@ const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
     };
 
     const handleMouseMoveMobile = (e) => {
-      console.log('x2')
       if (!isResizing.current) return;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY; 
 

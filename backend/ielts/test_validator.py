@@ -47,6 +47,10 @@ def handle_unanswered_question(user_answers, correct_answers):
 
 
 def validate_writing_answer_1(test_type, user_response, question):
+    if user_response or len(user_response.split(" ")) <= 50:
+        return Response({"band_score": "/", 
+                         "evaluation": "Looks like your answer is too short. This is not worth evaluating. Please try again.", 
+                         "improve_version": "--- --- ---"})
     model_configs = fetch_model_configs()
     task_prompt = model_configs[f'task{test_type.split("_")[1]}_prompt']
 

@@ -351,11 +351,11 @@ p {
     cursor: auto !important;
 }
 
-.marker input:checked ~ .wrong {
-    border-color: rgb(163, 26, 26) !important;
+.marker input:disabled ~ .wrong {
+    border-color: white !important;
 }
 
-.marker .wrong:after {
+.marker .wrong {
     background: rgb(163, 26, 26) !important;
 }
 
@@ -369,11 +369,11 @@ p {
     border-color: #bcd860 !important;
 }
 
-.marker input:checked ~ .correct {
-    border-color: #bcd860 !important;
+.marker input:disabled ~ .correct {
+    border-color: white !important;
 }
 
-.marker .correct:after {
+.marker .correct{
     background: #bcd860 !important;
 }
 
