@@ -4,9 +4,6 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    historyApiFallback: true,
-  },
   base: '/static/',
   build: {
     outDir: 'dist',
