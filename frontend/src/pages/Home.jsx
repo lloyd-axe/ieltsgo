@@ -59,7 +59,7 @@ function Home() {
             <div className="button exam-btn" onClick={() => navigate('/test/mock-exam')}>
                 <p>TRY MOCK EXAM</p>
             </div> */}
-            <div className="home-footer">© 2025 IELTS GO!</div>
+            <div className="home-footer">Alpha © 2025 IELTS GO!</div>
         </div>
     );
 }
