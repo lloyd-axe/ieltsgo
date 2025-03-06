@@ -25,36 +25,16 @@ def post_validate_writing_answer(request):
 @api_view(['POST'])
 def post_validate_answers(request):
     test_data = request.data.get('test_data', {})
-    user_answers = request.data.get('user_answers', {})
-    correct_answers = test_data.get('answers', [])
-    test_type = test_data.get('test_type', '')
-    context = test_data.get('text', '')
-    questions = test_data.get('questions', [])
-    choices = test_data.get('choices', [])
-    table_data = test_data.get('table_data', [])
-    topic = test_data.get('topic', '')
-    topics = test_data.get('topics', '')
-    rows = test_data.get('rows', [])
-    n_questions = test_data.get('num_questions', 0)
-
-    if user_answers: # Handle unanswered questions
-        user_answers = handle_unanswered_question(user_answers, correct_answers)
-    
-    print('user: ', user_answers, 'gt: ', correct_answers)
-
-    validation_methods = {
-        'single_selection': lambda: validate_single_choice_answer(choices, user_answers, correct_answers, questions, context),
-        'double_selection': lambda: validate_multi_choice_answer(choices, user_answers, correct_answers, questions, context),
-        'fill_table': lambda: validate_table_answer(user_answers, correct_answers, table_data, context, topic),
-        'word_box': lambda: validate_wordbox_answer(user_answers, correct_answers, questions, context),
-        'map': lambda: validate_map_answer(user_answers, correct_answers, rows, n_questions, context),
-    }
-    return validation_methods.get(test_type, lambda: validate_answers(user_answers, correct_answers, questions, context, topics))()
+    full_user_answers = request.data.get('user_answers', {})
+    full_user_answers = full_user_answers if full_user_answers else {} 
+    return validate_answers(test_data, full_user_answers)
 
 
 @api_view(["GET"])
-def fetch_test(request, skill, test_type, item_id):
-    return get_test(skill, test_type, item_id)
+def fetch_test(request):
+    skill = request.GET.get("skill", None)
+    item_id = request.GET.get("item_id", None)
+    return get_test(skill, item_id)
 
 
 @api_view(["GET"])

@@ -1,49 +1,32 @@
 from rest_framework import serializers
-from .models import AIConfigs, WritingTest, ChoicesTest, FillBlanksTest, FillTableTest, MapTest, WordBoxTest, TestInformation
+from .models import ContextModel, TestModel, QuestionsSetModel, TestInformation, AIConfigs
 
 
-class AIConfigsSerializer(serializers.ModelSerializer):
+class QuestionsSetSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AIConfigs
-        fields = "__all__"
-        
-
-class WritingTestSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WritingTest
+        model = QuestionsSetModel
         fields = "__all__"
 
 
-class ChoicesTestSerializer(serializers.ModelSerializer):
+class ContextSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ChoicesTest
+        model = ContextModel
         fields = "__all__"
 
 
-class FillBlanksTestSerializer(serializers.ModelSerializer):
+class TestSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FillBlanksTest
-        fields = "__all__"
-
-
-class FillTableTestSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FillTableTest
-        fields = "__all__"
-
-
-class MapTestSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MapTest
-        fields = "__all__"
-
-class WordBoxTestSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WordBoxTest
+        model = TestModel
         fields = "__all__"
 
 
 class TestInformationSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestInformation
+        fields = "__all__"
+
+
+class AIConfigsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AIConfigs
         fields = "__all__"

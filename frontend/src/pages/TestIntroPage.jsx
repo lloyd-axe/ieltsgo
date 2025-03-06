@@ -35,6 +35,11 @@ function TestIntroPage() {
         fetchData();
     }, [testType]);
 
+    const handleNavigation = (next_page) => {
+        setLoading(true);
+        navigate(next_page);
+      };
+    
     return (
         <div className="main-page-container">
             <ActivityPageTemplate
@@ -58,12 +63,12 @@ function TestIntroPage() {
                         <div className="intro-actions">
                             <button 
                                 className="intro-btn intro-back"
-                                onClick={() => navigate(`/test/selection/${skill}`)}>
+                                onClick={() => handleNavigation(`/test/selection/${skill}`)}>
                                 BACK
                             </button>
                             <button 
                                 className="intro-btn intro-submit" 
-                                onClick={() => navigate(`/test/${skill}/${isDoublePanel}/${testType}/${itemId}`)}>
+                                onClick={() => handleNavigation(`/test/${skill}/${isDoublePanel}/${testType}/${itemId}`)}>
                                 OPEN
                             </button>
                         </div>

@@ -5,7 +5,7 @@ import { sendTextToBackend, sendAnswersToBackend } from "../services/services";
 import { renderIcon } from "../services/icons";
 import ActivityPageTemplate from "../components/ActivityPage";
 import LoadingPage from "../pages/LoadingPage";
-import { DiagramAndText, Paragraph} from "./QuestionContrainers";
+import { Diagram, Paragraph} from "./QuestionContrainers";
 import {SingleChoice, MultipleChoice, FillBlanksComponent, 
     FillBlankTableComponent, MapTableComponent, DragDropWordsComponent} from "./AnswerComponents";
 
@@ -51,7 +51,7 @@ const WritingEvaluation = ({answer, question, testType}) => {
     const leftContent = (
         <div className="writing-eval">
             <p className="eval-label">TASK PROMPT:</p>
-            <p className="writing-text" style={{ whiteSpace: "pre-wrap" }}>{question}</p>
+            <p className="writing-text" style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: question }}></p>
             <hr className="" />
             
             <p className="eval-label">YOUR ANSWER:</p>
@@ -119,7 +119,9 @@ const WritingEvaluation = ({answer, question, testType}) => {
 };
 
 const ScoreDisplay = ({ score, testData, externalTime, totalTime}) => {
-    const total_score = testData.answers.flat().length;
+    
+    const total_score = testData.question_sets.reduce((sum, q) => sum + q.answers.flat().length, 0);
+    console.log('total', externalTime);
     const percentage = Math.round((score / total_score) * 100);
     const score_level = percentage >= 100 ? "perfect" 
     : (percentage >= 50 ? "great" 
@@ -309,10 +311,10 @@ const MapEvaluation = (props) => (
     <EvaluationComponent
         {...props}
         Component1={MapTableComponent}
-        Component2={DiagramAndText}
+        Component2={Diagram}
         componentKey="mapTable"
     />
 );
 
-export {WritingEvaluation, SingleChoiceEvaluation, MultiChoiceEvaluation, 
+export {ScoreDisplay, WritingEvaluation, SingleChoiceEvaluation, MultiChoiceEvaluation, 
     FillBlanksEvaluation, FillTableEvaluation, MapEvaluation, DragDropEvaluation};

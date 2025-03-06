@@ -18,7 +18,7 @@ const ActivityPageTemplate = ({ headerNavFields, footerNavFields, contentFields,
                 showTimer={headerNavFields.show_timer}
                 countDown={headerNavFields.is_countdown} 
                 countDownMins={headerNavFields.count_mins}
-                setExternalTime={headerNavFields.setExternalTime}
+                externalTimeRef={headerNavFields.externalTimeRef}
                 showMenu={headerNavFields.show_menu}
             />
 

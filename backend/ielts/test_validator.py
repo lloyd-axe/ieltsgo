@@ -47,7 +47,7 @@ def handle_unanswered_question(user_answers, correct_answers):
 
 
 def validate_writing_answer_1(test_type, user_response, question):
-    if user_response or len(user_response.split(" ")) <= 50:
+    if user_response == "" or len(user_response.split(" ")) <= 50:
         return Response({"band_score": "/", 
                          "evaluation": "Looks like your answer is too short. This is not worth evaluating. Please try again.", 
                          "improve_version": "--- --- ---"})
@@ -66,7 +66,7 @@ def validate_writing_answer_1(test_type, user_response, question):
     Strictly use the following format when responding:
     My band score. No words, just a number | Evaluation of my answer | Revised version of my response
 
-    Make sure each explanation is just separated by the "|" character,
+    Make sure to separate band score, evaluation, and improved version by the "|" character,
     because I am gonna do python: .split('|') in your response to make a list.
     Do not include the "{" and "}" characters when responding.
     """
@@ -200,6 +200,7 @@ def gemini_1_5_eval(model_configs, context, prompt_input, eval_len):
 
     Make sure each explanation is just separated by the "|" character,
     because I am gonna do python: .split('|') in your response to make a list that contains each explanation for each answers.
+    Do not refer to the answers by number. For example, do not mention "Answer #1", only refer to them as "Answer".
 
     """
 
@@ -302,7 +303,7 @@ def validate_single_choice_answer(choices, user_answers, correct_answers,
                     evaluation_class[n][user_answers_list[n]] = 'wrong'
 
     evaluation = ai_evaluation(context, questions, correct_label_answers, MODEL_TO_USE)
-    return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
+    return {"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class}
 
 
 def validate_map_answer(user_answers, correct_answers, rows, n_questions, context):
@@ -328,7 +329,7 @@ def validate_map_answer(user_answers, correct_answers, rows, n_questions, contex
                     evaluation_class[n][user_answers_list[n]] = 'wrong'
 
     evaluation = ai_evaluation(context, rows, correct_label_answers, MODEL_TO_USE)
-    return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
+    return {"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class}
 
 
 def validate_wordbox_answer(user_answers, correct_answers,
@@ -353,7 +354,7 @@ def validate_wordbox_answer(user_answers, correct_answers,
                 evaluation_class[n] = 'wrong'
 
     evaluation = ai_evaluation(context, labeled_questions, correct_label_answers, MODEL_TO_USE)
-    return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
+    return {"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class}
 
 
 def validate_table_answer(user_answers, correct_answers,
@@ -382,7 +383,7 @@ def validate_table_answer(user_answers, correct_answers,
                 evaluation_class[n] = 'wrong'
     
     evaluation = ai_evaluation(context, labeled_question, correct_label_answers, MODEL_TO_USE)
-    return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
+    return {"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class}
 
 
 def validate_multi_choice_answer(choices, user_answers, correct_answers,
@@ -413,10 +414,10 @@ def validate_multi_choice_answer(choices, user_answers, correct_answers,
                         evaluation_class[n][uans] = 'wrong'
     
     evaluation = ai_evaluation(context, questions, correct_label_answers, MODEL_TO_USE)
-    return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
+    return {"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class}
 
 
-def validate_answers(user_answers, correct_answers, questions, context, topics):
+def validate_blank_answers(user_answers, correct_answers, questions, context, topics):
     score = 0
     evaluation, evaluation_class, labeled_questions, correct_label_answers = [], [], [], []
 
@@ -441,4 +442,38 @@ def validate_answers(user_answers, correct_answers, questions, context, topics):
                 else:
                     evaluation_class[n][m] = 'wrong'
     evaluation = ai_evaluation(context, labeled_questions, correct_label_answers, MODEL_TO_USE)
+    return {"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class}
+
+
+def validate_answers(test_data, full_user_answers):
+    score = 0
+    evaluation, evaluation_class = [], []
+    context = test_data.get("context").get("context")
+    for idx, question in enumerate(test_data.get("question_sets")):
+        test_type = question.get("test_type")
+        questions = question.get("questions")
+        correct_answers = question.get("answers")
+        choices = question.get("choices")
+        topics = question.get("topics")
+        table_data = question.get("table_data")
+
+        user_answers = full_user_answers.get(f"{test_type}_{idx}", {})
+
+        if user_answers: # Handle unanswered questions
+            user_answers = handle_unanswered_question(user_answers, correct_answers)
+        
+        validation_methods = {
+            'single_selection': lambda: validate_single_choice_answer(choices, user_answers, correct_answers, questions, context),
+            'double_selection': lambda: validate_multi_choice_answer(choices, user_answers, correct_answers, questions, context),
+            'fill_table': lambda: validate_table_answer(user_answers, correct_answers, table_data, context, topics[0]),
+            'word_box': lambda: validate_wordbox_answer(user_answers, correct_answers, questions, context),
+            'map': lambda: validate_map_answer(user_answers, correct_answers, table_data[1], len(table_data[0]), context),
+        }
+
+        res = validation_methods.get(test_type, lambda: validate_blank_answers(user_answers, correct_answers, questions, context, topics))()
+
+        score += res["score"]
+        evaluation.append(res["evaluation"])
+        evaluation_class.append(res["evaluation_class"])
+    
     return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})

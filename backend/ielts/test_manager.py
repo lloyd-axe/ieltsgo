@@ -2,23 +2,22 @@ import logging
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .constants import TEST_CONFIG, MODEL_SERIALIZER
-from .models import TestInformation, TEST_TYPES
+from .models import TestModel, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
+from .serializers import TestSerializer, ContextSerializer, QuestionsSetSerializer
 from django.core.paginator import Paginator
-
+TestInformation = None
 logger = logging.getLogger(__name__)
 
-def get_test(skill, test_type, item_id):
-    if skill not in TEST_CONFIG.keys():
-        return Response({"error": "Invalid skill type."}, status=400)
-    
-    skill_config = TEST_CONFIG[skill]
-    if test_type not in skill_config.keys():
-        return Response({"error": "Invalid test type."}, status=400)
-            
-    test_model, test_serializer = skill_config[test_type]
-    test = get_object_or_404(test_model, skill=skill, test_type=test_type, id=item_id)
-    serializer = test_serializer(test)
-    return Response(serializer.data)
+def get_test(skill, item_id):
+    test = get_object_or_404(TestModel, skill=skill,  id=item_id)
+    test_data = TestSerializer(test).data
+    context = get_object_or_404(ContextModel, context_id=test_data.get("context"))
+    context_data = ContextSerializer(context).data
+    questions = QuestionsSetModel.objects.filter(context_id=test_data.get("context")).order_by("-question_id")
+    question_sets = QuestionsSetSerializer(questions, many=True).data
+    test_data["question_sets"] = question_sets
+    test_data["context"] = context_data
+    return Response(test_data)
 
 
 def get_all_tests(page, skill=None, test_type=None, page_items=12):
@@ -31,41 +30,49 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
 
     data = []
     if skill and skill != "all":
-        skill_config = TEST_CONFIG.get(skill)
-        if not skill_config:
-            return Response({"error": f"Invalid skill: {skill}"}, status=400)
-
+        tests = []
         if test_type:
-            test_model, test_serializer = skill_config.get(test_type, (None, None))
-            if not test_model:
-                return Response({"error": f"Invalid test type: {test_type}"}, status=400)
-            test = test_model.objects.filter(test_type=test_type, skill=skill).order_by("-id")
-            serializer = test_serializer(test, many=True)
-            data = serializer.data
+            # Skill + test type --------------------------------------------
+            test_data = TestSerializer(TestModel.objects.filter(skill=skill), many=True).data
+            for test in test_data:
+                context_id = test.get("context")
+                questions = QuestionsSetSerializer(QuestionsSetModel.objects.filter(
+                    context_id=context_id, test_type=test_type).order_by("-question_id"), many=True).data
+                if questions:
+                    tests.append(test)
         else:
-            cur_test_model = None
-            for ttype, (test_model, test_serializer) in skill_config.items():
-                if test_model != cur_test_model:
-                    cur_test_model = test_model
-                    test = cur_test_model.objects.filter(skill=skill).order_by("-id")
-                    serializer = test_serializer(test, many=True)
-                    data += serializer.data
+            # ONLY skill ---------------------------------------------------
+            tests = TestSerializer(TestModel.objects.filter(skill=skill), many=True).data
     else:
         if test_type:
-            test_type_config = {k: v for ttype in TEST_CONFIG.values() for k, v in ttype.items()}
-            test_model, test_serializer = test_type_config.get(test_type, (None, None))
-            if not test_model:
-                return Response({"error": f"Invalid test type: {test_type}"}, status=400)
-            test = test_model.objects.filter(test_type=test_type).order_by("-id")
-            serializer = test_serializer(test, many=True)
-            data = serializer.data
+            # ONLY test type ---------------------------------------------
+            question_sets = QuestionsSetSerializer(QuestionsSetModel.objects.filter(
+                test_type=test_type).order_by("-question_id"), many=True).data
+            used_context = []
+            data = []
+            for q_set in question_sets:
+                context_id = q_set.get("context")
+                if context_id not in used_context:
+                    used_context.append(context_id)
+                    data.extend(TestSerializer(TestModel.objects.filter(context=context_id), many=True).data)
+            tests = list({test["id"]: test for test in data}.values())
         else:
-            for test_model, test_serializer in MODEL_SERIALIZER.values():
-                test = test_model.objects.order_by("-id")
-                serializer = test_serializer(test, many=True)
-                data += serializer.data
+            # GET ALL TESTS ---------------------------------------------
+            tests = TestSerializer(TestModel.objects.all(), many=True).data
+    
+    for test in tests:
+        # Get subject
+        context_id = test.get("context")
+        context = ContextSerializer(get_object_or_404(ContextModel, context_id=context_id)).data
+        test["subject"] = context.get("subject")
 
-    paginator = Paginator(data, page_items)
+        #Get test types
+        questions = QuestionsSetSerializer(QuestionsSetModel.objects.filter(
+                context_id=context_id).order_by("question_id"), many=True).data
+        ttype = [q.get("test_type") for q in questions]
+        test["test_type"] = ttype
+
+    paginator = Paginator(tests, page_items)
     paginated_data = paginator.get_page(page)
 
     return Response({
@@ -76,13 +83,12 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
 
 
 def get_test_types(skill=None):
-    if skill:
-        skill_config = TEST_CONFIG.get(skill)
-        if skill_config:
-            return Response({"test_types": list(skill_config.keys())})
+    test_types = [ttype[0] for ttype in QUESTION_SET_TYPES]
+    if skill == "writing":
+        test_types.remove("task_1")
+        test_types.remove("task_2")
 
-    test_types = {test_type[0] for ttype_list in TEST_TYPES.values() for test_type in ttype_list}
-    return Response({"test_types": list(test_types)})
+    return Response({"test_types": test_types})
     
 
 def get_test_info(test_type):
@@ -91,6 +97,6 @@ def get_test_info(test_type):
 
 
 def get_test_type_display_names():
-    display_names = {ttype[0]: ttype[1] for ttype_list in TEST_TYPES.values() for ttype in ttype_list}
+    display_names = {ttype[0]: ttype[1] for ttype in QUESTION_SET_TYPES}
     display_names["all"] = "All"
     return Response({"display_names": display_names})

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { formatTime, HamburgerNav } from "../components/Utilities";
 import logo_image from '../assets/header-logo.png';
 
-const TestHeaderNav = ({ logo, test_skill, test_type, showTimer = true, countDown = false, countDownMins = 0, setExternalTime = ()=>{}, showMenu = false }) => {
+const TestHeaderNav = ({ logo, test_skill, test_type, showTimer = true, countDown = false, countDownMins = 0, externalTimeRef = 0, showMenu = false }) => {
   const countDownTime = countDownMins * 60;
   const navigate = useNavigate();
   const [time, setTime] = useState(countDown ? countDownTime : 0);
@@ -23,23 +23,23 @@ const TestHeaderNav = ({ logo, test_skill, test_type, showTimer = true, countDow
     }
 ];
 
-  useEffect(() => {
-    if (!showTimer) {
-      clearInterval();
-      return;
-    }
+useEffect(() => {
+  if (!showTimer) {
+    clearInterval();
+    return;
+  }
 
-    const interval = setInterval(() => {
-      setTime((prevTime) => {
-        const newTime = countDown ? prevTime - 1 : prevTime + 1;
-        setExternalTime(newTime);
-        return newTime;
-      });
-    }, 1000);
+  const interval = setInterval(() => {
+    setTime((prevTime) => {
+      const newTime = countDown ? prevTime - 1 : prevTime + 1;
+      externalTimeRef.current = newTime; // Updates ref without causing re-renders
+      //setExternalTime(newTime); // Updates the external state directly
+      return newTime;
+    });
+  }, 1000);
 
-    return () => clearInterval(interval);
-
-  }, [countDown, showTimer, setExternalTime]);
+  return () => clearInterval(interval);
+}, [countDown, showTimer]); // Include `setExternalTime`
 
   return (
     <div className="activity-nav color-scheme-1">

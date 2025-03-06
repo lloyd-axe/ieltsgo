@@ -17,8 +17,10 @@ const fetchTestTypeNames = () =>
 const fetchTestInfo = (testType) => 
     axios.get(`${BASE_API_URL}/test_info/${testType}`);
 
-const fetchTestData = (skill, testType, itemId) => 
-    axios.get(`${BASE_API_URL}/test/${skill}/${testType}/${itemId}`);
+const fetchTestData = (skill, itemId) => 
+    axios.get(`${BASE_API_URL}/test/`, {
+        params: { skill:skill, item_id:itemId}
+    });
 
 const fetchCsrfToken = async () => {
     try {

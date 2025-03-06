@@ -17,6 +17,7 @@ const SinglePanel = ({ header, panelContent}) => {
 
 const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
     const [resizableFactor, setResizableFactor] = useState(50);
+    const mobileresizableFactor = 40;
     const isResizing = useRef(false);
   
     const handleMouseDown = (mode = "desktop") => {
@@ -26,9 +27,9 @@ const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
       } else {
-        // ✅ Mobile touch support
-        document.addEventListener("touchmove", handleMouseMoveMobile);
-        document.addEventListener("touchend", handleMouseUpMobile);
+        // Mobile touch support
+        // document.addEventListener("touchmove", handleMouseMoveMobile);
+        // document.addEventListener("touchend", handleMouseUpMobile);
       }
       document.body.style.userSelect = "none";
     };
@@ -85,14 +86,15 @@ const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
 
         {/* MOBILE */}
         <div className="content-main mobile">
-            <div className="panel left-panel custom-scroll" style={{ height: `${resizableFactor}%` }}>
+            <div className="panel left-panel custom-scroll" style={{ height: `${mobileresizableFactor}%` }}>
             {leftPanelContent}
             </div>
-            <div className="resizer" onTouchStart={() => handleMouseDown("mobile")}>
-            <button className="resize-button">⇔</button>
-            </div>
+            {/* <div className="resizer" onTouchStart={() => handleMouseDown("mobile")}>
+              <button className="resize-button">⇔</button>
+            </div> */}
+            <div className="mobile-divider"></div>
 
-            <div className="panel right-panel custom-scroll" style={{ height: `${100 - resizableFactor}%` }}>
+            <div className="panel right-panel custom-scroll" style={{ height: `${95 - mobileresizableFactor}%` }}>
               {rightPanelContent}
             </div>
         </div>

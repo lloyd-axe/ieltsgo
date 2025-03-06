@@ -4,8 +4,9 @@ import { fetchTestData, fetchCsrfToken, fetchTestTypeNames } from "../services/s
 
 import ActivityPageTemplate from "../components/ActivityPage";
 import LoadingPage from "../pages/LoadingPage"
-import { getWritingComponents, getSelectionComponents, getFillBlanksComponents, 
-  getBlankTableComponents, getMapTableComponents, getDragDropComponents} from "../components/SkillUtils";
+import { Diagram, Paragraph} from "../components/QuestionContrainers";
+import { getAnswerComponents } from "../components/AnswerComponents";
+
 
 
 function TestPage() {
@@ -16,7 +17,8 @@ function TestPage() {
   const [showModal, setShowModal] = useState(false);
   const [showAudioModal, setShowAudioModal] = useState(false);
   const [displayNames, setDisplayNames] = useState({});
-  const [externalTime, setExternalTime] = useState(0);
+
+  const externalTimeRef = useRef(0);
 
   const navigate = useNavigate();
   const audioRef = useRef(null);
@@ -24,16 +26,16 @@ function TestPage() {
   // LOAD TEST DATA
   useEffect(() => {
     setShowAudioModal(true);
-
+    console.log(1);
     const fetchData = async () => {
       setLoading(true);
       await fetchCsrfToken();
       try {
           const [testDataResponse, displayNamesResponse] = await Promise.all([
-            fetchTestData(skill, testType, itemId),
+            fetchTestData(skill, itemId),
             fetchTestTypeNames()
           ]);
-          // console.log(testDataResponse.data);
+          console.log('data', testDataResponse.data);
           setTestData(testDataResponse.data);
           setDisplayNames(displayNamesResponse.data.display_names);
       } catch (error) {
@@ -43,36 +45,29 @@ function TestPage() {
       }
     };
     fetchData();
-  }, [skill, testType, itemId]);
+  }, [skill, itemId]);
 
   // HANDLE AUDIO INITIALIZATION
   useEffect(() => {
-    if (testData?.audio_url) {
-      audioRef.current = new Audio(testData.audio_url);
+    if (testData?.context.audio_url && (!audioRef.current || audioRef.current.src !== testData.context.audio_url)) {
+      audioRef.current = new Audio(testData.context.audio_url);
       audioRef.current.preload = "auto";
       audioRef.current.loop = false;
-
-      audioRef.current.addEventListener("canplaythrough", () => {
-        console.log("Audio is ready to play.");
-      });
-
-      audioRef.current.addEventListener("error", (e) => {
-        console.error("Audio loading error:", e);
-      });
-
-      // Cleanup on unmount
-      return () => {
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-          audioRef.current = null;
-        }
-      };
     }
-  }, [testData?.audio_url]);
+  
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        audioRef.current = null;
+      }
+    };
+  }, [testData?.context.audio_url]);
+  
 
   if (loading) return <div><LoadingPage /></div>;
 
+  // NO DATA
   if (!testData) {
     return (
     <div className="main-page-container">
@@ -98,138 +93,100 @@ function TestPage() {
   // LOAD COMPONENTS
   let instructions, leftContent, rightContent, isCountDown, countDownMins;
 
-  const componentMap = {
-    writing: getWritingComponents,
-    single_selection: getSelectionComponents,
-    double_selection: getSelectionComponents,
-    fill_table: getBlankTableComponents,
-    map: getMapTableComponents,
-    word_box: getDragDropComponents,
-    flow_chart: getDragDropComponents,
-    default: getFillBlanksComponents,
+  function getTestComponents({ testData, setAnswer, answer}) {
+    const testSkill = testData.skill;
+    const isCoundDown = testSkill === "listening" ? true:false;
+    const countDownMins = testSkill === "writing" ? 
+    (testData.question_sets[0].test_type === "task_1" ? 20 : 40)
+    : (testData.question_sets.length * 2) + 20;
+
+    const rightPanel = getQuestionComponents({
+      text: testData.context.context,
+      diagram_url: testData.context.image_url
+    });
+    const leftPanel = getAnswerComponents({
+      question_sets: testData.question_sets,
+      answer: testSkill === "writing" ? answer : null,
+      setAnswer: setAnswer
+    });
+    return [
+      "Answer the following before time runs out.",
+      rightPanel,
+      leftPanel,
+      isCoundDown,
+      countDownMins,
+    ];
+  }
+
+  function getQuestionComponents({text, diagram_url=null}){
+    return (
+      <div className="questions-container">
+          <Paragraph text={text}/>
+          {diagram_url && <Diagram diagramUrl={diagram_url}/>}
+      </div>
+    );
   };
 
+  [instructions, leftContent, rightContent, isCountDown, countDownMins] = 
+  getTestComponents({testData: testData, setAnswer: setAnswer, answer: answer});
 
-  const componentProps = {
-    writing: {
-      question: testData.question,
-      diagramUrl: testData.diagram_url,
-      testType,
-      text: answer,
-      setAnswer,
-    },
-    single_selection: {
-      text: testData.text,
-      questions: testData.questions,
-      choices_list: testData.choices,
-      testType,
-      skill,
-      setAnswer,
-    },
-    double_selection: {
-      text: testData.text,
-      questions: testData.questions,
-      choices_list: testData.choices,
-      testType,
-      skill,
-      setAnswer,
-    },
-    fill_table: {
-      text: testData.text,
-      table_data: testData.table_data,
-      topic: testData.topic,
-      skill,
-      setAnswer,
-    },
-    map: {
-      text: testData.text,
-      diagramUrl: testData.diagram_url,
-      topic: testData.topic,
-      num_questions: testData.num_questions,
-      rows: testData.rows,
-      skill,
-      setAnswer,
-    },
-    word_box: {
-      text: testData.text,
-      word_box: testData.word_box,
-      questions: testData.questions,
-      skill,
-      setAnswer,
-    },
-    flow_chart: {
-      text: testData.text,
-      word_box: testData.word_box,
-      questions: testData.questions,
-      skill,
-      setAnswer,
-    },
-    default: {
-      text: testData.text,
-      questions: testData.questions,
-      topics: testData.topics,
-      setAnswer,
-      testType,
-      skill,
-    },
+  const handlePlayAudio = () => {
+    audioRef.current?.play().catch((e) => console.error("Failed to play audio", e));
+    setShowAudioModal(false);
   };
 
-const componentType = skill === "writing" ? "writing" 
-: (componentMap.hasOwnProperty(testType) ? testType : "default");
+  const handleNavigation = (next_page, state={}) => {
+    setLoading(true);
+    navigate(next_page, { state });
+  };
 
-[instructions, leftContent, rightContent, isCountDown, countDownMins] = 
-(componentMap[componentType] || componentMap.default)(componentProps[componentType]  || {});
+  const handleSubmitAnswer = () => setShowModal(true);
 
-const handlePlayAudio = () => {
-  audioRef.current?.play().catch((e) => console.error("Failed to play audio", e));
-  setShowAudioModal(false);
-};
+  const handleConfirmSubmit = () => {
+    setShowModal(false);
+    console.log('ans', answer);
+    console.log(externalTimeRef);
+    const state = skill === "writing"
+      ? { answer:answer, testData: testData, external_time: externalTimeRef }
+      : { answer:answer, testData: testData, external_time: externalTimeRef, countDownMins: countDownMins };
 
-const handleSubmitAnswer = () => setShowModal(true);
+    handleNavigation(`/evaluation/${skill}`, state);
+  };
 
-const handleConfirmSubmit = () => {
-  setShowModal(false);
-  const state = skill === "writing"
-    ? { answer:answer, testData: testData, external_time: externalTime }
-    : { answer:answer, testData: testData, external_time: externalTime, countDownMins: countDownMins };
+  const headerNavFields = {
+    skill: skill.toUpperCase(),
+    test_type: displayNames[testType],
+    show_timer: true,
+    is_countdown: isCountDown,
+    count_mins: countDownMins,
+    externalTimeRef: externalTimeRef,
+  };
 
-  navigate(`/evaluation/${skill}`, { state });
-};
+  const footerNavFields = {
+    submit: handleSubmitAnswer,
+    back: () => navigate(`/test/selection/all`),
+    show_submit: true,
+    show_arrows: false,
+    show_back: true,
+  };
 
-const headerNavFields = {
-  skill: skill.toUpperCase(),
-  test_type: displayNames[testType],
-  show_timer: skill !== "listening",
-  is_countdown: isCountDown,
-  count_mins: countDownMins,
-  setExternalTime: setExternalTime,
-};
+  const contentFields = {
+    header: instructions,
+    left_content: skill !== "listening" ? leftContent : rightContent,
+    right_content: rightContent,
+  };
 
-const footerNavFields = {
-  submit: handleSubmitAnswer,
-  back: () => navigate(`/test/selection/all`),
-  show_submit: true,
-  show_arrows: false,
-  show_back: true,
-};
+  const modalFields = {
+    handle_confirm: handleConfirmSubmit,
+    handle_cancel: () => setShowModal(false),
+    show_modal: showModal,
+  };
 
-const contentFields = {
-  header: instructions,
-  left_content: skill !== "listening" ? leftContent : rightContent,
-  right_content: rightContent,
-};
-
-const modalFields = {
-  handle_confirm: handleConfirmSubmit,
-  handle_cancel: () => setShowModal(false),
-  show_modal: showModal,
-};
-
-const audioFields = {
-  handle_confirm: handlePlayAudio,
-  handle_cancel: () => navigate(`/test/intro/${skill}/${isDoublePanel}/${testType}/${itemId}`),
-  show_modal: showAudioModal,
-};
+  const audioFields = {
+    handle_confirm: handlePlayAudio,
+    handle_cancel: () => navigate(`/test/intro/${skill}/${isDoublePanel}/${testType}/${itemId}`),
+    show_modal: showAudioModal,
+  };
 
   return (
     <div className="main-page-container">

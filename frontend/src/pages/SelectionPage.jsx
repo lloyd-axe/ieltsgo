@@ -15,8 +15,22 @@ const TestSelectionCard = ({skill, testType, subject, id, displayNames, navigate
         <div className="card-skill">{skill.toUpperCase()}</div>
       </div>
       <div className="card-type">
-        <b style={{ fontWeight: 900 }}>{displayNames[testType]}</b> <br/>
-        {subject}
+      <b>{subject}</b>
+      <br/>
+      {
+        testType.length > 1 ? (
+          testType.map((ttype, index) => (
+            <p key={index}>
+              {displayNames[ttype]}
+              {index !== testType.length - 1 && ",\u00A0"}
+            </p>
+          ))
+        ) : (
+          <p>
+            {displayNames[testType[0]]}
+          </p>
+        )
+      }
       </div>
       <div className="card-spacer"></div>
       <div>
@@ -56,7 +70,6 @@ function SelectionPage() {
                 fetchTestTypes(skill),
                 fetchTestTypeNames()
             ]);
-
             setTests(testsResponse.data.data);
             setTotalPages(testsResponse.data.total_pages);
             setTestTypes(["all", ...testTypesResponse.data.test_types]);

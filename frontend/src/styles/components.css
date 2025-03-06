@@ -233,6 +233,7 @@
     flex-direction: row;
     flex-grow: 1;
     overflow: auto;
+    margin-bottom: 15px;
 }
 
 
@@ -501,12 +502,21 @@
 }
   
 .card-type{
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     text-align: right;
     max-height: 80px;
     height: 80px;
     overflow: hidden !important;
+}
+
+.card-type b{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-type b{
+    font-size: 18px;
+    font-weight: 900;
 }
 
 .card-button{
@@ -1096,10 +1106,12 @@
 
     .activity-nav{
         padding: 10px 30px;
+        min-height: 53px;
+        height: 53px;
     }
 
     .header-logo{
-        height: 27px;
+        height: 20px;
     }
 
     .selection-header{
@@ -1169,7 +1181,7 @@
     }
     
     .card-spacer{
-        height: 40px;
+        height: 20px;
     }
 
     .card-icon{
@@ -1180,9 +1192,16 @@
         font-weight: bold;
         font-size: 12px;
         text-align: right;
-        max-height: 45px;
+        max-height: 65px;
         height: 80px;
         overflow: hidden !important;
+    }
+
+    .card-type b{
+        font-size: 9px;
+    }
+    .card-type p{
+        font-size: 7px;
     }
 
     .card-button{
@@ -1219,6 +1238,9 @@
     .content-main {
         flex-direction: column;
     }
+    .content-main.mobile {
+        height: 100% !important;
+    }
 
     .resizer {
         width: 100%;
@@ -1245,8 +1267,8 @@
     }
 
     .answer-container{
-        font-size: 12px;
-        padding: 0px;
+        font-size: 11px;
+        padding: 10px 0px;
     }
 
     .test-info {
@@ -1347,7 +1369,7 @@
     }
 
     .q-description{
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .evaluation-text{
@@ -1393,6 +1415,10 @@
 
     .writing-textarea {
         font-size: 13px;
+    }
+
+    .question-text{
+        font-size: 12px;
     }
     
 }

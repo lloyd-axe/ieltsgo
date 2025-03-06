@@ -1,5 +1,5 @@
 
-import { DiagramAndText, Paragraph} from "./QuestionContrainers";
+import { Diagram, Paragraph} from "./QuestionContrainers";
 import { WritingBox, SingleChoice, MultipleChoice, FillBlanksComponent, 
   FillBlankTableComponent, MapTableComponent, DragDropWordsComponent} from "./AnswerComponents";
 
@@ -10,7 +10,7 @@ function getWritingComponents({ question, diagramUrl, testType, text, setAnswer 
 
   return [
     `Write at least ${minWordCount} words in the text box. It is recommended to complete this task within ${countDownMins} minutes.`,
-    <DiagramAndText key="questionPanel" diagramUrl={diagramUrl} text={question} />,
+    <Diagram key="questionPanel" diagramUrl={diagramUrl} />,
     <WritingBox key="writingBox" minWordCount={minWordCount} text={text} setAnswer={setAnswer} />,
     isCoundDown,
     countDownMins,
@@ -95,7 +95,7 @@ function getMapTableComponents({ text, diagramUrl, topic, num_questions, rows, s
   const isCoundDown = false;
   return [
     instructions,
-    <DiagramAndText key="questionPanel" diagramUrl={diagramUrl} text={text} />,
+    <Diagram key="questionPanel" diagramUrl={diagramUrl} />,
     <MapTableComponent
         key="map"
         diagramUrl={diagramUrl}

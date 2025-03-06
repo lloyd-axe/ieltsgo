@@ -1,12 +1,9 @@
 from django.contrib import admin
 
-from .models import AIConfigs, WritingTest, ChoicesTest, FillBlanksTest, FillTableTest, MapTest, WordBoxTest, TestInformation
+from .models import ContextModel, TestModel, QuestionsSetModel, TestInformation, AIConfigs
 
-admin.site.register(AIConfigs)
-admin.site.register(WritingTest)
-admin.site.register(ChoicesTest)
-admin.site.register(FillBlanksTest)
-admin.site.register(FillTableTest)
-admin.site.register(WordBoxTest)
-admin.site.register(MapTest)
+admin.site.register(ContextModel)
+admin.site.register(TestModel)
+admin.site.register(QuestionsSetModel)
 admin.site.register(TestInformation)
+admin.site.register(AIConfigs)
