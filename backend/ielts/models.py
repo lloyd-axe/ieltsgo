@@ -62,11 +62,11 @@ class TestModel(models.Model):
 
 
 class TestInformation(models.Model):
-    test_types = models.CharField(max_length=50, choices=QUESTION_SET_TYPES)
+    test_type = models.CharField(max_length=50, choices=QUESTION_SET_TYPES)
     information = models.TextField()
 
     def __str__(self):
-        return f"{self.test_types()} - info"
+        return f"{self.test_type} - info"
     
 class AIConfigs(models.Model):
     model_display_name = models.CharField(max_length=50, null=False, blank=False)
