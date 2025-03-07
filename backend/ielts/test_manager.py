@@ -1,7 +1,6 @@
 import logging
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .constants import TEST_CONFIG, MODEL_SERIALIZER
 from .models import TestModel, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
 from .serializers import TestSerializer, ContextSerializer, QuestionsSetSerializer
 from django.core.paginator import Paginator
@@ -92,7 +91,7 @@ def get_test_types(skill=None):
     
 
 def get_test_info(test_type):
-    test_info = TestInformation.objects.filter(test_types=test_type).values_list("information", flat=True).first()
+    test_info = TestInformation.objects.filter(test_type=test_type).values_list("information", flat=True).first()
     return Response({"info": test_info or "Test information does not exists."})
 
 
