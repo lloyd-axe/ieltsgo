@@ -661,7 +661,7 @@ const answerComponentMap = {
         evaluation={evaluation}
         evaluation_class={evaluation_class}
         correct_answer={questionData.answers}
-        answer={answer[`${questionData.test_type}_${q_idx}`]}
+        answer={answer?.[`${questionData.test_type}_${q_idx}`]}
         />,
 };
 
