@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404
 from .models import TestModel, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
 from .serializers import TestSerializer, ContextSerializer, QuestionsSetSerializer
 from django.core.paginator import Paginator
-TestInformation = None
 logger = logging.getLogger(__name__)
 
 def get_test(skill, item_id):
