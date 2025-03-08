@@ -67,8 +67,6 @@ def custom_sitemap(request):
 
     # ✅ Static API URLs
     api_urls = [
-        "validate_writing_answer",
-        "validate_answers",  # (Duplicate name issue, fix it in urls.py)
         "get_all_tests",
         "get_all_test_types",
         "get_test_display_name",

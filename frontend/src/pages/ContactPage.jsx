@@ -55,7 +55,7 @@ function ContactPage() {
                     </div>
                 </div>
             </div>
-            <div className="home-footer">© 2025 IELTS GO!</div>
+            <div className="home-footer">Alpha 1.0 © 2025 IELTS GO!</div>
         </div>
     );
 }

@@ -60,6 +60,11 @@ function SelectionPage() {
 
 
   const navigate = useNavigate();
+
+  const handleNavigation = (next_page, state={}) => {
+    setLoading(true);
+    navigate(next_page, { state });
+  };
   
   useEffect(() => {
     const fetchData = async () => {
@@ -149,6 +154,7 @@ useEffect(() => {
             <div className="selection-header-container">
               <div className="selection-header flex-row">
                 <div className="dropdown-container flex-row" ref={dropdownRef}>
+                  Filter:
                   <div className="dropdown">
                       <button className="dropdown-btn" onClick={() => toggleDropdown("skill")}>
                         <span>{selectedSkill ? selectedSkill.charAt(0).toUpperCase() + selectedSkill.slice(1) : "All"}</span>
@@ -188,7 +194,7 @@ useEffect(() => {
                     subject={test.subject} 
                     id={test.id} 
                     displayNames={displayNames}
-                    navigate={navigate}/>
+                    navigate={handleNavigation}/>
                   ))}
               </div>
               <div className="pagination-controls">

@@ -52,7 +52,7 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
                 context_id = q_set.get("context")
                 if context_id not in used_context:
                     used_context.append(context_id)
-                    data.extend(TestSerializer(TestModel.objects.filter(context=context_id), many=True).data)
+                    data.extend(TestSerializer(TestModel.objects.filter(context=context_id).order_by("-id"), many=True).data)
             tests = list({test["id"]: test for test in data}.values())
         else:
             # GET ALL TESTS ---------------------------------------------

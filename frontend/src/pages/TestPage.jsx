@@ -152,10 +152,11 @@ function TestPage() {
 
     handleNavigation(`/evaluation/${skill}`, state);
   };
+  const formattedTestTypes = testType.split(",") .map(type => displayNames[type] || type).join(", ");
 
   const headerNavFields = {
     skill: skill.toUpperCase(),
-    test_type: displayNames[testType],
+    test_type: formattedTestTypes,
     show_timer: true,
     is_countdown: isCountDown,
     count_mins: countDownMins,
