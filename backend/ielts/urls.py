@@ -12,5 +12,5 @@ urlpatterns = [
     path("api/test_info/<str:test_type>/", fetch_test_info, name="get_test_info"),
     path("api/test_type/names/", fetch_type_display_names, name="get_test_display_name"),
     path("sitemap.xml", custom_sitemap, name="custom_sitemap"),
-    path("/api/get-csrf-token/", get_csrf_token),
+    path("api/get-csrf-token/", get_csrf_token),
 ]
