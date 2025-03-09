@@ -2,24 +2,49 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from .test_manager import (get_test, get_test_info, get_test_type_display_names, get_test_types, get_all_tests)
 from .test_validator import (
-    validate_writing_answer_1, validate_writing_answer_2, validate_answers, validate_table_answer,
-    validate_single_choice_answer, validate_multi_choice_answer,
-    handle_unanswered_question, validate_map_answer, validate_wordbox_answer)
+    validate_writing_answer_1, validate_answers)
 from django.http import HttpResponse
 from django.urls import reverse
 import xml.etree.ElementTree as ET
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
+from rest_framework.decorators import api_view, throttle_classes
+from rest_framework.throttling import AnonRateThrottle
+from rest_framework.exceptions import Throttled
+
+
+class CustomAnonThrottle(AnonRateThrottle):
+    rate = '50/hour'
+
+
+class CustomAnonThrottleWriting(AnonRateThrottle):
+    rate = '10/hour' 
+
 
 def get_csrf_token(request):
     return JsonResponse({"csrfToken": get_token(request)})
 
+
 @api_view(['POST'])
+@throttle_classes([CustomAnonThrottleWriting])
 def post_validate_writing_answer(request):
-    user_response = request.data.get('user_response', '')
-    question = request.data.get('question', '')
-    test_type = request.data.get('test_type', '')
-    return validate_writing_answer_1(test_type, user_response, question)
+    try:
+        user_response = request.data.get('user_response', '')
+        question = request.data.get('question', '')
+        test_type = request.data.get('test_type', '')
+
+        return validate_writing_answer_1(test_type, user_response, question)
+
+    except Throttled as e: 
+        print("Throttling triggered: User exceeded request limit")
+        return JsonResponse(
+            {
+                "band_score": "/",
+                "evaluation": f"Looks like you've run out of requests. Try again in {round(e.wait / 3600, 2)} hours.",
+                "improve_version": "-- --"
+            },
+            status=429
+        )
 
 
 @api_view(['POST'])

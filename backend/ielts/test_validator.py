@@ -8,8 +8,10 @@ from django.conf import settings
 from .models import AIConfigs
 from .serializers import AIConfigsSerializer
 
+
 genai1.configure(api_key=settings.AI_API_KEY)
 MODEL_TO_USE = "gemini-1"
+
 
 def remove_numbered_pipes(text):
     return re.sub(r"\|\d+\|", "", text)
@@ -67,8 +69,9 @@ def validate_writing_answer_1(test_type, user_response, question):
     Strictly use the following format when responding:
     My band score. No words, just a number | Evaluation of my answer | Revised version of my response
 
-    Make sure to separate band score, evaluation, and improved version by the "|" character,
-    because I am gonna do python: .split('|') in your response to make a list.
+    Make sure to separate "band score", "evaluation", and "improved version" by the "|" character,
+    because I am gonna do python: .split('|') in your response to make a list. 
+    The length of the list when I use .split('|') on your response should exactly be 3.
     Do not include the "{" and "}" characters when responding.
     """
 
@@ -87,7 +90,7 @@ def validate_writing_answer_1(test_type, user_response, question):
     try:
         response = model.generate_content(full_prompt)
         split_response = response.text.split('|')
-        print(split_response)
+        print(len(split_response), split_response)
         if len(split_response) != 3:
             raise Exception
         

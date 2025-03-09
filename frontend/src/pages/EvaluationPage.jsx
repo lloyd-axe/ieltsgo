@@ -24,7 +24,6 @@ function EvaluationPage() {
         const [evaluation, setEvaluation] = useState(null);
         const [evaluation_class, setEvaluationClass] = useState(null);
         const [loading, setLoading] = useState(true);
-        console.log('img1', testData.context.image_url);
         useEffect(() => {
             const fetchEvaluation = async () => {
                 setLoading(true);
@@ -36,12 +35,12 @@ function EvaluationPage() {
                         setEvaluationClass(data.evaluation_class);
                     } else {
                         setScore("x");
-                        setEvaluation("An error occurred while validating answers.");
+                        setEvaluation("ERROR: Oh no! You've reached your AI request limit. Please try again in 1 hour.");
                         setEvaluationClass("An error occurred while validating answers.");
                     }
                 } catch (error) {
                     setScore("x");
-                    setEvaluation("An error occurred while validating answers.");
+                    setEvaluation("ERROR: Oh no! You've reached your AI request limit. Please try again in 1 hour.");
                     setEvaluationClass("An error occurred while validating answers.");
                 }
                 setLoading(false);

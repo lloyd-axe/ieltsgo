@@ -25,13 +25,14 @@ const WritingEvaluation = ({answer, question, testType}) => {
                 question,
                 testType);
             if (data) {
+                console.log(data);
                 setBandScore(data.band_score);
                 setEvaluation(data.evaluation);
                 setImprovedVersion(data.improve_version);
             } else {
                 setBandScore("/");
-                setEvaluation("Error: AI resources might be exhausted. Please try again tomorrow.");
-                setImprovedVersion("Error: AI resources might be exhausted. Please try again tomorrow.");
+                setEvaluation("<b>ERROR:</b> \nOh no! You've reached your AI request limit. Please try again in <b>1 hour</b>.");
+                setImprovedVersion("<b>ERROR:</b> --- ---");
             }
             setLoading(false);
         };
