@@ -107,7 +107,8 @@ function TestPage() {
     const leftPanel = getAnswerComponents({
       question_sets: testData.question_sets,
       answer: testSkill === "writing" ? answer : null,
-      setAnswer: setAnswer
+      setAnswer: setAnswer,
+      diagram_url: testData.context.image_url
     });
     return [
       "Answer the following before time runs out.",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TypingEffect } from "../components/Utilities";
+import { Diagram } from "../components/QuestionContrainers";
 
 const WritingBox = ({ minWordCount, text, setAnswer }) => {
     const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
@@ -228,10 +229,13 @@ const FillBlanksComponent = ({ ans_name, start_num, topics, questions, setAnswer
             </span>
         );
     };
+    console.log(topics);
+    console.log(questions);
     return (
         <div className="answer-container-box">
             <div className="q-description">{isEvaluationEmpty ? `Questions ${start_num}-${questions.flat().length+ start_num -1}` : "SOLUTION:"}</div>
             <div>Complete the sentences. Write a <b>WORD / NUMBER</b> in each text box.</div>
+            
             <div className="q-body">
                 {topics.map((topic, t_idx) => (
                     <div className="q-block" key={t_idx}>
@@ -361,10 +365,10 @@ const FillBlankTableComponent = ({ ans_name, start_num, topic, table_data, setAn
     );
 };
 
-const MapTableComponent = ({ ans_name, start_num, topic, num_questions, rows, setAnswer = () => {}, evaluation = {}, evaluation_class = {}}) => {
+const MapTableComponent = ({ ans_name, start_num, topic, num_questions, rows, setAnswer = () => {}, evaluation = {}, evaluation_class = {}, diagram_url = null}) => {
     const [selectedChoices, setSelectedChoices] = useState({});
     const isEvaluationEmpty = Object.keys(evaluation_class).length === 0;
-
+    console.log('img', diagram_url);
     const handleChange = (q_idx, choice) => {
         const updatedChoices = { ...selectedChoices, [q_idx]: choice };
         setSelectedChoices(updatedChoices);
@@ -376,6 +380,7 @@ const MapTableComponent = ({ ans_name, start_num, topic, num_questions, rows, se
 
     return (
         <div className="answer-container-box">
+            {diagram_url && <Diagram diagramUrl={diagram_url}/>}
             <div className="q-description">{isEvaluationEmpty ? `Questions ${start_num}-${start_num + rows.length - 1}` : "SOLUTION:"}</div>
             <div>Choose <b>ONE</b> correct answer from the choices below.</div>
             <div className="q-body">
@@ -395,23 +400,26 @@ const MapTableComponent = ({ ans_name, start_num, topic, num_questions, rows, se
                                 <th>{r_idx+start_num}. {row}</th>
                                 {Array.from({ length: num_questions}, (_, i) => String.fromCharCode(97 + i)).map((i, c_idx) => (
                                     <td key={c_idx}>
-                                        <label key={c_idx}
-                                            className={`marker custom-radio ${isEvaluationEmpty ? "" : "radio-disabled"}`}
-                                            >
-                                            <input
-                                                type="radio"
-                                                name={`single-choice-${r_idx}`}
-                                                checked={
-                                                    !Boolean(isEvaluationEmpty)
-                                                        ? evaluation_class[r_idx]?.[c_idx] === 'correct' || evaluation_class[r_idx]?.[c_idx] === 'wrong'
-                                                        : selectedChoices[r_idx] === c_idx
-                                                }
-                                                onChange={() => handleChange(r_idx, c_idx)}
-                                                className={`${evaluation_class[r_idx]?.[c_idx] || ''}`}
-                                                disabled={!isEvaluationEmpty}
-                                            />
-                                            <span class={`radio-checkmark ${evaluation_class[r_idx]?.[c_idx] || ''}`}></span>
-                                        </label>
+                                        <div className="map-cell">
+                                            <label key={c_idx}
+                                                className={`marker custom-radio ${isEvaluationEmpty ? "" : "radio-disabled"}`}
+                                                >
+                                                <input
+                                                    type="radio"
+                                                    name={`single-choice-${r_idx}`}
+                                                    checked={
+                                                        !Boolean(isEvaluationEmpty)
+                                                            ? evaluation_class[r_idx]?.[c_idx] === 'correct' || evaluation_class[r_idx]?.[c_idx] === 'wrong'
+                                                            : selectedChoices[r_idx] === c_idx
+                                                    }
+                                                    onChange={() => handleChange(r_idx, c_idx)}
+                                                    className={`${evaluation_class[r_idx]?.[c_idx] || ''}`}
+                                                    disabled={!isEvaluationEmpty}
+                                                />
+                                                <span class={`radio-checkmark ${evaluation_class[r_idx]?.[c_idx] || ''}`}></span>
+                                            </label>
+                                        </div>
+                                        
                                     </td>
                                 ))}
                             </tr>
@@ -548,16 +556,15 @@ const DragDropWordsComponent = ({ ans_name, start_num, word_box, questions, setA
                 )}
 
                 <div className="q-block word-box-questions">
-                    <ul>
                         {questions.map((question, q_idx) => {
                             const hasPlaceholder = /\|\d+\|/.test(question);
                             return (
-                                <li key={q_idx} className="q-line">
+                                <div key={q_idx} className="q-line">
                                     <div onDrop={(e) => hasPlaceholder ? handleDrop(e, q_idx) : undefined}
                                         onDragOver={handleDragOver}
                                         onTouchEnd={() => hasPlaceholder ? handleTouchEnd(q_idx) : undefined}
                                         >
-                                        {renderQuestionWithInputs(question, q_idx)}
+                                        <b>{q_idx+start_num}.</b> {renderQuestionWithInputs(question, q_idx)}
                                         <div className="q-line flex-col">
                                             {!isEvaluationEmpty && 
                                                 <div className="evaluation-text color-scheme-4">
@@ -566,10 +573,9 @@ const DragDropWordsComponent = ({ ans_name, start_num, word_box, questions, setA
                                             }
                                         </div> 
                                     </div>
-                                </li>
+                                </div>
                             );
                         })}
-                    </ul>
                 </div>
             </div>
             {!isEvaluationEmpty && (
@@ -580,11 +586,11 @@ const DragDropWordsComponent = ({ ans_name, start_num, word_box, questions, setA
 };
 
 const answerComponentMap = {
-    task_1: ({ questionData, q_idx, setAnswer, answer = null, evaluation = {}, evaluation_class = {}}) => 
+    task_1: ({ questionData, q_idx, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null}) => 
         <WritingBox key={`writingBox${q_idx}`} minWordCount={150} text={answer} setAnswer={setAnswer} />,
-    task_2: ({ questionData, q_idx, setAnswer, answer = null, evaluation = {}, evaluation_class = {} }) => 
+    task_2: ({ questionData, q_idx, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null }) => 
         <WritingBox key={`writingBox${q_idx}`} minWordCount={250} text={answer} setAnswer={setAnswer} />,
-    single_selection: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {} }) => 
+    single_selection: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null }) => 
         <SingleChoice
         key={`${questionData.test_type}_${q_idx}`}
         ans_name={`${questionData.test_type}_${q_idx}`}
@@ -597,7 +603,7 @@ const answerComponentMap = {
         correct_answer={questionData.answers}
         answer={answer?.[`${questionData.test_type}_${q_idx}`]}
         />,
-    double_selection: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {} }) => 
+    double_selection: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null }) => 
         <MultipleChoice
         key={`${questionData.test_type}_${q_idx}`}
         ans_name={`${questionData.test_type}_${q_idx}`}
@@ -610,7 +616,7 @@ const answerComponentMap = {
         correct_answer={questionData.answers}
         answer={answer?.[`${questionData.test_type}_${q_idx}`]}
         />,
-    fill_table: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {} }) => 
+    fill_table: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null }) => 
         <FillBlankTableComponent
             key={`${questionData.test_type}_${q_idx}`}
             ans_name={`${questionData.test_type}_${q_idx}`}
@@ -623,7 +629,7 @@ const answerComponentMap = {
             correct_answer={questionData.answers}
             answer={answer?.[`${questionData.test_type}_${q_idx}`]}
         />,
-    map: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {} }) => 
+    map: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null }) => 
         <MapTableComponent
             key={`${questionData.test_type}_${q_idx}`}
             ans_name={`${questionData.test_type}_${q_idx}`}
@@ -636,8 +642,9 @@ const answerComponentMap = {
             evaluation_class={evaluation_class}
             correct_answer={questionData.answers}
             answer={answer?.[`${questionData.test_type}_${q_idx}`]}
+            diagram_url={diagram_url}
         />, 
-    word_box: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {} }) => 
+    word_box: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null }) => 
         <DragDropWordsComponent
             key={`${questionData.test_type}_${q_idx}`}
             ans_name={`${questionData.test_type}_${q_idx}`}
@@ -650,7 +657,7 @@ const answerComponentMap = {
             correct_answer={questionData.answers}
             answer={answer?.[`${questionData.test_type}_${q_idx}`]}
             />,
-    default: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {} }) => 
+    default: ({ questionData, q_idx, startNum, setAnswer, answer = null, evaluation = {}, evaluation_class = {}, diagram_url=null }) => 
         <FillBlanksComponent
         key={`${questionData.test_type}_${q_idx}`}
         ans_name={`${questionData.test_type}_${q_idx}`}
@@ -665,7 +672,7 @@ const answerComponentMap = {
         />,
 };
 
-function getAnswerComponents({question_sets, answer=null, setAnswer=null, evaluation=null, evaluation_class=null}){
+function getAnswerComponents({question_sets, answer=null, setAnswer=null, evaluation=null, evaluation_class=null, diagram_url=null}){
     let q_lengths = [1, ...question_sets.map(q => q.answers.length)];
     let startNum = q_lengths.map((_, idx) => q_lengths.slice(0, idx + 1).reduce((a, b) => a + b, 0));
     return (
@@ -679,7 +686,8 @@ function getAnswerComponents({question_sets, answer=null, setAnswer=null, evalua
                     setAnswer: setAnswer,
                     answer: answer,
                     evaluation: evaluation?.[q_idx],
-                    evaluation_class: evaluation_class?.[q_idx]
+                    evaluation_class: evaluation_class?.[q_idx],
+                    diagram_url: diagram_url
                 })
             ))}
         </div>

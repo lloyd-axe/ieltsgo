@@ -40,7 +40,7 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
                     tests.append(test)
         else:
             # ONLY skill ---------------------------------------------------
-            tests = TestSerializer(TestModel.objects.filter(skill=skill), many=True).data
+            tests = TestSerializer(TestModel.objects.filter(skill=skill).order_by("-id"), many=True).data
     else:
         if test_type:
             # ONLY test type ---------------------------------------------
@@ -56,7 +56,7 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
             tests = list({test["id"]: test for test in data}.values())
         else:
             # GET ALL TESTS ---------------------------------------------
-            tests = TestSerializer(TestModel.objects.all(), many=True).data
+            tests = TestSerializer(TestModel.objects.all().order_by("-id"), many=True).data
     
     for test in tests:
         # Get subject
@@ -82,9 +82,12 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
 
 def get_test_types(skill=None):
     test_types = [ttype[0] for ttype in QUESTION_SET_TYPES]
-    if skill == "writing":
-        test_types.remove("task_1")
-        test_types.remove("task_2")
+    if skill != "all":
+        if skill != "writing":
+            test_types.remove("task_1")
+            test_types.remove("task_2")
+        else:
+            test_types = ["task_1", "task_2"]
 
     return Response({"test_types": test_types})
     

@@ -57,7 +57,7 @@ function SelectionPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dropdownRef = useRef(null);
-
+  console.log('ty',testTypes);
 
   const navigate = useNavigate();
 

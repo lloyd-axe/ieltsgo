@@ -211,6 +211,10 @@
     background: white;
 }
 
+.single-panel{
+    padding: 0% 10%;
+}
+
 .right-panel { 
     background: white; 
 }
@@ -828,6 +832,11 @@
     height: 30px;
     overflow: hidden;
     text-transform: uppercase;
+}
+
+.map-cell {
+    display: flex;
+    justify-content: center;
 }
 
 .map-table tbody tr th{

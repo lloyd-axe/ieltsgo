@@ -24,13 +24,13 @@ function EvaluationPage() {
         const [evaluation, setEvaluation] = useState(null);
         const [evaluation_class, setEvaluationClass] = useState(null);
         const [loading, setLoading] = useState(true);
+        console.log('img1', testData.context.image_url);
         useEffect(() => {
             const fetchEvaluation = async () => {
                 setLoading(true);
                 try {
                     const data = await sendAnswersToBackend(testData, answer);
                     if (data) {
-                        //console.log(data);
                         setScore(data.score);
                         setEvaluation(data.evaluation);
                         setEvaluationClass(data.evaluation_class);
@@ -62,7 +62,8 @@ function EvaluationPage() {
                             answer: answer,
                             question_sets: testData.question_sets,
                             evaluation: evaluation,
-                            evaluation_class: evaluation_class
+                            evaluation_class: evaluation_class,
+                            diagram_url: testData.context.image_url
                         })}}
                     isDoublePanel={1}
                     footerNavFields={

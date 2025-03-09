@@ -43,7 +43,8 @@ def handle_unanswered_question(user_answers, correct_answers):
         user_answers = ans
     else:
         user_answers = {str(n): user_answers.get(str(n), None) for n in range(len(correct_answers))}
-    return {k: user_answers[k] for k in sorted(user_answers)}
+    
+    return {k: v.lower().replace(" ", "") if isinstance(v, str) else v for k, v in sorted(user_answers.items())}
 
 
 def validate_writing_answer_1(test_type, user_response, question):
@@ -426,6 +427,7 @@ def validate_blank_answers(user_answers, correct_answers, questions, context, to
         evaluation.append([])
         for m in range(len(correct_answers[0])):
             evaluation_class[n].append('wrong')
+            print(questions[n][m])
             blank_question = questions[n][m].split('|')[0] + "___" + questions[n][m].split('|')[2]
             labeled_questions.append(f'{topics[n]}: {blank_question}')
             correct_label_answers.append(correct_answers[n][m])
