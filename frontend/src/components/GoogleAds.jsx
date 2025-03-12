@@ -2,17 +2,13 @@ import { useEffect } from 'react';
 
 const GoogleAdHorizontal = ({ adKey, min_height = "15%" }) => {
     useEffect(() => {
-        if (typeof window !== "undefined" && window.adsbygoogle && !window.adsbygoogle.loaded) {
+        if (typeof window !== "undefined" && window.adsbygoogle) {
             try {
-                window.adsbygoogle.loaded = true;
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
             } catch (e) {
                 console.error('AdSense error:', e);
             }
         }
-        return () => {
-            delete window.adsbygoogle.loaded;
-        };
     }, []);
 
     return (
