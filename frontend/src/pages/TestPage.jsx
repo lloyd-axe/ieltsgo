@@ -6,6 +6,7 @@ import ActivityPageTemplate from "../components/ActivityPage";
 import LoadingPage from "../pages/LoadingPage"
 import { Diagram, Paragraph} from "../components/QuestionContrainers";
 import { getAnswerComponents } from "../components/AnswerComponents";
+import {GoogleAdHorizontal} from '../components/GoogleAds';
 
 
 
@@ -122,8 +123,13 @@ function TestPage() {
   function getQuestionComponents({text, diagram_url=null}){
     return (
       <div className="questions-container">
+          <GoogleAdHorizontal adKey="test-ad-1" min_height="25%"/>
+          <br/>
           <Paragraph text={text}/>
           {diagram_url && <Diagram diagramUrl={diagram_url}/>}
+          <br/>
+          <br/>
+          <GoogleAdHorizontal adKey="test-ad-2" min_height="25%"/>
       </div>
     );
   };

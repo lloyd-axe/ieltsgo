@@ -444,3 +444,15 @@ table, th, td {
     height: 5px;
     background-color: rgb(206, 206, 206);
 }
+
+.ad-container-h {
+    width: 100%;
+    display: block;
+    background-color:  rgb(239, 239, 239);
+}
+
+.ad-container-a{
+    width: 50%;
+    margin: 10px;
+    background-color: rgb(239, 239, 239);
+}

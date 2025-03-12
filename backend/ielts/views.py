@@ -13,10 +13,6 @@ from rest_framework.throttling import AnonRateThrottle
 from rest_framework.exceptions import Throttled
 
 
-class CustomAnonThrottle(AnonRateThrottle):
-    rate = '50/hour'
-
-
 class CustomAnonThrottleWriting(AnonRateThrottle):
     rate = '10/hour' 
 

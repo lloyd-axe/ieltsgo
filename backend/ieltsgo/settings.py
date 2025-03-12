@@ -41,6 +41,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    '192.168.1.3',
     'www.ieltsgo.net', 
     'ieltsgo.net',
     os.getenv('RAILWAY_URL', 'ieltsgo-production.up.railway.app'),  # Railway specific
@@ -50,6 +51,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +60,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
     'ielts',
 ]
 
@@ -79,7 +80,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://ieltsgo-production.up.railway.app",
     'https://www.ieltsgo.net', 
-    'https://ieltsgo.net'
+    'https://ieltsgo.net',
+    "http://192.168.1.3:5173"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -87,11 +89,24 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.ieltsgo.net', 
     'https://ieltsgo.net',
     "http://localhost:5173",
+    "http://192.168.1.3:5173"
 ]
 
 CSRF_COOKIE_NAME = "csrftoken"
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+CSP_SCRIPT_SRC = [
+    "'self'",
+    "https://pagead2.googlesyndication.com",
+    "https://www.google.com",
+]
+
+CSP_FRAME_SRC = [
+    "'self'",
+    "https://googleads.g.doubleclick.net",
+    "https://www.google.com",
+]
 
 
 REST_FRAMEWORK = {
