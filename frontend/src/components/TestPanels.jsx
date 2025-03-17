@@ -17,7 +17,7 @@ const SinglePanel = ({ header, panelContent}) => {
 
 const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
     const [resizableFactor, setResizableFactor] = useState(50);
-    const mobileresizableFactor = 40;
+    const mobileresizableFactor = 50;
     const isResizing = useRef(false);
   
     const handleMouseDown = (mode = "desktop") => {
@@ -94,7 +94,7 @@ const DoublePanel = ({ header, leftPanelContent, rightPanelContent}) => {
             </div> */}
             <div className="mobile-divider"></div>
 
-            <div className="panel right-panel custom-scroll" style={{ height: `${95 - mobileresizableFactor}%` }}>
+            <div className="panel right-panel custom-scroll" style={{ height: `${100 - mobileresizableFactor}%` }}>
               {rightPanelContent}
             </div>
         </div>

@@ -678,8 +678,8 @@ function getAnswerComponents({question_sets, answer=null, setAnswer=null, evalua
     let startNum = q_lengths.map((_, idx) => q_lengths.slice(0, idx + 1).reduce((a, b) => a + b, 0));
     return (
         <div className="answer-container">
-            <GoogleAdHorizontal adKey="test-ad-ans-2" min_height="25%"/>
-            <br/>
+            {/* <GoogleAdHorizontal adKey="test-ad-ans-2" min_height="25%"/>
+            <br/> */}
             {question_sets.map((question, q_idx) => (
                 answerComponentMap[answerComponentMap.hasOwnProperty(question.test_type) 
                     ? question.test_type : "default"]({
@@ -693,8 +693,8 @@ function getAnswerComponents({question_sets, answer=null, setAnswer=null, evalua
                     diagram_url: diagram_url
                 })
             ))}
-            <br/>
-            <GoogleAdHorizontal adKey="test-ad-ans-2" min_height="25%"/>
+            {/* <br/>
+            <GoogleAdHorizontal adKey="test-ad-ans-2" min_height="25%"/> */}
         </div>
     );
 };

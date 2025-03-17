@@ -57,7 +57,6 @@ function SelectionPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dropdownRef = useRef(null);
-  console.log('ty',testTypes);
 
   const navigate = useNavigate();
 
@@ -77,6 +76,7 @@ function SelectionPage() {
             ]);
             setTests(testsResponse.data.data);
             setTotalPages(testsResponse.data.total_pages);
+            
             setTestTypes(["all", ...testTypesResponse.data.test_types]);
             setDisplayNames(displayNamesResponse.data.display_names);
         } catch (error) {
@@ -183,24 +183,26 @@ useEffect(() => {
             </div>
 
           ),
-          left_content: ( 
-            <div className="selection-grid-container">
-              <div className="selection-grid custom-scroll">
-                  {tests.map((test, _) => (
-                    <TestSelectionCard 
-                    key={test.id+ "-" + test.subject} 
-                    skill={test.skill} 
-                    testType={test.test_type} 
-                    subject={test.subject} 
-                    id={test.id} 
-                    displayNames={displayNames}
-                    navigate={handleNavigation}/>
-                  ))}
+          left_content: (
+            <div className="selection-container">
+              <div className="selection-grid-container">
+                <div className="selection-grid custom-scroll">
+                    {tests.map((test, _) => (
+                      <TestSelectionCard 
+                      key={test.id+ "-" + test.subject} 
+                      skill={test.skill} 
+                      testType={test.test_type} 
+                      subject={test.subject} 
+                      id={test.id} 
+                      displayNames={displayNames}
+                      navigate={handleNavigation}/>
+                    ))}
+                </div>
               </div>
               <div className="pagination-controls">
-                <button className="pager-btn" onClick={prevPage} disabled={currentPage === 1}>{renderIcon({iconType1:"prev_btn", className:"pager-icon"})}</button>
-                <span>Page <b>{currentPage}</b> of <b>{totalPages}</b></span>
-                <button className="pager-btn" onClick={nextPage} disabled={currentPage === totalPages}>{renderIcon({iconType1:"next_btn", className:"pager-icon"})}</button>
+                  <button className="pager-btn" onClick={prevPage} disabled={currentPage === 1}>{renderIcon({iconType1:"prev_btn", className:"pager-icon"})}</button>
+                  <span>Page <b>{currentPage}</b> of <b>{totalPages}</b></span>
+                  <button className="pager-btn" onClick={nextPage} disabled={currentPage === totalPages}>{renderIcon({iconType1:"next_btn", className:"pager-icon"})}</button>
               </div>
             </div>
           )

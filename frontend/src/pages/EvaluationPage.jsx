@@ -29,6 +29,7 @@ function EvaluationPage() {
                 setLoading(true);
                 try {
                     const data = await sendAnswersToBackend(testData, answer);
+                    console.log('eval', data);
                     if (data) {
                         setScore(data.score);
                         setEvaluation(data.evaluation);

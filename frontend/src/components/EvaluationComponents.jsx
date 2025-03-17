@@ -24,8 +24,8 @@ const WritingEvaluation = ({answer, question, testType}) => {
                 answer, 
                 question,
                 testType);
+            console.log(data);
             if (data) {
-                console.log(data);
                 setBandScore(data.band_score);
                 setEvaluation(data.evaluation);
                 setImprovedVersion(data.improve_version);
@@ -122,7 +122,6 @@ const WritingEvaluation = ({answer, question, testType}) => {
 const ScoreDisplay = ({ score, testData, externalTime, totalTime}) => {
     
     const total_score = testData.question_sets.reduce((sum, q) => sum + q.answers.flat().length, 0);
-    console.log('total', externalTime);
     const percentage = Math.round((score / total_score) * 100);
     const score_level = percentage >= 100 ? "perfect" 
     : (percentage >= 50 ? "great" 

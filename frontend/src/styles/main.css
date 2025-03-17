@@ -438,6 +438,7 @@ table, th, td {
 .ai-disclaimer-writing{
     font-size: 13px;
     font-style: italic;
+    color:  rgb(140, 140, 140);
 }
 
 .mobile-divider{
@@ -449,10 +450,12 @@ table, th, td {
     width: 100%;
     display: block;
     background-color:  rgb(239, 239, 239);
+    display: none;
 }
 
 .ad-container-a{
     width: 50%;
     margin: 10px;
     background-color: rgb(239, 239, 239);
+    display: none;
 }

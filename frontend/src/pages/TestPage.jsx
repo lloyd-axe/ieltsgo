@@ -18,6 +18,7 @@ function TestPage() {
   const [showModal, setShowModal] = useState(false);
   const [showAudioModal, setShowAudioModal] = useState(false);
   const [displayNames, setDisplayNames] = useState({});
+  const [audioDuration, setAudioDuration] = useState(0);
 
   const externalTimeRef = useRef(0);
 
@@ -27,7 +28,6 @@ function TestPage() {
   // LOAD TEST DATA
   useEffect(() => {
     setShowAudioModal(true);
-    console.log(1);
     const fetchData = async () => {
       setLoading(true);
       await fetchCsrfToken();
@@ -36,7 +36,7 @@ function TestPage() {
             fetchTestData(skill, itemId),
             fetchTestTypeNames()
           ]);
-          console.log('data', testDataResponse.data);
+          // console.log('data', testDataResponse.data);
           setTestData(testDataResponse.data);
           setDisplayNames(displayNamesResponse.data.display_names);
       } catch (error) {
@@ -54,8 +54,11 @@ function TestPage() {
       audioRef.current = new Audio(testData.context.audio_url);
       audioRef.current.preload = "auto";
       audioRef.current.loop = false;
+      audioRef.current.addEventListener('loadedmetadata', () => {
+        setAudioDuration(audioRef.current.duration);
+      });
     }
-  
+    
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -64,7 +67,6 @@ function TestPage() {
       }
     };
   }, [testData?.context.audio_url]);
-  
 
   if (loading) return <div><LoadingPage /></div>;
 
@@ -96,10 +98,10 @@ function TestPage() {
 
   function getTestComponents({ testData, setAnswer, answer}) {
     const testSkill = testData.skill;
-    const isCoundDown = testSkill === "listening" ? true:false;
+    const isCoundDown = false;
     const countDownMins = testSkill === "writing" ? 
     (testData.question_sets[0].test_type === "task_1" ? 20 : 40)
-    : (testData.question_sets.length * 2) + 20;
+    : (testSkill === "listening" ? Number((audioDuration/60).toFixed(2)) : (testData.question_sets.length * 2) + 20);
 
     const rightPanel = getQuestionComponents({
       text: testData.context.context,
@@ -111,8 +113,15 @@ function TestPage() {
       setAnswer: setAnswer,
       diagram_url: testData.context.image_url
     });
+
+    const instructions = `${testSkill === "writing" ? 
+      `Write at least ${testData.question_sets[0].test_type === "task_1" 
+        ? "150" : "250"} words and complete the task` 
+      : (`${testSkill == "reading" 
+      ? "Read the text below" 
+        : "Listen"} and answer the questions`)} within ${countDownMins} minutes.`
     return [
-      "Answer the following before time runs out.",
+      instructions,
       rightPanel,
       leftPanel,
       isCoundDown,
@@ -123,20 +132,19 @@ function TestPage() {
   function getQuestionComponents({text, diagram_url=null}){
     return (
       <div className="questions-container">
-          <GoogleAdHorizontal adKey="test-ad-1" min_height="25%"/>
-          <br/>
+          {/* <GoogleAdHorizontal adKey="test-ad-1" min_height="25%"/>
+          <br/> */}
           <Paragraph text={text}/>
           {diagram_url && <Diagram diagramUrl={diagram_url}/>}
+          {/* <br/>
           <br/>
-          <br/>
-          <GoogleAdHorizontal adKey="test-ad-2" min_height="25%"/>
+          <GoogleAdHorizontal adKey="test-ad-2" min_height="25%"/> */}
       </div>
     );
   };
 
   [instructions, leftContent, rightContent, isCountDown, countDownMins] = 
   getTestComponents({testData: testData, setAnswer: setAnswer, answer: answer});
-
   const handlePlayAudio = () => {
     audioRef.current?.play().catch((e) => console.error("Failed to play audio", e));
     setShowAudioModal(false);
@@ -151,8 +159,6 @@ function TestPage() {
 
   const handleConfirmSubmit = () => {
     setShowModal(false);
-    console.log('ans', answer);
-    console.log(externalTimeRef);
     const state = skill === "writing"
       ? { answer:answer, testData: testData, external_time: externalTimeRef }
       : { answer:answer, testData: testData, external_time: externalTimeRef, countDownMins: countDownMins };

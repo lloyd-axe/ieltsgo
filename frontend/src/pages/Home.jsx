@@ -66,7 +66,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <GoogleAdHorizontal adKey="home-ad-1" min_height="15%"/>
             <div className="home-footer">
                 <div>Alpha 1.0 © 2025 IELTS GO!</div>
             </div>
