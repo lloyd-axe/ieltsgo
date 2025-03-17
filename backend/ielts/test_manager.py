@@ -94,7 +94,8 @@ def get_test_types(skill=None):
 
 def get_test_info(test_type):
     test_info = TestInformation.objects.filter(test_type=test_type).values_list("information", flat=True).first()
-    return Response({"info": test_info or "Test information does not exists."})
+    return Response({"info": test_info or "Read the provided text or listen to the audio carefully. "
+    "Then, answer the following questions based on the information given."})
 
 
 def get_test_type_display_names():

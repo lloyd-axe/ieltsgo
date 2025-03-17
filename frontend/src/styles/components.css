@@ -1308,6 +1308,7 @@
     .content-main.mobile {
         height: 100% !important;
         margin-bottom: 0px;
+        overflow: hidden;
     }
 
     .resizer {

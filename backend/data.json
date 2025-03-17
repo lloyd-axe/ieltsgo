@@ -1,0 +1,248 @@
+
+{
+    "AIConfigs": [
+        {
+            "model_display_name": "gemini-1.5-flash",
+            "is_active": true,
+            "model_name": "gemini-1.5-flash",
+            "system_prompt": "Your Task is to review and evaluate IELTS Academic answers.",
+            "task1_prompt": "Evaluate my IELTS Academic Writing Task 1 response based on Task Achievement, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy. Provide three things: (1) an overall band score, (2) a detailed evaluation highlighting spelling and grammar mistakes, with feedback on strengths and weaknesses, and point out if my answer is less than 150 words, and (3) an improved version of my response.",
+            "task2_prompt": "Evaluate my IELTS Academic Writing Task 2 response based on Task Achievement, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy. Provide three things: (1) an overall band score, (2) a detailed evaluation highlighting spelling and grammar mistakes, with feedback on strengths and weaknesses, and point out if my answer is less than 250 words, and (3) an improved version of my response."
+        }
+    ],
+    "TestInformation": [
+        {
+            "test_type": "task_1",
+            "information": "In the IELTS Writing Task 1 test, you will be presented with a graph, chart, table, or diagram. Your task is to summarize the information, describe the main features, and make comparisons where relevant."
+          },
+          {
+            "test_type": "task_2",
+            "information": "In the IELTS Writing Task 2 test, you will be given a topic and asked to write an essay in response. Your task is to present a clear argument, support your ideas with examples, and organize your response logically."
+          },
+          {
+            "test_type": "single_selection",
+            "information": "In the IELTS multiple-choice test, you will be presented with a question and several answer choices. Your task is to select ONE correct answer based on the information provided."
+          },
+          {
+            "test_type": "double_selection",
+            "information": "In the IELTS multiple-choice test, you will be presented with a question and several answer choices. Your task is to select TWO correct answers based on the information provided."
+          },
+          {
+            "test_type": "fill_sentence",
+            "information": "In the IELTS fill-in-the-blanks test, you will be given a text or audio followed by a series of questions with blanks. Your task is to fill in the blanks using information from the provided text/audio."
+          },
+          {
+            "test_type": "fill_list",
+            "information": "In the IELTS fill-in-the-blanks test, you will be given a text or audio followed by a series of questions with blanks. Your task is to fill in the blanks using information from the provided text/audio."
+          },
+          {
+            "test_type": "fill_table",
+            "information": "In the IELTS fill-the-table test, you will be given a table and a related text or audio. Your task is to complete the table using information from the provided text or audio."
+          },
+          {
+            "test_type": "map",
+            "information": "In the IELTS map test, you will be given a map and a related text or audio. Your task is to answer the questions using the provided information."
+          },
+          {
+            "test_type": "word_box",
+            "information": "In the IELTS word-box test, you will be provided with a text or audio and a list of words in a word-box. Your task is to fill in the blanks using the correct words from the box."
+          }
+    ],
+    "Tests": {
+        "writing": [
+            {
+                "subject": "Leisure Activities of Adults in 2020",
+                "context": "The bar chart below shows the percentage of adults in five different countries who participated in various leisure activities in 2020.\n<br/>\nSummarize the information by selecting and reporting the main features and making comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/eQt2AqN.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Practical Skills for Students",
+                "context": "Some people believe that students should be taught practical skills, such as cooking and managing money, at school. Others argue that academic subjects are more important.\n<br/>\nDiscuss both views and give your opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Future of Online Shopping",
+                "context": "Many people think that online shopping will eventually replace physical stores.\n<br/>\nDo you agree or disagree with this statement?",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Benefits of Advertising",
+                "context": "Some people believe that advertising encourages people to buy things they do not need. Others say that advertisements provide useful information about products and services.\n<br/>\nDiscuss both views and give your own opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            }
+        ],
+        "listening": [],
+        "reading": [
+            {
+                "subject": "The Role of Renewable Energy in Modern Society",
+                "context": "As the global demand for energy continues to rise, renewable energy sources have become essential in addressing the challenges of climate change and energy security. Renewable energy includes sources such as solar, wind, hydro, and geothermal power, which are naturally replenished and produce little to no greenhouse gas emissions. Governments and industries worldwide have invested heavily in renewable energy infrastructure, recognizing its potential to reduce dependence on fossil fuels and create a more sustainable energy future. The transition to renewable energy is also expected to generate economic benefits, including job creation in sectors like solar panel manufacturing, wind turbine installation, and energy storage technology.\n<br/><br/>\nOne of the major advantages of renewable energy is its environmental impact. Unlike coal and natural gas, which release large amounts of carbon dioxide when burned, renewable energy sources generate electricity without contributing to global warming. Solar panels convert sunlight into electricity, while wind turbines harness the power of moving air. Hydroelectric power plants use the flow of water to generate energy, and geothermal plants rely on heat from beneath the Earth's surface. These methods reduce the need for mining and drilling, which are harmful to ecosystems and often lead to environmental degradation.\n<br/><br/>\nDespite its benefits, renewable energy faces several challenges. Solar and wind power generation are intermittent, depending on weather conditions, which makes energy storage critical for maintaining a stable supply. The high initial cost of building renewable energy infrastructure also poses a barrier to widespread adoption. Moreover, integrating renewable energy into existing power grids requires technical upgrades and investments. Nevertheless, ongoing advancements in battery technology and smart grid systems are helping to overcome these obstacles, paving the way for a cleaner and more reliable energy future.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "What is one reason why renewable energy is considered environmentally friendly?",
+                            "Which renewable energy source relies on the flow of water?",
+                            "What is a major barrier to adopting renewable energy mentioned in the text?",
+                            "What does geothermal energy rely on to generate electricity?",
+                            "What is one solution mentioned for handling the intermittent nature of solar and wind power?"
+                        ],
+                        "answers": [
+                            1, 0, 3, 2, 2 
+                        ],
+                        "topics": [],
+                        "choices": [
+                            ["It creates more landfills", "It reduces carbon emissions", "It increases mining activity", "It raises water pollution levels"],
+                            ["Hydro", "Wind", "Solar", "Geothermal"],
+                            ["High maintenance costs", "Lack of consumer interest", "Limited fuel availability", "High initial costs"],
+                            ["Sunlight", "Wind", "Heat from beneath the Earth's surface", "Water currents"],
+                            ["Increased drilling", "Nuclear reactors", "Battery technology", "Oil reserves"]
+                        ],
+                        "table_data": [],
+                        "word_box": []
+                    },
+                    {
+                        "test_type": "double_selection",
+                        "questions" : [
+                            "What are two renewable energy sources mentioned in the text?",
+                            "What are two environmental benefits of renewable energy?",
+                            "What are two challenges facing renewable energy adoption?",
+                            "What are two economic benefits of transitioning to renewable energy?",
+                            "What are two technological solutions helping to overcome the challenges of renewable energy?"
+                        ],
+                        "answers": [
+                            [1, 2], 
+                            [0, 2], 
+                            [0, 2], 
+                            [1, 3], 
+                            [1, 2]  
+                        ],
+                        "topics": [],
+                        "choices": [
+                            ["Coal", "Solar", "Hydro", "Natural gas"],
+                            ["Reduces carbon emissions", "Creates more landfills", "Generates clean electricity", "Increases water pollution"],
+                            ["Weather dependency", "Increased carbon emissions", "High initial costs", "Lower mining activity"],
+                            ["Increased tourism", "Job creation", "Boosts mining activity", "Development of energy storage technology"],
+                            ["Nuclear reactors", "Battery technology", "Smart grid systems", "Increased drilling"]
+                        ],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Impact of Urban Green Spaces",
+                "context": "Urban green spaces, such as parks, gardens, and tree-lined streets, play a vital role in enhancing the quality of life in cities. These areas provide residents with a place to relax, exercise, and connect with nature, helping to reduce stress and improve mental health. Research has shown that people who live near green spaces are more likely to engage in physical activity, which contributes to better overall health. Furthermore, green spaces help to cool urban areas by providing shade and reducing the heat island effect caused by concrete and asphalt surfaces.\n<br/><br/>\nIn addition to their health benefits, urban green spaces also have environmental advantages. Trees and plants absorb carbon dioxide and release oxygen, improving air quality. They also help to manage rainwater by absorbing excess runoff, which reduces the risk of flooding. Biodiversity is another key benefit, as green spaces provide habitats for birds, insects, and other wildlife. Studies have found that urban areas with a greater variety of plants and animals tend to have more resilient ecosystems, which are better able to recover from environmental changes.\n<br/><br/>\nHowever, maintaining urban green spaces presents several challenges. Rapid urbanization and population growth often lead to the reduction of green areas as land is used for housing and infrastructure. Limited funding and resources for maintenance can result in poorly kept parks and gardens, reducing their appeal and accessibility. Furthermore, ensuring that green spaces are safe and welcoming for all residents requires thoughtful design and ongoing community involvement. Despite these challenges, urban green spaces remain a crucial element of sustainable city planning and a key factor in improving urban living standards.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "double_selection",
+                        "questions" : [
+                            "What are two health benefits of urban green spaces mentioned in the text?",
+                            "What are two environmental benefits provided by urban green spaces?",
+                            "What challenge is faced when maintaining urban green spaces?",
+                            "Why is biodiversity important in urban areas?",
+                            "What factors are necessary to ensure green spaces remain welcoming and accessible?"
+                        ],
+                        "answers": [
+                            [0, 2],
+                            [0, 2],
+                            [1, 3],
+                            [2, 0],
+                            [1, 2]
+                        ],
+                        "topics": [],
+                        "choices": [
+                            ["Improved mental health", "Increased traffic flow", "Reduced stress", "Higher property prices"],
+                            ["Absorbing carbon dioxide", "Reducing noise pollution", "Improving air quality", "Providing shade"],
+                            ["Increasing the number of trees", "Rapid urbanization", "Population decline", "Limited funding"],
+                            ["It increases tourism", "It enhances community safety", "It makes ecosystems more resilient", "It reduces construction costs"],
+                            ["Strict government regulation", "Community involvement", "Thoughtful design", "Higher construction standards"]
+                        ],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Rise of Electric Vehicles",
+                "context": "Over the past decade, electric vehicles (EVs) have emerged as a promising solution to reduce the environmental impact of traditional gasoline-powered cars. The development of battery technology and advancements in renewable energy have contributed to the growing popularity of EVs. Governments around the world have introduced incentives and policies to encourage the adoption of electric vehicles, such as tax breaks, subsidies, and the installation of charging infrastructure. As a result, major automotive manufacturers have invested heavily in the production of electric cars, with some even committing to phasing out internal combustion engine vehicles within the next two decades.\n<br/><br/>\nOne of the key factors driving the growth of EVs is the improvement in battery performance. Early electric cars had limited driving ranges and long charging times, which deterred many consumers. However, modern lithium-ion batteries have significantly increased energy density, allowing for longer travel distances and faster charging. Furthermore, the cost of battery production has decreased substantially, making electric cars more affordable. Additionally, the development of fast-charging stations along highways has alleviated concerns about running out of power during long journeys.\n<br/><br/>\nDespite these advancements, challenges remain in the widespread adoption of electric vehicles. The availability of charging stations is still uneven in many regions, particularly in rural areas. Moreover, the environmental impact of mining raw materials for batteries, such as lithium and cobalt, raises ethical and ecological concerns. However, ongoing research into alternative battery technologies, such as solid-state batteries, and the recycling of battery components offer potential solutions. As infrastructure and technology continue to improve, the future of electric vehicles looks increasingly promising.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "What has contributed to the growing popularity of electric vehicles?",
+                            "What factor has improved the driving range of electric vehicles?",
+                            "What challenge remains in the widespread adoption of electric vehicles?",
+                            "What has helped reduce concerns about running out of power during long journeys?",
+                            "What potential solution is mentioned for the environmental impact of battery production?"
+                        ],
+                        "answers": [1, 2, 1, 0, 2],
+                        "topics": [],
+                        "choices": [
+                            ["Higher fuel prices", "Government incentives and battery advancements", "Lower manufacturing costs", "Improved tire efficiency"],
+                            ["Introduction of hybrid engines", "Use of solar power", "Advancements in lithium-ion batteries", "Reducing vehicle weight"],
+                            ["High manufacturing costs", "Limited availability of charging stations", "Lack of customer interest", "Strict emission regulations"],
+                            ["Development of fast-charging stations", "Longer battery warranties", "Better GPS systems", "More fuel-efficient engines"],
+                            ["Reducing battery size", "Using solar power", "Recycling battery components", "Switching to hybrid cars"]
+                        ],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            }
+        ]
+    }
+}

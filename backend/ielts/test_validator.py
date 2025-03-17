@@ -226,7 +226,7 @@ def gemini_1_5_eval(model_configs, context, prompt_input, eval_len):
         return split_response
     except Exception as e:
         print(f"An error occurred: {e}")
-        return split_response
+        return ["Ooops.. looks like the AI evaluator is not available at the moment. You may try again by later." for _ in range(eval_len)]
 
 
 def gemini_2_eval(model_configs, context, question, gt_answer):
