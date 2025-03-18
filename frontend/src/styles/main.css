@@ -203,6 +203,7 @@ p {
 }
 
 .q-body{
+    overflow-x: auto;
     margin: 10px;
 }
 
