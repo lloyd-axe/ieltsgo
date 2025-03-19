@@ -59,6 +59,48 @@ def add_info(item):
     else:
         print(f"Skipped duplicate: {item['test_type']}")
 
+def count_tests(tests):
+    skill_test_count = 0
+    test_type_count = {}
+    for test_item in tests:
+        skill_test_count+=1
+        for question in test_item["question_set"]:
+            if question["test_type"] not in test_type_count.keys():
+                test_type_count[question["test_type"]] = 1
+            else:
+                test_type_count[question["test_type"]] = test_type_count[question["test_type"]]+1
+    return skill_test_count, test_type_count
+
+def count_data():
+    with open("data.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+        test_data = data.get("Tests")
+        skills_count = {}
+        ttype_count = {}
+        for skill in ["writing", "reading", "listening"]:
+                tests = test_data.get(skill)
+                if tests:
+                    skill_test_count, test_type_count = count_tests(tests)
+                    skills_count[skill] = skill_test_count
+                    for t, v in test_type_count.items():
+                        if t not in ttype_count.keys():
+                            ttype_count[t] = v
+                        else:
+                            ttype_count[t] = ttype_count[t] + v
+        
+        total_count = sum(skills_count.values())
+        target_ttype = 10
+        target_total = 100
+
+        print('---------------------------------')
+        for s, v in ttype_count.items():
+            print(s, ': ', v, "  OKAY" if v >= target_ttype else "")
+        print('---------------------------------')
+        for s, v in skills_count.items():
+            print(s, ': ', v, "  OKAY" if v >= (target_total/3) else "")
+        print('---------------------------------')
+        print('TOTAL COUNT: ', total_count, "  OKAY" if total_count >= target_total else "")
+
 
 with open("data.json", "r", encoding="utf-8") as file:
     data = json.load(file)
@@ -82,3 +124,5 @@ with open("data.json", "r", encoding="utf-8") as file:
                         for question in test_item["question_set"]:
                             add_question(test_item["subject"], question)
     print('DONE!')
+
+count_data()

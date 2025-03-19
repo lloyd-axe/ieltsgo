@@ -51,6 +51,176 @@
     "Tests": {
         "writing": [
             {
+                "subject": "Sports & International Peace",
+                "context": "Some people believe that international sporting events can help promote peace and understanding among nations.\n<br/><br/>\nTo what extent do you agree or disagree?",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Impact of Automation on Employment",
+                "context": "Automation is replacing many traditional jobs, particularly in manufacturing and customer service.\n<br/><br/>\nWhat are the possible effects of this trend on workers and society?",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Preserving Cultural Heritage",
+                "context": "Some people believe that preserving historical buildings and sites is essential, while others argue that modern development should take priority.\n<br/><br/>\nDiscuss both views and give your opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Working from Home Life Balance",
+                "context": "The shift to remote work has allowed many people to balance their professional and personal lives better. However, others feel that it has blurred the boundaries between work and home life.\n<br/><br/>\nDiscuss the advantages and disadvantages of working from home.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Fast Food & Modern Diets",
+                "context": "Fast food is becoming increasingly popular in many countries, leading to health problems such as obesity and heart disease.\n<br/><br/>\nWhat measures can governments and individuals take to reduce the consumption of fast food?",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Social Media on Society",
+                "context": "Social media platforms have changed how people communicate and interact. Some argue that it has strengthened connections, while others believe it has weakened real-life relationships.\n<br/><br/>\nDiscuss both views and give your own opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Local impact of Tourism",
+                "context": "Tourism has become an important source of income for many countries, but it can also cause damage to local culture and the environment.\n<br/><br/>\nDiscuss the advantages and disadvantages of tourism and give your opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Government Funding for the Arts",
+                "context": "Some people believe that governments should allocate more funds to support the arts, while others argue that public money should be spent on essential services such as healthcare and education.\n<br/><br/>\nTo what extent do you agree or disagree?",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Technology & Education",
+                "context": "Some people argue that technology has improved the quality of education, while others believe it has caused students to become overly reliant on digital tools.\n<br/><br/>\nDiscuss both views and give your own opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Advancements in Artificial Intelligence",
+                "context": "As artificial intelligence continues to advance, some people believe it will replace many human jobs, while others think it will create new opportunities.\n<br/><br/>\nDiscuss both views and give your opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
                 "subject": "Leisure Activities of Adults in 2020",
                 "context": "The bar chart below shows the percentage of adults in five different countries who participated in various leisure activities in 2020.\n<br/>\nSummarize the information by selecting and reporting the main features and making comparisons where relevant.",
                 "audio_url": null,
@@ -121,8 +291,28 @@
         ],
         "listening": [
             {
+                "subject": "Greenfield High School Map",
+                "context": "Greenfield High School is located in the heart of the town, surrounded by residential areas and accessible through two main gates on the north and east sides. Upon entering through the main gate on the north side, visitors are greeted by the administration building, which stands directly in front of the entrance. To the right of the administration building is the library, which has a large collection of academic and recreational books. Adjacent to the library is the science building, which houses modern laboratories for physics, chemistry, and biology.\n<br/><br/>\nTo the left of the administration building, there is a large cafeteria where students gather during lunch breaks. Next to the cafeteria is the gymnasium, which includes a basketball court and a fitness center. Behind the gymnasium, there is an outdoor sports field used for soccer and track events. Surrounding the sports field is a running track that is frequently used by both students and staff for training and recreational purposes.\n<br/><br/>\nAt the southern end of the campus, there is a fine arts building that contains music and art classrooms. Nearby is the auditorium, where school events and performances are held. On the western side of the campus, there is a large parking lot reserved for staff and senior students. The parking lot is bordered by a row of trees that separates it from the student garden, which serves as a quiet space for relaxation and study.\n<br/><br/>\nIn the northeastern corner of the campus, there is a student center that provides counseling services, academic support, and a quiet study area. Directly across from the student center is the computer lab, which is equipped with high-speed internet and modern workstations. The school grounds are well-maintained with walking paths and benches scattered throughout the campus, creating a welcoming environment for students and staff alike.",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/green-field-map.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "map",
+                        "questions" : [],
+                        "answers": [0, 1, 2, 3, 4],
+                        "topics": ["Greenfield High School Map"],
+                        "choices": [],
+                        "table_data": [ 
+                            ["", "A", "B", "C", "D", "E", "F", "G"], 
+                            ["Library", "Cafeteria", "Fine Arts Building", "Student Center", "Computer Lab"]
+                            ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
                 "subject": "Directions to the library.",
-                "context": "[Setting: A woman approaches a man on a busy street in town.]\nWoman: Excuse me, sir. Sorry to bother you, but I’m new to town, and I’m trying to find the library. Could you help me with directions?\nMan: Oh, of course! The library isn’t too far from here. Are you walking or taking a bus?\nWoman: I’ll be walking.\nMan: Great. Well, from here, you’ll want to head straight down this road, which is High Street. Walk for about five minutes until you reach the Town Hall—it’s a big white building with a clock tower, so you can’t miss it.\nWoman: Okay, so I go straight down High Street until I see the Town Hall. What next?\nMan: Right, once you reach the Town Hall, take a left onto Greenfield Road. Walk along that road for another three or four minutes, and you’ll see the Central Park on your right. It’s quite large, with benches and a fountain in the middle. Keep walking past the park.\nWoman: Got it. Walk past Central Park.\nMan: Yes. After the park, you’ll come to a roundabout. Take the second exit, which will lead you onto Maple Avenue. Keep going until you see a supermarket on your left.\nWoman: A supermarket? What’s its name?\nMan: It’s called FreshMart. It has a green sign, so it’s easy to spot. From there, you’re almost at the library. Just continue down Maple Avenue for another two minutes, and you’ll see the library on your right. It’s a large red-brick building with glass doors. There’s a small sign that says “Westwood Public Library.”\nWoman: That sounds simple enough. So, let me repeat—first, I walk straight down High Street to the Town Hall. Then, I turn left onto Greenfield Road and pass Central Park. After that, I reach a roundabout and take the second exit onto Maple Avenue. Then, I walk past FreshMart supermarket, and the library will be on my right.\nMan: That’s exactly right! You’ve got it.\nWoman: Thank you so much for your help!\nMan: No problem! Enjoy your visit to the library.Test",
+                "context": "Setting: A woman approaches a man on a busy street in town.]\nWoman: Excuse me, sir. Sorry to bother you, but I’m new to town, and I’m trying to find the library. Could you help me with directions?\nMan: Oh, of course! The library isn’t too far from here. Are you walking or taking a bus?\nWoman: I’ll be walking.\nMan: Great. Well, from here, you’ll want to head straight down this road, which is High Street. Walk for about five minutes until you reach the Town Hall—it’s a big white building with a clock tower, so you can’t miss it.\nWoman: Okay, so I go straight down High Street until I see the Town Hall. What next?\nMan: Right, once you reach the Town Hall, take a left onto Greenfield Road. Walk along that road for another three or four minutes, and you’ll see the Central Park on your right. It’s quite large, with benches and a fountain in the middle. Keep walking past the park.\nWoman: Got it. Walk past Central Park.\nMan: Yes. After the park, you’ll come to a roundabout. Take the second exit, which will lead you onto Maple Avenue. Keep going until you see a supermarket on your left.\nWoman: A supermarket? What’s its name?\nMan: It’s called FreshMart. It has a green sign, so it’s easy to spot. From there, you’re almost at the library. Just continue down Maple Avenue for another two minutes, and you’ll see the library on your right. It’s a large red-brick building with glass doors. There’s a small sign that says “Westwood Public Library.”\nWoman: That sounds simple enough. So, let me repeat—first, I walk straight down High Street to the Town Hall. Then, I turn left onto Greenfield Road and pass Central Park. After that, I reach a roundabout and take the second exit onto Maple Avenue. Then, I walk past FreshMart supermarket, and the library will be on my right.\nMan: That’s exactly right! You’ve got it.\nWoman: Thank you so much for your help!\nMan: No problem! Enjoy your visit to the library.",
                 "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/ai-audio-3.mp3",
                 "image_url": "https://i.imgur.com/wgkDmo7.png",
                 "question_set": [
@@ -142,6 +332,381 @@
             }
         ],
         "reading": [
+            {
+                "subject": "Effects of Deforestation on the Environment",
+                "context": "Deforestation is one of the most pressing environmental issues facing the planet today. Large-scale clearing of forests for agriculture, urban development, and logging has led to severe ecological consequences. Forests play a crucial role in maintaining the planet’s climate by absorbing carbon dioxide and regulating temperature. When trees are cut down, the stored carbon is released into the atmosphere, contributing to global warming and climate change.\n<br/><br/>\nLoss of biodiversity is another major consequence of deforestation. Forests are home to more than 80% of terrestrial species, including mammals, birds, insects, and plants. When their habitats are destroyed, many species face extinction or are forced to migrate to new areas, which can lead to population decline and imbalance in ecosystems. This disruption in the food chain and ecosystem stability can have long-lasting effects on global biodiversity.\n<br/><br/>\nDeforestation also leads to soil erosion and degradation. Tree roots hold soil in place, preventing it from being washed away by rain. Without the protective cover of trees, the topsoil becomes vulnerable to erosion, reducing soil fertility and making it difficult for plants to grow. This has a direct impact on agriculture, reducing crop yields and increasing the need for artificial fertilizers.\n<br/><br/>\nFurthermore, deforestation disrupts the water cycle. Trees absorb and release moisture into the atmosphere through a process called transpiration. When large areas of forest are removed, the amount of moisture in the air decreases, leading to lower rainfall levels. This can cause droughts, reduce water availability for human consumption and agriculture, and increase the risk of wildfires.\n<br/><br/>\nGovernments and environmental organizations have introduced reforestation projects and conservation programs to combat the negative effects of deforestation. Sustainable logging practices, improved land management, and the creation of protected areas have shown some success in reducing deforestation rates. However, illegal logging and expanding agricultural activities continue to pose significant challenges.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_table",
+                        "questions" : [],
+                        "answers": ["carbon", "habitat", "fertility", "droughts", "logging", 
+                        "farmland", "emissions", "flooding"],
+                        "topics": ["Effects of Deforestation on the Environment"],
+                        "choices": [],
+                        "table_data": [
+                            ["Cause", "Effect"],
+                            ["Deforestation", "Release of |1| into the atmosphere, contributing to global warming"],
+                            ["Loss of |2|", "Decline in biodiversity and species extinction"],
+                            ["Soil erosion", "Reduced soil |3| and lower crop yields"],
+                            ["Disruption of water cycle", "Lower rainfall levels and increased |4|"],
+                            ["Illegal |5|", "Depletion of forest resources and habitat destruction"],
+                            ["Agricultural expansion", "Conversion of forest land into |6|"],
+                            ["Increased carbon |7|", "Acceleration of climate change"],
+                            ["Loss of tree cover", "Increased risk of |8| and landslides"]
+                          ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Evolution of Formula 1 Racing",
+                "context": "Formula 1 (F1) racing has grown to become one of the most popular and technologically advanced motorsports in the world. Originating in the early 20th century, the first official F1 World Championship race took place in 1950 at Silverstone, England. Over the decades, the sport has evolved in terms of car design, safety standards, and race strategies. Early F1 cars were simple machines with minimal aerodynamic features and safety measures. However, technological advancements in the 1960s and 1970s introduced more powerful engines, lightweight materials, and enhanced suspension systems.\n<br/><br/>\nThe introduction of aerodynamics in the 1970s changed the way F1 cars performed on the track. Engineers began to design cars with wings and diffusers to generate downforce, which increased grip and cornering speeds. The rise of turbocharged engines in the 1980s made the cars even faster, but reliability became a challenge. In response to several high-profile accidents, the Fédération Internationale de l'Automobile (FIA) introduced stricter regulations on car construction and track safety. Helmets, fire-resistant suits, and reinforced cockpits became mandatory to protect drivers from injury.\n<br/><br/>\nBy the 1990s and early 2000s, the development of electronic aids, such as traction control and semi-automatic gearboxes, gave drivers greater control over their cars. However, the FIA banned certain electronic assists to ensure that driver skill remained a critical factor in race outcomes. Modern F1 cars feature hybrid power units that combine traditional internal combustion engines with energy recovery systems (ERS) to enhance efficiency and performance. The push for sustainability has led to the development of biofuels and more eco-friendly technologies in recent years.\n<br/><br/>\nThe F1 calendar now includes races on five continents, with iconic circuits such as Monza, Monaco, and Suzuka hosting annual events. The sport has also embraced digital technology, with teams using advanced data analysis and simulation tools to improve race strategies. Formula 1 remains a dynamic and evolving sport, balancing technological innovation with competitive fairness and driver safety.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "word_box",
+                        "questions" : ["The first official F1 World Championship race took place in |1| at Silverstone, England.",
+                            "The introduction of |2| in the 1970s changed the way F1 cars performed on the track.",
+                            "Turbocharged engines made the cars faster but affected |3| in the 1980s.",
+                            "The |4| introduced stricter regulations on car construction and track safety.",
+                            "Modern F1 cars feature hybrid power units that combine combustion engines with |5| systems.",
+                            "The sport has embraced |6| technology to improve race strategies.",
+                            "The F1 calendar includes races on |7| continents, with Monza, Monaco, and Suzuka hosting annual events.",
+                            "The push for |8| has led to the development of biofuels and eco-friendly technologies."],
+                        "answers": ["1950", "aerodynamics", "reliability", "FIA", "ERS", "digital", "five", "sustainability"],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": [
+                            "seven",
+                            "airfoil",
+                            "aerodynamics", 
+                            "design",
+                            "FIA", "FIFA", "AIA", 
+                            "ERS", "1950", "DRS",
+                            "digital", "five",
+                            "performance", "efficiency",
+                            "sustainability", 
+                            "reliability",
+                            "dynamic", "1960"
+                        ]
+                    }
+                ]
+            },
+            {
+                "subject": "Impact of Climate Change on Agriculture",
+                "context": "Climate change has become one of the most significant challenges facing global agriculture. Rising temperatures, shifting weather patterns, and increased frequency of extreme weather events have placed immense pressure on food production systems. Higher temperatures can lead to reduced crop yields by causing heat stress in plants and altering the growing seasons. For example, wheat and rice, which are staple crops for millions of people, are particularly sensitive to temperature changes.\n<br/><br/>\nWater scarcity is another major consequence of climate change. Reduced rainfall and prolonged droughts have made it difficult for farmers to irrigate their fields. In some regions, groundwater levels have dropped significantly, limiting access to water for agricultural use. This has resulted in lower crop output and increased costs for farmers who need to find alternative water sources or invest in water-saving technologies.\n<br/><br/>\nPests and diseases have also become more widespread due to changing climate conditions. Warmer temperatures create favorable environments for insects and plant pathogens, increasing the risk of crop damage. For instance, the spread of the fall armyworm, which thrives in warm climates, has caused substantial damage to maize and other cereal crops in Africa and Asia. Farmers have been forced to invest more in pest control measures, raising production costs and reducing profitability.\n<br/><br/>\nDespite these challenges, some adaptive strategies have shown positive results. Farmers have begun adopting drought-resistant crop varieties, improving irrigation systems, and using precision agriculture techniques to monitor and manage crop health. Governments and agricultural organizations have also introduced financial support and training programs to help farmers adjust to changing environmental conditions. However, long-term solutions will require coordinated global efforts to reduce greenhouse gas emissions and promote sustainable agricultural practices.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_table",
+                        "questions" : [],
+                        "answers": ["temperatures", "costs", "pests", "Drought", "crop"],
+                        "topics": ["Impact of Climate Change on Agriculture"],
+                        "choices": [],
+                        "table_data": [
+                            ["Cause", "Effect"],
+                            ["Rising |1|", "Reduced crop yields due to heat stress"],
+                            ["Water scarcity", "Lower crop output and increased |2| for farmers"],
+                            ["Spread of |3|", "Increased crop damage and higher pest control costs"],
+                            ["|4|", "Reduced availability of irrigation water"],
+                            ["Adaptive strategies", "Improved |4| health and increased resilience"]
+                          ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The French Revolution",
+                "context": "The French Revolution, which began in 1789, was a pivotal moment in European history that reshaped the political landscape of France and influenced the course of global events. The revolution was fueled by a combination of economic hardship, political instability, and growing dissatisfaction with the monarchy. France was facing a financial crisis due to years of war and extravagant spending by the royal family. The rise of Enlightenment ideas, which emphasized liberty, equality, and fraternity, inspired the French people to challenge the authority of King Louis XVI and the existing social order. The Estates-General was called in 1789 to address the financial crisis, but it quickly became a platform for broader political demands.\n<br/><br/>\nOne of the key events of the revolution was the storming of the Bastille on July 14, 1789. The Bastille was a symbol of royal oppression, and its capture by revolutionaries marked the beginning of widespread public uprising. Following this, the National Assembly abolished feudal privileges and introduced the Declaration of the Rights of Man and of the Citizen, which outlined fundamental human rights and established the principles of liberty and equality. However, the revolution soon became more radical, leading to the execution of King Louis XVI and Queen Marie Antoinette in 1793. The Reign of Terror, led by Maximilien Robespierre and the Committee of Public Safety, saw thousands of suspected enemies of the revolution executed by guillotine.\n<br/><br/>\nAfter the fall of Robespierre in 1794, the revolution entered a more moderate phase. The Directory, established in 1795, sought to stabilize the country but struggled to maintain order. In 1799, Napoleon Bonaparte seized power through a coup d'état, effectively ending the revolution and establishing the French Consulate. Napoleon's rise to power marked the beginning of a new era for France, as he implemented reforms that modernized the French legal and educational systems while expanding French influence across Europe through military conquests.\n<br/><br/>\nThe French Revolution left a lasting legacy. It inspired future democratic movements and shaped modern political ideologies. The principles of equality, citizenship, and human rights established during the revolution became the foundation of many modern democratic societies. The revolution also influenced the development of secularism and the separation of church and state in France and beyond. While the revolution brought significant social and political change, it also demonstrated the challenges of achieving stability and unity in a rapidly changing society.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" : [ 
+                            [
+                                "The French Revolution began in |1|.",
+                                "The storming of the |2| marked the start of the public uprising.",
+                                "The Declaration of the Rights of Man and of the Citizen established the principles of |3| and equality.",
+                                "The Reign of Terror was led by |4| and the Committee of Public Safety.",
+                                "In 1799, Napoleon Bonaparte seized power through a |5| d'état."
+                              ]
+                              
+                        ],
+                        "answers": [
+                            [
+                                "1789",
+                                "Bastille",
+                                "liberty",
+                                "Robespierre",
+                                "coup"
+                              ]                              
+                        ],
+                        "topics": ["The French Revolution"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    },
+                    {
+                        "test_type": "double_selection",
+                        "questions" : [
+                            "What were some of the causes of the French Revolution?",
+                            "What was the significance of the storming of the Bastille?",
+                            "What key changes were introduced by the National Assembly?",
+                            "What led to the Reign of Terror during the French Revolution?",
+                            "How did Napoleon Bonaparte come to power?",
+                            "What were some of the lasting effects of the French Revolution?"
+                          ]
+                          ,
+                        "answers": [
+                            [0, 1],
+                            [1, 0],
+                            [0, 1],
+                            [2, 1],
+                            [1, 3],
+                            [1, 3]
+                          ]
+                          ,
+                        "topics": [],
+                        "choices": [
+                            ["Economic hardship", "Political instability", "Military conquest", "Religious conflict"],
+                            ["It ended the monarchy", "It marked the beginning of the public uprising", "It introduced new taxes", "It strengthened the royal family"],
+                            ["Abolition of feudal privileges", "Introduction of a constitutional monarchy", "Formation of the Estates-General", "Increased royal power"],
+                            ["Political reforms", "Opposition to the monarchy", "Leadership of Robespierre", "Public support for the king"],
+                            ["Public election", "Military coup", "Appointment by the king", "Revolutionary vote"],
+                            ["Establishment of a monarchy", "Inspiration for future democratic movements", "Increased church influence", "Foundation of modern human rights"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Age of Exploration",
+                "context": "The Age of Exploration, which began in the 15th century, marked a significant period of global exploration and expansion. European powers such as Spain and Portugal were at the forefront of this movement, driven by the desire for new trade routes, wealth, and territorial expansion. Advances in navigation technology, including the development of the compass and more accurate maps, enabled explorers to travel further and more safely. Christopher Columbus's voyage in 1492, sponsored by Spain, led to the discovery of the Americas, which dramatically altered global trade and political dynamics. Portuguese explorers like Vasco da Gama opened up direct sea routes to India, enhancing trade between Europe and Asia.\n<br/><br/>\nThe consequences of exploration were far-reaching. The exchange of goods, plants, and animals between the Old World and the New World, known as the Columbian Exchange, transformed economies and diets globally. European settlers introduced wheat, horses, and cattle to the Americas, while crops such as potatoes, tomatoes, and maize were brought back to Europe. However, the arrival of Europeans also had devastating effects on indigenous populations. Diseases such as smallpox and measles, to which native people had no immunity, led to massive population declines. Colonization efforts resulted in the displacement and exploitation of local communities, creating long-term social and economic challenges.\n<br/><br/>\nPolitical and economic rivalries intensified during the Age of Exploration. European powers competed for control over newly discovered territories and valuable trade routes. The establishment of colonies in the Americas, Africa, and Asia fueled the rise of the transatlantic slave trade, which had a profound and tragic impact on African societies. The wealth gained from these colonies strengthened European economies and contributed to the rise of powerful empires. However, it also laid the groundwork for future conflicts over colonial dominance and trade rights.\n<br/><br/>\nThe legacy of the Age of Exploration is still visible today. The blending of cultures, languages, and cuisines reflects the deep historical connections established during this period. Modern global trade patterns, political boundaries, and cultural exchanges have their roots in the exploration and colonization efforts of the 15th and 16th centuries. While it brought about significant advancements and wealth, the Age of Exploration also left behind a complex and often painful legacy of exploitation and cultural disruption.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "double_selection",
+                        "questions" : [
+                            "Which European countries were key players during the Age of Exploration?",
+                            "What were some of the motivations behind European exploration?",
+                            "What impact did the Columbian Exchange have on global trade and diets?",
+                            "What were some of the negative effects of European exploration on indigenous populations?",
+                            "How did the Age of Exploration influence political and economic rivalries?",
+                            "What are some of the lasting cultural impacts of the Age of Exploration?"
+                          ]
+                          ,
+                        "answers": [
+                            [1, 0],
+                            [1, 2],
+                            [2, 3],
+                            [2, 0],
+                            [1, 2],
+                            [0, 2]
+                          ]
+                          ,
+                        "topics": [],
+                        "choices": [
+                            ["France and Germany", "Spain and Portugal", "Italy and Greece", "England and Russia"],
+                            ["Scientific discovery", "Search for trade routes", "Religious freedom", "Military conquest"],
+                            ["Increased use of gold", "Spread of democratic ideas", "Introduction of new crops and animals", "Decline of maritime trade"],
+                            ["Improved healthcare", "Introduction of advanced technology", "Population decline due to diseases", "Creation of new trade routes"],
+                            ["Reduced trade competition", "Strengthened European economies", "Rise of the transatlantic slave trade", "Increased diplomatic cooperation"],
+                            ["Blending of languages and cultures", "Formation of trade unions", "Rise of global population", "Reduction in political tensions"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Rise and Fall of the Roman Empire",
+                "context": "The Roman Empire was one of the most influential and powerful civilizations in history. It began in 27 BCE when Octavian, later known as Augustus, became the first Roman Emperor. Under his rule, the Roman Empire expanded significantly, encompassing much of Europe, North Africa, and the Middle East. The empire's strength lay in its highly trained military, advanced engineering, and effective governance. Roman law and infrastructure, including roads, aqueducts, and public buildings, set a foundation for future Western civilizations. Latin, the language of the Romans, also influenced the development of many modern languages, including Italian, French, and Spanish.\n<br/><br/>\nThe Pax Romana, or Roman Peace, was a period of relative stability and prosperity that lasted for approximately 200 years, beginning with the reign of Augustus. During this time, trade flourished, and Roman cities became cultural and economic hubs. Art, literature, and architecture thrived, and Roman citizens enjoyed a higher standard of living. The empire’s road network facilitated the movement of goods, people, and information, strengthening the economy and political stability. The Roman legal system, which included concepts like innocent until proven guilty, provided a model for many modern legal frameworks.\n<br/><br/>\nHowever, the Roman Empire eventually began to decline. Political instability, economic troubles, and military defeats weakened the empire’s strength. Corruption among government officials and the increasing reliance on foreign mercenaries to defend the borders contributed to the empire’s vulnerability. In 285 CE, Emperor Diocletian divided the empire into the Western and Eastern Roman Empires to improve administrative efficiency. While the Eastern Empire, known as the Byzantine Empire, endured for nearly a thousand more years, the Western Empire faced repeated invasions from Germanic tribes and collapsed in 476 CE when the last emperor, Romulus Augustulus, was overthrown.\n<br/><br/>\nThe legacy of the Roman Empire remains visible today. Roman architectural styles, including the use of arches and domes, continue to influence modern construction. Roman political and legal ideas have shaped modern democratic institutions and justice systems. Even the Roman calendar forms the basis of the calendar used today. The influence of Roman art, literature, and philosophy can be seen in Western culture, making the Roman Empire’s impact one of the most enduring in human history.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "Who was the first Roman Emperor?",
+                            "What was the Pax Romana?",
+                            "Which factor contributed to the Roman Empire’s economic prosperity during the Pax Romana?",
+                            "What strategy did Emperor Diocletian use to improve administrative efficiency?",
+                            "What was one cause of the Western Roman Empire’s collapse?",
+                            "What modern languages were influenced by Latin?",
+                            "What architectural feature used by the Romans is still influential today?",
+                            "What legal concept from Roman law influenced modern justice systems?",
+                            "What was one consequence of political corruption in the Roman Empire?",
+                            "What year marked the fall of the Western Roman Empire?"
+                          ]
+                          ,
+                        "answers": [1, 3, 2, 2, 1, 2, 1, 0, 2, 3],
+                        "topics": [],
+                        "choices": [
+                            ["Julius Caesar", "Augustus", "Marcus Aurelius", "Nero"],
+                            ["A military strategy", "A political alliance", "A war campaign", "A period of peace and prosperity"],
+                            ["Military conquests", "Slave labor", "Road networks and trade", "Tax increases"],
+                            ["Strengthening the army", "Building more roads", "Dividing the empire", "Increasing taxes"],
+                            ["Overpopulation", "Invasions by Germanic tribes", "Religious conflict", "Poor agricultural output"],
+                            ["English and German", "Latin and Greek", "French and Italian", "Spanish and Portuguese"],
+                            ["Pillars", "Arches", "Beams", "Foundations"],
+                            ["Innocent until proven guilty", "Right to remain silent", "Trial by jury", "No taxation without representation"],
+                            ["Improved military strength", "Economic recovery", "Increased vulnerability", "Greater political unity"],
+                            ["410 CE", "500 CE", "580 CE", "476 CE"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Social Media on Communication",
+                "context": "Social media has transformed the way people communicate and interact with one another. Platforms such as Facebook, Twitter, and Instagram have made it easier for individuals to stay connected, share information, and engage with global communities. Unlike traditional forms of communication, which often require physical presence or scheduled calls, social media allows for instant messaging and real-time updates. This shift has led to an increase in the speed and volume of information exchange, enabling people to maintain relationships regardless of geographical distance.\n<br/><br/>\nOne of the positive effects of social media is its ability to strengthen personal and professional networks. People can easily connect with family and friends, share life events, and seek support during difficult times. For businesses, social media has become a valuable tool for marketing and customer engagement. Companies can promote their products, respond to customer inquiries, and analyze market trends in real time. Additionally, social media platforms have given rise to new forms of entertainment and creative expression, allowing users to share videos, music, and artwork with a global audience.\n<br/><br/>\nHowever, the rise of social media has also introduced several challenges. Misinformation and fake news can spread rapidly, leading to confusion and distrust among the public. The constant exposure to curated and idealized images of others’ lives can contribute to feelings of inadequacy and mental health issues, such as anxiety and depression. Moreover, the addictive nature of social media can lead to reduced productivity and strained relationships. Studies have shown that excessive use of social media is linked to poor sleep patterns and increased stress levels.\n<br/><br/>\nTo address these issues, social media platforms and governments have introduced measures to regulate content and protect users. Fact-checking systems, content moderation policies, and mental health awareness campaigns have been implemented to reduce the spread of false information and promote responsible use. Users are encouraged to set time limits on social media use and engage in offline activities to maintain a healthy balance between their online and offline lives. While social media continues to evolve, finding a balance between its benefits and drawbacks remains a key challenge for society.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "What is one major way social media has changed communication?",
+                            "How has social media benefited businesses?",
+                            "What mental health issue is linked to excessive social media use?",
+                            "What measure has been introduced to reduce the spread of false information?",
+                            "What is one strategy recommended to maintain a healthy balance with social media use?",
+                            "What problem can arise from comparing oneself to idealized social media images?",
+                            "What feature of social media allows for real-time updates?",
+                            "How can social media negatively impact productivity?",
+                            "What type of creative content can be shared on social media platforms?",
+                            "What role have governments played in managing social media issues?"
+                          ]
+                          ,
+                        "answers": [3, 1, 0, 1, 1, 3, 1, 0, 2, 2],
+                        "topics": [],
+                        "choices": [
+                            ["It requires more time to communicate", "It reduces communication accuracy", "It increases the cost of communication", "It allows for instant messaging"],
+                            ["Increased operational costs", "Improved customer engagement", "Reduced advertising opportunities", "Decreased customer trust"],
+                            ["Anxiety and depression", "Improved mood", "Higher energy levels", "Reduced stress"],
+                            ["More advertisements", "Fact-checking systems", "Increased user restrictions", "Public surveys"],
+                            ["Increase screen time", "Engage in offline activities", "Follow more influencers", "Check notifications frequently"],
+                            ["Higher energy levels", "Increased motivation", "Reduced self-awareness", "Feelings of inadequacy"],
+                            ["Scheduled calls", "Instant messaging", "Handwritten letters", "Face-to-face meetings"],
+                            ["Reduced productivity", "Increased focus", "Reduced stress", "Better time management"],
+                            ["Scientific reports", "Political speeches", "Videos and music", "News articles only"],
+                            ["Increased advertising", "Promoting misinformation", "Regulating content and promoting responsible use", "Banning certain platforms"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Rise of Remote Work",
+                "context": "Remote work has become increasingly popular in recent years, driven by advancements in technology and changing workplace attitudes. The widespread availability of high-speed internet, video conferencing platforms, and collaborative online tools has allowed employees to work from almost anywhere. Many companies have adopted flexible work policies, enabling staff to work remotely either full-time or on a hybrid schedule. This shift has been particularly pronounced since the COVID-19 pandemic, which forced many businesses to adapt to remote operations almost overnight. As a result, both employers and employees have discovered the benefits and challenges of working outside a traditional office environment.\n<br/><br/>\nOne of the main benefits of remote work is the increased flexibility it offers employees. Without the need to commute, workers can save time and reduce transportation costs. This flexibility also allows employees to create a more personalized and comfortable work environment, which can lead to higher productivity and job satisfaction. Additionally, remote work enables companies to access a wider talent pool by hiring employees from different geographical locations. This has made it easier for businesses to find skilled workers without being limited by regional constraints.\n<br/><br/>\nHowever, remote work also presents several challenges. Communication and collaboration can become more difficult when team members are not physically present in the same location. Misunderstandings may arise more frequently, and building team cohesion can be challenging. Furthermore, some employees struggle with maintaining a healthy work-life balance when their home becomes their workplace. The lack of clear boundaries between work and personal life can lead to increased stress and burnout.\n<br/><br/>\nTo address these issues, companies have implemented various strategies to support remote employees. Regular virtual meetings, team-building activities, and clear communication channels help maintain a sense of connection and teamwork. Employers are also encouraging staff to establish a designated workspace at home and set clear working hours to separate work from personal time. By striking a balance between flexibility and structure, companies aim to maximize the benefits of remote work while minimizing its drawbacks.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "What has contributed to the rise of remote work in recent years?",
+                            "What is one of the key benefits of remote work for employees?",
+                            "How has remote work allowed companies to improve their hiring process?",
+                            "What is one challenge that remote workers often face?",
+                            "What strategy have companies used to maintain team cohesion among remote workers?",
+                            "Why did many companies adopt remote work policies more widely during the pandemic?",
+                            "What problem can arise from the lack of boundaries between work and personal life?",
+                            "What type of work schedule have some companies adopted for remote work?",
+                            "How have virtual meetings helped remote teams?",
+                            "What solution have companies suggested for creating a better work environment at home?"
+                          ],
+                        "answers": [0, 1, 1, 3, 2, 1, 2, 1, 0, 1],
+                        "topics": [],
+                        "choices": [
+                            ["Technological advancements", "Government regulations", "Economic downturn", "Increased competition"],
+                            ["Higher salaries", "Increased flexibility", "Better office equipment", "More vacation days"],
+                            ["Reduced hiring costs", "Access to a wider talent pool", "Improved salary structures", "Reduced employee turnover"],
+                            ["More training opportunities", "Better work conditions", "Limited internet access", "Difficulty with work-life balance"],
+                            ["Providing better pay", "Introducing mandatory office days", "Regular virtual meetings", "Reducing working hours"],
+                            ["Employee preference", "COVID-19 pandemic", "Government regulations", "Technological advancements"],
+                            ["More training opportunities", "Increased productivity", "Stress and burnout", "Better communication"],
+                            ["Rotational schedule", "Hybrid schedule", "Reduced working hours", "Fixed office hours"],
+                            ["They maintain a sense of connection", "They increase working hours", "They reduce employee turnover", "They create competition"],
+                            ["Encourage working overtime", "Create a designated workspace", "Increase virtual meetings", "Provide more vacation days"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Impact of Global Trade on Economic Development",
+                "context": "Global trade has been a driving force behind economic growth and development for centuries. The exchange of goods and services across international borders has allowed countries to specialize in the production of certain commodities while gaining access to products and resources that are not available domestically. Trade has helped nations increase their wealth, create jobs, and improve living standards. The development of trade routes, such as the Silk Road and maritime shipping lanes, facilitated the early expansion of global trade and laid the foundation for modern international commerce.\n<br/><br/>\nThe rise of industrialization in the 19th century accelerated global trade. Advances in transportation, including the steamship and the railway, allowed goods to be moved more quickly and efficiently over long distances. The creation of standardized shipping containers in the 20th century further reduced costs and increased the volume of trade. Countries began to establish trade agreements and economic partnerships to regulate tariffs and encourage the free flow of goods across borders. For example, China has become a leading exporter of electronics, with an export value of $2,500 billion, primarily trading with the United States. Similarly, Germany exports automobiles valued at $1,800 billion, with France as a major trade partner.\n<br/><br/>\nGlobal trade has also contributed to technological advancement. The exchange of knowledge and expertise between nations has led to innovations in manufacturing, agriculture, and information technology. Japan, known for its technological exports valued at $1,200 billion, trades heavily with China. Brazil, a major exporter of coffee valued at $500 billion, has Argentina as a key trade partner. India, with an export value of $800 billion in pharmaceuticals, trades primarily with the United Kingdom.\n<br/><br/>\nHowever, global trade also presents challenges. Trade imbalances can lead to economic dependency and political tension between countries. The outsourcing of manufacturing to countries with lower labor costs has raised concerns about job losses and income inequality in developed nations. Environmental issues, such as increased carbon emissions from shipping and deforestation linked to export-driven agriculture, have also emerged as significant challenges. Balancing the benefits of global trade with these potential drawbacks remains a key concern for policymakers worldwide.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_table",
+                        "questions" : [],
+                        "answers": ["2,500", "Automobiles", "Japan", "Argentina", "800"],
+                        "topics": ["The Impact of Global Trade on Economic Development"],
+                        "choices": [],
+                        "table_data": [
+                        ["Country", "Exported Product", "Export Value (Billion $)", "Trade Partner"], 
+                        ["China", "Electronics", "|1|", "United States"],
+                        ["Germany", "|2|", "1,800", "France"],
+                        ["|3|", "Machinery", "1,200", "China"],
+                        ["Brazil", "Coffee", "500", "|4|"],
+                        ["India", "Pharmaceutical", "|5|", "United Kingdom"]
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Evolution of Communication Technology",
+                "context": "Communication has played a crucial role in human history, shaping how societies interact and share information. In ancient times, people relied on oral storytelling and simple symbols to convey messages. Early forms of writing, such as hieroglyphics and cuneiform, allowed for the preservation of knowledge across generations. As societies became more complex, the need for faster and more reliable communication methods grew. The invention of paper and the development of postal systems marked significant milestones in the advancement of communication.\n<br/><br/>\nThe invention of the printing press in the 15th century revolutionized communication by enabling the mass production of books and written materials. This allowed knowledge and ideas to spread more quickly and widely than ever before. Printed materials became more accessible, leading to higher literacy rates and greater public engagement with scientific, political, and philosophical issues. The printing press also played a key role in the Reformation and the Enlightenment, as people could now access and discuss new ideas more easily.\n<br/><br/>\nThe next major breakthrough came with the invention of the telegraph and telephone in the 19th century. The telegraph allowed messages to be sent over long distances almost instantly, transforming business and personal communication. The telephone further enhanced this capability by allowing people to speak directly with one another despite being separated by great distances. These innovations paved the way for more complex communication networks and laid the foundation for modern telecommunications.\n<br/><br/>\nIn the 20th and 21st centuries, the rise of the internet and mobile technology transformed communication once again. Email, instant messaging, and social media platforms have made it possible to communicate with anyone, anywhere in the world, in real time. Smartphones have combined multiple communication tools into a single device, allowing for seamless integration of text, voice, and video communication. These technologies have not only made communication faster and more convenient but have also reshaped social interactions and global connectivity.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" : [
+                            [
+                                "In ancient times, people used |1| and symbols to convey messages.",
+                                "The invention of the |2| press revolutionized the spread of knowledge.",
+                                "The telegraph and the |3| transformed long-distance communication.",
+                                "Email and |4| have made it easier to communicate in real time.",
+                                "Printed materials became more accessible, leading to higher |5| rates.",
+                                "Early forms of writing, such as hieroglyphics and |6|, helped preserve knowledge.",
+                                "Smartphones allow seamless integration of text, |7|, and video communication.",
+                                "The telephone allowed people to speak directly despite being separated by great |8|."
+                            ]
+                        ],
+                        "answers": [
+                            [
+                                "storytelling", "printing", "telephone", "messaging", 
+                                "literacy", "cuneiform", "voice", "distances"
+                            ]
+                        ],
+                        "topics": ["The Evolution of Communication Technology"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
             {
                 "subject": "The Role of Renewable Energy in Modern Society",
                 "context": "As the global demand for energy continues to rise, renewable energy sources have become essential in addressing the challenges of climate change and energy security. Renewable energy includes sources such as solar, wind, hydro, and geothermal power, which are naturally replenished and produce little to no greenhouse gas emissions. Governments and industries worldwide have invested heavily in renewable energy infrastructure, recognizing its potential to reduce dependence on fossil fuels and create a more sustainable energy future. The transition to renewable energy is also expected to generate economic benefits, including job creation in sectors like solar panel manufacturing, wind turbine installation, and energy storage technology.\n<br/><br/>\nOne of the major advantages of renewable energy is its environmental impact. Unlike coal and natural gas, which release large amounts of carbon dioxide when burned, renewable energy sources generate electricity without contributing to global warming. Solar panels convert sunlight into electricity, while wind turbines harness the power of moving air. Hydroelectric power plants use the flow of water to generate energy, and geothermal plants rely on heat from beneath the Earth's surface. These methods reduce the need for mining and drilling, which are harmful to ecosystems and often lead to environmental degradation.\n<br/><br/>\nDespite its benefits, renewable energy faces several challenges. Solar and wind power generation are intermittent, depending on weather conditions, which makes energy storage critical for maintaining a stable supply. The high initial cost of building renewable energy infrastructure also poses a barrier to widespread adoption. Moreover, integrating renewable energy into existing power grids requires technical upgrades and investments. Nevertheless, ongoing advancements in battery technology and smart grid systems are helping to overcome these obstacles, paving the way for a cleaner and more reliable energy future.",

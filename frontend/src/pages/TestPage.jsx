@@ -101,7 +101,8 @@ function TestPage() {
     const isCoundDown = false;
     const countDownMins = testSkill === "writing" ? 
     (testData.question_sets[0].test_type === "task_1" ? 20 : 40)
-    : (testSkill === "listening" ? Number((audioDuration/60).toFixed(2)) : (testData.question_sets.length * 2) + 20);
+    : (testSkill === "listening" ? Number(((audioDuration/60) + (testData.question_sets.length * 2)).toFixed(2)) 
+    : (testData.question_sets.length * 2) + 20);
 
     const rightPanel = getQuestionComponents({
       text: testData.context.context,

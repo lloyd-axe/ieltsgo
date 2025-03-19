@@ -1,4 +1,6 @@
 import logging
+from itertools import cycle
+from collections import defaultdict, deque
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import TestModel, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
@@ -70,7 +72,24 @@ def get_all_tests(page, skill=None, test_type=None, page_items=12):
         ttype = [q.get("test_type") for q in questions]
         test["test_type"] = ttype
 
-    paginator = Paginator(tests, page_items)
+    grouped = defaultdict(deque)
+    for item in tests:
+        grouped[item['skill']].append(item)        
+
+    fixed_order = ["writing", "writing", "reading", "listening", "writing", "reading", "reading"]
+    extra_types = [key for key in grouped if key not in fixed_order]
+    queue = deque(fixed_order + extra_types)
+
+    organized_list = []
+    while queue:
+        key = queue.popleft()
+        if grouped[key]:
+            organized_list.append(grouped[key].popleft())
+            # Re-add key to the end of the queue if it still has items
+            if grouped[key]:
+                queue.append(key)
+
+    paginator = Paginator(organized_list, page_items)
     paginated_data = paginator.get_page(page)
 
     return Response({
