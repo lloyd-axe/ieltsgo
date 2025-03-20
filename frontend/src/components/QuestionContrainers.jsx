@@ -31,7 +31,15 @@ const Diagram = ({diagramUrl}) => {
 
                 {diagramUrl && (
                     <>
-                     {(loading ? <LoadingSkeleton /> : <img class="question-diagram" src={diagramUrl} alt="Question's diagram" onLoad={() => setLoading(false)}></img>)}
+                     {loading && <LoadingSkeleton />}
+                        <img
+                            className="question-diagram"
+                            src={diagramUrl}
+                            alt="Question's diagram"
+                            onLoad={() => setLoading(false)}
+                            onError={() => setLoading(false)} // Hide loading if the image fails to load
+                            style={{ display: loading ? "none" : "block" }}
+                        />
                     </>
                     )}
             </div>  
