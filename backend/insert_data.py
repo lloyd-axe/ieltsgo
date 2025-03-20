@@ -89,7 +89,7 @@ def count_data():
                             ttype_count[t] = ttype_count[t] + v
         
         total_count = sum(skills_count.values())
-        target_ttype = 10
+        target_ttype = 15
         target_total = 100
 
         print('---------------------------------')

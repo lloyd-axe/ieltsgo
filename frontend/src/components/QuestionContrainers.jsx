@@ -1,3 +1,6 @@
+import { LoadingSkeleton } from "../components/Utilities";
+import { useState } from "react";
+
 const DiagramAndText = ({diagramUrl, text}) => {
     return (
         <div className="questions-container">
@@ -22,9 +25,15 @@ const Paragraph = ({text}) => {
 };
 
 const Diagram = ({diagramUrl}) => {
+    const [loading, setLoading] = useState(true);
     return (
            <div className="flex-col flex-center">
-                {diagramUrl && (<img class="question-diagram" src={diagramUrl} alt="Question's diagram"></img>)}
+
+                {diagramUrl && (
+                    <>
+                     {(loading ? <LoadingSkeleton /> : <img class="question-diagram" src={diagramUrl} alt="Question's diagram" onLoad={() => setLoading(false)}></img>)}
+                    </>
+                    )}
             </div>  
     );
 };

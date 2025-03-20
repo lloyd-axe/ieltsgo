@@ -51,6 +51,346 @@
     "Tests": {
         "writing": [
             {
+                "subject": "Daily Water Consumption in Cities",
+                "context": "The bar chart below shows the average daily water consumption in five different cities in 2023. The pie chart illustrates the percentage distribution of water usage by sector (residential, industrial, agricultural, and commercial) in the same year. Summarize the information by describing the main trends and making comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/XRdmspN.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Scientific Method",
+                "context": "The diagram below illustrates the process of the scientific method, which is commonly used to investigate natural phenomena and test hypotheses.\n<br/><br/>\nSummarize the process by describing the key steps and explaining how each stage contributes to the overall understanding of scientific problems.",
+                "audio_url": null,
+                "image_url": "https://cdn.britannica.com/26/151526-050-F95C5D11/Flow-chart-method.jpg",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Shopping Sales per Category",
+                "context": "The two pie charts below illustrate the percentage distribution of online shopping sales by product category in 2015 and 2022.\n<br/><br/>\nSummarize the information by describing the main differences and trends between the two years.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/nldTbW6.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Increase of Remote Workers",
+                "context": "The table below shows the percentage of employees working remotely in five industries between 2018 and 2023.\n<br/><br/>\nExplain the information by describing the differences and patterns in the data.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/NI65u4U.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Household Income in 5 Countries",
+                "context": "The bar chart below shows the percentage of household income spent on different categories in five countries in 2022.\n<br/><br/>\nExplain the information by describing the main trends and differences in the data.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/8pZuRLY.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Economic Goods & Services Cycle",
+                "context": "The diagram below illustrates the basic economic goods and services cycle between households and businesses.\n<br/><br/>\nSummarize the information and explain the process by describing each part in detail.",
+                "audio_url": null,
+                "image_url": "https://cdn.britannica.com/35/99635-050-85CE42AA.jpg",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Safety or Privacy",
+                "context": "The use of surveillance cameras in public places has become more common in recent years. Some believe that this helps to reduce crime and improve safety, while others argue that it invades privacy and restricts personal freedom.\n<br/><br/>\nDiscuss both views and give your own opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Modern Housing Problems",
+                "context": "Rising housing costs have made it difficult for many people to afford homes. Some believe that the government should provide financial support for homebuyers, while others argue that increasing the supply of affordable housing is a better solution.\n<br/><br/>\nDiscuss both views and give your own opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "About Online Education",
+                "context": "Online education has become increasingly popular in recent years. While some believe it provides greater flexibility and access to learning, others argue that it lacks the social and practical benefits of traditional classroom education.\n<br/><br/>\nDiscuss both views and give your own opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Top 5 Malls in Manila",
+                "context": "The table below shows the number of annual visitors in five different malls in Manila City over the last decade.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/aQ9FDgB.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Casualties of Floods",
+                "context": "The table below shows the number of deaths caused by floods and the amount of floodwater recorded in different Asian countries over various years.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/ye8MX1A.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Greenhouse Effect",
+                "context": "The diagram below illustrates the process of the greenhouse effect and how it contributes to global warming.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://cdn.britannica.com/45/91945-050-7219E195/greenhouse-effect-Earth-surface-sunlight-atmosphere-some.jpg",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Performance of a Tech Company",
+                "context": "The bar graph below shows the total revenue generated by a technology company from 2018 to 2022, while the line graph illustrates the number of new product launches during the same period.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/QjKbOcN.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Waste Water Treatment Flow",
+                "context": "The diagram below illustrates the process of treating wastewater before it is released into the environment.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://cdn.britannica.com/55/23955-050-FF21F69E/treatment-sewage-sludge-process.jpg",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Nature of Zoos",
+                "context": "Some people believe that keeping animals in zoos is cruel and unnatural, while others argue that zoos play an important role in wildlife conservation and education.\n<br/><br/>\nDiscuss both views and give your own opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Local vs International Food",
+                "context": "Some people think that the rise of global food chains is making local cuisines less popular.\n<br/><br/>\nDo you think this is a positive or negative development?",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Waste Production of Countries",
+                "context": "The table below shows the types and percentages of waste produced by five different countries.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/hQDbwlD.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Nuclear Power Plant Process",
+                "context": "The diagram below illustrates the process of generating electricity in a nuclear power plant.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://cdn.britannica.com/62/162162-050-586ADA35/diagram-nuclear-power-plant-reactor.jpg",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Computers in Households",
+                "context": "The bar chart below shows the percentage of households in five different countries that owned a personal computer between 2000 and 2020.\n<br/><br/>\nSummarize the information by selecting and reporting the main features and making comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/V81LUcp.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Monthly Temperature in Cities",
+                "context": "The line graph below shows the average monthly temperature in three different cities from January to December.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/kegXAJV.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
                 "subject": "Sports & International Peace",
                 "context": "Some people believe that international sporting events can help promote peace and understanding among nations.\n<br/><br/>\nTo what extent do you agree or disagree?",
                 "audio_url": null,
@@ -332,6 +672,342 @@
             }
         ],
         "reading": [
+            {
+                "subject": "Challenges of Pursuing an MBA",
+                "context": "A Master of Business Administration (MBA) is one of the most sought-after postgraduate degrees in the world. It equips students with a comprehensive understanding of business management, covering areas such as finance, marketing, operations, and human resources. MBA programs typically include case studies, group projects, and internships that allow students to apply theoretical knowledge to real-world scenarios. The degree is valued for its ability to enhance leadership skills and strategic thinking, making graduates highly attractive to employers across various industries.\n<br/><br/>\nOne of the primary reasons people pursue an MBA is the potential for career advancement. An MBA opens the door to higher-level management positions and often results in increased earning potential. Many graduates find themselves eligible for senior roles in corporations, financial institutions, and consulting firms. Additionally, MBA graduates are often better positioned to transition into new industries or entrepreneurial ventures. The degree also provides access to a broad professional network, which can be invaluable for career growth and business opportunities.\n<br/><br/>\nHowever, pursuing an MBA comes with significant challenges. The cost of an MBA program can be substantial, with tuition fees at top business schools reaching upwards of $100,000. This financial burden, combined with the opportunity cost of leaving a full-time job, makes the decision to pursue an MBA a considerable investment. Additionally, the rigorous curriculum requires strong time management and the ability to handle pressure. Students often find themselves juggling coursework, group projects, and networking events, which can be mentally and physically demanding.\n<br/><br/>\nDespite these challenges, the long-term benefits of an MBA often outweigh the costs. Graduates report higher job satisfaction, greater confidence in decision-making, and improved problem-solving skills. The analytical and strategic thinking developed during the program equips graduates to handle complex business problems and make informed decisions under pressure. Employers value these qualities, often considering MBA graduates as strong candidates for leadership roles.\n<br/><br/>\nAn MBA also offers a global perspective on business. Many programs include international study opportunities or courses on global economics and cross-cultural management. Understanding how business operates in different markets is a critical skill in today’s interconnected world. Graduates who can navigate cultural differences and global market trends are often well-positioned to succeed in multinational corporations or international business ventures.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "double_selection",
+                        "questions" :[
+                            "What are two key benefits of pursuing an MBA mentioned in the text?",
+                            "What are two challenges faced by MBA students as stated in the text?",
+                            "According to the text, what are two ways an MBA enhances career opportunities?",
+                            "What are two skills developed through an MBA program mentioned in the text?",
+                            "What are two international advantages of earning an MBA discussed in the text?"
+                        ],
+                        "answers": [
+                            [0, 4],
+                            [1, 3],
+                            [0, 1],
+                            [0, 1],
+                            [0, 4]
+                        ]
+                        ,
+                        "topics": [],
+                        "choices": [
+                            ["Higher salary", "Improved leadership skills", "Reduced workload", "Enhanced public speaking", "Increased job opportunities"],
+                            ["Flexible schedule", "High tuition costs", "Less competition", "Demanding coursework", "Short program duration"],
+                            ["Eligibility for senior roles", "Access to broad professional network", "Better work-life balance", "Reduced responsibility", "Lower working hours"],
+                            ["Improved communication", "Better analytical thinking", "Enhanced technical skills", "Improved cooking ability", "Strategic decision-making"],
+                            ["Access to international business trends", "Understanding cultural differences", "Reduced travel opportunities", "More local market focus", "Exposure to global markets"]
+                        ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Effects of Corruption in a Country",
+                "context": "Corruption remains one of the most serious challenges faced by nations around the world. It undermines political stability, weakens economic growth, and erodes the trust that citizens have in their governments. When government officials and public servants engage in corrupt practices such as bribery, embezzlement, and favoritism, it leads to the misallocation of resources and the distortion of market mechanisms. Public funds intended for healthcare, education, and infrastructure projects are often diverted for personal gain, resulting in poor service delivery and inadequate facilities. Furthermore, corruption discourages foreign investments, as businesses are reluctant to operate in environments where laws are not enforced and contracts are easily manipulated.\n<br/><br/>\nThe political consequences of corruption are profound. When government officials engage in corrupt activities, the political system becomes compromised. Elections may be manipulated through vote-buying or intimidation, undermining democratic values and weakening the legitimacy of political leaders. Corruption within the judiciary prevents fair trials and allows influential individuals to avoid prosecution. This fosters a culture of impunity, where those with political connections can act without consequences. Over time, the public loses confidence in political institutions, leading to political unrest and even mass protests.\n<br/><br/>\nEconomically, corruption imposes a significant burden on national development. When business contracts are awarded based on personal connections rather than merit, the quality of infrastructure and public services deteriorates. Companies that engage in bribery may secure contracts despite offering inferior services, leading to inflated costs and substandard work. Small and medium-sized enterprises (SMEs) struggle to compete in such an environment, which stifles innovation and economic growth. Moreover, corrupt officials may impose illegal taxes or demand bribes from businesses, further discouraging entrepreneurship and foreign investment.\n<br/><br/>\nThe social impact of corruption is equally damaging. In societies where corruption is widespread, social services such as healthcare and education suffer from underfunding and mismanagement. Poor infrastructure in schools and hospitals results in limited access to quality education and healthcare, particularly for low-income families. Corruption also exacerbates income inequality, as resources are funneled to a privileged elite while the majority of the population faces deteriorating living standards. This deepens social divisions and fuels resentment among disadvantaged communities.\n<br/><br/>\nThe environmental consequences of corruption are often overlooked but significant. Illegal logging, mining, and fishing are frequently facilitated through bribery and weak enforcement of environmental regulations. Government officials may issue permits or overlook violations in exchange for financial gain, resulting in deforestation, pollution, and habitat destruction. This not only harms biodiversity but also threatens the livelihoods of communities that depend on natural resources. Environmental degradation caused by corruption can take decades to reverse, leaving a lasting impact on future generations.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "double_selection",
+                        "questions" : [
+                            "What are two political consequences of corruption mentioned in the text?",
+                            "According to the text, what are two economic effects of corruption?",
+                            "What are two social impacts of corruption highlighted in the text?",
+                            "What are two environmental effects of corruption mentioned in the text?",
+                            "Which two sectors are most affected by misallocation of resources due to corruption?",
+                            "According to the text, what are two ways corruption discourages foreign investment?",
+                            "What are two consequences of corruption on democratic values?",
+                            "What are two examples of how corruption weakens the quality of public services?",
+                            "Which two business-related problems are caused by corruption according to the text?",
+                            "What are two examples of illegal activities facilitated by corruption as described in the text?"
+                        ],
+                        "answers": [
+                            [0, 3], 
+                            [0, 2], 
+                            [1, 3], 
+                            [0, 2], 
+                            [0, 1], 
+                            [1, 3], 
+                            [1, 3], 
+                            [0, 2], 
+                            [2, 3], 
+                            [1, 2]
+                          ]
+                        ,
+                        "topics": [],
+                        "choices": [
+                            ["Political instability", "Fair elections", "Judicial transparency", "Compromised political system"],
+                            ["Mismanagement of funds", "Increased market competition", "Lower economic growth", "Higher infrastructure quality"],
+                            ["Improved healthcare", "Wider income gap", "Better education", "Reduced trust in government"],
+                            ["Deforestation", "Improved air quality", "Pollution", "Enhanced biodiversity"],
+                            ["Education", "Healthcare", "Sports", "Military"],
+                            ["Stable business environment", "Uncertainty in contract enforcement", "Reduced bribery cases", "Poor market confidence"],
+                            ["Enhanced transparency", "Vote manipulation", "Improved trust in government", "Suppressed opposition"],
+                            ["Poor school infrastructure", "Higher teacher salaries", "Overcrowded hospitals", "Increased access to healthcare"],
+                            ["More foreign investments", "Lower business taxes", "Stifled innovation", "Increased economic growth"],
+                            ["Increased biodiversity", "Illegal logging", "Unregulated mining", "Wildlife protection"]
+                        ],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Television and Violence",
+                "context": "Television has become an integral part of modern life, with many households having multiple screens in their homes. While television provides entertainment and information, concerns about its impact on society have grown over the years. One major issue is the relationship between television consumption and violent behavior, especially among children and young adults. Studies have suggested that exposure to violent content on television can increase aggression and desensitize viewers to real-world violence. This has led to calls for reducing screen time as a means of promoting more peaceful behavior in society.\n<br/><br/>\nResearch has shown that children who watch violent television shows are more likely to display aggressive behavior in their interactions with others. This is partly because repeated exposure to violent content can normalize aggressive responses to conflict. For instance, when children see their favorite characters resolving problems through violence, they may imitate such behavior in real life. Furthermore, violent television content can heighten anxiety and fear in young viewers, making them more defensive and reactive in social situations.\n<br/><br/>\nReducing television consumption has been linked to positive changes in behavior. A study conducted by a major university found that children who reduced their screen time by 50% showed a significant decrease in aggressive behavior over a six-month period. Additionally, families who replaced television time with interactive activities such as board games and outdoor play reported improved communication and stronger family bonds. These findings suggest that limiting television viewing can foster more positive social interactions and emotional stability.\n<br/><br/>\nHowever, not all television programming has a negative impact. Educational programs and documentaries can provide valuable learning opportunities and broaden viewers' understanding of different cultures and issues. For example, shows about science and history can spark curiosity and encourage critical thinking. The key, therefore, is not necessarily to eliminate television altogether but to carefully curate the type of content being consumed. Parents and guardians play a critical role in guiding children toward more educational and enriching programming.\n<br/><br/>\nPolicymakers and media companies have also been called upon to address the issue of violence in television content. Some countries have implemented stricter regulations on the depiction of violence in children's programming and introduced rating systems to help parents make informed viewing choices. Media literacy programs in schools are also gaining popularity as a way to teach young people how to critically evaluate television content and distinguish between entertainment and reality. Ultimately, a balanced approach to television consumption, along with informed content choices, could lead to a more peaceful and socially cohesive society.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "Research has shown that children who watch violent television shows are more likely to display aggressive behavior.",
+                            "Reducing television consumption by 50% showed no significant effect on children's behavior.",
+                            "Some educational programs and documentaries can provide valuable learning opportunities.",
+                            "Violence in television programming has decreased globally in recent years.",
+                            "Parents have no influence over the type of television content their children consume.",
+                            "Studies have shown that violent television content can heighten anxiety and fear in young viewers.",
+                            "Replacing television time with interactive activities can strengthen family bonds.",
+                            "Policymakers have taken no action to regulate violent content on television.",
+                            "Media literacy programs in schools help young people critically evaluate television content.",
+                            "Eliminating all television content is the most effective way to reduce aggression."
+                          ]                     
+                          ,
+                        "answers": [0, 1, 0, 2, 1, 0, 0, 1, 0, 1],
+                        "topics": [],
+                        "choices": [
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Beatles: A Musical Revolution",
+                "context": "The Beatles, formed in Liverpool in 1960, became one of the most influential and successful bands in the history of music. The group consisted of John Lennon, Paul McCartney, George Harrison, and Ringo Starr. Their rise to fame began in 1962 with the release of their first single, Love Me Do, which gained moderate success. However, it was their performance on The Ed Sullivan Show in 1964 that catapulted them to international stardom. The Beatles' distinctive sound, which blended rock, pop, and elements of classical music, captured the hearts of millions around the world.\n<br/><br/>\nThe Beatles' songwriting partnership between Lennon and McCartney was one of the most productive in music history. They experimented with different genres, including psychedelic rock, folk, and Indian classical music. Albums like Sgt. Pepper's Lonely Hearts Club Band and Revolver showcased their creative evolution and willingness to push musical boundaries. George Harrison introduced the sitar into some of their songs, reflecting his interest in Indian culture and music. Meanwhile, Ringo Starr's unique drumming style provided a steady foundation for their complex melodies.\n<br/><br/>\nThe band's influence extended beyond music. They became symbols of the 1960s counterculture movement, challenging social norms and promoting messages of peace and love. Their fashion choices and hairstyles became widely imitated. The Beatles were also involved in several films, including A Hard Day's Night and Help!, which further solidified their cultural impact. By the late 1960s, tensions within the band began to grow, leading to their eventual breakup in 1970.\n<br/><br/>\nDespite their breakup, the Beatles’ legacy remains strong. Their music continues to be celebrated and reinterpreted by new generations of artists. Paul McCartney and Ringo Starr have maintained successful solo careers, while John Lennon and George Harrison's contributions to music and culture remain highly regarded. The Beatles’ impact on modern music and popular culture is undeniable, making them one of the most iconic bands of all time.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "The Beatles were formed in Liverpool in 1960.",
+                            "Love Me Do was the Beatles' first single to reach number one on the charts.",
+                            "George Harrison introduced the sitar into some Beatles songs.",
+                            "The Beatles' first television performance was on The Ed Sullivan Show.",
+                            "The Beatles' music was influenced by Indian classical music.",
+                            "The Beatles' movie 'Help!' was released in 1962.",
+                            "John Lennon and Paul McCartney wrote all of the Beatles' songs.",
+                            "The Beatles were known for promoting peace and love during the 1960s.",
+                            "Ringo Starr's drumming style was heavily influenced by jazz music.",
+                            "Paul McCartney and Ringo Starr are still active in the music industry."
+                          ]                     
+                          ,
+                        "answers": [0, 1, 0, 0, 0, 2, 1, 0, 2, 0],
+                        "topics": [],
+                        "choices": [
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Fascinating World of Whales",
+                "context": "Whales are among the largest and most intelligent creatures on Earth. These marine mammals belong to the cetacean family, which includes dolphins and porpoises. Whales are broadly classified into two groups: baleen whales and toothed whales. Baleen whales, such as the blue whale and humpback whale, have fringed plates of baleen in their mouths that they use to filter plankton and small fish from the water. Toothed whales, including the sperm whale and orca, have teeth that they use to catch larger prey like squid and fish. Whales are known for their complex communication methods, which include a range of vocalizations and body movements.\n<br/><br/>\nThe migration patterns of whales are remarkable. Baleen whales typically migrate thousands of kilometers each year between feeding and breeding grounds. In the summer, they feed in cold polar waters where food is abundant, and in the winter, they travel to warmer tropical waters to give birth. The gray whale, for example, undertakes one of the longest migrations of any mammal, traveling around 16,000 kilometers annually. Scientists believe that whales navigate using the Earth's magnetic field and acoustic landmarks.\n<br/><br/>\nWhales have a significant impact on marine ecosystems. Their feeding habits help regulate prey populations, and their nutrient-rich waste products contribute to the health of the ocean’s food web. When whales die, their carcasses sink to the ocean floor, creating 'whale falls' that provide sustenance for deep-sea organisms for decades. Conservation efforts have become increasingly important as some whale species face threats from hunting, ship collisions, and environmental pollution. International agreements like the 1982 ban on commercial whaling by the International Whaling Commission (IWC) have helped some populations recover, but illegal hunting and habitat destruction remain ongoing challenges.\n<br/><br/>\nDespite these threats, whales continue to display remarkable intelligence and social behavior. Toothed whales like orcas are known to hunt cooperatively, using sophisticated strategies to trap prey. Humpback whales have been observed using 'bubble nets' to corral schools of fish, and sperm whales engage in complex social structures known as pods. Research into whale communication and behavior is ongoing, with scientists uncovering new insights into their cognitive abilities and emotional depth.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "Whales are part of the cetacean family, which includes dolphins and porpoises.",
+                            "Baleen whales use teeth to catch prey like squid and fish.",
+                            "Whales communicate using vocalizations and body movements.",
+                            "The migration patterns of whales are unpredictable and random.",
+                            "All whales feed exclusively on plankton and small fish.",
+                            "Orcas are part of the baleen whale group.",
+                            "Toothed whales use teeth to catch larger prey like squid and fish.",
+                            "Humpback whales have fringed plates of baleen for feeding.",
+                            "Whales are the largest animals on Earth.",
+                            "All whales live only in cold ocean waters."
+                          ]                     
+                          ,
+                        "answers": [0, 1, 0, 1, 1, 2, 0, 0, 2, 2],
+                        "topics": [],
+                        "choices": [
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Space Race",
+                "context": "The Space Race was a period of intense competition between the United States and the Soviet Union, beginning in the late 1950s and lasting through the 1960s and 1970s. It was driven by political rivalry during the Cold War, as both superpowers sought to demonstrate technological and military superiority. The launch of Sputnik 1 by the Soviet Union on October 4, 1957, marked the beginning of the Space Race. Sputnik 1 was the first artificial satellite to orbit the Earth, and its success shocked the world, especially the United States. This event prompted the U.S. government to increase funding for space research and led to the creation of NASA (National Aeronautics and Space Administration) in 1958.\n<br/><br/>\nThe Soviet Union achieved another major milestone in 1961 when Yuri Gagarin became the first human to orbit the Earth aboard the spacecraft Vostok 1. This achievement further increased the pressure on the United States to match Soviet progress in space exploration. In response, U.S. President John F. Kennedy announced in 1961 that the United States would aim to land a man on the moon before the end of the decade. This ambitious goal led to the Apollo program, which involved extensive research and testing of new space technologies.\n<br/><br/>\nThe most significant achievement of the Space Race came on July 20, 1969, when Apollo 11 successfully landed on the moon. Neil Armstrong became the first human to step onto the lunar surface, famously declaring, 'That's one small step for man, one giant leap for mankind.' This achievement secured the United States' victory in the Space Race and established NASA as a leader in space exploration. The Apollo missions continued until 1972, with a total of six successful moon landings.\n<br/><br/>\nThe end of the Space Race did not signal the end of space exploration. In the 1970s, both the United States and the Soviet Union shifted their focus to long-term missions and scientific research in space. The launch of the Skylab space station by the United States in 1973 and the Soviet Union’s Salyut program demonstrated the growing interest in human presence in space. Eventually, the era of competition gave way to collaboration, with the joint Apollo-Soyuz Test Project in 1975 marking the first international space mission between the two superpowers.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "What event marked the beginning of the Space Race?",
+                            "Which country launched the first artificial satellite?",
+                            "Who was the first human to orbit the Earth?",
+                            "What was the primary goal announced by John F. Kennedy in 1961?",
+                            "What was the name of the first spacecraft to land on the moon?",
+                            "When did the Apollo 11 mission land on the moon?",
+                            "How many successful moon landings were made during the Apollo program?",
+                            "What was the name of the U.S. space station launched in 1973?",
+                            "What was the significance of the Apollo-Soyuz Test Project?",
+                            "In which year was NASA established?"
+                          ]
+                                                    
+                          ,
+                        "answers": [2, 1, 0, 1, 0, 0, 1, 1, 3, 3],
+                        "topics": [],
+                        "choices": [
+                            ["Apollo 11", "Vostok 1","Sputnik 1", "Skylab"],
+                            ["United States", "Soviet Union", "China", "Germany"],
+                            ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "John Glenn"],
+                            ["To build a space station", "To land a man on the moon", "To develop satellites", "To create reusable rockets"],
+                            ["Apollo 11", "Sputnik 1", "Vostok 1", "Skylab"],
+                            ["July 20, 1969", "April 12, 1961", "October 4, 1957", "December 21, 1968"],
+                            ["4","6", "7", "5"],
+                            ["Apollo 11", "Skylab", "Vostok 1", "Salyut"],
+                            ["First moon landing", "First human in space", "First reusable rocket", "First joint mission between the U.S. and Soviet Union"],
+                            ["1961", "1957", "1963", "1958"]
+                          ]
+                          
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Legacy of Ancient Egypt",
+                "context": "Ancient Egypt, located along the fertile banks of the Nile River, is one of the most influential and enduring civilizations in human history. The civilization emerged around 3100 BCE when Upper and Lower Egypt were united under the first pharaoh, Narmer. The Nile River played a crucial role in the development of Egyptian society, providing water for agriculture and serving as a vital transportation route. The predictable flooding of the Nile ensured that farmers could cultivate crops such as wheat and barley, supporting the growth of a stable and prosperous society. Egyptian society was highly stratified, with the pharaoh at the top, followed by priests, scribes, artisans, and farmers.\n<br/><br/>\nOne of the most iconic aspects of Ancient Egypt is its architectural and artistic achievements. The construction of the pyramids, particularly the Great Pyramid of Giza, remains a marvel of engineering. These massive stone structures were built as tombs for pharaohs and were intended to ensure their passage to the afterlife. Temples such as Karnak and Luxor were dedicated to gods like Amun and Ra, showcasing intricate carvings and massive columns. Egyptian art, characterized by its detailed hieroglyphics and symbolic depictions of gods and daily life, played a central role in both religious and cultural expression.\n<br/><br/>\nReligion was deeply woven into the fabric of Egyptian life. The Egyptians believed in a complex pantheon of gods, each governing different aspects of nature and human existence. Osiris, the god of the afterlife, and Isis, the goddess of fertility, were among the most widely worshiped deities. The practice of mummification reflected the Egyptian belief in life after death, where the body needed to be preserved for the soul to transition to the afterlife. The Book of the Dead, a collection of spells and instructions, was often buried with the deceased to guide them through the underworld.\n<br/><br/>\nAncient Egypt's influence extended beyond its borders through trade and military conquest. Egyptian merchants traded gold, papyrus, and linen with neighboring civilizations, including the Nubians and the Phoenicians. Military campaigns under rulers like Thutmose III expanded Egypt’s territory and influence. However, by the end of the New Kingdom around 1070 BCE, Egypt faced internal strife and invasions from foreign powers such as the Assyrians and Persians. Despite these challenges, the cultural and architectural legacy of Ancient Egypt continues to captivate historians and archaeologists today.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "Who was the first pharaoh to unite Upper and Lower Egypt?",
+                            "Which river was central to the development of Ancient Egyptian civilization?",
+                            "What was the primary purpose of the pyramids?",
+                            "Which temple was dedicated to the god Amun?",
+                            "What god was believed to govern the afterlife in Ancient Egypt?",
+                            "What was the purpose of mummification in Ancient Egypt?",
+                            "Which material was commonly traded by Egyptian merchants?",
+                            "Under which ruler did Egypt expand its territory through military campaigns?",
+                            "Which foreign power invaded Egypt after the New Kingdom?",
+                            "What collection of spells and instructions was buried with the deceased to guide them in the afterlife?"
+                          ]                          
+                          ,
+                        "answers": [3, 2, 1, 0, 1, 0, 1, 3, 1, 0],
+                        "topics": [],
+                        "choices": [
+                            ["Ramses II", "Tutankhamun", "Akhenaten", "Narmer"],
+                            ["Tigris", "Euphrates", "Nile", "Indus"],
+                            ["To honor gods", "To serve as tombs", "For storage", "As a temple"],
+                            ["Karnak", "Parthenon", "Luxor", "Abu Simbel"],
+                            ["Ra", "Osiris", "Horus", "Anubis"],
+                            ["To preserve the body", "To please the gods", "To protect from curses", "To store knowledge"],
+                            ["Spices", "Gold", "Ivory", "Copper"],
+                            ["Cleopatra", "Ramses II", "Tutankhamun", "Thutmose III"],
+                            ["Romans", "Assyrians", "Greeks", "Hittites"],
+                            ["Book of the Dead", "Emerald Tablet", "Rosetta Stone", "Golden Scroll"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Culture & Technology of Japan",
+                "context": "Japan is an island nation located in East Asia, known for its rich cultural heritage and technological innovation. The country consists of four main islands: Honshu, Hokkaido, Kyushu, and Shikoku, along with numerous smaller islands. Japan’s capital city, Tokyo, is one of the most populous and technologically advanced cities in the world. Despite its modern advancements, Japan maintains deep-rooted traditions in areas such as tea ceremonies, calligraphy, and martial arts. The country’s history dates back thousands of years, with influences from China and Korea shaping its early political, social, and artistic development.\n<br/><br/>\nJapan is also renowned for its technological advancements. The country is a leader in the automotive and electronics industries, with companies like Toyota, Honda, Sony, and Panasonic gaining global recognition. Japan's bullet trains, known as Shinkansen, are among the fastest and most efficient rail systems in the world, capable of speeds exceeding 300 kilometers per hour. The country is also at the forefront of robotics, with humanoid robots used in industries ranging from manufacturing to customer service. Research in artificial intelligence and automation continues to drive Japan’s reputation as a technological powerhouse.\n<br/><br/>\nThe natural environment of Japan is shaped by its geography and climate. The country experiences all four seasons, with cherry blossoms blooming in spring and vibrant maple leaves in autumn. Japan is located along the Pacific Ring of Fire, making it prone to earthquakes and volcanic eruptions. Despite these natural challenges, the Japanese people have developed advanced infrastructure and early warning systems to mitigate the impact of natural disasters. Traditional architecture, including wooden shrines and temples, reflects Japan’s ability to blend natural materials with structural resilience.\n<br/><br/>\nJapanese cuisine is a key aspect of its culture, recognized globally for its emphasis on fresh ingredients and balanced flavors. Sushi, sashimi, ramen, and tempura are some of the most well-known dishes. The use of seasonal ingredients and careful presentation highlight the importance of harmony and simplicity in Japanese cooking. The cultural significance of food extends to traditional festivals and ceremonies, where specific dishes are prepared to mark important events and seasonal changes.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "Which of the following is NOT one of Japan’s four main islands?",
+                            "What is the capital city of Japan?",
+                            "Which industry is Japan a global leader in?",
+                            "What is the name of Japan’s high-speed rail system?",
+                            "What natural challenge is Japan prone to due to its location along the Pacific Ring of Fire?",
+                            "Which Japanese company is known for its contributions to the electronics industry?",
+                            "What natural event marks the beginning of spring in Japan?",
+                            "What material is commonly used in traditional Japanese architecture?",
+                            "Which Japanese dish consists of raw fish served with rice?",
+                            "What cultural value is reflected in the presentation of Japanese food?"
+                          ]
+                          ,
+                        "answers": [2, 1, 0, 3, 2, 0, 0, 3, 1, 2],
+                        "topics": [],
+                        "choices": [
+                            ["Honshu", "Kyushu", "Okinawa", "Shikoku"],
+                            ["Seoul", "Tokyo", "Kyoto", "Osaka"],
+                            ["Automotive", "Textile", "Mining", "Agriculture"],
+                            ["Metro", "Maglev", "Express", "Shinkansen"],
+                            ["Hurricanes", "Floods", "Earthquakes", "Tornadoes"],
+                            ["Toyota", "Samsung", "Hyundai", "Lenovo"],
+                            ["Cherry blossoms", "Maple leaves", "Rainfall", "Snow"],
+                            ["Steel", "Concrete", "Glass", "Wood"],
+                            ["Ramen", "Sushi", "Tempura", "Udon"],
+                            ["Complexity", "Abundance", "Harmony", "Modernity"]
+                          ]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
             {
                 "subject": "Effects of Deforestation on the Environment",
                 "context": "Deforestation is one of the most pressing environmental issues facing the planet today. Large-scale clearing of forests for agriculture, urban development, and logging has led to severe ecological consequences. Forests play a crucial role in maintaining the planet’s climate by absorbing carbon dioxide and regulating temperature. When trees are cut down, the stored carbon is released into the atmosphere, contributing to global warming and climate change.\n<br/><br/>\nLoss of biodiversity is another major consequence of deforestation. Forests are home to more than 80% of terrestrial species, including mammals, birds, insects, and plants. When their habitats are destroyed, many species face extinction or are forced to migrate to new areas, which can lead to population decline and imbalance in ecosystems. This disruption in the food chain and ecosystem stability can have long-lasting effects on global biodiversity.\n<br/><br/>\nDeforestation also leads to soil erosion and degradation. Tree roots hold soil in place, preventing it from being washed away by rain. Without the protective cover of trees, the topsoil becomes vulnerable to erosion, reducing soil fertility and making it difficult for plants to grow. This has a direct impact on agriculture, reducing crop yields and increasing the need for artificial fertilizers.\n<br/><br/>\nFurthermore, deforestation disrupts the water cycle. Trees absorb and release moisture into the atmosphere through a process called transpiration. When large areas of forest are removed, the amount of moisture in the air decreases, leading to lower rainfall levels. This can cause droughts, reduce water availability for human consumption and agriculture, and increase the risk of wildfires.\n<br/><br/>\nGovernments and environmental organizations have introduced reforestation projects and conservation programs to combat the negative effects of deforestation. Sustainable logging practices, improved land management, and the creation of protected areas have shown some success in reducing deforestation rates. However, illegal logging and expanding agricultural activities continue to pose significant challenges.",
