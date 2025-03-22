@@ -51,6 +51,57 @@
     "Tests": {
         "writing": [
             {
+                "subject": "Rainfall data in Countries",
+                "context": "The chart below shows the average monthly temperature and rainfall in three different cities.\n<br/><br/>\nSummarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+                "audio_url": null,
+                "image_url": "https://i.imgur.com/1oWPrzY.png",
+                "question_set": [
+                    {
+                        "test_type": "task_1",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Deep-Sea Exploration vs. Space Exploration",
+                "context": "While space exploration continues to receive significant funding, some scientists argue that exploring the deep ocean is equally important for scientific progress.\n<br/><br/>\nDiscuss both perspectives and give your opinion on which should be prioritized.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "About Genetic Engineering",
+                "context": "With advancements in genetic engineering, scientists can now modify the DNA of plants, animals, and even humans. Some believe this technology will solve many global issues, while others fear its long-term consequences.\n<br/><br/>\nDiscuss both views and give your opinion.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "task_2",
+                        "questions" : [],
+                        "answers": [],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
                 "subject": "Daily Water Consumption in Cities",
                 "context": "The bar chart below shows the average daily water consumption in five different cities in 2023. The pie chart illustrates the percentage distribution of water usage by sector (residential, industrial, agricultural, and commercial) in the same year. Summarize the information by describing the main trends and making comparisons where relevant.",
                 "audio_url": null,
@@ -631,20 +682,336 @@
         ],
         "listening": [
             {
+                "subject": "Flight Schedule and Gate Changes",
+                "context": "Attention all passengers at Skyline International Airport. We have several important updates regarding flight schedules and gate assignments. Please listen carefully and check the airport display screens for real-time updates.\nTo begin, Flight AA 325 to Los Angeles, initially scheduled to depart from Gate 6 at 8:30 AM, has been moved to Gate 10 due to aircraft servicing. Boarding will commence at 8:05 AM, and the flight remains on time. Passengers should proceed to the new gate for boarding as per the updated schedule.\nNext, Flight EK 421 to Dubai, originally assigned to Gate 14 with a departure time of 9:15 AM, has been delayed due to operational issues. The new estimated departure time is 10:00 AM, and passengers will now board from Gate 18. We apologize for the delay and appreciate your patience.\nFor those flying to Singapore on Flight SQ 211, please note that the departure time remains unchanged at 10:45 AM, but the gate has been changed from Gate 7 to Gate 12. All passengers are advised to be at the new gate 30 minutes before departure for security checks and boarding procedures.\nPassengers traveling on Flight BA 507 to London Heathrow should take note that the flight, previously scheduled to board at Gate 3 at 11:30 AM, has been moved to Gate 8 due to unforeseen maintenance work. The flight remains on time, and boarding will commence at 11:05 AM.\nAdditionally, Flight QR 672 to Doha, which was scheduled for departure at 12:15 PM from Gate 5, will now depart from Gate 9 at 12:30 PM due to congestion in the boarding area. All passengers are requested to check their boarding passes and proceed accordingly.\nMeanwhile, Flight AF 315 to Paris, initially planned for Gate 11 with a departure time of 1:00 PM, will now be leaving from Gate 6 instead. The flight remains on schedule, and passengers are advised to check for further updates if necessary.\nFor those traveling on Flight CX 408 to Hong Kong, there has been a slight change in gate assignments. The flight, originally set to board at Gate 15 at 2:25 PM, has now been moved to Gate 17. The boarding time remains unchanged.\nPassengers flying to Tokyo Narita on Flight NH 752, previously scheduled at Gate 20 with a departure at 3:45 PM, should now proceed to Gate 23 instead. The flight is on time, and final boarding will be at 3:20 PM.\nTravelers on Flight DL 890 to New York JFK, set to depart at 4:30 PM from Gate 19, will now be boarding at Gate 22 instead. This change is due to ongoing terminal maintenance. Please arrive early for smooth boarding.\nFinally, Flight OZ 412 to Seoul, which was to depart from Gate 8 at 6:10 PM, has been rescheduled to Gate 4. The departure time remains unchanged, and passengers are advised to proceed to the new gate at least 45 minutes before departure to avoid any last-minute inconveniences.\nFor all other flights, please check the airport information screens or approach the nearest airline service desk for further details. We appreciate your cooperation and patience as we strive to provide you with a smooth travel experience. Thank you for choosing Skyline International Airport, and we wish you a pleasant journey.\n",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/airport.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_table",
+                        "questions" :[],
+                        "answers": ["6", "10", "Unchanged", "8", "Doha", "AF", "25", "Narita", "19","412"],
+                        "topics": ["Flight Schedule and Gate Changes"],
+                        "choices": [],
+                        "table_data": [
+                            ["Flight", "Destination", "Original Gate", "New Gate", "Departure Time", "New Departure Time"],
+                            ["AA 325", "Los Angeles", "|1|", "10", "8:30 AM", "Unchanged"],
+                            ["EK 421", "Dubai", "14", "18", "9:15 AM", "|2|:00 AM"],
+                            ["SQ 211", "Singapore", "7", "12", "10:45 AM", "|3|"],
+                            ["BA 507", "London Heathrow", "3", "|4|", "11:30 AM", "Unchanged"],
+                            ["QR 672", "|5|", "5", "9", "12:15 PM", "12:30 PM"],
+                            ["|6| 315", "Paris", "11", "6", "1:00 PM", "Unchanged"],
+                            ["CX 408", "Hong Kong", "15", "17", "2:|7| PM", "Unchanged"],
+                            ["NH 752", "Tokyo |8|", "20", "23", "3:45 PM", "Unchanged"],
+                            ["DL 890", "New York JFK", "|9|", "22", "4:30 PM", "Unchanged"],
+                            ["OZ |10|", "Seoul", "8", "4", "6:10 PM", "Unchanged"]
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Childhood in the Farm",
+                "context": "Radio Host: Good evening, everyone! You’re listening to Sunny FM 102.3, and it’s time for our exciting game show, 'The Big Win!' We’ve got fantastic prizes up for grabs tonight, and our first caller is on the line. Hello! Who’s speaking? \n Caller: Hi! My name is Daniel Carter, and I’m calling from Manchester. \n Radio Host: Welcome, Daniel! Have you ever played our quiz before? \n Caller: No, this is actually my first time! I’ve been listening for a while, but I never had the courage to call in—until now. \n Radio Host: Well, I’m glad you finally decided to join us! Since it’s your first time, let me quickly explain how the game works. I’m going to ask you five questions. If you answer at least three correctly, you win a prize. But if you manage to get all five right, you’ll win our Jackpot Bonus! Sounds good? \n Caller: That sounds amazing! I’ll do my best. \n Radio Host: That’s the spirit! Alright, let’s get started. Question 1: What is the name of the largest planet in our solar system? \n Caller: Oh, I know this! It’s Jupiter. \n Radio Host: That’s correct! Great start, Daniel! Now, moving on to Question 2: Who wrote the famous play Romeo and Juliet? \n Caller: That’s easy—it was William Shakespeare. \n Radio Host: Two for two! You’re on fire! Let’s see if you can keep it going. Here’s Question 3: Which country is famous for inventing pizza? \n Caller: Hmm… that’s got to be Italy! \n Radio Host: Yes! That is correct! That means you’ve already won a £250 shopping voucher! But don’t stop now—you still have a chance to win even bigger prizes! Here comes Question 4: What is the capital city of Australia? \n Caller: Oh, I always get this one confused… I think it’s Canberra? \n Radio Host: That is correct! A lot of people guess Sydney or Melbourne, but Canberra is the right answer. Well done! Now, Daniel, here’s the big one—if you get this last question right, you’ll win the Jackpot Bonus! \n Caller: Alright, no pressure! I’m ready. \n Radio Host: Here we go. Final Question: What is the name of the scientist who developed the theory of relativity? \n Caller: Oh, I know this one—it’s Albert Einstein! \n Radio Host: YES! That is correct! Congratulations, Daniel! You have won the Jackpot Bonus, which includes a £500 gift card, a free dinner at an Italian restaurant, AND an exclusive VIP concert ticket! \n Caller: No way! That’s incredible! I can’t believe it! \n Radio Host: You totally earned it! But wait—since you answered all five questions correctly, we’re giving you a chance to double your prize with a bonus round! Do you want to continue? \n Caller: Oh wow! What do I have to do? \n Radio Host: It’s simple. I’ll ask you one final, very tricky question. If you get it right, we’ll double your prize money to £1,000 and upgrade your VIP concert ticket to include backstage access! But if you get it wrong, you’ll still keep your original prize. \n Caller: Wow, that’s a tough choice! But you know what? Let’s go for it! \n Radio Host: That’s the attitude we love! Alright, here’s your Bonus Question: Which is the only metal that is liquid at room temperature? \n Caller: Oh… I think I’ve heard this before. Umm… is it Mercury? \n Radio Host: YES! That is absolutely correct! You’ve just doubled your winnings! Congratulations, Daniel! You are our biggest winner of the night! \n Caller: This is unreal! I can’t believe I just won all that! Thank you so much! \n Radio Host: You deserved it! Stay on the line so we can take your details. And to all our listeners, remember—this could be you next time! Keep your phones ready because we have another chance to win right after this short break!",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/childhood-farm.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "What type of landscape surrounded the farm?",
+                            "What did the speaker enjoy collecting from the chicken coop?",
+                            "Which season was the busiest for the family?",
+                            "Where did the siblings go swimming during the summer?",
+                            "What event did the speaker find both fascinating and overwhelming?"
+                          ]
+                          
+                        ,
+                        "answers": [1, 1, 2, 0, 1]
+                        ,
+                        "topics": [],
+                        "choices": [
+                            ["Deserts and rocky terrain", "Rolling hills, wheat fields, and woodlands", "Snow-covered mountains", "A large lake and flat plains"],
+                            ["Carrots", "Eggs", "Wheat", "Apples"],
+                            ["Winter", "Spring", "Harvest season", "Autumn"],
+                            ["A river", "A pond", "A swimming pool", "A lake"],
+                            ["The first time he milked a cow", "Watching a calf being born", "Riding in the trailer during harvest", "Feeding the animals in the morning"]
+                          ]
+                          
+                        ,
+                        "table_data": [
+                            
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Big Win Game Show",
+                "context": "Radio Host: Good evening, everyone! You’re listening to Sunny FM 102.3, and it’s time for our exciting game show, 'The Big Win!' We’ve got fantastic prizes up for grabs tonight, and our first caller is on the line. Hello! Who’s speaking? \n Caller: Hi! My name is Daniel Carter, and I’m calling from Manchester. \n Radio Host: Welcome, Daniel! Have you ever played our quiz before? \n Caller: No, this is actually my first time! I’ve been listening for a while, but I never had the courage to call in—until now. \n Radio Host: Well, I’m glad you finally decided to join us! Since it’s your first time, let me quickly explain how the game works. I’m going to ask you five questions. If you answer at least three correctly, you win a prize. But if you manage to get all five right, you’ll win our Jackpot Bonus! Sounds good? \n Caller: That sounds amazing! I’ll do my best. \n Radio Host: That’s the spirit! Alright, let’s get started. Question 1: What is the name of the largest planet in our solar system? \n Caller: Oh, I know this! It’s Jupiter. \n Radio Host: That’s correct! Great start, Daniel! Now, moving on to Question 2: Who wrote the famous play Romeo and Juliet? \n Caller: That’s easy—it was William Shakespeare. \n Radio Host: Two for two! You’re on fire! Let’s see if you can keep it going. Here’s Question 3: Which country is famous for inventing pizza? \n Caller: Hmm… that’s got to be Italy! \n Radio Host: Yes! That is correct! That means you’ve already won a £250 shopping voucher! But don’t stop now—you still have a chance to win even bigger prizes! Here comes Question 4: What is the capital city of Australia? \n Caller: Oh, I always get this one confused… I think it’s Canberra? \n Radio Host: That is correct! A lot of people guess Sydney or Melbourne, but Canberra is the right answer. Well done! Now, Daniel, here’s the big one—if you get this last question right, you’ll win the Jackpot Bonus! \n Caller: Alright, no pressure! I’m ready. \n Radio Host: Here we go. Final Question: What is the name of the scientist who developed the theory of relativity? \n Caller: Oh, I know this one—it’s Albert Einstein! \n Radio Host: YES! That is correct! Congratulations, Daniel! You have won the Jackpot Bonus, which includes a £500 gift card, a free dinner at an Italian restaurant, AND an exclusive VIP concert ticket! \n Caller: No way! That’s incredible! I can’t believe it! \n Radio Host: You totally earned it! But wait—since you answered all five questions correctly, we’re giving you a chance to double your prize with a bonus round! Do you want to continue? \n Caller: Oh wow! What do I have to do? \n Radio Host: It’s simple. I’ll ask you one final, very tricky question. If you get it right, we’ll double your prize money to £1,000 and upgrade your VIP concert ticket to include backstage access! But if you get it wrong, you’ll still keep your original prize. \n Caller: Wow, that’s a tough choice! But you know what? Let’s go for it! \n Radio Host: That’s the attitude we love! Alright, here’s your Bonus Question: Which is the only metal that is liquid at room temperature? \n Caller: Oh… I think I’ve heard this before. Umm… is it Mercury? \n Radio Host: YES! That is absolutely correct! You’ve just doubled your winnings! Congratulations, Daniel! You are our biggest winner of the night! \n Caller: This is unreal! I can’t believe I just won all that! Thank you so much! \n Radio Host: You deserved it! Stay on the line so we can take your details. And to all our listeners, remember—this could be you next time! Keep your phones ready because we have another chance to win right after this short break!",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/game-show-radio.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" : [
+                            "What is the name of the radio station in the game show?",
+                            "What is the name of the game show?",
+                            "Where is Daniel calling from?",
+                            "How many questions does Daniel need to answer correctly to win a prize?",
+                            "What planet is the largest in our solar system?",
+                            "Who wrote the famous play Romeo and Juliet?",
+                            "Which country is famous for inventing pizza?",
+                            "What is the capital city of Australia?",
+                            "Who developed the theory of relativity?",
+                            "Which metal is liquid at room temperature?"
+                        ]
+                        ,
+                        "answers": [1, 0, 1, 3, 2, 1, 1, 2, 0, 1]
+                        ,
+                        "topics": [],
+                        "choices": [
+                            ["Sunny FM 101.5", "Sunny FM 102.3", "Bright Radio 100.1", "Sunshine FM 103.5"],
+                            ["The Big Win!", "The Big Prize", "Mega Jackpot", "Lucky Caller"],
+                            ["London", "Manchester", "Birmingham", "Liverpool"],
+                            ["Two", "Four", "Five", "Three"],
+                            ["Mars", "Venus", "Jupiter", "Saturn"],
+                            ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+                            ["France", "Italy", "Spain", "Greece"],
+                            ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+                            ["Albert Einstein", "Isaac Newton", "Nikola Tesla",  "Galileo Galilei"],
+                            ["Gold", "Mercury", "Silver", "Lead"]
+                        ]
+                        ,
+                        "table_data": [
+                            
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Burj Khalifa",
+                "context": "Good day, everyone! Today, I’ll be taking you on a fascinating journey through the Burj Khalifa, the world’s tallest building, standing at an astonishing 828 meters. Let’s explore what’s inside each major section of this incredible skyscraper.\nStarting from the ground level, we have the Armani Hotel Dubai, a luxurious hotel designed by the famous fashion designer Giorgio Armani. The hotel occupies the first eight floors.\nMoving up, from the 9th to the 16th floors, we find the Armani Residences. These are high-end apartments that offer a mix of elegance and comfort.\nFrom the 17th to the 18th floors, you’ll find mechanical floors that house essential building systems such as ventilation and electrical equipment.\nThe 19th to 37th floors contain additional residential apartments, offering breathtaking views of the city.\nThen, from the 38th to the 39th floors, we have more mechanical floors to ensure the smooth operation of the building.\nNow, let’s go higher! From the 40th to the 108th floors, we have luxury residential apartments, designed for those who seek the highest standard of living.\nAbove that, from the 109th to the 111th floors, we again have mechanical floors to support the towering structure.\nThen, from the 112th to the 154th floors, we find corporate office spaces, offering business professionals a unique work environment with a stunning view of Dubai.\nOne of the most famous attractions of the Burj Khalifa is the observation decks. On the 124th and 125th floors, you can visit 'At The Top,' a popular spot for tourists. However, if you want to experience the highest observation deck in the world, you should visit the 148th floor.\nFinally, near the very top, from the 156th floor to the 163rd, we have communication and broadcasting equipment. These floors help the Burj Khalifa function as a critical part of Dubai’s communication infrastructure.\nAnd there you have it—a quick tour of the Burj Khalifa! Whether you’re staying at the luxurious hotel, living in a high-end apartment, working in a corporate office, or simply enjoying the spectacular view from the observation deck, the Burj Khalifa offers something for everyone. Thank you for joining me on this tour!",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/burj-khalifa.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "word_box",
+                        "questions" : [
+                            "|1| Observation Decks",
+                            "|2| Mechanical Floors",
+                            "|3| Armani Residences",
+                            "|4| Corporate Office Spaces",
+                            "|5| Luxury Residential Apartments",
+                            "|6| Mechanical Floors",
+                            "|7| Communication & Broadcasting",
+                            "|8| Mechanical Floors",
+                            "|9| Residential Apartments",
+                            "|10| Armani Hotel Dubai"],
+                        "answers": [
+                            "124-148",
+                            "17-18",
+                            "9-16",
+                            "112-154",
+                            "40-108",
+                            "38-39",
+                            "156-163",
+                            "109-111",
+                            "19-37",
+                            "1-8"
+                        ],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [
+                            
+                        ],
+                        "word_box": [
+                            "1-8", "9-16", "17-18", "19-37", "38-39",
+                            "40-108", "109-111", "112-154", "124-148", "156-163"
+                        ]
+                    }
+                ]
+            },
+            {
+                "subject": "London Victoria Station Announcement",
+                "context": "Good morning, ladies and gentlemen. Welcome to London Victoria Station. Please listen carefully to the following announcements.\nThe 08:45 service to Brighton is now boarding at Platform 5. Passengers are advised to have their tickets ready for inspection before boarding. This train will call at Clapham Junction, East Croydon, Gatwick Airport, and finally, Brighton. Please ensure you board the correct train, as alternative services are departing shortly.\nAttention, passengers traveling to Birmingham New Street. The 09:10 departure from Platform 7 is experiencing a slight delay due to signaling issues. We apologize for any inconvenience this may cause and appreciate your patience. Further updates will be provided as soon as possible.\nPassengers traveling on the 09:30 service to Edinburgh Waverley, please be advised that coach C is reserved seating only. If you do not have a seat reservation, kindly move to another coach to avoid disruption. This train will be making scheduled stops at York and Newcastle before reaching its final destination in Edinburgh.\nA reminder to all passengers: Please keep your belongings with you at all times. Any unattended luggage will be removed and may be subject to security checks. If you see anything suspicious, please report it to station staff or British Transport Police immediately.\nFor those requiring assistance, mobility support services are available near Platform 3. If you need help with luggage or boarding, please speak to a member of staff, and they will be happy to assist you.\nPassengers waiting for the 10:05 service to Cardiff Central, please be informed that this train has been relocated to Platform 9. It will be departing as scheduled, stopping at Reading, Swindon, and Newport before arriving at Cardiff Central. Please check the information boards for any further updates.\nAttention, passengers traveling on the 10:30 service to Manchester Piccadilly. Due to planned engineering works, this service will be terminating at Crewe. Passengers traveling beyond Crewe will need to transfer to a replacement service. We apologize for the inconvenience and recommend checking with station staff for alternative travel arrangements.\nPlease note that due to increased passenger numbers, we advise boarding trains promptly and moving down the carriages to allow space for others. During peak hours, seating may be limited, so please be considerate of other passengers.\nFor passengers requiring refreshments, food and drink kiosks are available throughout the station. A variety of hot and cold drinks, snacks, and sandwiches can be purchased near Platforms 4, 6, and 10.\nA safety reminder to all passengers: Please stand behind the yellow line while waiting for your train and allow passengers to exit before boarding. Do not run on platforms, and be mindful of the gap between the train and the platform edge when boarding or alighting.\nIf you are traveling with children, please ensure they remain close to you at all times. Young children should be supervised while on escalators and stairways.\nFor travelers heading to international destinations via Eurostar, check-in for the 11:15 service to Paris Gare du Nord is now open. Passengers are required to present valid passports and boarding passes at the Eurostar terminal. Security checks will be conducted prior to departure, so please allow sufficient time for processing.\nFinally, a general travel update: London Underground services are running as scheduled, with minor delays reported on the Circle Line. Buses departing from the station are currently experiencing slight congestion due to roadworks near Buckingham Palace Road. Travelers are advised to plan accordingly.\nThank you for your attention. We wish you a pleasant journey.",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/train-station.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "word_box",
+                        "questions" : [
+                            "The 08:45 service to |1| is now boarding at Platform 5.",
+                            "The 09:10 departure from Platform 7 is experiencing a slight delay due to |2| issues.",
+                            "Coach C on the 09:30 service to Edinburgh Waverley is reserved |3| only.",
+                            "Passengers waiting for the 10:05 service to |4| Central should go to Platform 9.",
+                            "The 10:30 service to Manchester Piccadilly will terminate at |5| due to engineering works.",
+                            "Check-in for the 11:15 Eurostar service to |6| Gare du Nord is now open.",
+                            "Passengers are advised to stand behind the |7| line while waiting for their train.",
+                            "Minor delays have been reported on the |8| Line of the London Underground."
+                          ]
+                          ,
+                        "answers": ["Brighton", "signaling", "seating", "Cardiff", "Crewe", "Paris", "yellow", "Circle"],
+                        "topics": [],
+                        "choices": []
+                          ,
+                        "table_data": [],
+                        "word_box": ["Madrid", "York", "Liverpool", "Circle", "Paris", "Glasgow", "seating", "red", "Crewe", "yellow", "Derby", "Brighton", "Victoria", "track", "Berlin", "maintenance", "Birmingham", "signaling", "Northern", "Leeds", "standing", "blue", "Cardiff", "dining"]
+
+                    }
+                ]
+            },
+            {
+                "subject": "Daily News on the Radio",
+                "context": "Good morning, listeners! This is BBC Radio UK, bringing you the latest news updates from across the country. I’m James Carter, and here are today’s top stories.\nFirst, in politics, Prime Minister David Hamilton has announced a new economic recovery plan to tackle inflation and rising living costs. The government has pledged an additional £10 billion in funding to support struggling households and small businesses. The plan includes tax relief measures, energy subsidies, and increased investment in public transport. However, opposition leaders argue that more needs to be done to address wage stagnation and housing shortages. Meanwhile, the Home Office has introduced new visa regulations aimed at attracting skilled workers to the UK. The revised policy will make it easier for healthcare professionals, engineers, and IT specialists to obtain work permits. The move comes as the country faces ongoing labor shortages in key industries.\nTurning to regional updates, severe flooding has affected parts of Yorkshire and the Midlands following heavy rainfall overnight. Emergency services have been deployed to assist residents, and flood warnings remain in place for low-lying areas. Authorities are urging people to avoid unnecessary travel and stay indoors if possible. In London, the Metropolitan Police have launched an investigation into a series of theft incidents targeting luxury retail stores in the city center. Recent reports suggest that organized groups have been using motorbikes to carry out quick smash-and-grab robberies. Officials are increasing security measures and urging shop owners to remain vigilant. Meanwhile, in Manchester, the city council has approved plans for a new £500 million transport hub aimed at improving connectivity between trains, trams, and buses. Construction is set to begin early next year and is expected to be completed by 2028.\nIn financial news, the FTSE 100 has seen a slight increase today, climbing by 0.7%, as investors react to positive economic data. The Bank of England has hinted that interest rates may stabilize in the coming months, providing some relief for mortgage holders. In the retail sector, supermarket giant Tesco has announced plans to open 200 new stores across the UK, creating thousands of jobs. The company aims to expand its presence in suburban and rural areas to meet growing consumer demand.\nIn football, Manchester United secured a 2-1 victory against Arsenal last night in a thrilling Premier League match at Old Trafford. Star forward Marcus Rashford scored the winning goal in the final minutes, sending fans into celebration. Elsewhere, in tennis, Emma Raducanu has advanced to the quarter-finals of the Wimbledon Championships after a dominant performance against her French opponent. The young British star is being hailed as a strong contender for this year’s title. And in cricket, England is set to face India in the third Test match at Lord’s tomorrow. After a narrow defeat in the previous game, the team is looking to bounce back with a stronger performance.\nNow, let’s take a look at today’s weather across the UK. London will see cloudy skies with occasional showers, and temperatures will reach 16°C. Manchester can expect heavy rain in the afternoon, with a high of 14°C. Birmingham will have mild conditions with some sunny spells, peaking at 17°C. Edinburgh will remain cool and windy, with temperatures not exceeding 12°C. And in Belfast, expect light drizzle throughout the day, with highs of 13°C.\nIn entertainment, British singer Adele has announced additional tour dates in the UK due to overwhelming demand. Tickets for her concerts sold out within minutes, prompting organizers to add more shows in London, Manchester, and Glasgow. Meanwhile, the London Film Festival is set to kick off next week, showcasing a lineup of over 150 films from around the world. This year’s highlights include the premiere of a new James Bond documentary and a highly anticipated thriller starring Cillian Murphy.\nBefore we wrap up, a quick update on travel conditions: The M25 motorway is experiencing long delays near Junction 8 due to an overturned lorry. Expect significant congestion in both directions. Rail services between Birmingham and London are facing disruptions due to engineering works. Passengers are advised to check schedules before traveling. Flights at Heathrow Airport are running smoothly, but minor delays have been reported at Gatwick due to weather conditions.\nAnd that concludes our morning news update! Stay tuned for more updates throughout the day. This is James Carter with BBC Radio UK—thanks for listening, and have a great day!",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/uk-news.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" : ["What amount of additional funding has the UK government pledged for economic recovery?",
+                        "Which industry is NOT mentioned as a target for the UK's new visa regulations?",
+                        "Which city is experiencing severe flooding due to heavy rainfall?",
+                        "What is the expected completion year for Manchester's new transport hub?",
+                        "How much did the FTSE 100 increase today?",
+                        "Which supermarket chain announced plans to open 200 new stores?",
+                        "Who scored the winning goal for Manchester United against Arsenal?",
+                        "What will be the highest temperature recorded in Birmingham today?",
+                        "What event will showcase over 150 films next week?",
+                        "Which airport is experiencing minor delays due to weather conditions?"],
+                        "answers": [1, 3, 1, 2, 2, 1, 1, 3, 0, 1],
+                        "topics": [],
+                        "choices": [["£5 billion", "£10 billion", "£15 billion", "£20 billion"],
+                        ["Healthcare", "Engineering", "IT" , "Hospitality"],
+                        ["Manchester", "Yorkshire", "Edinburgh", "Belfast"],
+                        ["2026", "2027", "2028", "2029"],
+                        ["0.5%", "0.6%", "0.7%", "0.8%"],
+                        ["Sainsbury’s", "Tesco", "Morrisons", "Asda"],
+                        ["Harry Kane", "Marcus Rashford", "Bukayo Saka", "Bruno Fernandes"],
+                        ["14°C", "15°C", "16°C", "17°C"],
+                        ["London Film Festival", "Edinburgh Fringe Festival", "British Film Awards", "Cannes Film Festival"],
+                        ["Heathrow", "Gatwick", "Manchester", "Stansted"]]
+                          ,
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Weather Update by Emily",
+                "context": "Good morning, everyone! This is Emily Carter with your latest weather update on BBC Radio. If you’re heading out today, here’s what you can expect across the UK.\nLet’s start with London, where the morning begins with overcast skies. However, as the day progresses, we’ll see some sunny spells breaking through in the afternoon. Temperatures will reach a pleasant 18 degrees Celsius, with a light breeze coming in from the southwest. It’s a great day to be outdoors, but don’t forget a light jacket, as the evening temperatures will drop to around 10 degrees Celsius.\nMoving north to Manchester, it’s not looking as pleasant. The city will wake up to heavy rain showers, and they’ll continue until around midday. By the afternoon, the rain will ease, leaving behind cloudy skies and a cool 14 degrees Celsius high. Winds will be moderate, coming from the west at 15 miles per hour, so it might feel a little chillier than the actual temperature. If you’re going out, don’t forget an umbrella!\nOver in Birmingham, it’s a much drier and milder day. We’re looking at a mix of sunshine and clouds, with temperatures peaking at 17 degrees Celsius. Winds will be light, and it should feel quite comfortable throughout the day. If you’re planning an outdoor lunch, this might be one of the better places in the UK today.\nFurther north in Glasgow, it’s another chilly day with scattered showers expected from midday onwards. The morning will be mostly dry, but the clouds will stick around, and temperatures will struggle to reach more than 12 degrees Celsius. If you’re heading out later in the day, be prepared for some light rain, and it’s best to wear a waterproof jacket.\nOn the east coast in Newcastle, we’re looking at a breezy day with partly cloudy skies. The good news is that there will be some sunny spells in the late morning and early afternoon. The temperature will reach a high of 15 degrees Celsius, but with winds gusting up to 20 miles per hour, it might feel a little cooler.\nDown south in Plymouth, we have one of the best forecasts in the country today. It will be a warm and pleasant day with plenty of sunshine, and temperatures climbing to 19 degrees Celsius. It’s a perfect day for a walk by the coast or a picnic in the park. Just remember to wear sunscreen, as UV levels will be moderate.\nHeading over to Cardiff, the capital of Wales, it’s shaping up to be a bright and dry day with a few scattered clouds. Temperatures will rise to around 16 degrees Celsius, and winds will be light from the west. The evening will stay mild, making it a lovely evening for a stroll along Cardiff Bay.\nNow, let’s take a look at Edinburgh. It’s a cool and cloudy start to the day, and while there might be a few breaks in the clouds, expect some light drizzle later in the afternoon. The high will only reach 13 degrees Celsius, so it’s definitely a day for layers.\nHeading to Belfast, it’s a mostly dry and breezy day with a mix of sunshine and clouds. The temperature will peak at 14 degrees Celsius, and although it won’t be too warm, the wind will be quite strong at 22 miles per hour, so hold on to your hats!\nLastly, in Norwich, we’re expecting a mild day with occasional sunshine. The temperature will reach around 16 degrees Celsius, and the conditions should stay dry throughout the day. It’s one of the more stable forecasts, so it’s a good day for any outdoor activities.\nThat’s your weather update for today! If you’re in Manchester or Glasgow, make sure to carry an umbrella, and if you’re in Plymouth, enjoy the sunshine! Stay safe, and stay tuned for more updates throughout the day. Back to the studio!",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/weather-news.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" : [["The temperature in London will reach a high of |1| degrees Celsius.",  
+                        "Manchester will see temperatures dropping to |2| degrees overnight.",  
+                        "Birmingham is expected to have a maximum temperature of |3| degrees.",  
+                        "Glasgow will remain cool with highs of around |4| degrees Celsius.",  
+                        "Newcastle's temperature will peak at |5| degrees during the afternoon.",  
+                        "Plymouth will be warm, reaching |6| degrees Celsius.",  
+                        "Cardiff will experience temperatures of about |7| degrees.",  
+                        "Edinburgh's temperature will stay around |8| degrees throughout the day.",  
+                        "Belfast will have a high of |9| degrees and mostly dry conditions.",  
+                        "Norwich will see temperatures rising to |10| degrees in the afternoon."]
+                       
+                          ],
+                        "answers": [["18", "12", "17", "14", "16", "19", "15", "13", "14", "16"]],
+                        "topics": ["Weather Update by Emily"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Riverdale Shopping Center",
+                "context": "Welcome to Riverdale Shopping Center! Let me walk you through the layout so you can easily find your way around. The main entrance is located on the south side, facing the parking area. As soon as you step inside, on your left, you’ll see Star Café, a cozy coffee shop perfect for grabbing a quick drink or snack. On your right, there’s Fresh Mart, a grocery store that offers fresh produce, organic foods, and daily essentials. If you continue walking straight ahead, you’ll reach the central atrium, where you’ll find Fashion Zone, the largest clothing store in the mall. This store sells trendy outfits for men, women, and children, and it’s a great place to shop for seasonal fashion.\n<br/><br/>\nDirectly behind Fashion Zone, near the escalators, is Tech World, a popular store for electronics, mobile accessories, and the latest gadgets. To the left of Tech World, you’ll find Book Haven, a quiet bookstore with a small reading lounge and a selection of bestsellers and magazines. If you walk further down the left wing of the mall, you’ll see Bella’s Boutique, a high-end fashion store that specializes in designer clothing and accessories. Right next to it is Sports Hub, which sells sportswear, gym gear, and outdoor equipment for adventure lovers.\n<br/><br/>\nNow, if you go back toward the escalators and take them to the second floor, you’ll find Mega Cinema on the far left. This is the biggest movie theater in the mall, showing the latest blockbuster films. Across from it, on the right side, is Game Zone, a large arcade filled with video games, VR experiences, and fun activities for kids and adults. If you walk down the right wing of the second floor, you’ll come across Fit & Fine Gym, a modern fitness center that offers yoga classes, personal training, and high-tech gym equipment.\n<br/><br/>\nNow, if you continue walking toward the far end of the second floor, you’ll reach the Tasty Bites Food Court, a spacious dining area with food stalls offering a variety of international cuisines, from fast food to gourmet meals. Right next to the food court, you’ll find Delightful Desserts, a specialty shop selling cakes, pastries, and ice cream. On the opposite side of the food court, there’s Home Essentials, a home and lifestyle store where you can buy kitchenware, furniture, and decorative items.\n<br/><br/>\nIf you take the elevator near the food court down to the ground floor, you’ll reach the West Entrance, which leads directly to Luxury Fragrances, a store that sells high-end perfumes and beauty products. Across from it is Gadget Express, a small but popular store specializing in phone repairs, accessories, and tech gadgets. Finally, near the north exit, you’ll find Happy Feet Shoes, a footwear store that offers a wide range of sneakers, formal shoes, and sandals.\n<br/><br/>\nThroughout the mall, there are information kiosks and digital directories to help you navigate, as well as seating areas where you can take a break. Enjoy your visit to Riverdale Shopping Center!",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/mall-description.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" : [[
+                            "Welcome to |1| Shopping Center!",  
+                            "The main entrance is located on the |2| side, facing the parking area.",  
+                            "As soon as you step inside, on your left, you’ll see |3| Café.",  
+                            "On your right, there’s |4| Mart, a grocery store that offers fresh produce.",  
+                            "Directly behind Fashion Zone, near the |5|, is Tech World.",  
+                            "If you walk further down the |6| wing of the mall, you’ll see Bella’s Boutique.",  
+                            "Now, if you go back toward the escalators and take them to the |7| floor, you’ll find Mega Cinema.",  
+                            "If you take the elevator near the food court down to the |8| floor, you’ll reach the West Entrance.",  
+                            "On the |9| side of the food court, there’s Home Essentials, a home and lifestyle store.",  
+                            "Finally, near the north exit, you’ll find |10| Feet Shoes, a footwear store."  
+                          ]
+                          ],
+                        "answers": [["Riverdale", "south", "Star", "Fresh", "escalators", "left", "second", "ground", "opposite", "Happy"]],
+                        "topics": ["Riverdale Shopping Center"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Turkey Hotel Booking Inquiry",
+                "context": "Receptionist: Good morning! Thank you for calling Grand Oasis Hotel in Turkey. My name is Ayla. How may I assist you today?\nCaller: Good morning, Ayla! My name is Sarah Mitchell, and I’m planning a vacation in Turkey. I’d like to inquire about booking a room at your hotel.\nReceptionist: That sounds wonderful, Ms. Mitchell! I’d be happy to help. May I ask for your preferred check-in and check-out dates?\nCaller: Sure! I’m planning to arrive on June 15th and stay for five nights, so I’d be checking out on June 20th.\nReceptionist: Let me check our availability… Yes, we have several room options available for those dates. Would you like a standard room, a deluxe suite, or a sea-view room?\nCaller: I’d love a sea-view room. Could you tell me more about it?\nReceptionist: Of course! Our sea-view rooms offer a stunning view of the Mediterranean, a private balcony, a king-sized bed, and a modern en-suite bathroom. The rate is 120 euros per night, which includes breakfast and complimentary access to our spa and swimming pool.\nCaller: That sounds amazing! Does the price also include Wi-Fi?\nReceptionist: Yes, you’ll have free high-speed Wi-Fi in your room and throughout the hotel. You’ll also have access to our fitness center, sauna, and rooftop lounge.\nCaller: That’s great! Do you offer airport transfers?\nReceptionist: Yes, we do! We provide a private airport transfer service for 30 euros one way or 50 euros for a round-trip transfer.\nCaller: That’s quite reasonable. I think I’d like to add the round-trip airport transfer to my booking.\nReceptionist: Noted! I’ll add that to your reservation. Would you like to include any additional services, such as guided tours or a special dinner package?\nCaller: Oh, I’d love to know more about the guided tours!\nReceptionist: We offer several excursions, including a full-day tour of Istanbul’s historical sites, a boat cruise along the Bosphorus, and a hot air balloon ride in Cappadocia. These can be arranged directly at the hotel.\nCaller: Wow! That sounds incredible. I might book a tour once I arrive.\nReceptionist: Absolutely! You can decide after you check in, and our concierge will be happy to assist you.\nCaller: Sounds perfect. By the way, do you have any special offers or discounts?\nReceptionist: Yes! If you book at least 30 days in advance, you get a 10% discount on your stay. Also, if you stay five nights or more, you receive a complimentary dinner for two at our rooftop restaurant.\nCaller: That’s fantastic! I’ll definitely take the discount and the complimentary dinner.\nReceptionist: Great choice! Now, let’s proceed with your reservation. Can I have your full name, email, and a contact number, please?\nCaller: Sure! My full name is Sarah Mitchell, my email is sarah.mitchell@email.com, and my contact number is +44 7912 345678.\nReceptionist: Thank you, Ms. Mitchell. How would you like to pay—by credit card now or upon arrival?\nCaller: I’ll pay by credit card now to secure the booking.\nReceptionist: Perfect! I’ll send you a payment link via email. Once the payment is processed, I’ll send you the confirmation details.\nCaller: Sounds good!\nReceptionist: Is there anything else I can assist you with?\nCaller: Actually, yes. What’s the check-in and check-out time?\nReceptionist: Check-in starts at 2:00 PM, and check-out is by 12:00 PM. However, if you need a late check-out, we can arrange it for an additional fee.\nCaller: That’s good to know. Oh, and what’s the breakfast like? Is it a buffet?\nReceptionist: Yes! We offer a buffet-style breakfast with a variety of options, including fresh fruits, pastries, cheeses, eggs, and traditional Turkish dishes.\nCaller: That sounds delicious! What about lunch and dinner?\nReceptionist: We have a restaurant on-site that serves both international and traditional Turkish cuisine. There’s also a beachside café and a rooftop bar with panoramic views.\nCaller: That’s wonderful! Do I need to make a reservation for dinner?\nReceptionist: It’s recommended, especially for the rooftop restaurant, as it tends to get fully booked in the evenings.\nCaller: I see. I’ll keep that in mind. By the way, do you have any family-friendly activities?\nReceptionist: Yes, we have a kids’ club with supervised activities, a play area, and a special kids’ menu. We also offer family-friendly tours.\nCaller: That’s great! I’m traveling with my husband and two children, so that would be perfect.\nReceptionist: Would you like to upgrade to a family suite? It offers extra space and an additional bed.\nCaller: How much is the upgrade?\nReceptionist: It’s an additional 40 euros per night.\nCaller: That’s reasonable. I’ll take the family suite instead.\nReceptionist: Excellent choice! I’ve updated your reservation. Would you like any additional requests, such as a baby cot or extra pillows?\nCaller: Extra pillows would be great.\nReceptionist: Noted! Anything else?\nCaller: Actually, do you have a laundry service?\nReceptionist: Yes, we offer same-day laundry and dry-cleaning services for an extra charge.\nCaller: Perfect! I think that’s all for now.\nReceptionist: Wonderful! Your reservation is confirmed. You’ll receive a confirmation email shortly. If you have any further questions, feel free to contact us.\nCaller: Thank you so much, Ayla! You’ve been very helpful.\nReceptionist: My pleasure, Ms. Mitchell! We look forward to welcoming you and your family. Have a great day!\nCaller: You too! Goodbye!",
+                "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/turkey-hotel.mp3",
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "double_selection",
+                        "questions" : [
+                            "What are the type of rooms does Sarah Mitchell considered booking?",
+                            "What is included in the 120 euros per night rate?",
+                            "How much does one-way and round-trip airport transfer cost?",
+                            "Which activities does the hotel offer?",
+                            "What services are available at the hotel’s restaurant?",
+                            "What are the check-in and check-out times?",
+                            "Which family-friendly services does the hotel offer?"
+                          ]
+                          ,
+                        "answers": [
+                            [1, 3],
+                            [0, 3],
+                            [2, 0],
+                            [0, 3],
+                            [0, 1],
+                            [1, 3],
+                            [0, 3]
+                          ],
+                        "topics": [],
+                        "choices": [
+                            ["Standard room", "Sea-view room", "Deluxe suite", "Family suite"],
+                            ["Breakfast", "Gym access", "Laundry service", "Swimming pool"],
+                            ["30 euros", "40 euros", "50 euros", "60 euros"],
+                            ["Guided tours", "Horse riding", "Boat cruise", "Hot air balloon ride"],
+                            ["Buffet breakfast", "International cuisine", "Fast food", "Beachside café"],
+                            ["Check-in at 12:00 PM", "Check-in at 2:00 PM", "Check-out at 10:00 AM", "Check-out at 12:00 PM"],
+                            ["Kids’ club", "Special kids’ menu", "Babysitting service", "Play area"]
+                          ],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
                 "subject": "Greenfield High School Map",
                 "context": "Greenfield High School is located in the heart of the town, surrounded by residential areas and accessible through two main gates on the north and east sides. Upon entering through the main gate on the north side, visitors are greeted by the administration building, which stands directly in front of the entrance. To the right of the administration building is the library, which has a large collection of academic and recreational books. Adjacent to the library is the science building, which houses modern laboratories for physics, chemistry, and biology.\n<br/><br/>\nTo the left of the administration building, there is a large cafeteria where students gather during lunch breaks. Next to the cafeteria is the gymnasium, which includes a basketball court and a fitness center. Behind the gymnasium, there is an outdoor sports field used for soccer and track events. Surrounding the sports field is a running track that is frequently used by both students and staff for training and recreational purposes.\n<br/><br/>\nAt the southern end of the campus, there is a fine arts building that contains music and art classrooms. Nearby is the auditorium, where school events and performances are held. On the western side of the campus, there is a large parking lot reserved for staff and senior students. The parking lot is bordered by a row of trees that separates it from the student garden, which serves as a quiet space for relaxation and study.\n<br/><br/>\nIn the northeastern corner of the campus, there is a student center that provides counseling services, academic support, and a quiet study area. Directly across from the student center is the computer lab, which is equipped with high-speed internet and modern workstations. The school grounds are well-maintained with walking paths and benches scattered throughout the campus, creating a welcoming environment for students and staff alike.",
                 "audio_url": "https://raw.githubusercontent.com/lloydaxeph/ielts_audio_repo/master/ai-generated/green-field-map.mp3",
-                "image_url": null,
+                "image_url": "https://i.imgur.com/3AbXFqG.png",
                 "question_set": [
                     {
                         "test_type": "map",
                         "questions" : [],
-                        "answers": [0, 1, 2, 3, 4],
+                        "answers": [0, 5, 2, 4, 1, 3],
                         "topics": ["Greenfield High School Map"],
                         "choices": [],
                         "table_data": [ 
                             ["", "A", "B", "C", "D", "E", "F", "G"], 
-                            ["Library", "Cafeteria", "Fine Arts Building", "Student Center", "Computer Lab"]
+                            ["Library", "Student Center", "Cafeteria",  "Student Garden", "Science Building", "Gymnasium"]
                             ],
                         "word_box": []
                     }
@@ -672,6 +1039,449 @@
             }
         ],
         "reading": [
+            {
+                "subject": "Development of Bullet Trains",
+                "context": "Bullet trains, also known as high-speed trains, have become a symbol of technological advancement in transportation. First introduced in Japan in 1964 with the Shinkansen, these trains represented a significant leap in rail travel, offering faster, more efficient, and comfortable transportation over long distances. Since then, high-speed rail systems have expanded across the globe, with countries like China, France, and Germany adopting and developing their own networks. Today, bullet trains are essential in connecting major cities, reducing travel times, and offering an environmentally friendly alternative to cars and airplanes.\n<br/><br/>\nOne of the defining characteristics of bullet trains is their top speed, which can reach up to 320 km/h. The Shinkansen, for example, operates at this impressive speed, drastically reducing the time it takes to travel between cities. For instance, the journey between Tokyo and Osaka, which used to take over 6 hours by car, can now be completed in just 2.5 hours by bullet train. This ability to cover vast distances in less time has made the bullet train an attractive option for business travelers, tourists, and daily commuters. As a result, high-speed rail has contributed to greater connectivity between regions, fostering economic growth and cultural exchange.\n<br/><br/>\nIn addition to their speed, bullet trains are powered by electricity, which is often sourced from renewable energy sources. This makes them a more sustainable option compared to air and road transport. Unlike airplanes, which rely on fossil fuels and produce higher emissions, bullet trains are a cleaner alternative, producing much lower carbon emissions. The design of modern bullet trains, with their streamlined and aerodynamic shape, helps to reduce energy consumption while maintaining high speeds. This energy efficiency, coupled with the environmental benefits, is one of the primary reasons why many countries are investing in expanding their high-speed rail networks to help combat climate change.\n<br/><br/>\nThe capacity of these trains is also a key factor in their popularity. Bullet trains can carry between 800 and 1,200 passengers at a time, depending on the model and design. This high capacity ensures that large numbers of passengers can travel quickly between cities without overcrowding, contributing to the efficiency of the service. Additionally, the route distance of bullet trains can extend to up to 500 km, making them ideal for medium to long-distance travel. This enables high-speed rail systems to connect cities that are geographically far apart, improving accessibility and mobility.\n<br/><br/>\nBullet trains run on dedicated high-speed rail tracks, which are specifically designed for faster and safer travel. These tracks are separate from conventional rail networks, allowing trains to operate at much higher speeds without interference from slower trains. The construction and operation of these tracks require significant investment—sometimes running into billions of USD—but the long-term benefits, such as improved economic connectivity and reduced travel time, justify the cost.\n<br/><br/>\nMoreover, bullet trains have a low environmental impact compared to other forms of transportation. As they are powered by electricity and often rely on renewable energy sources, their carbon footprint is much smaller than that of conventional vehicles and planes. This is an important consideration in the global push toward more sustainable transportation solutions. The efficiency of high-speed trains, combined with their environmental advantages, makes them a crucial part of efforts to reduce global greenhouse gas emissions and combat climate change.\n<br/><br/>\nDespite their many benefits, the development of bullet trains faces challenges. The high construction and maintenance costs, coupled with the need for large amounts of land to build dedicated tracks, can be significant barriers. Additionally, the displacement of communities or wildlife habitats during the building phase can raise environmental and social concerns. Nonetheless, the continued advancements in rail technology, alongside the increasing demand for faster and more sustainable travel, suggest that bullet trains will continue to play an important role in the future of global transportation.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_table",
+                        "questions" :[],
+                        "answers": ["320", "Electricity", "800", "500", "high", "billions", "carbon"],
+                        "topics": ["Development of Bullet Trains"],
+                        "choices": [],
+                        "table_data": [
+                            ["Specs", "Value"],
+                            ["Top Speed", "|0| km/h"],
+                            ["Energy Source", "|1|"],
+                            ["Train Capacity", "|2|-1,200 passengers"],
+                            ["Route Distance", "Up to |3| km"],
+                            ["Track Type", "Dedicated |4|-speed rail tracks"],
+                            ["Development Cost", "|5| of USD"],
+                            ["Environmental Impact", "Low |6| emissions"]
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Evolution of Modern Marathon Running",
+                "context": "The marathon is one of the most grueling endurance races in the world, challenging athletes to complete a distance of 42.195 kilometers. Its origins can be traced back to ancient Greece, where legend tells the story of a soldier named Pheidippides, who ran from the battlefield of Marathon to Athens to announce a Greek victory over the Persians. The effort reportedly cost him his life, but his heroic run became the inspiration for the modern marathon race. The first Olympic marathon was held in 1896 in Athens, with a distance of approximately 40 kilometers. However, during the 1908 London Olympics, the course was extended to 42.195 kilometers to accommodate the British royal family’s viewing location, and this length was later standardized.\n<br/><br/>\nOver the years, marathon running has evolved significantly, with improvements in training methods, footwear technology, and sports nutrition allowing athletes to push the limits of human endurance. Today, professional marathon runners can maintain a remarkable pace, completing the race in just over two hours. The sub-two-hour marathon, once thought impossible, was achieved in a controlled race environment by Kenyan runner Eliud Kipchoge in 2019. Although not officially recognized as a world record due to the use of pacemakers and specialized conditions, this achievement demonstrated the extraordinary potential of the human body when aided by scientific advancements.\n<br/><br/>\nBeyond professional competitions, marathon running has grown into a global phenomenon, attracting millions of amateur runners each year. Major city marathons, such as those in New York, London, Boston, Berlin, and Tokyo, witness a diverse range of participants. While some runners compete for personal bests or fitness goals, others run to raise money for charities or to honor loved ones. Marathons also promote inclusivity, with some races featuring wheelchair divisions and special categories for visually impaired or disabled athletes. In many cities, marathons have become deeply ingrained in local culture, with entire communities gathering to cheer on the runners.\n<br/><br/>\nOne of the biggest debates in marathon history involves the role of advanced footwear technology. New-generation running shoes, featuring carbon-fiber plates and enhanced cushioning, have allowed runners to reduce energy loss and improve efficiency. Critics argue that these shoes provide an unfair advantage, while others see them as part of the natural progression of sports science. Additionally, race organizers now employ electronic timing systems and sophisticated tracking technology to ensure accurate results.\n<br/><br/>\nMarathons are not just athletic competitions; they are also major economic and cultural events. Host cities experience a surge in tourism as athletes, spectators, and sponsors travel from around the world to attend. The financial impact of these races is substantial, benefiting hotels, restaurants, and local businesses. The New York City Marathon, for instance, generates millions of dollars in revenue and raises substantial funds for charitable causes. Similarly, marathon sponsorships and media coverage contribute to the sport’s growing popularity, further cementing its role as a major global event.\n<br/><br/>\nDespite its challenges, marathon running continues to captivate the world. Many runners view completing a marathon as a life-changing achievement, symbolizing determination, resilience, and mental strength. With advances in training, technology, and medical support, marathon times will likely continue to improve in the coming years. As the sport evolves, it remains a testament to the human spirit, pushing athletes to test their limits and inspiring future generations to take on the challenge.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" :[
+                            "The marathon distance was officially standardized in the 1908 London Olympics.",
+                            "Pheidippides was rewarded with a medal for his legendary run from Marathon to Athens.",
+                            "Eliud Kipchoge was the first person to run a marathon in under two hours in a controlled environment.",
+                            "All major city marathons allow only professional athletes to participate.",
+                            "Wheelchair divisions are included in some marathon events to promote inclusivity.",
+                            "New-generation running shoes with carbon-fiber plates have led to controversy in the sport.",
+                            "Electronic timing systems have completely replaced manual race timing in every marathon worldwide.",
+                            "The Boston Marathon was the first officially recorded marathon race in modern history.",
+                            "Marathon sponsorships have no impact on the popularity of the sport.",
+                            "Running a marathon is often considered a personal achievement that requires mental and physical endurance."
+                        ],
+                        "answers": [0, 2, 0, 1, 0, 0, 1, 2, 1, 0],
+                        "topics": [],
+                        "choices": [
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"]
+                        ],
+                        "table_data": [
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Science of Earthquakes",
+                "context": "Earthquakes are among the most powerful natural phenomena on Earth, capable of causing widespread destruction and loss of life. They occur when stress builds up along fault lines in the Earth's crust, leading to a sudden release of energy. This energy radiates in the form of seismic waves, which travel through the ground and shake the surface. The intensity of an earthquake depends on various factors, including the depth of the rupture, the type of fault involved, and the geological conditions of the affected area. Some earthquakes can be barely noticeable, while others can cause devastating tsunamis, landslides, and infrastructure collapse.\n<br/><br/>\nThe first scientific explanation of earthquakes dates back to the 18th century, but significant advancements were made in the 20th century with the development of plate tectonics theory. According to this theory, the Earth's outer shell, called the lithosphere, is divided into several moving plates. These plates interact at their boundaries, creating different types of faults. Transform faults, like the San Andreas Fault in California, produce some of the most powerful earthquakes. Other fault types include normal faults, which are common in areas where the Earth's crust is being stretched, and reverse faults, which occur in regions where compression forces push rock layers together.\n<br/><br/>\nScientists measure earthquakes using instruments called seismometers. The magnitude of an earthquake is recorded using the Richter scale or the more modern Moment Magnitude Scale (Mw). A magnitude 5 earthquake is 10 times stronger than a magnitude 4 earthquake, illustrating the exponential nature of earthquake intensity. In addition to magnitude, the Mercalli Intensity Scale is used to describe the effects of an earthquake on people, buildings, and the environment. Seismologists also study seismic patterns to predict the likelihood of future earthquakes, though exact predictions remain impossible. Advanced warning systems based on early detection of seismic waves have helped reduce casualties in some regions, particularly in countries like Japan and Mexico.\n<br/><br/>\nThe effects of earthquakes can be devastating, particularly in densely populated areas. Urban regions with poorly built structures face a higher risk of collapse and casualties. In contrast, areas with strict building codes and earthquake-resistant infrastructure tend to experience fewer fatalities. The impact of an earthquake is not limited to ground shaking alone; secondary effects such as soil liquefaction, fires, and landslides can cause additional destruction. Coastal earthquakes can also trigger tsunamis, which are massive ocean waves capable of traveling across entire ocean basins, causing widespread flooding when they reach land. The 2004 Indian Ocean earthquake and tsunami, for example, resulted in over 230,000 deaths across multiple countries.\n<br/><br/>\nEfforts to mitigate earthquake damage focus on engineering solutions and public preparedness. Modern buildings in earthquake-prone areas are designed with shock absorbers, flexible foundations, and reinforced structures to withstand shaking. Governments also conduct earthquake drills and educate people on safety measures, such as taking cover under sturdy furniture. Some countries have implemented early warning systems that provide residents with seconds to minutes of advance notice before shaking begins, allowing people to take cover or stop critical operations. The integration of artificial intelligence and big data in earthquake research is also helping scientists improve hazard assessments and response strategies.\n<br/><br/>\nWhile earthquakes cannot be prevented, scientific research continues to improve our understanding and response to these natural disasters. The study of historical seismic activity and modern technological advancements play a crucial role in minimizing damage and loss of life. As urbanization continues to increase, it is essential for governments and communities to invest in earthquake-resistant infrastructure, emergency preparedness, and public education. By leveraging science and technology, humanity can continue to develop more effective ways to coexist with one of nature’s most formidable forces.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "word_box",
+                        "questions" :[
+                            "The sudden release of |1| along fault lines is what triggers an earthquake.",
+                            "The ground shakes during an earthquake due to seismic |2| moving through it.",
+                            "Several factors, such as depth and fault type, influence the |3| of an earthquake.",
+                            "The |4| Tectonics theory describes the movement of the Earth's outer shell.",
+                            "A well-known transform fault in California is the San Andreas |5|.",
+                            "To record earthquake activity, scientists rely on instruments called |6|.",
+                            "The |7| scale, along with the Moment Magnitude Scale, is used to assess earthquake strength.",
+                            "An earthquake with a magnitude of 5 is |8| times more powerful than one with a magnitude of 4.",
+                            "To enhance stability, modern structures incorporate shock absorbers and |9| foundations.",
+                            "Authorities conduct earthquake |10| to train people on proper safety procedures."
+                        ],
+                        "answers": ["energy", "waves", "intensity", "Plate", "Fault", "seismometers", "Richter", "ten", "flexible", "drills"],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [
+                        ],
+                        "word_box": ["rupture", "nine", "waves", "seismic", "energy", "shockwave", "Plate", "magnitude", "seismometers", 
+                        "intensity", "aftershock", "vibration", "ten", "Fault", "Richter", "epicenter", "drills", 
+                        "tectonic", "flexible", "eleven"]
+                    }
+                ]
+            },
+            {
+                "subject": "The Discovery of Exoplanets",
+                "context": "For centuries, astronomers speculated about the existence of planets beyond our solar system, but it was not until the 1990s that the first confirmed exoplanet was discovered. An exoplanet, or extrasolar planet, is a planet that orbits a star outside our solar system. These planets are difficult to detect because they do not emit light and are often hidden by the brightness of their parent stars. However, advancements in technology have allowed scientists to identify thousands of exoplanets using indirect detection methods. Before the first discovery, many astronomers debated whether planetary systems were common or rare in the universe. Today, we know that exoplanets are abundant, and nearly every star is likely to have at least one planet orbiting it.\n<br/><br/>\nOne of the most common techniques for discovering exoplanets is the transit method. This method involves observing a star’s brightness over time. When a planet passes in front of its star, it causes a slight dip in brightness, which can be measured by telescopes. The transit method has helped astronomers detect thousands of exoplanets, particularly with the help of space telescopes like Kepler and TESS. Another widely used method is the radial velocity technique, which measures the tiny wobbling motion of a star caused by the gravitational pull of an orbiting planet. In some cases, astronomers use direct imaging to capture visual evidence of exoplanets, though this method is challenging due to the overwhelming brightness of stars. Gravitational microlensing is another technique that detects exoplanets by measuring how their gravity bends and magnifies the light from a distant background star.\n<br/><br/>\nExoplanets come in many forms, ranging from gas giants like Jupiter to rocky planets similar to Earth. Some orbit their stars at extreme distances, while others are located in the habitable zone, where conditions might support liquid water and potentially life. The discovery of Earth-like exoplanets has fueled the search for extraterrestrial life, leading to increased interest in future space missions. Scientists continue to analyze atmospheric compositions and surface conditions of these distant worlds to determine their potential for habitability. Some exoplanets, known as 'hot Jupiters,' are gas giants that orbit extremely close to their stars, experiencing scorching temperatures. Others, called 'super-Earths,' are rocky planets larger than Earth but smaller than Neptune, and some of these may have thick atmospheres or even oceans beneath their surfaces.\n<br/><br/>\nAs technology continues to advance, astronomers are developing new ways to study exoplanets in greater detail. Future telescopes, such as the James Webb Space Telescope, are expected to provide more precise observations, including the ability to analyze the chemical composition of exoplanet atmospheres. These discoveries will help scientists understand how planets form, evolve, and whether life might exist beyond our solar system. Scientists also use spectroscopy to examine the light passing through an exoplanet's atmosphere, searching for signs of oxygen, water vapor, and other molecules essential for life. New space missions, such as the European Space Agency's PLATO (Planetary Transits and Oscillations of Stars), will continue to improve our ability to detect and characterize these distant worlds. As our understanding of exoplanets grows, we move closer to answering one of humanity’s greatest questions: Are we alone in the universe?",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" :[
+                            "What is an exoplanet?",
+                            "Why are exoplanets difficult to detect?",
+                            "Which method involves measuring the brightness of a star over time?",
+                            "What is the main purpose of the radial velocity technique?",
+                            "Which space telescopes have contributed significantly to exoplanet discoveries?",
+                            "Why are Earth-like exoplanets of particular interest to scientists?",
+                            "What is the habitable zone?",
+                            "How does the transit method help in detecting exoplanets?",
+                            "What is one major goal of studying exoplanet atmospheres?",
+                            "Which future telescope is expected to provide more detailed information about exoplanets?"
+                        ],
+                        "answers": [0, 1, 0, 2, 1, 1, 1, 0, 2, 2],
+                        "topics": [],
+                        "choices": [
+                            ["A planet outside our solar system", "A moon of another planet", "A comet orbiting a distant star", "A newly discovered type of asteroid"],
+                            ["They are too small to detect", "They do not emit light and are obscured by their parent stars", "They are always too far from Earth", "They move too fast to be observed"],
+                            ["Transit method", "Direct imaging", "Gravitational lensing", "Pulsar timing"],
+                            ["To measure how bright an exoplanet is", "To study the temperature of distant planets", "To detect the small wobbling motion of a star", "To analyze the speed of a planet’s rotation"],
+                            ["Hubble and Chandra", "Kepler and TESS", "Voyager and Pioneer", "Galileo and Cassini"],
+                            ["They are the easiest to detect", "They might have conditions suitable for life", "They orbit stars very far away", "They have the shortest orbital periods"],
+                            ["A region where no planets exist", "A zone where temperatures allow liquid water to exist", "The area where gas giants are found", "A distance from a star where planets cannot form"],
+                            ["By measuring the drop in a star’s brightness when a planet crosses in front of it","By detecting changes in a planet’s temperature",  "By observing a planet’s rotation speed", "By analyzing a planet’s gravitational pull"],
+                            ["To determine their color", "To find out if they have liquid water", "To see if they contain chemical signatures that indicate life", "To measure their size"],
+                            ["Spitzer Space Telescope", "Hubble Space Telescope", "James Webb Space Telescope", "Chandra X-ray Observatory"]
+                        ],
+                        "table_data": [
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Invention of the Printing Press",
+                "context": "The invention of the printing press in the 15th century was one of the most significant technological advancements in human history. Before this invention, books were copied by hand, a slow and expensive process that limited the spread of knowledge. Most books were written on parchment or vellum, materials that were costly and time-consuming to produce. As a result, only the wealthy and powerful, such as kings, nobles, and religious institutions, had access to written works. The printing press, developed by Johannes Gutenberg around 1440, revolutionized the way information was recorded and shared. By using movable type and a mechanical press, Gutenberg made book production faster, cheaper, and more accessible to a wider audience. This breakthrough marked the beginning of a new era in communication and education.\n<br/><br/>\nOne of the first major works printed using Gutenberg’s press was the Gutenberg Bible, completed around 1455. It was an extraordinary achievement in craftsmanship and standardization, allowing for multiple copies of the same text to be produced with high precision. Unlike handwritten manuscripts, which often contained errors and inconsistencies, printed books ensured greater accuracy and reliability. This marked the beginning of mass communication, as books and pamphlets could now be produced in large quantities. The rapid spread of printed materials led to an increase in literacy rates across Europe. For the first time, ordinary people had access to religious texts, scientific discoveries, and political ideas, which contributed to significant cultural and intellectual changes. The availability of printed material also encouraged people to question traditional beliefs and seek knowledge beyond what was dictated by religious or political authorities.\n<br/><br/>\nThe printing press played a crucial role in major historical events, such as the Protestant Reformation. Reformers like Martin Luther used printed materials to spread their ideas and challenge the authority of the Catholic Church. Luther’s 95 Theses, printed and distributed widely in 1517, criticized church practices and sparked a religious revolution. Without the printing press, the Protestant Reformation may not have gained as much momentum, as it allowed for ideas to spread quickly across different regions. The ability to distribute information efficiently also influenced the Scientific Revolution, allowing scholars to share their discoveries more easily. Scientists such as Galileo Galilei and Isaac Newton relied on printed books to communicate their groundbreaking research, leading to rapid advancements in fields such as astronomy, physics, and medicine. The press also helped shape modern journalism, as newspapers became an essential tool for informing the public about current events, politics, and social issues.\n<br/><br/>\nOver time, printing technology continued to evolve, leading to the development of more advanced presses and, eventually, digital printing methods. By the 19th century, steam-powered printing presses enabled mass production of books, newspapers, and magazines, making information even more accessible. Today, digital printing and the internet have further revolutionized how knowledge is shared, but Gutenberg’s invention remains one of the most important breakthroughs in history. It laid the foundation for the spread of knowledge, shaping the world’s political, scientific, and cultural landscapes. Without the printing press, the progress of human civilization would have been significantly slower, and many of the intellectual movements that shaped modern society might never have occurred.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" :[[
+                            "The printing press, invented in the |1| century, was a groundbreaking technological innovation in history.",
+                            "Before printing technology, books had to be manually |2|, making the process slow and costly.",
+                            "Johannes 1440 introduced the printing press around the year |3|.",
+                            "Among the earliest significant works produced using the press was the Gutenberg |4|, finished around 1455.",
+                            "Unlike handwritten manuscripts, printed books provided more |5| and consistency.",
+                            "The |6| Reformation was greatly influenced by the rapid spread of printed religious materials.",
+                            "A key figure in the religious movement, Martin |7|, utilized printing to challenge church doctrines.",
+                            "The |8| Revolution benefited from printing as scholars could distribute their findings widely.",
+                            "In the 19th century, |9|-powered presses enabled the large-scale production of printed materials.",
+                            "The printing press played a major role in shaping modern |10| by making news more accessible."
+                        ]],
+                        "answers": [["15th", "15th", "1440", "Bible", "accuracy", "Protestant", "Luther", "Scientific", "steam", "journalism"]],
+                        "topics": ["The Invention of the Printing Press"],
+                        "choices": [],
+                        "table_data": [
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Great Wall of China",
+                "context": "The Great Wall of China is one of the most remarkable architectural achievements in history. Originally built to protect Chinese states from invasions by nomadic tribes from the north, the earliest sections of the wall date back to the 7th century BCE. However, the most well-known and well-preserved parts of the wall were constructed during the Ming Dynasty (1368–1644). The wall stretches over 13,000 miles and includes watchtowers, barracks, and fortresses, making it one of the largest military structures ever built. Beyond its military purpose, the wall also served as a means of controlling trade along the Silk Road and regulating immigration and emigration.\n<br/><br/>\nThe construction of the Great Wall required an enormous workforce and vast amounts of materials. Millions of workers, including soldiers, peasants, and prisoners, were forced to labor under extreme conditions. Many perished due to exhaustion, disease, or accidents, and in some cases, their bodies were buried within the wall itself. The materials used varied depending on the region. In the eastern sections, bricks and stones were commonly used due to their availability, while in the western regions, tamped earth and wood were more prevalent. The wall's design also evolved over time, with different dynasties adding their own modifications, strengthening defenses, and building additional fortifications.\n<br/><br/>\nDespite its impressive scale and formidable defenses, the Great Wall was not entirely successful in preventing invasions. Several groups, including the Mongols, managed to breach the wall and conquer parts of China. One of the most significant breaches occurred in the 13th century when Genghis Khan's forces overcame the defenses and established Mongol rule over China. However, the wall still served as a psychological barrier, deterring some invaders and making large-scale attacks more difficult. It also played an important symbolic role, reinforcing the idea of China as a unified and powerful civilization. Over time, the wall became an emblem of strength, perseverance, and national identity.\n<br/><br/>\nToday, the Great Wall is one of the most visited tourist attractions in the world and has been recognized as a UNESCO World Heritage Site. Efforts have been made to preserve and restore sections of the wall, especially those that have suffered damage due to natural erosion, human activities, and environmental factors. While some parts remain well-preserved, others have crumbled over time, leaving only fragments of the original structure. The Chinese government, along with international organizations, continues to invest in conservation projects to ensure that this historical monument remains a testament to China’s rich history for future generations. As global tourism grows, balancing preservation with public access has become an important challenge.\n<br/><br/>\nThe legacy of the Great Wall extends far beyond its physical structure. It has inspired countless stories, legends, and cultural expressions throughout history. In Chinese folklore, the wall is often associated with the tale of Meng Jiangnu, a woman whose tears caused a section of the wall to collapse after her husband died while working on its construction. This story reflects the human cost of building such a massive structure and highlights the emotional connection people have with the wall. Additionally, the Great Wall has become a powerful symbol in modern times, representing endurance, unity, and the ability to overcome obstacles.\n<br/><br/>\nIn recent years, advanced technologies such as satellite imagery and drones have been used to map and document the remaining sections of the wall, helping historians and conservationists better understand its structure and history. The wall continues to attract millions of visitors each year, serving as both a historical landmark and a source of national pride. While it may no longer function as a military defense, its cultural and historical significance remains as strong as ever. The Great Wall of China stands as a testament to human ingenuity, perseverance, and the enduring legacy of one of the world’s greatest civilizations.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "single_selection",
+                        "questions" :[
+                            "The earliest sections of the Great Wall were built in the 7th century BCE.",
+                            "The Great Wall was primarily constructed during the Qing Dynasty.",
+                            "The Great Wall of China was painted red during the Ming Dynasty to symbolize good fortune",
+                            "The Mongols never managed to breach the Great Wall.",
+                            "One of the key purposes of the Great Wall was to regulate trade along the Silk Road.",
+                            "Genghis Khan’s forces breached the wall and took control of China in the 13th century.",
+                            "All sections of the Great Wall are still fully intact today.",
+                            "The Great Wall has been used as a filming location for several Hollywood movies.",
+                            "The story of Meng Jiangnu highlights the hardships of those who built the wall.",
+                            "Satellite imagery and drones have been used to study the remaining sections of the Great Wall."
+                        ],
+                        "answers": [0, 1, 2, 1, 0, 0, 1, 2, 0, 0],
+                        "topics": [],
+                        "choices": [
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"],
+                            ["True", "False", "Not Given"]
+                        ],
+                        "table_data": [
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The Search for El Dorado",
+                "context": "For centuries, explorers and adventurers have been captivated by the legend of El Dorado, a mythical city said to be filled with gold. The origins of this story date back to the 16th century when Spanish conquistadors arrived in South America and heard tales of a king who covered himself in gold dust before diving into a sacred lake as part of a ritual. These accounts led to widespread speculation that an entire city of gold was hidden somewhere deep in the jungles of the continent. As the story spread, the legend of El Dorado transformed from a single ritual into the idea of a golden kingdom, inspiring countless expeditions in search of unimaginable riches.\n<br/><br/>\nOne of the most notable expeditions was led by Gonzalo Pizarro in 1541. Along with hundreds of men, he ventured into the dense Amazon rainforest, enduring extreme hunger, disease, and hostile conditions. However, despite months of searching, they found no evidence of El Dorado. In later years, other explorers such as Sir Walter Raleigh attempted similar journeys, believing that the lost city was located near the Orinoco River in present-day Venezuela. Like Pizarro’s expedition, these efforts ended in failure. Many explorers faced harsh environments, attacks from indigenous groups, and a lack of resources, leading to the deaths of many who dared to embark on the search for the legendary city.\n<br/><br/>\nThe legend of El Dorado is believed to have originated from the traditions of the Muisca people of Colombia. Their leader, known as the zipa, would perform a ceremony at Lake Guatavita, covering his body in gold dust and offering treasures to the gods. This ceremony was a spiritual act, symbolizing wealth and devotion rather than the existence of an actual city made of gold. When Spanish explorers witnessed these rituals, they mistakenly assumed that vast amounts of gold were hidden in the region. As a result, several attempts were made to drain Lake Guatavita, but only small amounts of gold artifacts were recovered, and no hidden city was ever found. These discoveries fueled further speculation, with explorers believing that the true wealth of El Dorado must be located elsewhere, leading to even more expeditions deeper into the unexplored territories of South America.\n<br/><br/>\nDespite repeated failures to locate El Dorado, the legend persisted. Over time, different theories emerged about its possible location. Some believed it could be in the dense Amazon basin, while others speculated that the treasure was hidden beneath lakes or buried underground. Treasure hunters and adventurers continued to launch expeditions, but each one ended in disappointment. Even in modern times, satellite imaging and archaeological research have been used to study possible sites related to the legend, but no evidence of a golden city has ever been found.\n<br/><br/>\nToday, historians and archaeologists agree that El Dorado was never a real place but rather a symbol of European misunderstandings of indigenous wealth and culture. However, the fascination with El Dorado has not disappeared. The legend continues to inspire books, films, and research, proving that the human desire for discovery and adventure is as strong as ever. Some believe that El Dorado represents more than just a lost city—it symbolizes the eternal quest for wealth, knowledge, and the unknown. Whether as an actual place or a metaphor for human ambition, El Dorado remains one of the most enduring myths of exploration, reminding us of the incredible lengths people will go to in pursuit of their dreams.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" :[[
+                            "Origin of Legend: 16th-century |1| explorers",
+                            "Main Myth: City of |2| hidden in jungle",
+                            "First Expedition: |3| Pizarro, 1541",
+                            "Other Explorer: Sir Walter |4|",
+                            "Believed Location: |5| River, Venezuela",
+                            "Indigenous Group: |6| people",
+                            "Ritual Performed By: The |7| (Muisca leader)",
+                            "Sacred Site: Lake |8|"
+                        ]],
+                        "answers": [["Spanish", "gold", "Gonzalo", "Raleigh", "Orinoco", "Muisca", "zipa", "Guatavita"]],
+                        "topics": ["The Search for El Dorado"],
+                        "choices": [],
+                        "table_data": [
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Global Coffee Production",
+                "context": "Coffee is one of the most widely consumed beverages in the world. Millions of people drink coffee daily, making it an essential part of many cultures. It is grown in over 70 countries, primarily in tropical regions along the equator. The coffee industry supports millions of farmers, traders, and workers, making it a vital part of the global economy.\n<br/><br/>\nThe top three coffee-producing countries are Brazil, Vietnam, and Colombia. Brazil is the largest producer, harvesting around 3,500,000 metric tons annually. Vietnam follows with 1,800,000 metric tons, while Colombia produces approximately 800,000 metric tons. These countries benefit from favorable climates and well-established coffee farming techniques. Other major producers include Indonesia and Ethiopia, which also contribute significantly to global coffee production.\n<br/><br/>\nIndonesia, known for its unique processing methods, produces around 700,000 metric tons of coffee annually. Ethiopia, often considered the birthplace of coffee, harvests approximately 400,000 metric tons per year. India, Honduras, and Mexico are also key players in the global coffee market. India and Honduras each produce about 300,000 metric tons annually, while Mexico accounts for around 200,000 metric tons. These countries export their coffee worldwide, supplying both commercial and specialty markets.\n<br/><br/>\nDifferent types of coffee beans are grown globally, with Arabica and Robusta being the most common. Arabica, known for its mild flavor, makes up 60% of global production, while Robusta, which has a stronger taste and more caffeine, accounts for 40%. Robusta beans are mainly grown in Vietnam, while Arabica dominates in Brazil and Colombia. Ethiopia and Mexico also focus primarily on Arabica, whereas Indonesia and India grow mainly Robusta. Honduras is known for its high-quality Arabica, which is popular among specialty coffee producers.\n<br/><br/>\nCoffee production is influenced by climate, soil quality, and farming techniques. Some countries focus on high-quality specialty coffee, while others prioritize large-scale production. Brazil, for example, relies on mechanized farming to produce vast quantities of coffee, while Ethiopia still uses traditional methods that preserve unique flavors. As global demand for coffee continues to grow, producers are adopting more advanced cultivation and processing techniques to improve yield and quality.\n<br/><br/>\nGovernments and organizations also play a role in supporting coffee farmers through policies, subsidies, and research initiatives. Climate change, however, poses a significant challenge, as rising temperatures and unpredictable weather patterns threaten coffee-growing regions. To address this, scientists and farmers are exploring ways to develop more resilient coffee plants. Sustainable farming practices, such as shade-grown coffee and organic production, are becoming increasingly important in ensuring the future of the coffee industry.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_table",
+                        "questions" :[],
+                        "answers": ["Robusta", "Brazil", "200000", "1800000", "8", "Arabica", "Indonesia", "3"],
+                        "topics": ["Global Coffee Production"],
+                        "choices": [],
+                        "table_data": [
+                            ["Country", "Production (Metric Tons)", "Main Bean", "Global Share (%)"],
+                            ["India", 300000, "|1|", 3],
+                            ["|2|", 3500000, "Arabica", 37],
+                            ["Mexico", "|3|", "Arabica", 2],
+                            ["Vietnam", "|4|", "Robusta", 19],
+                            ["Colombia", 800000, "Arabica", "|5|"],
+                            ["Ethiopia", 400000, "|6|", 4],
+                            ["|7|", 700000, "Robusta", 7],
+                            ["Honduras", 300000, "Arabica", "|8|"]
+                        ],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Public Transportation in the Philippines",
+                "context": "Public transportation in the Philippines plays a crucial role in the daily lives of millions of commuters. The country relies on multiple modes of transport, including jeepneys, buses, trains, and tricycles, serving both urban and rural areas. These options provide mobility for workers, students, and tourists. However, challenges such as traffic congestion, outdated infrastructure, and environmental concerns continue to affect efficiency.\n<br/><br/>\nJeepneys, often considered the 'King of the Road,' are one of the most iconic and affordable means of transportation. Originally repurposed from surplus military jeeps after World War II, they operate on fixed routes, with passengers paying fares based on distance traveled. Jeepneys are widely available, making them a popular choice, but they contribute significantly to air pollution and traffic congestion. To address this, the government has introduced a modernization program aimed at replacing old jeepneys with more environmentally friendly alternatives.\n<br/><br/>\nBuses are another essential mode of transport, particularly for long-distance and intercity travel. In major cities like Metro Manila and Cebu, different types of buses operate, including ordinary, air-conditioned, and point-to-point (P2P) services. The P2P system offers a more comfortable and efficient way of traveling with fewer stops, reducing traffic congestion. However, issues such as inconsistent schedules, overcrowding, and road accidents remain significant concerns for commuters.\n<br/><br/>\nThe railway system in the Philippines, though limited in coverage, provides an alternative means of travel in highly congested areas. The Light Rail Transit (LRT) and Metro Rail Transit (MRT) operate in Metro Manila, serving thousands of passengers daily. Additionally, the Philippine National Railways (PNR) offers train services connecting the capital to nearby provinces. While trains are faster than road transport and help avoid traffic, they often experience frequent breakdowns, overcrowding, and maintenance problems that affect their reliability.\n<br/><br/>\nTricycles and motorcycles are commonly used for short-distance travel in both rural and urban areas. Tricycles, which consist of a motorcycle with a sidecar, provide an affordable and accessible means of transport, especially in areas where larger vehicles cannot pass. Meanwhile, motorcycle taxis such as Angkas have gained popularity due to their ability to navigate traffic quickly. However, safety concerns and regulatory issues continue to pose challenges for these transport modes.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_table",
+                        "questions" :[],
+                        "answers": ["Jeepneys", "overcrowding", "MRT", "Tricycles"],
+                        "topics": ["Public Transportation in the Philippines"],
+                        "choices": [],
+                        "table_data": [
+                            ["Mode of Transport", "Description", "Advantages", "Challenges"],
+                            ["|1|", "Repurposed from surplus military jeeps after World War II, operate on fixed routes", "Affordable, widely available", "Contribute to air pollution and traffic congestion"],
+                            ["Buses", "Includes ordinary, air-conditioned, and point-to-point (P2P) services", "Comfortable, long-distance travel", "Inconsistent schedules, |2|, road accidents"],
+                            ["Trains", "Includes LRT, |3|, and PNR for highly congested areas", "Faster than road transport, avoids traffic", "Frequent breakdowns, overcrowding, maintenance problems"],
+                            ["|4| & Motorcycles", "Used for short-distance travel, including motorcycle taxis such as Angkas", "Affordable, accessible, navigates traffic quickly", "Safety concerns, regulatory issues"]
+                        ],
+                        "word_box": []
+                    },
+                    {
+                        "test_type": "single_selection",
+                        "questions" :[
+                            "What is considered the 'King of the Road' in the Philippines?",
+                            "Which type of bus service offers fewer stops and reduces traffic congestion?",
+                            "What is one of the major concerns about the railway system in the Philippines?",
+                            "Which transport mode is known for being affordable and accessible in areas where larger vehicles cannot pass?",
+                            "Why has the government introduced a modernization program for jeepneys?"
+                        ],
+                        "answers": [1, 0, 3, 2, 1],
+                        "topics": [],
+                        "choices": [["Tricycles", "Jeepneys", "Buses", "Trains"],
+                        ["Point-to-point (P2P) buses", "Ordinary buses", "Air-conditioned buses", "Provincial buses"],
+                        ["Limited passenger capacity", "Too many stations", "Expensive fares", "Frequent breakdowns"],
+                        ["Trains", "Motorcycles", "Tricycles", "Buses"],
+                        ["To increase passenger fares", "To replace old jeepneys with environmentally friendly alternatives", "To remove jeepneys from the roads", "To introduce self-driving vehicles"]],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Diversity in the Philippines",
+                "context": "The Philippines, located in Southeast Asia, is an archipelago consisting of over 7,600 islands. Its strategic location has made it a melting pot of cultures and influences from neighboring Asian countries and Western colonial powers. The islands are divided into three main regions: Luzon, Visayas, and Mindanao. The capital city, Manila, is located on the island of Luzon and serves as the country’s political and economic center. The Philippines’ diverse geography includes mountains, beaches, and rainforests, making it one of the most ecologically rich nations in the world.\n<br/><br/>\nThe history of the Philippines is shaped by centuries of foreign rule. The islands were first settled by Austronesian peoples around 4,000 years ago. In 1521, Ferdinand Magellan, a Portuguese explorer sailing for Spain, arrived in the Philippines, marking the beginning of Spanish colonization. Spain ruled the islands for over 300 years, introducing Catholicism, a new system of government, and Western architecture. Many historical churches and fortresses built during the Spanish era still stand today, reflecting the country’s colonial past.\n<br/><br/>\nIn 1898, the Spanish-American War resulted in Spain’s defeat and the transfer of the Philippines to the United States. American influence introduced the English language, public education, and democratic institutions. However, the country’s path to full independence was interrupted by the Japanese occupation during World War II. The Philippines eventually gained independence on July 4, 1946. Since then, the nation has developed into a vibrant democracy, despite facing challenges such as political corruption and natural disasters.\n<br/><br/>\nThe Philippines’ economy is heavily dependent on agriculture, manufacturing, and the service sector. The country is one of the world’s largest producers of coconut and bananas. Overseas Filipino Workers (OFWs) also contribute significantly to the economy through remittances. Tourism plays a major role, with destinations like Boracay, Palawan, and Cebu attracting millions of visitors annually. The country’s rich cultural heritage is reflected in its festivals, traditional dances, and cuisine, which blend indigenous, Spanish, Chinese, and American influences.\n<br/><br/>\nFilipino culture is deeply rooted in family and community values. Religious festivals, such as Sinulog, are celebrated with colorful parades, music, and dance. Hospitality is a defining trait of Filipinos, who are known for their warmth and generosity. Despite political and economic challenges, the Philippines remains resilient, with a strong sense of national identity and pride in its cultural heritage.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" :[[
+                            "The Philippines is an archipelago consisting of over |1| islands.",
+                            "The country’s three main regions are Luzon, Visayas, and |2|.",
+                            "Ferdinand |3| arrived in the Philippines in 1521.",
+                            "Spain ruled the Philippines for over |4| years.",
+                            "The Philippines gained full independence on July 4, |5|.",
+                            "The country is one of the largest producers of coconut and |6|.",
+                            "The festival of |7| is celebrated with parades, music, and dance.",
+                            "The capital city of the Philippines is |8|.",
+                            "The Philippines was transferred to the United States after the |9| War.",
+                            "The Japanese occupied the Philippines during |10| War."
+                        ]],
+                        "answers": [[
+                            "7600", "Mindanao", "Magellan", "300", "1946",
+                            "bananas", "Sinulog", "Manila", "Spanish-American", "World War II"
+                        ]],
+                        "topics": ["Diversity in the Philippines"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "The History of Computers",
+                "context": "The history of computers dates back to ancient times when people used simple tools like the abacus to perform calculations. The abacus, invented around 2400 BCE in Mesopotamia, allowed users to count and calculate using beads on a frame. Over the centuries, mechanical calculators were developed, such as Blaise Pascal’s Pascaline in 1642, which used gears and wheels to perform basic arithmetic operations.\n<br/><br/>\nIn the 19th century, Charles Babbage designed the first mechanical computer known as the Analytical Engine. Although it was never completed, the Analytical Engine introduced key concepts such as input, processing, and output, which form the basis of modern computing. Babbage’s work was supported by Ada Lovelace, who created the first algorithm intended to be processed by a machine, making her the first computer programmer.\n<br/><br/>\nThe first electronic computers appeared during World War II. The Colossus, developed in 1943 by British engineer Tommy Flowers, was used to break German codes. Meanwhile, the ENIAC (Electronic Numerical Integrator and Computer), completed in 1945 in the United States, was the first general-purpose programmable computer. The ENIAC could perform complex calculations at unprecedented speeds, laying the foundation for future advancements in computing.\n<br/><br/>\nThe invention of the transistor in 1947 revolutionized computer design. Transistors replaced bulky vacuum tubes, making computers smaller, faster, and more reliable. This led to the development of the first commercially available computer, the UNIVAC I, in 1951. The introduction of integrated circuits in the 1960s further accelerated progress, allowing for the creation of smaller and more powerful machines.\n<br/><br/>\nThe rise of personal computers began in the 1970s with the introduction of the Altair 8800. In 1977, Apple released the Apple II, which featured a keyboard, color display, and expandable memory. IBM followed with the release of the IBM PC in 1981, setting the standard for modern personal computers. The development of user-friendly operating systems like Microsoft Windows in the 1980s made computers more accessible to the general public, transforming them from specialized tools into essential household devices.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "word_box",
+                        "questions" :[
+                            "The abacus was invented around |1| BCE in Mesopotamia.",
+                            "Blaise Pascal's calculator was called the |2|.",
+                            "Charles Babbage designed the first mechanical computer known as the |3| Engine.",
+                            "Ada Lovelace is considered the first computer |4|.",
+                            "The Colossus was used to break |5| codes during World War II.",
+                            "The ENIAC was completed in |6| and was the first general-purpose computer.",
+                            "The invention of the |7| in 1947 revolutionized computer design.",
+                            "The first commercially available computer was the |8|.",
+                            "The Altair 8800 was introduced in the |9|.",
+                            "The release of |10| Windows made computers more accessible to the public."
+                        ],
+                        "answers": ["2400", "Pascaline", "Analytical", "programmer", "German", "1945", "transistor", "UNIVAC I", "1970s", "Microsoft"],
+                        "topics": [],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": ["Apple II", "Pascaline", "ENIAC", "German", "microchip", "2400", "Colossus", "IBM PC", "Apple", "Microsoft", "engineer", "1945", "scientist", "Abacus", "Google", "2500", "1960s", "1970s", "1943", "Analytical", "1947", "transistor", "American", "UNIVAC I", "programmer"]
+                    }
+                ]
+            },
+            {
+                "subject": "The Deep Ocean",
+                "context": "The deep ocean remains one of the least explored and most mysterious parts of our planet. It begins at a depth of around 200 meters, where sunlight becomes scarce, and extends to depths of over 11,000 meters in the Mariana Trench. The immense pressure, complete darkness, and low temperatures make the deep ocean an extreme environment, yet life thrives in these harsh conditions. Scientists estimate that up to 80% of marine species are yet to be discovered, highlighting the deep ocean’s potential for new scientific breakthroughs.\n<br/><br/>\nOne of the most fascinating aspects of the deep ocean is the presence of hydrothermal vents. These vents are cracks in the ocean floor where seawater comes into contact with magma, creating superheated plumes of water rich in minerals. Despite the extreme heat and toxicity, unique ecosystems of tube worms, clams, and shrimp have adapted to survive around these vents. The discovery of life in such extreme environments has challenged our understanding of the conditions necessary for life to exist.\n<br/><br/>\nBioluminescence is another remarkable adaptation seen in deep-sea creatures. Since light is almost entirely absent in the deep ocean, many species have developed the ability to produce their own light through chemical reactions. This ability helps them attract prey, evade predators, and communicate. For example, the anglerfish uses a bioluminescent lure to draw prey toward its mouth, while some squid release glowing ink to confuse predators.\n<br/><br/>\nPressure in the deep ocean is another major challenge. At the bottom of the Mariana Trench, pressure reaches over 1,000 times that at sea level. To survive, deep-sea organisms have evolved specialized cellular structures and proteins that prevent their bodies from being crushed. Submersibles designed to explore the deep ocean must be built with reinforced materials to withstand these extreme pressures.\n<br/><br/>\nThe deep ocean also plays a crucial role in regulating the Earth's climate. Deep currents transport heat and nutrients around the globe, influencing weather patterns and the health of marine ecosystems. Additionally, the deep ocean acts as a carbon sink, absorbing large amounts of carbon dioxide from the atmosphere and helping to mitigate the effects of climate change. Protecting the deep ocean from human activities, such as deep-sea mining and pollution, is essential for maintaining the balance of marine ecosystems.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" :[[
+                            "The deep ocean begins at a depth of around |1| meters.",
+                            "The Mariana Trench reaches depths of over |2| meters.",
+                            "Hydrothermal vents are cracks in the ocean floor where seawater comes into contact with |3|.",
+                            "Many deep-sea creatures produce their own light through a process known as |4|.",
+                            "The anglerfish uses a |5| lure to attract prey.",
+                            "Pressure at the bottom of the Mariana Trench is over |6| times greater than at sea level.",
+                            "Deep-sea organisms have evolved specialized |7| structures to survive high pressure.",
+                            "Deep currents transport |8| and nutrients around the globe.",
+                            "The deep ocean absorbs large amounts of |9| from the atmosphere.",
+                            "Protecting the deep ocean from activities like deep-sea |10| is essential for marine balance."
+                        ]],
+                        "answers": [["200", "11000", "magma", "bioluminescence", "bioluminescent", "1000", "cellular", "heat", "carbon dioxide", "mining"]],
+                        "topics": ["The Deep Ocean"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "Evolution of Satellites",
+                "context": "Satellites have become an essential part of modern technology, playing a vital role in communication, navigation, weather forecasting, and scientific research. The first artificial satellite, Sputnik 1, was launched by the Soviet Union on October 4, 1957. Weighing only 83.6 kilograms, Sputnik 1 orbited the Earth at a speed of approximately 29,000 kilometers per hour, transmitting radio signals that could be detected by ground stations. This historic event marked the beginning of the space age and sparked a technological race between the United States and the Soviet Union.\n<br/><br/>\nFollowing the success of Sputnik 1, the United States launched its first satellite, Explorer 1, on January 31, 1958. Explorer 1 discovered the Van Allen radiation belts, which are zones of charged particles trapped by Earth's magnetic field. This discovery provided valuable insights into the Earth's magnetosphere and demonstrated the scientific potential of satellites. Since then, thousands of satellites have been launched into orbit for a wide range of purposes.\n<br/><br/>\nCommunication satellites are among the most important types of satellites. They relay television, radio, and internet signals across the globe. The first commercial communication satellite, Intelsat I (also known as Early Bird), was launched in 1965. Today, satellite communication forms the backbone of global telecommunications, enabling instant connectivity across continents.\n<br/><br/>\nWeather satellites provide real-time data on atmospheric conditions, helping meteorologists predict storms, hurricanes, and other weather events. The first weather satellite, TIROS-1, was launched by NASA in 1960. Modern weather satellites can monitor cloud patterns, ocean temperatures, and even air pollution, providing critical information for disaster preparedness and environmental monitoring.\n<br/><br/>\nNavigation satellites are essential for global positioning systems (GPS). The U.S. Department of Defense launched the first GPS satellite in 1978. Today, satellite-based navigation systems are used by millions of people for driving directions, tracking shipments, and managing military operations. Advanced positioning technology allows GPS to provide accurate location data within a few meters, making it a vital tool for modern transportation and logistics.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" :[[
+                            "The first artificial satellite, |1| 1, was launched by the Soviet Union in 1957.",
+                            "Sputnik 1 transmitted |2| signals that could be detected by ground stations.",
+                            "Explorer 1 discovered the Van Allen |3| belts.",
+                            "The first commercial communication satellite, Intelsat I, was also known as |4| Bird.",
+                            "TIROS-1 was the first |5| satellite launched by NASA in 1960.",
+                            "The U.S. Department of Defense launched the first GPS satellite in |6|.",
+                            "Satellites used for communication relay |7|, radio, and internet signals across the globe.",
+                            "Modern weather satellites can monitor cloud patterns, ocean temperatures, and air |8|.",
+                            "The first artificial satellite weighed only |9| kilograms.",
+                            "GPS provides accurate location data within a few |10|."
+                        ]],
+                        "answers": [["Sputnik", "radio", "radiation", "Early", "weather", "1978", "television", "pollution", "83.6", "meters"]],
+                        "topics": ["Evolution of Satellites"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
+            {
+                "subject": "History of Astronomy",
+                "context": "Astronomy, the study of celestial objects and phenomena, has fascinated humanity for thousands of years. Ancient civilizations such as the Egyptians and Babylonians closely observed the night sky, using the patterns of stars and planets to create calendars and predict seasonal changes. The Greeks made significant contributions to early astronomical theories, with philosophers like Aristotle and Ptolemy proposing a geocentric model where the Earth was at the center of the universe. However, this theory was challenged during the Renaissance.\n<br/><br/>\nIn 1543, Nicolaus Copernicus proposed the heliocentric model, which suggested that the Sun, not the Earth, was at the center of the solar system. This idea gained support through the work of Galileo Galilei, who in 1609 used a telescope to observe Jupiter's moons and the phases of Venus. His discoveries provided strong evidence that planets revolved around the Sun. This marked a turning point in the understanding of the cosmos.\n<br/><br/>\nThe invention of more advanced telescopes in the 19th and 20th centuries allowed astronomers to explore the universe in greater detail. In 1924, Edwin Hubble discovered that the universe was expanding, leading to the development of the Big Bang theory. This theory suggests that the universe originated from a single point approximately 13.8 billion years ago and has been expanding ever since.\n<br/><br/>\nModern astronomy covers a wide range of fields, including planetary science, astrophysics, and cosmology. Astronomers use tools such as radio telescopes and space observatories to study stars, galaxies, and exoplanets. The Hubble Space Telescope, launched in 1990, has provided detailed images of distant galaxies and nebulae. The James Webb Space Telescope, launched in 2021, is expected to offer deeper insights into the formation of stars and planets.\n<br/><br/>\nAdvancements in technology and data analysis have accelerated discoveries in astronomy. Artificial intelligence now helps astronomers analyze massive amounts of data from telescopes and satellites. Future missions aim to explore the atmospheres of exoplanets, search for signs of life, and understand the nature of dark matter and dark energy, which make up most of the universe’s mass and energy.",
+                "audio_url": null,
+                "image_url": null,
+                "question_set": [
+                    {
+                        "test_type": "fill_sentence",
+                        "questions" :[[
+                            "Ancient Egyptians and Babylonians used patterns of |1| and planets to create calendars.",
+                            "The geocentric model proposed that the |2| was at the center of the universe.",
+                            "Nicolaus Copernicus proposed the |3| model in 1543.",
+                            "Galileo Galilei used a |4| in 1609 to observe Jupiter's moons.",
+                            "Edwin Hubble discovered that the universe was |5| in 1924.",
+                            "The Hubble Space Telescope was launched in |6|.",
+                            "The James Webb Space Telescope is expected to provide insights into the formation of |7| and planets.",
+                            "Artificial intelligence helps astronomers analyze large amounts of |8| from telescopes and satellites."
+                        ]],
+                        "answers": [["stars", "Earth", "heliocentric", "telescope", "expanding", "1990", "stars", "data"]],
+                        "topics": ["History of Astronomy"],
+                        "choices": [],
+                        "table_data": [],
+                        "word_box": []
+                    }
+                ]
+            },
             {
                 "subject": "Challenges of Pursuing an MBA",
                 "context": "A Master of Business Administration (MBA) is one of the most sought-after postgraduate degrees in the world. It equips students with a comprehensive understanding of business management, covering areas such as finance, marketing, operations, and human resources. MBA programs typically include case studies, group projects, and internships that allow students to apply theoretical knowledge to real-world scenarios. The degree is valued for its ability to enhance leadership skills and strategic thinking, making graduates highly attractive to employers across various industries.\n<br/><br/>\nOne of the primary reasons people pursue an MBA is the potential for career advancement. An MBA opens the door to higher-level management positions and often results in increased earning potential. Many graduates find themselves eligible for senior roles in corporations, financial institutions, and consulting firms. Additionally, MBA graduates are often better positioned to transition into new industries or entrepreneurial ventures. The degree also provides access to a broad professional network, which can be invaluable for career growth and business opportunities.\n<br/><br/>\nHowever, pursuing an MBA comes with significant challenges. The cost of an MBA program can be substantial, with tuition fees at top business schools reaching upwards of $100,000. This financial burden, combined with the opportunity cost of leaving a full-time job, makes the decision to pursue an MBA a considerable investment. Additionally, the rigorous curriculum requires strong time management and the ability to handle pressure. Students often find themselves juggling coursework, group projects, and networking events, which can be mentally and physically demanding.\n<br/><br/>\nDespite these challenges, the long-term benefits of an MBA often outweigh the costs. Graduates report higher job satisfaction, greater confidence in decision-making, and improved problem-solving skills. The analytical and strategic thinking developed during the program equips graduates to handle complex business problems and make informed decisions under pressure. Employers value these qualities, often considering MBA graduates as strong candidates for leadership roles.\n<br/><br/>\nAn MBA also offers a global perspective on business. Many programs include international study opportunities or courses on global economics and cross-cultural management. Understanding how business operates in different markets is a critical skill in today’s interconnected world. Graduates who can navigate cultural differences and global market trends are often well-positioned to succeed in multinational corporations or international business ventures.",
@@ -718,42 +1528,81 @@
                     {
                         "test_type": "double_selection",
                         "questions" : [
-                            "What are two political consequences of corruption mentioned in the text?",
-                            "According to the text, what are two economic effects of corruption?",
-                            "What are two social impacts of corruption highlighted in the text?",
-                            "What are two environmental effects of corruption mentioned in the text?",
-                            "Which two sectors are most affected by misallocation of resources due to corruption?",
-                            "According to the text, what are two ways corruption discourages foreign investment?",
-                            "What are two consequences of corruption on democratic values?",
-                            "What are two examples of how corruption weakens the quality of public services?",
-                            "Which two business-related problems are caused by corruption according to the text?",
-                            "What are two examples of illegal activities facilitated by corruption as described in the text?"
+                            "How does corruption affect business contracts?",
+                            "What are two economic consequences of corruption?",
+                            "Why do small and medium-sized enterprises (SMEs) struggle in a corrupt environment?",
+                            "How does corruption impact social services such as healthcare and education?",
+                            "What are two ways corruption worsens income inequality?",
+                            "How do corrupt officials contribute to environmental damage?",
+                            "What are two environmental consequences of corruption?",
+                            "Why is corruption in environmental regulation difficult to reverse?",
+                            "What are two industries commonly affected by corruption-related environmental damage?",
+                            "What long-term impact does corruption have on society?"
                         ],
                         "answers": [
-                            [0, 3], 
-                            [0, 2], 
-                            [1, 3], 
-                            [0, 2], 
-                            [0, 1], 
-                            [1, 3], 
-                            [1, 3], 
-                            [0, 2], 
-                            [2, 3], 
-                            [1, 2]
-                          ]
+                            [0, 1],  
+                            [1, 3],  
+                            [0, 1],  
+                            [0, 1],  
+                            [0, 2],  
+                            [0, 2],  
+                            [0, 2],  
+                            [1, 3],  
+                            [0, 3],  
+                            [0, 3]
+                        ]
                         ,
                         "topics": [],
                         "choices": [
-                            ["Political instability", "Fair elections", "Judicial transparency", "Compromised political system"],
-                            ["Mismanagement of funds", "Increased market competition", "Lower economic growth", "Higher infrastructure quality"],
-                            ["Improved healthcare", "Wider income gap", "Better education", "Reduced trust in government"],
-                            ["Deforestation", "Improved air quality", "Pollution", "Enhanced biodiversity"],
-                            ["Education", "Healthcare", "Sports", "Military"],
-                            ["Stable business environment", "Uncertainty in contract enforcement", "Reduced bribery cases", "Poor market confidence"],
-                            ["Enhanced transparency", "Vote manipulation", "Improved trust in government", "Suppressed opposition"],
-                            ["Poor school infrastructure", "Higher teacher salaries", "Overcrowded hospitals", "Increased access to healthcare"],
-                            ["More foreign investments", "Lower business taxes", "Stifled innovation", "Increased economic growth"],
-                            ["Increased biodiversity", "Illegal logging", "Unregulated mining", "Wildlife protection"]
+                            ["Contracts are awarded based on personal connections", 
+                             "Merit is the primary factor in awarding contracts", 
+                             "It ensures fair competition", 
+                             "It lowers the cost of infrastructure"],
+                        
+                            ["It increases business opportunities for SMEs", 
+                             "It leads to inflated costs and substandard work", 
+                             "It improves infrastructure quality", 
+                             "It discourages foreign investment"],
+                        
+                            ["They lack access to bribery networks", 
+                             "They cannot compete against companies engaging in corruption", 
+                             "They receive government support to grow", 
+                             "They benefit from corruption"],
+                        
+                            ["It leads to underfunding and mismanagement", 
+                             "It improves access to quality education", 
+                             "It enhances social equality", 
+                             "It reduces healthcare costs"],
+                        
+                            ["Resources are funneled to a privileged elite", 
+                             "Low-income families receive better services", 
+                             "The majority of the population faces worsening living standards", 
+                             "It eliminates social divisions"],
+                        
+                            ["They issue illegal permits for deforestation", 
+                             "They enforce strict environmental laws", 
+                             "They overlook violations in exchange for bribes", 
+                             "They reduce pollution"],
+                        
+                            ["Deforestation and habitat destruction", 
+                             "Improved biodiversity conservation", 
+                             "Increased pollution", 
+                             "Stronger enforcement of environmental laws"],
+                        
+                            ["It creates immediate solutions for environmental recovery", 
+                             "Environmental damage can take decades to reverse", 
+                             "It ensures long-term sustainability", 
+                             "It permanently restores ecosystems"],
+                        
+                            ["Illegal logging and mining", 
+                             "Renewable energy production", 
+                             "Sustainable farming", 
+                             "Fishing"],
+                        
+                            ["It fuels resentment among disadvantaged communities", 
+                             "It strengthens economic equality", 
+                             "It reduces social divisions", 
+                             "It deteriorates living standards for the majority"]
                         ],
                         "table_data": [],
                         "word_box": []
@@ -1131,32 +1980,55 @@
                     {
                         "test_type": "double_selection",
                         "questions" : [
-                            "What were some of the causes of the French Revolution?",
-                            "What was the significance of the storming of the Bastille?",
-                            "What key changes were introduced by the National Assembly?",
-                            "What led to the Reign of Terror during the French Revolution?",
-                            "How did Napoleon Bonaparte come to power?",
-                            "What were some of the lasting effects of the French Revolution?"
-                          ]
+                            "What were two major causes of the French Revolution?",
+                            "Which two significant events occurred during the early stages of the French Revolution?",
+                            "What were two key outcomes of the French Revolution?",
+                            "Which two leaders played significant roles in the French Revolution?",
+                            "How did Napoleon Bonaparte impact France after the revolution?",
+                            "What are two lasting legacies of the French Revolution?"
+                        ]
                           ,
                         "answers": [
-                            [0, 1],
-                            [1, 0],
-                            [0, 1],
-                            [2, 1],
-                            [1, 3],
-                            [1, 3]
-                          ]
+                            [0, 1],  
+                            [0, 3],  
+                            [0, 2],  
+                            [1, 3],  
+                            [0, 1],  
+                            [0, 2]
+                        ]
                           ,
                         "topics": [],
                         "choices": [
-                            ["Economic hardship", "Political instability", "Military conquest", "Religious conflict"],
-                            ["It ended the monarchy", "It marked the beginning of the public uprising", "It introduced new taxes", "It strengthened the royal family"],
-                            ["Abolition of feudal privileges", "Introduction of a constitutional monarchy", "Formation of the Estates-General", "Increased royal power"],
-                            ["Political reforms", "Opposition to the monarchy", "Leadership of Robespierre", "Public support for the king"],
-                            ["Public election", "Military coup", "Appointment by the king", "Revolutionary vote"],
-                            ["Establishment of a monarchy", "Inspiration for future democratic movements", "Increased church influence", "Foundation of modern human rights"]
-                          ]
+                            ["Economic hardship due to war and royal spending", 
+                             "The rise of Enlightenment ideas", 
+                             "The expansion of Napoleon's empire", 
+                             "The growth of the British monarchy"],
+                        
+                            ["The storming of the Bastille", 
+                             "The signing of the Treaty of Versailles", 
+                             "The execution of King Louis XVI", 
+                             "The introduction of the Declaration of the Rights of Man and of the Citizen"],
+                        
+                            ["The abolition of feudal privileges", 
+                             "The reinforcement of absolute monarchy", 
+                             "The establishment of the Declaration of the Rights of Man and of the Citizen", 
+                             "The strengthening of royal power"],
+                        
+                            ["King Louis XVI", 
+                             "Maximilien Robespierre", 
+                             "Marie Antoinette", 
+                             "Napoleon Bonaparte"],
+                        
+                            ["He seized power through a coup d'état", 
+                             "He introduced reforms to modernize France", 
+                             "He restored the Bourbon monarchy", 
+                             "He abolished the Declaration of the Rights of Man and of the Citizen"],
+                        
+                            ["It inspired future democratic movements", 
+                             "It strengthened absolute monarchy in Europe", 
+                             "It contributed to the development of secularism", 
+                             "It increased the power of the Catholic Church in France"]
+                        ]
                           ,
                         "table_data": [],
                         "word_box": []
@@ -1415,26 +2287,46 @@
                     {
                         "test_type": "double_selection",
                         "questions" : [
-                            "What are two renewable energy sources mentioned in the text?",
-                            "What are two environmental benefits of renewable energy?",
-                            "What are two challenges facing renewable energy adoption?",
-                            "What are two economic benefits of transitioning to renewable energy?",
-                            "What are two technological solutions helping to overcome the challenges of renewable energy?"
+                            "What are two reasons why renewable energy is important?",
+                            "Which of the following are examples of renewable energy sources?",
+                            "What are two major environmental benefits of renewable energy?",
+                            "What are two challenges of renewable energy?",
+                            "How is electricity generated using renewable energy sources?"
                         ],
                         "answers": [
-                            [1, 2], 
-                            [0, 2], 
-                            [0, 2], 
-                            [1, 3], 
-                            [1, 2]  
-                        ],
+                            [0, 1],  
+                            [1, 2],  
+                            [0, 2],  
+                            [0, 2],  
+                            [0, 1]
+                        ]
+                        ,
                         "topics": [],
                         "choices": [
-                            ["Coal", "Solar", "Hydro", "Natural gas"],
-                            ["Reduces carbon emissions", "Creates more landfills", "Generates clean electricity", "Increases water pollution"],
-                            ["Weather dependency", "Increased carbon emissions", "High initial costs", "Lower mining activity"],
-                            ["Increased tourism", "Job creation", "Boosts mining activity", "Development of energy storage technology"],
-                            ["Nuclear reactors", "Battery technology", "Smart grid systems", "Increased drilling"]
+                            ["It helps reduce dependence on fossil fuels", 
+                             "It addresses climate change", 
+                             "It increases greenhouse gas emissions", 
+                             "It relies on non-renewable resources"],
+                        
+                            ["Nuclear power", 
+                             "Solar energy", 
+                             "Wind energy", 
+                             "Coal power"],
+                        
+                            ["It generates electricity without contributing to global warming", 
+                             "It requires mining and drilling", 
+                             "It reduces environmental degradation", 
+                             "It releases large amounts of carbon dioxide"],
+                        
+                            ["Solar and wind power depend on weather conditions", 
+                             "Renewable energy has no economic benefits", 
+                             "High initial costs of infrastructure", 
+                             "Renewable energy cannot be integrated into power grids"],
+                        
+                            ["Solar panels convert sunlight into electricity", 
+                             "Wind turbines harness moving air", 
+                             "Geothermal plants use coal for power", 
+                             "Hydroelectric power plants use water flow"]
                         ],
                         "table_data": [],
                         "word_box": []
@@ -1449,27 +2341,46 @@
                 "question_set": [
                     {
                         "test_type": "double_selection",
-                        "questions" : [
-                            "What are two health benefits of urban green spaces mentioned in the text?",
-                            "What are two environmental benefits provided by urban green spaces?",
-                            "What challenge is faced when maintaining urban green spaces?",
-                            "Why is biodiversity important in urban areas?",
-                            "What factors are necessary to ensure green spaces remain welcoming and accessible?"
+                        "questions" :[
+                            "What are two benefits of urban green spaces for residents?",
+                            "How do urban green spaces help cool urban areas?",
+                            "What are two environmental advantages of urban green spaces?",
+                            "What are two challenges in maintaining urban green spaces?",
+                            "Why is biodiversity important in urban green spaces?"
                         ],
                         "answers": [
+                            [1, 2],
+                            [2, 3],
                             [0, 2],
-                            [0, 2],
-                            [1, 3],
-                            [2, 0],
-                            [1, 2]
+                            [0, 3],
+                            [0, 2]
                         ],
                         "topics": [],
                         "choices": [
-                            ["Improved mental health", "Increased traffic flow", "Reduced stress", "Higher property prices"],
-                            ["Absorbing carbon dioxide", "Reducing noise pollution", "Improving air quality", "Providing shade"],
-                            ["Increasing the number of trees", "Rapid urbanization", "Population decline", "Limited funding"],
-                            ["It increases tourism", "It enhances community safety", "It makes ecosystems more resilient", "It reduces construction costs"],
-                            ["Strict government regulation", "Community involvement", "Thoughtful design", "Higher construction standards"]
+                            ["They increase property value and support local businesses", 
+                             "They provide relaxation and improve mental health", 
+                             "They offer space for physical activity", 
+                             "They reduce traffic congestion"],
+                             
+                            ["By increasing wind speed in cities", 
+                             "By reflecting sunlight away from buildings", 
+                             "By providing shade", 
+                             "By reducing the heat island effect"],
+                        
+                            ["They help manage rainwater runoff", 
+                             "They increase noise pollution", 
+                             "They absorb carbon dioxide and release oxygen", 
+                             "They make urban areas hotter"],
+                        
+                            ["Rapid urbanization and population growth", 
+                             "Excess funding for maintenance", 
+                             "Poor park accessibility", 
+                             "Limited resources for upkeep"],
+                        
+                            ["It helps cities become more resistant to environmental changes", 
+                             "It increases the number of streetlights needed", 
+                             "It provides habitats for wildlife", 
+                             "It reduces traffic congestion"]
                         ],
                         "table_data": [],
                         "word_box": []
