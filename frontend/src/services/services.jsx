@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const BASE_API_URL = "/ieltsgo/api";
+const BASE_API_URL = "http://192.168.1.2:8000/ieltsgo/api";
 
 const fetchTests = (skill = "", testType = "", page = 1, page_items = 12) => 
     axios.get(`${BASE_API_URL}/selection/`, {
@@ -26,7 +26,6 @@ const fetchCsrfToken = async () => {
     try {
         const { data } = await axios.get("/ieltsgo/api/get-csrf-token/");
         Cookies.set("csrftoken", data.csrfToken, { sameSite: "strict" });
-        console.log("CSRF Token fetched:", data.csrfToken);
     } catch (error) {
         console.error("Failed to fetch CSRF Token:", error);
     }
