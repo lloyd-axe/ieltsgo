@@ -18,24 +18,24 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False')
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "file": {
-            "level": "WARNING",
-            "class": "logging.FileHandler",
-            "filename": "django.log",
-        },
-    },
-    "loggers": {
-        "django.server": {
-            "handlers": ["file"],
-            "level": "WARNING",
-            "propagate": False,
-        },
-    },
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "handlers": {
+#         "file": {
+#             "level": "WARNING",
+#             "class": "logging.FileHandler",
+#             "filename": "django.log",
+#         },
+#     },
+#     "loggers": {
+#         "django.server": {
+#             "handlers": ["file"],
+#             "level": "WARNING",
+#             "propagate": False,
+#         },
+#     },
+# }
 
 ALLOWED_HOSTS = [
     'localhost',
