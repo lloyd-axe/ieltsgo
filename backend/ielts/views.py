@@ -24,6 +24,8 @@ def get_csrf_token(request):
 @api_view(['POST'])
 @throttle_classes([CustomAnonThrottleWriting])
 def post_validate_writing_answer(request):
+    print('Validate Writing Asnwer...')
+    print(request.body)
     try:
         user_response = request.data.get('user_response', '')
         question = request.data.get('question', '')
