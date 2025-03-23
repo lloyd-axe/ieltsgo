@@ -36,6 +36,13 @@ const fetchCsrfToken = async () => {
 const sendTextToBackend = async (answer, question, testType) => {
     try {
         await fetchCsrfToken();
+        const csrfToken = Cookies.get("csrftoken");
+
+        if (!csrfToken) {
+            console.error("CSRF token is missing!");
+            return null;
+        }
+
         const response = await axios.post(`${BASE_API_URL}/validate_writing/`, {
             user_response: answer,
             question: question,
@@ -43,14 +50,14 @@ const sendTextToBackend = async (answer, question, testType) => {
         }, {
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRFToken": Cookies.get("csrftoken"),
+                "X-CSRFToken": csrfToken,
             },
         });
 
         return response.data;
 
     } catch (error) {
-        console.error("Error sending answers:");
+        console.error("Error sending answers:", error.response?.data || error.message);
         return null;
     }
 };
