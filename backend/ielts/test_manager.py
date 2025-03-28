@@ -7,7 +7,7 @@ from collections import defaultdict, deque
 from rest_framework.response import Response
 from django.utils.timezone import now
 from django.shortcuts import get_object_or_404
-from .models import TestModel, TestModelView, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
+from .models import TestModel, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
 from .serializers import TestSerializer, ContextSerializer, QuestionsSetSerializer
 from django.core.paginator import Paginator
 logger = logging.getLogger(__name__)
