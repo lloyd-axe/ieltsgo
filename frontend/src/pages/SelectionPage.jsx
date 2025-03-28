@@ -5,9 +5,10 @@ import { renderIcon } from "../services/icons";
 
 import ActivityPageTemplate from "../components/ActivityPage";
 import LoadingPage from "../pages/LoadingPage"
+import { formatViews } from "../components/Utilities";
 
 
-const TestSelectionCard = ({skill, testType, subject, id, displayNames, navigate}) => {
+const TestSelectionCard = ({skill, testType, subject, id, displayNames, navigate, views}) => {
   return (
     <div className="selection-card clickable border-style-1">
       <div className="card-head flex-row">
@@ -32,7 +33,9 @@ const TestSelectionCard = ({skill, testType, subject, id, displayNames, navigate
         )
       }
       </div>
-      <div className="card-spacer"></div>
+      <div className="card-spacer">
+        <div className="viewText">{formatViews(views)} Views</div>
+      </div>
       <div>
         <button className="card-button" onClick={()=> navigate(`/test/intro/${skill}/${skill === 'listening'? 0: 1}/${testType}/${id}`)}>
           OPEN
@@ -195,6 +198,7 @@ useEffect(() => {
                       subject={test.subject} 
                       id={test.id} 
                       displayNames={displayNames}
+                      views={test.views}
                       navigate={handleNavigation}/>
                     ))}
                 </div>

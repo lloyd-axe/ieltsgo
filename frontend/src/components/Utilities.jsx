@@ -145,5 +145,14 @@ const formatTime = (seconds) => {
     return `${sign}${hrs}:${mins}:${secs}`;
 };
 
+const formatViews = (num) => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1).replace(/\.0$/, '') + "M";
+    }
+    if (num >= 1000) {
+      return (num / 1000).toFixed(1).replace(/\.0$/, '') + "K";
+    }
+    return num.toLocaleString();
+  };
 
-export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, TypingEffect, HamburgerNav, AdSense};
+export {formatString, formatTime, LoadingSkeleton, ConfirmSubmitModal, TypingEffect, HamburgerNav, AdSense, formatViews};

@@ -524,6 +524,16 @@
 
 .card-spacer{
     height: 39px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.viewText{
+    font-size: 12px;
+    margin-left: 5%;
+    margin-bottom: 5px;
 }
 
 .card-icon{
@@ -1531,5 +1541,9 @@
     .about-container{
         width: 80%;
         text-align: center;
+    }
+    
+    .viewText{
+        font-size: 10px;
     }
 }
