@@ -56,9 +56,25 @@ class TestModel(models.Model):
     skill = models.CharField(max_length=10, choices=SKILL_TYPES, null=False, blank=False)
 
     context = models.ForeignKey(ContextModel, on_delete=models.CASCADE, related_name="tests")
+    views = models.IntegerField(default=0)
     
     def __str__(self):
         return f"{self.id}: {self.get_skill_display()} - {self.context.subject}"
+
+
+class WritingScoreLogs(models.Model):
+    band_score = models.IntegerField(default=0)
+    user_response = models.TextField()
+    test = models.ForeignKey(TestModel, on_delete=models.CASCADE, related_name="writing_test")
+    def __str__(self):
+        return f"Writing Score -- {self.test.context.subject}"
+
+class TestScoreLogs(models.Model):
+    score = models.IntegerField(default=0)
+    answers = models.JSONField(default=list, blank=True, null=True)
+    test = models.ForeignKey(TestModel, on_delete=models.CASCADE, related_name="other_test")
+    def __str__(self):
+        return f"Score -- {self.test.context.subject}"
 
 
 class TestInformation(models.Model):

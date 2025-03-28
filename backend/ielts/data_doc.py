@@ -130,6 +130,9 @@ Then, give me 5 fill in the blanks questions.
 Each blank should only contain 1 word or number. 
 Question format should be a list of string where blank is represented by |N|, example: ["who |1| you?", "thi |2| is cool", ...]. 
 Answers format should be a nested list of index ["punched", "rock", ...]. 
+
+Rephrase the questions do that it wont be a word for word from the text. 
+But the idea should be exactly the same and the answer should be found in the text
 """
 
 map =  { # list[str]

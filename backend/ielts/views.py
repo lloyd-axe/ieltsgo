@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from .test_manager import (get_test, get_test_info, get_test_type_display_names, get_test_types, get_all_tests)
@@ -11,7 +12,7 @@ from django.middleware.csrf import get_token
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework.exceptions import Throttled
-
+logger = logging.getLogger(__name__)
 
 class CustomAnonThrottleWriting(AnonRateThrottle):
     rate = '10/hour' 
@@ -20,21 +21,29 @@ class CustomAnonThrottleWriting(AnonRateThrottle):
 def get_csrf_token(request):
     return JsonResponse({"csrfToken": get_token(request)})
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(",")[0].strip()  # Get first IP in the chain
+    else:
+        ip = request.META.get("CF-Connecting-IP") or request.META.get("REMOTE_ADDR")
+    return ip
+
 
 @api_view(['POST'])
 @throttle_classes([CustomAnonThrottleWriting])
 def post_validate_writing_answer(request):
-    print('Validate Writing Asnwer...')
-    print(request.body)
+    logger.info('Validate Writing Asnwer...')
     try:
         user_response = request.data.get('user_response', '')
         question = request.data.get('question', '')
         test_type = request.data.get('test_type', '')
+        test_id = request.data.get('test_id', 0)
 
-        return validate_writing_answer_1(test_type, user_response, question)
+        return validate_writing_answer_1(test_type, user_response, question, test_id)
 
     except Throttled as e: 
-        print("Throttling triggered: User exceeded request limit")
+        logger.error("Throttling triggered: User exceeded request limit")
         return JsonResponse(
             {
                 "band_score": "/",
@@ -47,17 +56,19 @@ def post_validate_writing_answer(request):
 
 @api_view(['POST'])
 def post_validate_answers(request):
+    logger.info('Validate Asnwer...')
     test_data = request.data.get('test_data', {})
     full_user_answers = request.data.get('user_answers', {})
     full_user_answers = full_user_answers if full_user_answers else {} 
-    return validate_answers(test_data, full_user_answers)
+    return validate_answers(test_data, full_user_answers, test_data.get("id"))
 
 
 @api_view(["GET"])
 def fetch_test(request):
     skill = request.GET.get("skill", None)
     item_id = request.GET.get("item_id", None)
-    return get_test(skill, item_id)
+    ip_address = get_client_ip(request)
+    return get_test(skill, item_id, ip_address)
 
 
 @api_view(["GET"])

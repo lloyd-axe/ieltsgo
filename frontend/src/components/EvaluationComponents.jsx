@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"; 
 import { useState, useEffect } from "react";
-import { LoadingSkeleton, formatTime, TypingEffect } from "../components/Utilities";
+import { LoadingSkeleton, formatTime } from "../components/Utilities";
 import { sendTextToBackend, sendAnswersToBackend } from "../services/services";
 import { renderIcon } from "../services/icons";
 import ActivityPageTemplate from "../components/ActivityPage";
@@ -9,7 +9,7 @@ import { Diagram, Paragraph} from "./QuestionContrainers";
 import {SingleChoice, MultipleChoice, FillBlanksComponent, 
     FillBlankTableComponent, MapTableComponent, DragDropWordsComponent} from "./AnswerComponents";
 
-const WritingEvaluation = ({answer, question, testType}) => {
+const WritingEvaluation = ({answer, question, testType, testId}) => {
     const [bandScore, setBandScore] = useState(null);
     const [evaluation, setEvaluation] = useState(null);
     const [improvedVersion, setImprovedVersion] = useState(null);
@@ -23,7 +23,8 @@ const WritingEvaluation = ({answer, question, testType}) => {
             const data = await sendTextToBackend(
                 answer, 
                 question,
-                testType);
+                testType,
+                testId);
             console.log(data);
             if (data) {
                 setBandScore(data.band_score);

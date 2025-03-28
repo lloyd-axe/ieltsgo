@@ -1,12 +1,15 @@
 import re
+import logging
+
 from django.shortcuts import render
 from google import genai
 from google.genai import types
 import google.generativeai as genai1
 from rest_framework.response import Response
 from django.conf import settings
-from .models import AIConfigs
+from .models import AIConfigs, WritingScoreLogs, TestScoreLogs, TestModel
 from .serializers import AIConfigsSerializer
+logger = logging.getLogger(__name__)
 
 
 genai1.configure(api_key=settings.AI_API_KEY)
@@ -49,7 +52,7 @@ def handle_unanswered_question(user_answers, correct_answers):
     return {k: v.lower().replace(" ", "") if isinstance(v, str) else v for k, v in sorted(user_answers.items())}
 
 
-def validate_writing_answer_1(test_type, user_response, question):
+def validate_writing_answer_1(test_type, user_response, question, test_id):
     if user_response == "" or len(user_response.split(" ")) <= 50:
         return Response({"band_score": "/", 
                          "evaluation": "Looks like your answer is too short. This is not worth evaluating. Please try again.", 
@@ -90,16 +93,18 @@ def validate_writing_answer_1(test_type, user_response, question):
     try:
         response = model.generate_content(full_prompt)
         split_response = response.text.split('|')
-        print(len(split_response), split_response)
+        logger.info('TASK PROMPT: ', question)
+        logger.info('USER RESPONSE: ', user_response)
         if len(split_response) != 3:
             raise Exception
         
         band_score = split_response[0].strip()
         evaluation = split_response[1].strip()
         improved_version = split_response[2].strip()
+        log_writing_score(test_id, user_response, band_score)
         return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improved_version})
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logger.exception(f"An error occurred: {e}")
         error_response = "Ooops.. looks like the AI evaluator is not available at the moment. You may try again by refreshing the page."
         return Response({"band_score": 0, 
                          "evaluation": error_response, 
@@ -161,7 +166,7 @@ def validate_writing_answer_2(test_type, user_response, question):
             model_response.append(chunk.text)
         full_response = ' '.join(model_response)
         split_response = full_response.split('|')
-        print(split_response)
+        logger.info(split_response)
         if len(split_response) != 3:
             raise Exception
         
@@ -170,11 +175,24 @@ def validate_writing_answer_2(test_type, user_response, question):
         improved_version = split_response[2].strip()
         return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improved_version})
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logger.exception(f"An error occurred: {e}")
         error_response = "Ooops.. looks like the AI evaluator is not available at the moment. You may try again by refreshing the page."
         return Response({"band_score": 0, 
                          "evaluation": error_response, 
                          "improve_version": error_response})
+    
+
+def log_writing_score(test_id, user_response, band_score):
+    try:
+        test_model = TestModel.objects.get(id=test_id)
+        WritingScoreLogs.objects.create(
+            test=test_model,
+            band_score=band_score,
+            user_response=user_response
+        )
+        logger.info(f"Logging for writing test: {test_id}, complete!")
+    except:
+        logger.warning(f"Logging for writing test: {test_id}, failed.")
     
 
 def gemini_1_5_eval(model_configs, context, prompt_input, eval_len):
@@ -216,16 +234,15 @@ def gemini_1_5_eval(model_configs, context, prompt_input, eval_len):
     """
 
     full_prompt = prompt_goal + prompt_instructions + prompt_context
-    print(full_prompt)
     try:
         response = model.generate_content(full_prompt)
         split_response = response.text.split('|')
-        print(split_response)
+        logger.info('AI RESPONSE: ', split_response)
         if len(split_response) != eval_len:
             raise Exception
         return split_response
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logger.exception(f"An error occurred: {e}")
         return ["Ooops.. looks like the AI evaluator is not available at the moment. You may try again by later." for _ in range(eval_len)]
 
 
@@ -271,7 +288,7 @@ def gemini_2_eval(model_configs, context, question, gt_answer):
 def ai_evaluation(context, questions, answers, model="gemini-2"):
     # return f"{question} -- {gt_answer}"
     model_configs = fetch_model_configs()
-    print(f"Using {model_configs['model_name']} model.")
+    logger.info(f"Using {model_configs['model_name']} model.")
 
     prompt_input = ""
     for idx, question in enumerate(questions):
@@ -430,7 +447,6 @@ def validate_blank_answers(user_answers, correct_answers, questions, context, to
         evaluation.append([])
         for m in range(len(correct_answers[0])):
             evaluation_class[n].append('wrong')
-            print(questions[n][m])
             blank_question = questions[n][m].split('|')[0] + "___" + questions[n][m].split('|')[2]
             labeled_questions.append(f'{topics[n]}: {blank_question}')
             correct_label_answers.append(correct_answers[n][m])
@@ -450,7 +466,7 @@ def validate_blank_answers(user_answers, correct_answers, questions, context, to
     return {"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class}
 
 
-def validate_answers(test_data, full_user_answers):
+def validate_answers(test_data, full_user_answers, test_id):
     score = 0
     evaluation, evaluation_class = [], []
     context = test_data.get("context").get("context")
@@ -464,7 +480,7 @@ def validate_answers(test_data, full_user_answers):
 
         user_answers = full_user_answers.get(f"{test_type}_{idx}", {})
 
-        if user_answers: # Handle unanswered questions
+        if user_answers:
             user_answers = handle_unanswered_question(user_answers, correct_answers)
         
         validation_methods = {
@@ -480,5 +496,17 @@ def validate_answers(test_data, full_user_answers):
         score += res["score"]
         evaluation.append(res["evaluation"])
         evaluation_class.append(res["evaluation_class"])
-    
+        log_test_scores(test_id, user_answers, score)
     return Response({"score": score, "evaluation": evaluation, "evaluation_class": evaluation_class})
+
+def log_test_scores(test_id, user_answers, score):
+    try:
+        test_model = TestModel.objects.get(id=test_id)
+        TestScoreLogs.objects.create(
+            test=test_model,
+            score=score,
+            answers=user_answers
+        )
+        logger.info(f"Logging for test: {test_id}, complete!")
+    except:
+        logger.warning(f"Logging for test: {test_id}, failed.")

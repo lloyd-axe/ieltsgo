@@ -1,14 +1,18 @@
 import logging
+
+from datetime import timedelta
 from itertools import cycle
+from django.core.cache import cache
 from collections import defaultdict, deque
 from rest_framework.response import Response
+from django.utils.timezone import now
 from django.shortcuts import get_object_or_404
-from .models import TestModel, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
+from .models import TestModel, TestModelView, ContextModel, QuestionsSetModel, TestInformation, QUESTION_SET_TYPES
 from .serializers import TestSerializer, ContextSerializer, QuestionsSetSerializer
 from django.core.paginator import Paginator
 logger = logging.getLogger(__name__)
 
-def get_test(skill, item_id):
+def get_test(skill, item_id, ip_address=""):
     test = get_object_or_404(TestModel, skill=skill,  id=item_id)
     test_data = TestSerializer(test).data
     context = get_object_or_404(ContextModel, context_id=test_data.get("context"))
@@ -17,6 +21,15 @@ def get_test(skill, item_id):
     question_sets = QuestionsSetSerializer(questions, many=True).data
     test_data["question_sets"] = question_sets
     test_data["context"] = context_data
+    
+    cache_key = f"viewed:{test.id}:{ip_address}"
+    if not cache.get(cache_key):
+        logger.info('New View: ', cache_key)
+        cache.set(cache_key, True, timeout=3600)
+        test.views += 1
+        test.save()
+    else:
+        logger.info('Repeat View: ', cache_key)
     return Response(test_data)
 
 

@@ -1,5 +1,17 @@
 from rest_framework import serializers
-from .models import ContextModel, TestModel, QuestionsSetModel, TestInformation, AIConfigs
+from .models import ContextModel, TestModel, QuestionsSetModel, TestInformation, AIConfigs, WritingScoreLogs, TestScoreLogs
+
+
+class TestScoreLogsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TestScoreLogs
+        fields = "__all__"
+
+
+class WritingScoreLogsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WritingScoreLogs
+        fields = "__all__"
 
 
 class QuestionsSetSerializer(serializers.ModelSerializer):

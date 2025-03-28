@@ -33,7 +33,7 @@ const fetchCsrfToken = async () => {
 };
 
 
-const sendTextToBackend = async (answer, question, testType) => {
+const sendTextToBackend = async (answer, question, testType, testId) => {
     try {
         await fetchCsrfToken();
         const csrfToken = Cookies.get("csrftoken");
@@ -47,6 +47,7 @@ const sendTextToBackend = async (answer, question, testType) => {
             user_response: answer,
             question: question,
             test_type: testType,
+            test_id: testId
         }, {
             headers: {
                 "Content-Type": "application/json",

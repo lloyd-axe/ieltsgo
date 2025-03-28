@@ -17,7 +17,7 @@ function EvaluationPage() {
     const countDownMins = location.state?.countDownMins || 0;
 
     if (skill === "writing") 
-        return <WritingEvaluation answer={answer} question={testData.context.context} testType={testData.question_sets[0].test_type} />;
+        return <WritingEvaluation answer={answer} question={testData.context.context} testType={testData.question_sets[0].test_type} testId={testData.id} />;
 
     function getTestComponents({ testData, answer, externalTime,  countDownMins}) {
         const [score, setScore] = useState(null);
