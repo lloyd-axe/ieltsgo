@@ -63,18 +63,18 @@ class TestModel(models.Model):
 
 
 class WritingScoreLogs(models.Model):
-    band_score = models.IntegerField(default=0)
+    band_score = models.CharField(max_length=50, null=False, blank=False)
     user_response = models.TextField()
     test = models.ForeignKey(TestModel, on_delete=models.CASCADE, related_name="writing_test")
     def __str__(self):
-        return f"Writing Score -- {self.test.context.subject}"
+        return f"Writing Score -- {self.test.context.subject}({self.id})"
 
 class TestScoreLogs(models.Model):
     score = models.IntegerField(default=0)
     answers = models.JSONField(default=list, blank=True, null=True)
     test = models.ForeignKey(TestModel, on_delete=models.CASCADE, related_name="other_test")
     def __str__(self):
-        return f"Score -- {self.test.context.subject}"
+        return f"Score -- {self.test.context.subject}({self.id})"
 
 
 class TestInformation(models.Model):
