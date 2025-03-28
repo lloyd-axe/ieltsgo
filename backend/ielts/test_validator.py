@@ -93,8 +93,8 @@ def validate_writing_answer_1(test_type, user_response, question, test_id):
     try:
         response = model.generate_content(full_prompt)
         split_response = response.text.split('|')
-        logger.info('TASK PROMPT: ', question)
-        logger.info('USER RESPONSE: ', user_response)
+        print('TASK PROMPT: ', question)
+        print('USER RESPONSE: ', user_response)
         if len(split_response) != 3:
             raise Exception
         
@@ -104,7 +104,7 @@ def validate_writing_answer_1(test_type, user_response, question, test_id):
         log_writing_score(test_id, user_response, band_score)
         return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improved_version})
     except Exception as e:
-        logger.exception(f"An error occurred: {e}")
+        print(f"An error occurred: {e}")
         error_response = "Ooops.. looks like the AI evaluator is not available at the moment. You may try again by refreshing the page."
         return Response({"band_score": 0, 
                          "evaluation": error_response, 
@@ -166,7 +166,7 @@ def validate_writing_answer_2(test_type, user_response, question):
             model_response.append(chunk.text)
         full_response = ' '.join(model_response)
         split_response = full_response.split('|')
-        logger.info(split_response)
+        print(split_response)
         if len(split_response) != 3:
             raise Exception
         
@@ -175,7 +175,7 @@ def validate_writing_answer_2(test_type, user_response, question):
         improved_version = split_response[2].strip()
         return Response({"band_score": band_score, "evaluation": evaluation, "improve_version": improved_version})
     except Exception as e:
-        logger.exception(f"An error occurred: {e}")
+        print(f"An error occurred: {e}")
         error_response = "Ooops.. looks like the AI evaluator is not available at the moment. You may try again by refreshing the page."
         return Response({"band_score": 0, 
                          "evaluation": error_response, 
@@ -190,7 +190,7 @@ def log_writing_score(test_id, user_response, band_score):
             band_score=band_score,
             user_response=user_response
         )
-        logger.info(f"Logging for writing test: {test_id}, complete!")
+        print(f"Logging for writing test: {test_id}, complete!")
     except:
         logger.warning(f"Logging for writing test: {test_id}, failed.")
     
@@ -237,12 +237,12 @@ def gemini_1_5_eval(model_configs, context, prompt_input, eval_len):
     try:
         response = model.generate_content(full_prompt)
         split_response = response.text.split('|')
-        logger.info('AI RESPONSE: ', split_response)
+        print('AI RESPONSE: ', split_response)
         if len(split_response) != eval_len:
             raise Exception
         return split_response
     except Exception as e:
-        logger.exception(f"An error occurred: {e}")
+        print(f"An error occurred: {e}")
         return ["Ooops.. looks like the AI evaluator is not available at the moment. You may try again by later." for _ in range(eval_len)]
 
 
@@ -288,7 +288,7 @@ def gemini_2_eval(model_configs, context, question, gt_answer):
 def ai_evaluation(context, questions, answers, model="gemini-2"):
     # return f"{question} -- {gt_answer}"
     model_configs = fetch_model_configs()
-    logger.info(f"Using {model_configs['model_name']} model.")
+    print(f"Using {model_configs['model_name']} model.")
 
     prompt_input = ""
     for idx, question in enumerate(questions):
@@ -507,6 +507,6 @@ def log_test_scores(test_id, user_answers, score):
             score=score,
             answers=user_answers
         )
-        logger.info(f"Logging for test: {test_id}, complete!")
+        print(f"Logging for test: {test_id}, complete!")
     except:
         logger.warning(f"Logging for test: {test_id}, failed.")
