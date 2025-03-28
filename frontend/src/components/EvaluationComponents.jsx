@@ -65,8 +65,9 @@ const WritingEvaluation = ({answer, question, testType, testId}) => {
     const rightContent = (
         <div className="answer-container">
             <p className="ai-disclaimer-writing">
-                AI responses may contain mistakes. Please verify all important information. 
-                If you don't like the AI's response, you may refresh the page to generate a new response.</p>
+            AI-generated responses may contain errors, so please verify all critical information. 
+            Additionally, the provided band score is for reference only and may not reflect the actual score given by a human evaluators. 
+            If you are unsatisfied with the AI's response, you can refresh the page to generate a new one.</p>
             <p className="eval-label">EVALUATION:</p>
             <hr/>
             <div className="eval-container flex-row">
