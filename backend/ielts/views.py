@@ -131,7 +131,7 @@ def custom_sitemap(request):
                 test_type = ",".join(
                     [question_set.test_type 
                      for question_set in questions])
-            panel = 0 if test.skill == 'listening' else 0
+            panel = 0 if test.skill == 'listening' else 1
             url_path = f"ieltsgo/test/intro/{test.skill}/{panel}/{test_type}/{test.id}"
             url = ET.SubElement(urlset, "url")
             ET.SubElement(url, "loc").text = f"{base_url}/{url_path}"
