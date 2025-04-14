@@ -103,7 +103,7 @@ def custom_sitemap(request):
     for base_paths in ["","home","about","contact"]:
         try:
             url = ET.SubElement(urlset, "url")
-            ET.SubElement(url, "loc").text = f"{base_url}{base_paths}"
+            ET.SubElement(url, "loc").text = f"{base_url}/{base_paths}"
             ET.SubElement(url, "priority").text = "0.8"
             ET.SubElement(url, "changefreq").text = "weekly"
         except Exception as e:
@@ -113,7 +113,7 @@ def custom_sitemap(request):
         try:
             url_path = f"ieltsgo/selection/{skill}"
             url = ET.SubElement(urlset, "url")
-            ET.SubElement(url, "loc").text = f"{base_url}{url_path}"
+            ET.SubElement(url, "loc").text = f"{base_url}/{url_path}"
             ET.SubElement(url, "priority").text = "0.7"
             ET.SubElement(url, "changefreq").text = "weekly"
         except Exception as e:
@@ -135,13 +135,13 @@ def custom_sitemap(request):
             panel = 0 if test.skill == 'listening' else 0
             url_path = f"ieltsgo/test/intro/{test.skill}/{panel}/{test_type}/{test.id}"
             url = ET.SubElement(urlset, "url")
-            ET.SubElement(url, "loc").text = f"{base_url}{url_path}"
+            ET.SubElement(url, "loc").text = f"{base_url}/{url_path}"
             ET.SubElement(url, "priority").text = "0.6"
             ET.SubElement(url, "changefreq").text = "monthly"
 
             url_path = f"ieltsgo/test/{test.skill}/{panel}/{test_type}/{test.id}"
             url = ET.SubElement(urlset, "url")
-            ET.SubElement(url, "loc").text = f"{base_url}{url_path}"
+            ET.SubElement(url, "loc").text = f"{base_url}/{url_path}"
             ET.SubElement(url, "priority").text = "0.6"
             ET.SubElement(url, "changefreq").text = "monthly"
         except Exception as e:
