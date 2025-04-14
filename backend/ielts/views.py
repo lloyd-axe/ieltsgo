@@ -121,11 +121,10 @@ def custom_sitemap(request):
             continue
     
     sitemap_scale_limit = 1000
-    tests = TestModel.objects.all()[:sitemap_scale_limit] 
+    tests = TestModel.objects.all()[:sitemap_scale_limit]
     for test in tests:
         try:
-            context = ContextModel.objects.get(subject=test.subject)
-            questions = QuestionsSetModel.objects.filter(context=context)
+            questions = QuestionsSetModel.objects.filter(context=test.context)
             
             test_type = ""
             if questions.exists():
