@@ -4,14 +4,15 @@ from rest_framework.decorators import api_view
 from .test_manager import (get_test, get_test_info, get_test_type_display_names, get_test_types, get_all_tests)
 from .test_validator import (
     validate_writing_answer_1, validate_answers)
+from .models import TestModel, ContextModel, QuestionsSetModel
 from django.http import HttpResponse
-from django.urls import reverse
 import xml.etree.ElementTree as ET
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework.exceptions import Throttled
+
 logger = logging.getLogger(__name__)
 
 class CustomAnonThrottleWriting(AnonRateThrottle):
@@ -96,38 +97,55 @@ def fetch_type_display_names(request):
 
 
 def custom_sitemap(request):
-    base_url = request.build_absolute_uri('/')[:-1]  # Remove trailing slash
+    base_url = request.build_absolute_uri('/')[:-1]
     urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 
-    # ✅ Static API URLs
-    api_urls = [
-        "get_all_tests",
-        "get_all_test_types",
-        "get_test_display_name",
-    ]
-
-    for api in api_urls:
-        url = ET.SubElement(urlset, "url")
-        ET.SubElement(url, "loc").text = f"{base_url}{reverse(api)}"
-        ET.SubElement(url, "priority").text = "0.8"
-        ET.SubElement(url, "changefreq").text = "weekly"
-
-    # ✅ Dynamic API URLs (Example Data)
-    dynamic_api_urls = [
-        {"name": "get_test", "params": {"skill": "reading", "test_type": "mock", "item_id": 123}},
-        {"name": "get_test_types", "params": {"skill": "writing"}},
-        {"name": "get_test_info", "params": {"test_type": "academic"}},
-    ]
-
-    for api in dynamic_api_urls:
+    for base_paths in ["","home","about","contact"]:
         try:
-            url_path = reverse(api["name"], kwargs=api["params"])
+            url = ET.SubElement(urlset, "url")
+            ET.SubElement(url, "loc").text = f"{base_url}{base_paths}"
+            ET.SubElement(url, "priority").text = "0.8"
+            ET.SubElement(url, "changefreq").text = "weekly"
+        except Exception as e:
+            print(f"Static URL error: {e}")
+
+    for skill in ["all", "reading", "listening", "writing"]:
+        try:
+            url_path = f"ieltsgo/selection/{skill}"
+            url = ET.SubElement(urlset, "url")
+            ET.SubElement(url, "loc").text = f"{base_url}{url_path}"
+            ET.SubElement(url, "priority").text = "0.7"
+            ET.SubElement(url, "changefreq").text = "weekly"
+        except Exception as e:
+            print(f"Skipping {skill}: {e}")
+            continue
+    
+    sitemap_scale_limit = 1000
+    tests = TestModel.objects.all()[:sitemap_scale_limit] 
+    for test in tests:
+        try:
+            context = ContextModel.objects.get(subject=test.subject)
+            questions = QuestionsSetModel.objects.filter(context=context)
+            
+            test_type = ""
+            if questions.exists():
+                test_type = ",".join(
+                    [question_set.test_type 
+                     for question_set in questions])
+            panel = 0 if test.skill == 'listening' else 0
+            url_path = f"ieltsgo/test/intro/{test.skill}/{panel}/{test_type}/{test.id}"
             url = ET.SubElement(urlset, "url")
             ET.SubElement(url, "loc").text = f"{base_url}{url_path}"
             ET.SubElement(url, "priority").text = "0.6"
             ET.SubElement(url, "changefreq").text = "monthly"
-        except Exception:
-            pass  # Skip invalid routes
+
+            url_path = f"ieltsgo/test/{test.skill}/{panel}/{test_type}/{test.id}"
+            url = ET.SubElement(urlset, "url")
+            ET.SubElement(url, "loc").text = f"{base_url}{url_path}"
+            ET.SubElement(url, "priority").text = "0.6"
+            ET.SubElement(url, "changefreq").text = "monthly"
+        except Exception as e:
+            print(f"Dynamic URL error for test {test.id}: {e}")
 
     xml_string = ET.tostring(urlset, encoding="utf-8", method="xml")
     return HttpResponse(xml_string, content_type="application/xml")
