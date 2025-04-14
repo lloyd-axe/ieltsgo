@@ -100,7 +100,7 @@ def custom_sitemap(request):
     base_url = request.build_absolute_uri('/')[:-1]
     urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 
-    for base_paths in ["","home","about","contact"]:
+    for base_paths in ["","about","contact"]:
         try:
             url = ET.SubElement(urlset, "url")
             ET.SubElement(url, "loc").text = f"{base_url}/{base_paths}"
