@@ -111,7 +111,7 @@ def custom_sitemap(request):
 
     for skill in ["all", "reading", "listening", "writing"]:
         try:
-            url_path = f"ieltsgo/selection/{skill}"
+            url_path = f"selection/{skill}"
             url = ET.SubElement(urlset, "url")
             ET.SubElement(url, "loc").text = f"{base_url}/{url_path}"
             ET.SubElement(url, "priority").text = "0.7"
@@ -132,13 +132,13 @@ def custom_sitemap(request):
                     [question_set.test_type 
                      for question_set in questions])
             panel = 0 if test.skill == 'listening' else 1
-            url_path = f"ieltsgo/test/intro/{test.skill}/{panel}/{test_type}/{test.id}"
+            url_path = f"test/intro/{test.skill}/{panel}/{test_type}/{test.id}"
             url = ET.SubElement(urlset, "url")
             ET.SubElement(url, "loc").text = f"{base_url}/{url_path}"
             ET.SubElement(url, "priority").text = "0.6"
             ET.SubElement(url, "changefreq").text = "monthly"
 
-            url_path = f"ieltsgo/test/{test.skill}/{panel}/{test_type}/{test.id}"
+            url_path = f"test/{test.skill}/{panel}/{test_type}/{test.id}"
             url = ET.SubElement(urlset, "url")
             ET.SubElement(url, "loc").text = f"{base_url}/{url_path}"
             ET.SubElement(url, "priority").text = "0.6"
